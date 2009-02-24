@@ -8,7 +8,7 @@ public class MeinRechnerMain
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println("Hello asshole");
+		System.out.println("Die Frage aller Fragen ist BILD Nummer oder BUILD NUMMER");
 
 	}
 
