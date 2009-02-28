@@ -64,7 +64,14 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	}
 
 	@Override
-	public void delete(Ausleiher derAusleiher)
+	public void deactivate(Ausleiher derAusleiher)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void activate(Ausleiher derAusleiher)
 	{
 		// TODO Auto-generated method stub
 		
@@ -148,13 +155,6 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			}
 		}		
 		return list;
-	}
-
-	@Override
-	public void unDelete(Ausleiher derAusleiher)
-	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

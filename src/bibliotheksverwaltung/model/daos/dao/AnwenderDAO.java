@@ -12,7 +12,7 @@ public interface AnwenderDAO
 	public ArrayList<Anwender> find(Anwender derAnwender);
 	public void add(Anwender derAnwender);
 	public void update(Anwender derAnwender);
-	public void delete(Anwender derAnwender);
-	public void unDelete(Anwender derAnwender);
+	public void deactivate(Anwender derAnwender);
+	public void activate(Anwender derAnwender);
 	public boolean auth (Anwender derAnwender);
 }

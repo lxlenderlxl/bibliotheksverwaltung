@@ -144,7 +144,7 @@ public class MySQLMediumDAO implements MediumDAO
 		return "%" + derString + "%";
 	}
 
-	public void delete(Medium dasMedium)
+	public void deactivate(Medium dasMedium)
 	{
 		if (connection != null)
 		{
@@ -187,7 +187,7 @@ public class MySQLMediumDAO implements MediumDAO
 	}
 
 	@Override
-	public void unDelete(Medium dasMedium)
+	public void activate(Medium dasMedium)
 	{
 		if (connection != null)
 		{
