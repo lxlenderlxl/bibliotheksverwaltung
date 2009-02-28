@@ -14,4 +14,5 @@ public interface AnwenderDAO
 	public void update(Anwender derAnwender);
 	public void delete(Anwender derAnwender);
 	public void unDelete(Anwender derAnwender);
+	public boolean auth (Anwender derAnwender);
 }
