@@ -195,4 +195,35 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			}
 		}		
 	}
+
+	@Override
+	public boolean auth(Anwender derAnwender)
+	{
+		boolean rightAuth = false;
+		if (connection != null)
+		{
+			try
+			{
+				String dasStatement = "SELECT * FROM anwender WHERE anwendername = ? AND aktiv = 1";
+				statement = connection.prepareStatement(dasStatement);
+				statement.setString(1, derAnwender.getAnwenderName());
+				ResultSet rs = statement.executeQuery();
+				
+				if (!rs.next())
+				{
+					rightAuth = false;
+					throw new DataStoreException();
+				}
+				else 
+				{
+					
+				}
+			}
+			catch (SQLException e)
+			{
+				e.getMessage();
+			}
+		}
+		return rightAuth;
+	}
 }
