@@ -7,6 +7,14 @@ public class Anwender
 	private int hierarchieStufe = 0;
 	private boolean aktiv = true;
 	
+	public Anwender(String derName, String dasPasswort)
+	{
+		anwenderName = derName;
+		passwort = dasPasswort;
+		hierarchieStufe = 0;
+		this.aktiv = true;
+	}
+	
 	public Anwender(String derName, String dasPasswort, int dieStufe, boolean aktiv)
 	{
 		anwenderName = derName;
