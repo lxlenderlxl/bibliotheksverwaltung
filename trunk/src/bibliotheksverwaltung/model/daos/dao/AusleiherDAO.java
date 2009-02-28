@@ -12,6 +12,6 @@ public interface AusleiherDAO
 	public ArrayList<Ausleiher> find(Ausleiher derAusleiher);
 	public void add(Ausleiher derAusleiher);
 	public void update(Ausleiher derAusleiher);
-	public void delete(Ausleiher derAusleiher);
-	public void unDelete(Ausleiher derAusleiher);
+	public void deactivate(Ausleiher derAusleiher);
+	public void activate(Ausleiher derAusleiher);
 }

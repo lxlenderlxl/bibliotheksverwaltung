@@ -113,7 +113,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		return "%" + derString + "%";
 	}
 
-	public void delete(Anwender derAnwender)
+	public void deactivate(Anwender derAnwender)
 	{
 		if (connection != null)
 		{
@@ -178,7 +178,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	}
 
 	@Override
-	public void unDelete(Anwender derAnwender)
+	public void activate(Anwender derAnwender)
 	{
 		if (connection != null)
 		{

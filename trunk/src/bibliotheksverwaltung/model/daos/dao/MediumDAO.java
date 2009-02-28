@@ -12,6 +12,6 @@ public interface MediumDAO
 	public ArrayList<Medium> find(Medium dasMedium);
 	public void add(Medium dasMedium);
 	public void update(Medium dasMedium);
-	public void delete(Medium dasMedium);
-	public void unDelete(Medium dasMedium);
+	public void deactivate(Medium dasMedium);
+	public void activate(Medium dasMedium);
 }
