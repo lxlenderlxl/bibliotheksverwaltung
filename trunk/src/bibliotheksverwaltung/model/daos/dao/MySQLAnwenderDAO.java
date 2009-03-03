@@ -7,34 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import bibliotheksverwaltung.model.daos.domain.Anwender;
 import bibliotheksverwaltung.model.daos.exceptions.DataStoreException;
+import bibliotheksverwaltung.model.domain.Anwender;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 
 public class MySQLAnwenderDAO implements AnwenderDAO
 {
-	private Connection connection = null;
+	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
 	
 	public MySQLAnwenderDAO () 
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotheksverwaltung","root", "");
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.getMessage();
-		}
-		catch (SQLException e)
-		{
-			e.getMessage();
-		}
-		catch (Exception e)
-		{
-			e.getMessage();
-		}
+		connection = new MySQLConnection();
 	}
 
 	public ArrayList<Anwender> retrieve()
@@ -44,7 +29,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		{
 			try
 			{
-				statement = connection.prepareStatement("SELECT * FROM anwender WHERE AKTIV = 1");
+				statement = connection.getConnection().prepareStatement("SELECT * FROM anwender WHERE AKTIV = 1");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
@@ -67,7 +52,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			try
 			{
 				String dasStatement = "UPDATE anwender SET anwendername = ?, passwort = ?, hierarchiestufe = ?, aktiv = ? WHERE id = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAnwender.getAnwenderName());
 				statement.setString(2, derAnwender.getPasswort());
 				statement.setInt(3, derAnwender.getHierarchieStufe());
@@ -89,7 +74,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			try
 			{
 				String dasStatement = "SELECT * FROM anwender WHERE anwendername LIKE ? AND hierarchiestufe LIKE ? AND aktiv = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, stringLikeTransformator(derAnwender.getAnwenderName()));
 				statement.setInt(2, derAnwender.getHierarchieStufe());
 				statement.setBoolean(3, derAnwender.isAktiv());
@@ -120,7 +105,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			try
 			{
 				String dasStatement = "UPDATE anwender SET AKTIV = 0 WHERE anwendername = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAnwender.getAnwenderName());
 				statement.executeUpdate();
 			}
@@ -138,7 +123,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		{
 			try
 			{
-				statement = connection.prepareStatement("SELECT * FROM anwender");
+				statement = connection.getConnection().prepareStatement("SELECT * FROM anwender");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
@@ -163,7 +148,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			try
 			{
 				String dasStatement = "INSERT INTO anwender (anwendername, passwort, hierarchiestufe, aktiv) VALUES (?, ?, ?, ?)";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAnwender.getAnwenderName());
 				statement.setString(2, derAnwender.getPasswort());
 				statement.setInt(3, derAnwender.getHierarchieStufe());
@@ -185,7 +170,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			try
 			{
 				String dasStatement = "UPDATE anwender SET AKTIV = 1 WHERE anwendername = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAnwender.getAnwenderName());
 				statement.executeUpdate();
 			}
@@ -205,7 +190,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			try
 			{
 				String dasStatement = "SELECT * FROM anwender WHERE anwendername = ? AND aktiv = 1";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAnwender.getAnwenderName());
 				ResultSet rs = statement.executeQuery();
 				

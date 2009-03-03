@@ -7,35 +7,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import bibliotheksverwaltung.model.daos.domain.Ausleiher;
-import bibliotheksverwaltung.model.daos.domain.Medium;
 import bibliotheksverwaltung.model.daos.exceptions.DataStoreException;
-
+import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLAusleiherDAO implements AusleiherDAO
 {	
-	private Connection connection = null;
+	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
 	
 	public MySQLAusleiherDAO () 
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotheksverwaltung","root", "");
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.getMessage();
-		}
-		catch (SQLException e)
-		{
-			e.getMessage();
-		}
-		catch (Exception e)
-		{
-			e.getMessage();
-		}
+		connection = new MySQLConnection();
+	}
+	
+	public MySQLAusleiherDAO(MySQLConnection dieConnection) 
+	{
+		connection = dieConnection;
 	}
 
 	@Override
@@ -46,7 +35,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			try
 			{
 				String dasStatement = "INSERT INTO ausleiher (vorname, nachname, strasse, hausnummer, plz, stadt, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAusleiher.getVorName());
 				statement.setString(2, derAusleiher.getNachName());
 				statement.setString(3, derAusleiher.getStrasse());
@@ -86,7 +75,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			try
 			{
 				String dasStatement = "SELECT * FROM ausleiher WHERE vorname LIKE ? AND nachname LIKE ? AND strasse LIKE ? AND hausnummer LIKE ? AND plz LIKE ? AND stadt LIKE ? AND aktiv =";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, stringLikeTransformator(derAusleiher.getVorName()));
 				statement.setString(2, stringLikeTransformator(derAusleiher.getNachName()));
 				statement.setString(3, stringLikeTransformator(derAusleiher.getStrasse()));
@@ -117,7 +106,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		{
 			try
 			{
-				statement = connection.prepareStatement("SELECT * FROM ausleiher WHERE AKTIV = 1");
+				statement = connection.getConnection().prepareStatement("SELECT * FROM ausleiher WHERE AKTIV = 1");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
@@ -141,7 +130,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		{
 			try
 			{
-				statement = connection.prepareStatement("SELECT * FROM ausleiher");
+				statement = connection.getConnection().prepareStatement("SELECT * FROM ausleiher");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
@@ -165,7 +154,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			try
 			{
 				String dasStatement = "UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE id = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, derAusleiher.getVorName());
 				statement.setString(2, derAusleiher.getNachName());
 				statement.setString(3, derAusleiher.getStrasse());
@@ -186,6 +175,34 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	private String stringLikeTransformator(String derString)
 	{
 		return "%" + derString + "%";
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.AusleiherDAO#findById(int)
+	 */
+	@Override
+	public Ausleiher findById(int dieId)
+	{
+		Ausleiher einAusleiher = null;
+		if (connection != null)
+		{
+			try
+			{
+				statement = connection.getConnection().prepareStatement("SELECT * FROM ausleiher WHERE id = ?");
+				statement.setInt(1, dieId);
+				ResultSet rs = statement.executeQuery();
+				while (rs.next())
+				{
+					einAusleiher = new Ausleiher(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getBoolean(8));					
+				}
+			}
+			catch (SQLException e)
+			{
+				e.getMessage();
+			}
+		}
+		
+		return einAusleiher;
 	}
 
 }
