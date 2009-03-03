@@ -1,4 +1,4 @@
-package bibliotheksverwaltung.model.daos.domain;
+package bibliotheksverwaltung.model.domain;
 
 import java.sql.Date;
 
@@ -10,8 +10,18 @@ public class Exemplar
 	private Medium medium = null;
 	private Date rueckgabeDatum = null;
 	private int verlaengerung = 0;
-	private boolean aktiv;
+	private boolean aktiv = true;
 	
+	public Exemplar(int dieId, Zustand derZustand, Ausleiher derAusleiher, Medium dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
+	{
+		id = dieId;
+		zustand = derZustand;
+		ausleiher = derAusleiher;
+		medium = dasMedium;
+		rueckgabeDatum = dasDatum;
+		verlaengerung = dieVerlaengerung;
+		this.aktiv = aktiv;
+	}
 	/**
 	 * @return the id
 	 */

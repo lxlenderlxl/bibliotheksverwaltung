@@ -3,34 +3,24 @@ package bibliotheksverwaltung.model.daos.dao;
 import java.sql.*;
 import java.util.ArrayList;
 
-import bibliotheksverwaltung.model.daos.domain.Medium;
 import bibliotheksverwaltung.model.daos.exceptions.DataStoreException;
+import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 
 public class MySQLMediumDAO implements MediumDAO
 {
-	private Connection connection = null;
+	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
 	
 	public MySQLMediumDAO () 
 	{
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotheksverwaltung","root", "");
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.getMessage();
-		}
-		catch (SQLException e)
-		{
-			e.getMessage();
-		}
-		catch (Exception e)
-		{
-			e.getMessage();
-		}
+		connection = new MySQLConnection();
+	}
+	
+	public MySQLMediumDAO(MySQLConnection dieConnection) 
+	{
+		connection = dieConnection;
 	}
 
 	public void add(Medium dasMedium)
@@ -40,7 +30,7 @@ public class MySQLMediumDAO implements MediumDAO
 			try
 			{
 				String dasStatement = "INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, dasMedium.getTitel());
 				statement.setString(2, dasMedium.getAutorVorname());
 				statement.setString(3, dasMedium.getAutorNachname());
@@ -64,7 +54,7 @@ public class MySQLMediumDAO implements MediumDAO
 		{
 			try
 			{
-				statement = connection.prepareStatement("SELECT * FROM medium WHERE AKTIV = 1");
+				statement = connection.getConnection().prepareStatement("SELECT * FROM medium WHERE AKTIV = 1");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
@@ -87,7 +77,7 @@ public class MySQLMediumDAO implements MediumDAO
 			try
 			{
 				String dasStatement = "UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE id = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, dasMedium.getTitel());
 				statement.setString(2, dasMedium.getAutorVorname());
 				statement.setString(3, dasMedium.getAutorNachname());
@@ -117,7 +107,7 @@ public class MySQLMediumDAO implements MediumDAO
 				{
 					dasStatement += " AND erscheinungsjahr = " + new Integer(dasMedium.getErscheinungsJahr()).toString();
 				}
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setString(1, stringLikeTransformator(dasMedium.getAutorVorname()));
 				statement.setString(2, stringLikeTransformator(dasMedium.getAutorNachname()));
 				statement.setString(3, stringLikeTransformator(dasMedium.getIsbn()));
@@ -151,7 +141,7 @@ public class MySQLMediumDAO implements MediumDAO
 			try
 			{
 				String dasStatement = "UPDATE medium SET AKTIV = 0 WHERE id = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setInt(1, dasMedium.getId());
 				statement.executeUpdate();
 			}
@@ -169,7 +159,7 @@ public class MySQLMediumDAO implements MediumDAO
 		{
 			try
 			{
-				statement = connection.prepareStatement("SELECT * FROM medium");
+				statement = connection.getConnection().prepareStatement("SELECT * FROM medium");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
@@ -194,7 +184,7 @@ public class MySQLMediumDAO implements MediumDAO
 			try
 			{
 				String dasStatement = "UPDATE medium SET AKTIV = 1 WHERE id = ?";
-				statement = connection.prepareStatement(dasStatement);
+				statement = connection.getConnection().prepareStatement(dasStatement);
 				statement.setInt(1, dasMedium.getId());
 				statement.executeUpdate();
 			}
@@ -203,5 +193,33 @@ public class MySQLMediumDAO implements MediumDAO
 				throw new DataStoreException(e);
 			}
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.MediumDAO#findById(int)
+	 */
+	@Override
+	public Medium findById(int dieId)
+	{
+		Medium einMedium = null;
+		if (connection != null)
+		{
+			try
+			{
+				statement = connection.getConnection().prepareStatement("SELECT * FROM medium WHERE id = ?");
+				statement.setInt(1, dieId);
+				ResultSet rs = statement.executeQuery();
+				while (rs.next())
+				{
+					einMedium = new Medium(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getBoolean(8));				
+				}
+			}
+			catch (SQLException e)
+			{
+				e.getMessage();
+			}
+		}
+		
+		return einMedium;
 	}	
 }

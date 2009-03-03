@@ -1,4 +1,4 @@
-package bibliotheksverwaltung.model.daos.domain;
+package bibliotheksverwaltung.model.domain;
 
 public class Ausleiher
 {
