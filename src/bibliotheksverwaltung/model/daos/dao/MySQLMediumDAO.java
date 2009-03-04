@@ -13,37 +13,37 @@ public class MySQLMediumDAO implements MediumDAO
 	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
 	
-	public MySQLMediumDAO () 
+	public MySQLMediumDAO()
 	{
 		connection = new MySQLConnection();
+		refreshConnection();
 	}
-	
-	public MySQLMediumDAO(MySQLConnection dieConnection) 
+
+	public MySQLMediumDAO(MySQLConnection dieConnection)
 	{
 		connection = dieConnection;
+		refreshConnection();
 	}
 
 	public void add(Medium dasMedium)
 	{
-		if (connection.getConnection() != null)
+		refreshConnection();
+		try
 		{
-			try
-			{
-				String dasStatement = "INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)";
-				statement = connection.getConnection().prepareStatement(dasStatement);
-				statement.setString(1, dasMedium.getTitel());
-				statement.setString(2, dasMedium.getAutorVorname());
-				statement.setString(3, dasMedium.getAutorNachname());
-				statement.setString(4, dasMedium.getVerlag());
-				statement.setInt(5, dasMedium.getErscheinungsJahr());
-				statement.setString(6, dasMedium.getIsbn());
-				statement.setBoolean(7, dasMedium.isAktiv());
-				statement.executeUpdate();
-			}
-			catch (SQLException e)
-			{
-				throw new DataStoreException(e);
-			}
+			String dasStatement = "INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			statement = connection.getConnection().prepareStatement(dasStatement);
+			statement.setString(1, dasMedium.getTitel());
+			statement.setString(2, dasMedium.getAutorVorname());
+			statement.setString(3, dasMedium.getAutorNachname());
+			statement.setString(4, dasMedium.getVerlag());
+			statement.setInt(5, dasMedium.getErscheinungsJahr());
+			statement.setString(6, dasMedium.getIsbn());
+			statement.setBoolean(7, dasMedium.isAktiv());
+			statement.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			throw new DataStoreException(e);
 		}
 	}
 
@@ -222,4 +222,18 @@ public class MySQLMediumDAO implements MediumDAO
 		
 		return einMedium;
 	}	
+	
+	private void refreshConnection()
+	{
+		
+		try
+		{
+			if (connection.getConnection().isClosed())
+				connection = new MySQLConnection();
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
