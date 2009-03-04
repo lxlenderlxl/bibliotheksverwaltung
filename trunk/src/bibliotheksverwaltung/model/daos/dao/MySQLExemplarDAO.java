@@ -43,7 +43,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public void activate(Exemplar dasExemplar)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -65,7 +65,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public void add(Exemplar dasExemplar)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -92,7 +92,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public void deactivate(Exemplar dasExemplar)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -135,7 +135,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	public Exemplar findById(int dieId)
 	{
 		Exemplar einExemplar = null;
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -186,7 +186,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	public ArrayList<Exemplar> retrieve()
 	{
 		ArrayList<Exemplar> list = new ArrayList<Exemplar>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -213,7 +213,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	public ArrayList<Exemplar> retrieveView()
 	{
 		ArrayList<Exemplar> list = new ArrayList<Exemplar>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
