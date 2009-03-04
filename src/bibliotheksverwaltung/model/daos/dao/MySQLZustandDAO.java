@@ -20,19 +20,19 @@ public class MySQLZustandDAO implements ZustandDAO
 	
 	public MySQLZustandDAO() 
 	{
-		connection = new MySQLConnection();
+		refreshConnection(new MySQLConnection());
 	}
 	
 	public MySQLZustandDAO(MySQLConnection dieConnection) 
 	{
-		connection = dieConnection;
+		refreshConnection(dieConnection);
 	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#add(bibliotheksverwaltung.model.domain.Zustand)
 	 */
 	@Override
-	public void add(Zustand derZustand)
+	public void add(String dieBezeichnung)
 	{
 		// TODO Auto-generated method stub
 		
@@ -42,11 +42,12 @@ public class MySQLZustandDAO implements ZustandDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#findById(int)
 	 */
 	@Override
-	public Zustand findById(int dieId)
+	public Zustand getById(int dieId)
 	{
 		Zustand einZustand = null;
-		if (connection.getConnection() != null)
+		if (connection.getConnection() == null)
 		{
+			
 			try
 			{
 				statement = connection.getConnection().prepareStatement("SELECT * FROM zustand WHERE id = ?");
@@ -70,7 +71,7 @@ public class MySQLZustandDAO implements ZustandDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#retrieve()
 	 */
 	@Override
-	public ArrayList<Zustand> retrieve()
+	public ArrayList<Zustand> getAll()
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -80,10 +81,34 @@ public class MySQLZustandDAO implements ZustandDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#update(bibliotheksverwaltung.model.domain.Zustand)
 	 */
 	@Override
-	public void update(Zustand derZustand)
+	public void update(int dieId, String dieBezeichnung)
 	{
 		// TODO Auto-generated method stub
 		
 	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#getByBezeichnung(java.lang.String)
+	 */
+	@Override
+	public Zustand getByBezeichnung(String dieBezeichnung)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private void refreshConnection(MySQLConnection dieConnection)
+	{
+		if (dieConnection.getConnection() != null)
+		{
+			connection = dieConnection;
+		}
+		else 
+		{
+			connection = new MySQLConnection();
+		}
+	}
+	
+	
 
 }
