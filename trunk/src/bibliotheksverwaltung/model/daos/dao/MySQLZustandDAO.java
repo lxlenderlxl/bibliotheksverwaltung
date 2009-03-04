@@ -17,15 +17,17 @@ public class MySQLZustandDAO implements ZustandDAO
 {
 	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
-	
-	public MySQLZustandDAO() 
+
+	public MySQLZustandDAO()
 	{
-		refreshConnection(new MySQLConnection());
+		connection = new MySQLConnection();
+		refreshConnection();
 	}
-	
-	public MySQLZustandDAO(MySQLConnection dieConnection) 
+
+	public MySQLZustandDAO(MySQLConnection dieConnection)
 	{
-		refreshConnection(dieConnection);
+		connection = dieConnection;
+		refreshConnection();
 	}
 
 	/* (non-Javadoc)
@@ -35,7 +37,7 @@ public class MySQLZustandDAO implements ZustandDAO
 	public void add(String dieBezeichnung)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -47,7 +49,7 @@ public class MySQLZustandDAO implements ZustandDAO
 		Zustand einZustand = null;
 		if (connection.getConnection() == null)
 		{
-			
+
 			try
 			{
 				statement = connection.getConnection().prepareStatement("SELECT * FROM zustand WHERE id = ?");
@@ -55,7 +57,7 @@ public class MySQLZustandDAO implements ZustandDAO
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
-					einZustand = new Zustand(rs.getInt(1), rs.getString(2));				
+					einZustand = new Zustand(rs.getInt(1), rs.getString(2));
 				}
 			}
 			catch (SQLException e)
@@ -63,7 +65,7 @@ public class MySQLZustandDAO implements ZustandDAO
 				e.getMessage();
 			}
 		}
-		
+
 		return einZustand;
 	}
 
@@ -84,7 +86,7 @@ public class MySQLZustandDAO implements ZustandDAO
 	public void update(int dieId, String dieBezeichnung)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -96,19 +98,13 @@ public class MySQLZustandDAO implements ZustandDAO
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	private void refreshConnection(MySQLConnection dieConnection)
+
+	private void refreshConnection()
 	{
-		if (dieConnection.getConnection() != null)
-		{
-			connection = dieConnection;
-		}
-		else 
-		{
+		if (connection.getConnection() != null)
 			connection = new MySQLConnection();
-		}
 	}
-	
-	
+
+
 
 }
