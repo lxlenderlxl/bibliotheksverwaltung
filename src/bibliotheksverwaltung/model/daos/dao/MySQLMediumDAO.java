@@ -25,7 +25,7 @@ public class MySQLMediumDAO implements MediumDAO
 
 	public void add(Medium dasMedium)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -50,7 +50,7 @@ public class MySQLMediumDAO implements MediumDAO
 	public ArrayList<Medium> retrieve()
 	{
 		ArrayList<Medium> list = new ArrayList<Medium>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -72,7 +72,7 @@ public class MySQLMediumDAO implements MediumDAO
 
 	public void update(Medium dasMedium)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -98,7 +98,7 @@ public class MySQLMediumDAO implements MediumDAO
 	public ArrayList<Medium> find(Medium dasMedium)
 	{
 		ArrayList<Medium> list = new ArrayList<Medium>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -136,7 +136,7 @@ public class MySQLMediumDAO implements MediumDAO
 
 	public void deactivate(Medium dasMedium)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -155,7 +155,7 @@ public class MySQLMediumDAO implements MediumDAO
 	public ArrayList<Medium> retrieveAll()
 	{
 		ArrayList<Medium> list = new ArrayList<Medium>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -179,7 +179,7 @@ public class MySQLMediumDAO implements MediumDAO
 	@Override
 	public void activate(Medium dasMedium)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -202,7 +202,7 @@ public class MySQLMediumDAO implements MediumDAO
 	public Medium findById(int dieId)
 	{
 		Medium einMedium = null;
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{

@@ -30,7 +30,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	@Override
 	public void add(Ausleiher derAusleiher)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -70,7 +70,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	public ArrayList<Ausleiher> find(Ausleiher derAusleiher)
 	{
 		ArrayList<Ausleiher> list = new ArrayList<Ausleiher>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -102,7 +102,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	public ArrayList<Ausleiher> retrieve()
 	{
 		ArrayList<Ausleiher> list = new ArrayList<Ausleiher>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -126,7 +126,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	public ArrayList<Ausleiher> retrieveAll()
 	{
 		ArrayList<Ausleiher> list = new ArrayList<Ausleiher>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -149,7 +149,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	@Override
 	public void update(Ausleiher derAusleiher)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -184,7 +184,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	public Ausleiher findById(int dieId)
 	{
 		Ausleiher einAusleiher = null;
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{

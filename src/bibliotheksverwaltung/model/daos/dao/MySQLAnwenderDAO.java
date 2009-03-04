@@ -25,7 +25,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	public ArrayList<Anwender> retrieve()
 	{
 		ArrayList<Anwender> list = new ArrayList<Anwender>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -47,7 +47,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 
 	public void update(Anwender derAnwender)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -69,7 +69,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	public ArrayList<Anwender> find(Anwender derAnwender)
 	{
 		ArrayList<Anwender> list = new ArrayList<Anwender>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -100,7 +100,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 
 	public void deactivate(Anwender derAnwender)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -119,7 +119,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	public ArrayList<Anwender> retrieveAll()
 	{
 		ArrayList<Anwender> list = new ArrayList<Anwender>();
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -143,7 +143,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	@Override
 	public void add(Anwender derAnwender)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -165,7 +165,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	@Override
 	public void activate(Anwender derAnwender)
 	{
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
@@ -185,7 +185,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	public boolean auth(Anwender derAnwender)
 	{
 		boolean rightAuth = false;
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{

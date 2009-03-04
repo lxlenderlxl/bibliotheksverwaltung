@@ -45,7 +45,7 @@ public class MySQLZustandDAO implements ZustandDAO
 	public Zustand findById(int dieId)
 	{
 		Zustand einZustand = null;
-		if (connection != null)
+		if (connection.getConnection() != null)
 		{
 			try
 			{
