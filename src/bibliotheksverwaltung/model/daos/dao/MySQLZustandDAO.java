@@ -92,18 +92,6 @@ public class MySQLZustandDAO implements ZustandDAO
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#retrieve()
-	 */
-	@Override
-	public ArrayList<Zustand> getAll()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * bibliotheksverwaltung.model.daos.dao.ZustandDAO#update(bibliotheksverwaltung
 	 * .model.domain.Zustand)
@@ -112,7 +100,6 @@ public class MySQLZustandDAO implements ZustandDAO
 	public void update(int dieId, String dieBezeichnung)
 	{
 		// TODO Auto-generated method stub
-
 	}
 
 	/*
@@ -131,7 +118,6 @@ public class MySQLZustandDAO implements ZustandDAO
 
 	private void refreshConnection()
 	{
-
 		try
 		{
 			if (connection.getConnection().isClosed())
@@ -141,6 +127,16 @@ public class MySQLZustandDAO implements ZustandDAO
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#getAll()
+	 */
+	@Override
+	public ArrayList<Zustand> getAll()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
