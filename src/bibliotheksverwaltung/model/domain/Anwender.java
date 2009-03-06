@@ -1,26 +1,30 @@
 package bibliotheksverwaltung.model.domain;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
+
 public class Anwender
 {
 	private String anwenderName = null;
 	private String passwort = null;
 	private int hierarchieStufe = 0;
 	private boolean aktiv = true;
-	
-	public Anwender(String derName, String dasPasswort)
-	{
-		anwenderName = derName;
-		passwort = dasPasswort;
-		hierarchieStufe = 0;
-		this.aktiv = true;
-	}
-	
+
 	public Anwender(String derName, String dasPasswort, int dieStufe, boolean aktiv)
 	{
 		anwenderName = derName;
 		passwort = dasPasswort;
 		hierarchieStufe = dieStufe;
 		this.aktiv = aktiv;
+	}
+
+	public Anwender(String derName)
+	{
+		Anwender anwender = new MySQLAnwenderDAO().get(derName);
+		anwenderName = anwender.anwenderName;
+		passwort = anwender.passwort;
+		hierarchieStufe = anwender.hierarchieStufe;
+		aktiv = anwender.aktiv;
 	}
 
 	public String getAnwenderName()
@@ -62,5 +66,5 @@ public class Anwender
 	{
 		this.aktiv = aktiv;
 	}
-	
+
 }

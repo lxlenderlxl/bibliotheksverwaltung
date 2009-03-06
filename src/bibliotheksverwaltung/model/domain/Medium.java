@@ -1,5 +1,8 @@
 package bibliotheksverwaltung.model.domain;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
+
 public class Medium
 {
 	private int id = 0;
@@ -11,16 +14,17 @@ public class Medium
 	private String isbn = null;
 	private boolean aktiv = true;
 	
-	public Medium()
+	public Medium(int dieId)
 	{
-		id = 0;
-		titel = "";
-		autorVorname = "";
-		autorNachname = "";
-		verlag = "";
-		erscheinungsJahr = 0;
-		isbn = "";
-		aktiv = true;
+		Medium medium = new MySQLMediumDAO().get(dieId);
+		id = medium.id;
+		titel = medium.titel;
+		autorVorname = medium.autorVorname;
+		autorNachname = medium.autorNachname;
+		verlag = medium.verlag;
+		erscheinungsJahr = medium.erscheinungsJahr;
+		isbn = medium.isbn;
+		aktiv = medium.aktiv;
 	}
 	
 	public Medium(int dieId, String derTitel, String derVorname, String derNachname, String derVerlag, int dasJahr, String dieISBN, boolean aktiv)
