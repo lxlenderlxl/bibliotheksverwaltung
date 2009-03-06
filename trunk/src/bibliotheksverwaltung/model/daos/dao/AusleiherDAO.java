@@ -2,17 +2,15 @@ package bibliotheksverwaltung.model.daos.dao;
 
 import java.util.ArrayList;
 
+import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 
 
 public interface AusleiherDAO
 {
-	public ArrayList<Ausleiher> retrieve();
-	public ArrayList<Ausleiher> retrieveAll();
-	public ArrayList<Ausleiher> find(Ausleiher derAusleiher);
-	public Ausleiher findById(int dieId);
-	public void add(Ausleiher derAusleiher);
-	public void update(Ausleiher derAusleiher);
-	public void deactivate(Ausleiher derAusleiher);
-	public void activate(Ausleiher derAusleiher);
+	public ArrayList<Ausleiher> get(boolean aktiv);
+	public Ausleiher get(int dieId);
+	public void add(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv);
+	public void update(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv);
+
 }

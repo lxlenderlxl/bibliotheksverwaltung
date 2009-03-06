@@ -5,19 +5,19 @@ import java.sql.Date;
 public class Exemplar
 {
 	private int id = 0;
-	private Zustand zustand = null;
-	private Ausleiher ausleiher = null;
-	private Medium medium = null;
+	private int zustandsId = 0;
+	private int ausleiherId = 0;
+	private int mediumId = 0;
 	private Date rueckgabeDatum = null;
 	private int verlaengerung = 0;
 	private boolean aktiv = true;
 	
-	public Exemplar(int dieId, Zustand derZustand, Ausleiher derAusleiher, Medium dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
+	public Exemplar(int dieId, int derZustand, int derAusleiher, int dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
 	{
 		id = dieId;
-		zustand = derZustand;
-		ausleiher = derAusleiher;
-		medium = dasMedium;
+		zustandsId = derZustand;
+		ausleiherId = derAusleiher;
+		mediumId = dasMedium;
 		rueckgabeDatum = dasDatum;
 		verlaengerung = dieVerlaengerung;
 		this.aktiv = aktiv;
@@ -39,44 +39,44 @@ public class Exemplar
 	/**
 	 * @return the zustand
 	 */
-	public Zustand getZustand()
+	public int getZustand()
 	{
-		return zustand;
+		return zustandsId;
 	}
 	/**
 	 * @param zustand the zustand to set
 	 */
-	public void setZustand(Zustand zustand)
+	public void setZustand(int zustand)
 	{
-		this.zustand = zustand;
+		this.zustandsId = zustand;
 	}
 	/**
 	 * @return the ausleiher
 	 */
-	public Ausleiher getAusleiher()
+	public int getAusleiher()
 	{
-		return ausleiher;
+		return ausleiherId;
 	}
 	/**
 	 * @param ausleiher the ausleiher to set
 	 */
-	public void setAusleiher(Ausleiher ausleiher)
+	public void setAusleiher(int ausleiher)
 	{
-		this.ausleiher = ausleiher;
+		this.ausleiherId = ausleiher;
 	}
 	/**
 	 * @return the medium
 	 */
-	public Medium getMedium()
+	public int getMedium()
 	{
-		return medium;
+		return mediumId;
 	}
 	/**
 	 * @param medium the medium to set
 	 */
-	public void setMedium(Medium medium)
+	public void setMedium(int medium)
 	{
-		this.medium = medium;
+		this.mediumId = medium;
 	}
 	/**
 	 * @return the rueckgabeDatum
