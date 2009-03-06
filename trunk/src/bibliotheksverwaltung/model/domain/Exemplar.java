@@ -11,7 +11,7 @@ public class Exemplar
 	private Date rueckgabeDatum = null;
 	private int verlaengerung = 0;
 	private boolean aktiv = true;
-	
+
 	public Exemplar(int dieId, int derZustand, int derAusleiher, int dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
 	{
 		id = dieId;
@@ -39,9 +39,9 @@ public class Exemplar
 	/**
 	 * @return the zustand
 	 */
-	public int getZustand()
+	public Zustand getZustand()
 	{
-		return zustandsId;
+		return new Zustand(zustandsId);
 	}
 	/**
 	 * @param zustand the zustand to set
@@ -53,9 +53,9 @@ public class Exemplar
 	/**
 	 * @return the ausleiher
 	 */
-	public int getAusleiher()
+	public Ausleiher getAusleiher()
 	{
-		return ausleiherId;
+		return new Ausleiher(ausleiherId);
 	}
 	/**
 	 * @param ausleiher the ausleiher to set
@@ -67,9 +67,9 @@ public class Exemplar
 	/**
 	 * @return the medium
 	 */
-	public int getMedium()
+	public Medium getMedium()
 	{
-		return mediumId;
+		return new Medium(mediumId);
 	}
 	/**
 	 * @param medium the medium to set
@@ -120,6 +120,6 @@ public class Exemplar
 	{
 		this.aktiv = aktiv;
 	}
-	
-	
+
+
 }
