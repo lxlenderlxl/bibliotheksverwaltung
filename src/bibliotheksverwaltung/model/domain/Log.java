@@ -11,7 +11,7 @@ public class Log {
 	private int ausleiherID;
 	private String anwender;
 	private int exemplarID;
-	private java.sql.Date logDatum;
+	private Date logDatum;
 	private String kommentar;
 
 	/**
@@ -37,15 +37,14 @@ public class Log {
 	 * @param logDatum
 	 * @param vorgangsID
 	 */
-	public Log(String anwender, int ausleiherID, int exemplarID, int id,
-			String kommentar, Date logDatum, int vorgangsID) {
-		this.anwender = anwender;
-		this.ausleiherID = ausleiherID;
-		this.exemplarID = exemplarID;
-		this.id = id;
-		this.kommentar = kommentar;
-		this.logDatum = logDatum;
-		this.vorgangsID = vorgangsID;
+	public Log(int dieID, int dieVorgangsID, int dieAusleiherID, String derAnwender, int dieExemplarID, Date dasLogDatum, String dasKommentar) {
+		this.id = dieID;
+		this.vorgangsID = dieVorgangsID;
+		this.ausleiherID = dieAusleiherID;
+		this.anwender = derAnwender;
+		this.exemplarID = dieExemplarID;
+		this.logDatum = dasLogDatum;
+		this.kommentar = dasKommentar;
 	}
 
 	/**
