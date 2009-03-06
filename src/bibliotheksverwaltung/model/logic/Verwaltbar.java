@@ -1,4 +1,4 @@
-package BibliotheksVerwaltungUML;
+package bibliotheksverwaltung.model.logic;
 
 public interface Verwaltbar {
 
