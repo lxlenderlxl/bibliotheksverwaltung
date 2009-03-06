@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.domain;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
+
 public class Ausleiher
 {
 	private int id = 0;
@@ -10,7 +12,7 @@ public class Ausleiher
 	private String plz = null;
 	private String stadt = null;
 	private boolean aktiv = true;
-	
+
 	public Ausleiher(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv)
 	{
 		id = dieId;
@@ -22,11 +24,18 @@ public class Ausleiher
 		stadt = dieStadt;
 		this.aktiv = aktiv;
 	}
-	
+
 	public Ausleiher(int dieId)
 	{
-		id = dieId;
-		erzeugeAusleiher();
+		Ausleiher ausleiher = new MySQLAusleiherDAO().get(dieId);
+		id = ausleiher.id;
+		vorName = ausleiher.vorName;
+		nachName = ausleiher.nachName;
+		strasse = ausleiher.strasse;
+		hausnummer = ausleiher.hausnummer;
+		plz = ausleiher.plz;
+		stadt = ausleiher.stadt;
+		this.aktiv = ausleiher.aktiv;
 	}
 
 	/**
@@ -156,10 +165,5 @@ public class Ausleiher
 	{
 		this.aktiv = aktiv;
 	}
-	
-	private void erzeugeAusleiher()
-	{
-		
-	}
-	
+
 }
