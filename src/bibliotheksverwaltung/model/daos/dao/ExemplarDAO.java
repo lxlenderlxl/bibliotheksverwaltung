@@ -3,6 +3,7 @@
  */
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import bibliotheksverwaltung.model.domain.Exemplar;
 
@@ -14,6 +15,6 @@ public interface ExemplarDAO
 {
 	public ArrayList<Exemplar> get(boolean aktiv);
 	public Exemplar get(int dieId);
-	public void add(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv);
-	public void update(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv);
+	public void add(int zustandsid, int benutzerid, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv);
+	public void update(int dieId, int zustandsid, int benutzerid, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv);
 }
