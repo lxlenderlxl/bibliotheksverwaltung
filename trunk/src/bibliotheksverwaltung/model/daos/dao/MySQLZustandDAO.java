@@ -50,21 +50,21 @@ public class MySQLZustandDAO implements ZustandDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#findById(int)
 	 */
 	@Override
-	public Zustand getById(int dieId)
+	public ArrayList<Zustand> get(int dieId)
 	{
-		Zustand einZustand = null;
+		ArrayList<Zustand> liste = null;
 		if (connection.getConnection() == null)
 		{
-
 			try
 			{
 				statement = connection.getConnection().prepareStatement(
 						"SELECT * FROM zustand WHERE id = ?");
 				statement.setInt(1, dieId);
 				ResultSet rs = statement.executeQuery();
+				liste = new ArrayList<Zustand>();
 				while (rs.next())
 				{
-					einZustand = new Zustand(rs.getInt(1), rs.getString(2));
+					liste.add(new Zustand(rs.getInt(1), rs.getString(2)));
 				}
 			} catch (SQLException e)
 			{
@@ -74,19 +74,7 @@ public class MySQLZustandDAO implements ZustandDAO
 				closeStmt();
 			}
 		}
-		return einZustand;
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return liste;
 	}
 
 	/*
@@ -110,12 +98,22 @@ public class MySQLZustandDAO implements ZustandDAO
 	 * .String)
 	 */
 	@Override
-	public Zustand getByBezeichnung(String dieBezeichnung)
+	public ArrayList<Zustand> get(String dieBezeichnung)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#get()
+	 */
+	@Override
+	public ArrayList<Zustand> get()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	private void refreshConnection()
 	{
 		try
@@ -128,15 +126,16 @@ public class MySQLZustandDAO implements ZustandDAO
 			e.printStackTrace();
 		}
 	}
-
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#getAll()
-	 */
-	@Override
-	public ArrayList<Zustand> getAll()
+	
+	private void closeStmt()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		try
+		{
+			statement.close();
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 }

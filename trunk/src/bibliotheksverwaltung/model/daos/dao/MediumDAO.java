@@ -8,9 +8,8 @@ import bibliotheksverwaltung.model.domain.Zustand;
 
 public interface MediumDAO
 {
-	public ArrayList<Medium> getAll();
-	public Medium getById(int dieId);
-	public ArrayList<Medium> find(String derTitel);
+	public ArrayList<Medium> get();
+	public ArrayList<Medium> get(int dieId);
 	public void add(String derTitel, String derAutorVorname, String derAutorNachname, String derVerlag, String dasErscheinungsjahr, String dieISBN, boolean aktiv);
-	public void update(int dieId, String dieBezeichnung);
+	public void update(int dieId, String derTitel, String derAutorVorname, String derAutorNachname, String derVerlag, String dasErscheinungsjahr, String dieISBN, boolean aktiv);
 }
