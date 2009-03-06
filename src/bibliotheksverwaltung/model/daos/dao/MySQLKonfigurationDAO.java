@@ -89,12 +89,12 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM konfiguration WHERE zustandsid = ?");
-			statement.setInt(1, dieId);
+					"SELECT * FROM konfiguration WHERE name = ?");
+			statement.setString(1, derName);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				einZustand = new Zustand(rs.getInt(1), rs.getString(2));
+				eineKonfiguration = new Konfiguration(rs.getString(1), rs.getString(2));
 			}
 		} catch (SQLException e)
 		{
@@ -104,7 +104,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			closeStmt();
 		}
 
-		return einZustand;
+		return eineKonfiguration;
 	}
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#update(java.lang.String, java.lang.String)
@@ -112,8 +112,22 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 	@Override
 	public void update(String derName, String derWert)
 	{
-		// TODO Auto-generated method stub
-		
+		this.refreshConnection();
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"UPDATE konfiguration SET name = ?, wert = ? WHERE name = ?");
+			statement.setString(1, derName);
+			statement.setString(2, derWert);
+			statement.setString(2, derName);
+			statement.executeUpdate();
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
 	}
 	
 	private void refreshConnection()
