@@ -2,6 +2,8 @@ package bibliotheksverwaltung.model.logic;
 
 import java.util.ArrayList;
 
+import bibliotheksverwaltung.model.domain.Konfiguration;
+
 public class KonfigurationsVerwalter implements Verwaltbar {
 
 	private ArrayList<Konfiguration> konfigurationen;
