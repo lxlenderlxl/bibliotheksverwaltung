@@ -40,8 +40,20 @@ public class MySQLZustandDAO implements ZustandDAO
 	@Override
 	public void add(String dieBezeichnung)
 	{
-		// TODO Auto-generated method stub
-
+		this.refreshConnection();
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"INSERT INTO zustand (inhalt) VALUES (?)");
+			statement.setString(1, dieBezeichnung);
+			statement.executeUpdate();
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
 	}
 
 	/*
@@ -50,32 +62,32 @@ public class MySQLZustandDAO implements ZustandDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ZustandDAO#findById(int)
 	 */
 	@Override
-	public ArrayList<Zustand> get(int dieId)
+	public Zustand get(int dieId)
 	{
-		ArrayList<Zustand> liste = null;
-		if (connection.getConnection() == null)
+		Zustand einZustand = null;
+		this.refreshConnection();
+
+		try
 		{
-			try
+			statement = connection.getConnection().prepareStatement(
+					"SELECT * FROM zustand WHERE id = ?");
+			statement.setInt(1, dieId);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
 			{
-				statement = connection.getConnection().prepareStatement(
-						"SELECT * FROM zustand WHERE id = ?");
-				statement.setInt(1, dieId);
-				ResultSet rs = statement.executeQuery();
-				liste = new ArrayList<Zustand>();
-				while (rs.next())
-				{
-					liste.add(new Zustand(rs.getInt(1), rs.getString(2)));
-				}
-			} catch (SQLException e)
-			{
-				e.getMessage();
-			} finally
-			{
-				closeStmt();
+				einZustand = new Zustand(rs.getInt(1), rs.getString(2));
 			}
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
 		}
-		return liste;
+
+		return einZustand;
 	}
+
 
 	/*
 	 * (non-Javadoc)
@@ -87,21 +99,21 @@ public class MySQLZustandDAO implements ZustandDAO
 	@Override
 	public void update(int dieId, String dieBezeichnung)
 	{
-		// TODO Auto-generated method stub
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * bibliotheksverwaltung.model.daos.dao.ZustandDAO#getByBezeichnung(java.lang
-	 * .String)
-	 */
-	@Override
-	public ArrayList<Zustand> get(String dieBezeichnung)
-	{
-		// TODO Auto-generated method stub
-		return null;
+		this.refreshConnection();
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"UPDATE zustand SET bezeichnung = ? WHERE id = ?");
+			statement.setString(1, dieBezeichnung);
+			statement.setInt(2, dieId);
+			statement.executeUpdate();
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
 	}
 
 	/* (non-Javadoc)
@@ -110,10 +122,28 @@ public class MySQLZustandDAO implements ZustandDAO
 	@Override
 	public ArrayList<Zustand> get()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		this.refreshConnection();
+		ArrayList<Zustand> liste = new ArrayList<Zustand>();;
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"SELECT * FROM zustand");
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				liste.add(new Zustand(rs.getInt(1), rs.getString(2)));
+			}
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
+
+		return liste;
 	}
-	
+
 	private void refreshConnection()
 	{
 		try
@@ -126,7 +156,7 @@ public class MySQLZustandDAO implements ZustandDAO
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void closeStmt()
 	{
 		try
