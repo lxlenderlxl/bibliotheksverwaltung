@@ -6,7 +6,7 @@ public class Exemplar
 {
 	private int id = 0;
 	private int zustandsId = 0;
-	private int ausleiherId = 0;
+	private int ausleiherID = 0;
 	private int mediumId = 0;
 	private Date rueckgabeDatum = null;
 	private int verlaengerung = 0;
@@ -16,7 +16,7 @@ public class Exemplar
 	{
 		id = dieId;
 		zustandsId = derZustand;
-		ausleiherId = derAusleiher;
+		ausleiherID = derAusleiher;
 		mediumId = dasMedium;
 		rueckgabeDatum = dasDatum;
 		verlaengerung = dieVerlaengerung;
@@ -55,14 +55,14 @@ public class Exemplar
 	 */
 	public Ausleiher getAusleiher()
 	{
-		return new Ausleiher(ausleiherId);
+		return new Ausleiher(ausleiherID);
 	}
 	/**
 	 * @param ausleiher the ausleiher to set
 	 */
 	public void setAusleiher(int ausleiher)
 	{
-		this.ausleiherId = ausleiher;
+		this.ausleiherID = ausleiher;
 	}
 	/**
 	 * @return the medium

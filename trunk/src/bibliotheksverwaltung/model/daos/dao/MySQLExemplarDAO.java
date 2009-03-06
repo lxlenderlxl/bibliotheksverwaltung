@@ -38,14 +38,14 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ExemplarDAO#add(java.lang.String, java.lang.String, int, boolean)
 	 */
 	@Override
-	public void add(int zustandsid, int benutzerid, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv)
+	public void add(int zustandsid, int ausleiherID, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv)
 	{
 		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO exemplar (zustandsid, benutzerid, medienid, rueckgabedatum, verlaengerung, aktiv) VALUES (?, ?, ?, ?, ?, ?)");
+			statement = connection.getConnection().prepareStatement("INSERT INTO exemplar (zustandsid, ausleiherID, medienid, rueckgabedatum, verlaengerung, aktiv) VALUES (?, ?, ?, ?, ?, ?)");
 			statement.setInt(1, zustandsid);
-			statement.setInt(2, benutzerid);
+			statement.setInt(2, ausleiherID);
 			statement.setInt(3, medienid);
 			statement.setDate(4, rueckgabedatum);
 			statement.setInt(5, verlaengerung);
@@ -118,15 +118,15 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.ExemplarDAO#update(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)
 	 */
 	@Override
-	public void update(int dieId, int zustandsid, int benutzerid, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv)
+	public void update(int dieId, int zustandsid, int ausleiherID, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv)
 	{
 		this.refreshConnection();
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE exemplar SET zustandsid = ?, benutzerid = ?, medienid = ?, rueckgabedatum = ?, verlaengerung = ?, aktiv = ? WHERE exemplarid = ?");
+					"UPDATE exemplar SET zustandsid = ?, ausleiherID = ?, medienid = ?, rueckgabedatum = ?, verlaengerung = ?, aktiv = ? WHERE exemplarid = ?");
 			statement.setInt(1, zustandsid);
-			statement.setInt(2, benutzerid);
+			statement.setInt(2, ausleiherID);
 			statement.setInt(3, medienid);
 			statement.setDate(4, rueckgabedatum);
 			statement.setInt(5, verlaengerung);
