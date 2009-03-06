@@ -7,11 +7,11 @@ public class Ausleiher
 	private String nachName = null;
 	private String strasse = null;
 	private String hausnummer = null;
-	private int plz = 0;
+	private String plz = null;
 	private String stadt = null;
 	private boolean aktiv = true;
 	
-	public Ausleiher(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, int diePLZ, String dieStadt, boolean aktiv)
+	public Ausleiher(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv)
 	{
 		id = dieId;
 		vorName = derVorname;
@@ -21,6 +21,12 @@ public class Ausleiher
 		plz = diePLZ;
 		stadt = dieStadt;
 		this.aktiv = aktiv;
+	}
+	
+	public Ausleiher(int dieId)
+	{
+		id = dieId;
+		erzeugeAusleiher();
 	}
 
 	/**
@@ -106,7 +112,7 @@ public class Ausleiher
 	/**
 	 * @return the plz
 	 */
-	public int getPlz()
+	public String getPlz()
 	{
 		return plz;
 	}
@@ -114,7 +120,7 @@ public class Ausleiher
 	/**
 	 * @param plz the plz to set
 	 */
-	public void setPlz(int plz)
+	public void setPlz(String plz)
 	{
 		this.plz = plz;
 	}
@@ -151,5 +157,9 @@ public class Ausleiher
 		this.aktiv = aktiv;
 	}
 	
+	private void erzeugeAusleiher()
+	{
+		
+	}
 	
 }
