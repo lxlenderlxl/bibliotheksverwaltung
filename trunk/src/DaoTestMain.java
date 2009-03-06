@@ -6,6 +6,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
+import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 
@@ -21,12 +22,11 @@ public class DaoTestMain
 		//Medium suchMedium = new Medium(0,"", "rin", "", "", 0, "",true);
 		//Anwender einAnwender = new Anwender("s.blaurock", "");
 		//ArrayList<Medium> liste = new MySQLMediumDAO().find(suchMedium);
-		ArrayList<Exemplar> liste = new MySQLExemplarDAO().retrieve();
 		
 		//System.out.println(test.getId());
-		System.out.println(liste.size());
+		System.out.println(new Ausleiher(1).getNachName());
 		
-		for (int i = 0; i < liste.size(); i++)
+		/*for (int i = 0; i < liste.size(); i++)
 		{
 			System.out.println(liste.get(i).getRueckgabeDatum());
 		}/**/

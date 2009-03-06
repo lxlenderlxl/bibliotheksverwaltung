@@ -60,7 +60,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM zustand WHERE aktiv = ?");
+					"SELECT * FROM anwender WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -80,15 +80,15 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.AnwenderDAO#get(int)
 	 */
 	@Override
-	public Anwender get(int dieId)
+	public Anwender get(String anwenderName)
 	{
 		Anwender einAnwender = null;
 		this.refreshConnection();
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM zustand WHERE id = ?");
-			statement.setInt(1, dieId);
+					"SELECT * FROM anwender WHERE anwendername = ?");
+			statement.setString(1, anwenderName);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -107,18 +107,18 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.AnwenderDAO#update(int, java.lang.String, int, boolean)
 	 */
 	@Override
-	public void update(int dieId, String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv)
+	public void update(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv)
 	{
 		this.refreshConnection();
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE anwender SET anwendername = ?, passwort = ?, hierarchiestufe = ?, aktiv = ? WHERE id = ?");
+					"UPDATE anwender SET anwendername = ?, passwort = ?, hierarchiestufe = ?, aktiv = ? WHERE anwendername = ?");
 			statement.setString(1, derName);
 			statement.setString(2, dasPasswort);
 			statement.setInt(3, dieHierarchieStufe);
 			statement.setBoolean(4, aktiv);
-			statement.setInt(4, dieId);
+			statement.setString(4, derName);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

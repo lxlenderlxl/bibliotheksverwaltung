@@ -29,16 +29,19 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.AnwenderDAO#add(java.lang.String, int, boolean)
 	 */
 	@Override
-	public void add(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv)
+	public void add(String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv)
 	{
 		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO anwender (anwendername, passwort, hierarchiestufe, aktiv) VALUES (?, ?, ?, ?)");
-			statement.setString(1, derName);
-			statement.setString(2, dasPasswort);
-			statement.setInt(3, dieHierarchieStufe);
-			statement.setBoolean(4, aktiv);
+			statement = connection.getConnection().prepareStatement("INSERT INTO ausleiher (vorname, nachname, strasse, hausnummer, plz, stadt, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			statement.setString(1, derVorname);
+			statement.setString(2, derNachname);
+			statement.setString(3, dieStrasse);
+			statement.setString(4, dieHausnummer);
+			statement.setString(5, diePLZ);
+			statement.setString(6, dieStadt);
+			statement.setBoolean(7, aktiv);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -59,7 +62,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM zustand WHERE aktiv = ?");
+					"SELECT * FROM ausleiher WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -87,7 +90,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM zustand WHERE id = ?");
+					"SELECT * FROM ausleiher WHERE benutzerid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -114,7 +117,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE id = ?");
+					"UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE benutzerid = ?");
 			statement.setString(1, derVorname);
 			statement.setString(2, derNachname);
 			statement.setString(3, dieStrasse);
@@ -141,7 +144,6 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 				connection = new MySQLConnection();
 		} catch (SQLException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

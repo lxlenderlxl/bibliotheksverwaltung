@@ -70,7 +70,7 @@ public class MySQLZustandDAO implements ZustandDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM zustand WHERE id = ?");
+					"SELECT * FROM zustand WHERE zustandsid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -103,7 +103,7 @@ public class MySQLZustandDAO implements ZustandDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE zustand SET bezeichnung = ? WHERE id = ?");
+					"UPDATE zustand SET bezeichnung = ? WHERE zustandsid = ?");
 			statement.setString(1, dieBezeichnung);
 			statement.setInt(2, dieId);
 			statement.executeUpdate();
