@@ -1,4 +1,4 @@
-package bibliotheksverwaltung.model.logic;
+package BibliotheksVerwaltungUML;
 
 public class LogVerwalter implements Verwaltbar {
 
