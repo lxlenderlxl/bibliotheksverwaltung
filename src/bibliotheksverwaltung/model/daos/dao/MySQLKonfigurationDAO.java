@@ -1,0 +1,145 @@
+/**
+ * 
+ */
+package bibliotheksverwaltung.model.daos.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import bibliotheksverwaltung.model.domain.Konfiguration;
+import bibliotheksverwaltung.model.domain.Zustand;
+import bibliotheksverwaltung.util.MySQLConnection;
+
+public class MySQLKonfigurationDAO implements KonfigurationDAO
+{
+	private MySQLConnection connection = null;
+	private PreparedStatement statement = null;
+	
+	public MySQLKonfigurationDAO()
+	{
+		connection = new MySQLConnection();
+		refreshConnection();
+	}
+
+	public MySQLKonfigurationDAO(MySQLConnection dieConnection)
+	{
+		connection = dieConnection;
+		refreshConnection();
+	}
+	
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#add(java.lang.String)
+	 */
+	@Override
+	public void add(String derWert)
+	{
+		this.refreshConnection();
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"INSERT INTO konfiguration (wert) VALUES (?)");
+			statement.setString(1, derWert);
+			statement.executeUpdate();
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
+	}
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#get()
+	 */
+	@Override
+	public ArrayList<Konfiguration> get()
+	{
+		this.refreshConnection();
+		ArrayList<Konfiguration> liste = new ArrayList<Konfiguration>();;
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"SELECT * FROM konfiguration");
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				liste.add(new Konfiguration(rs.getString(1), rs.getString(2)));
+			}
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
+
+		return liste;
+	}
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#get(java.lang.String)
+	 */
+	@Override
+	public Konfiguration get(String derName)
+	{
+		Konfiguration eineKonfiguration = null;
+		this.refreshConnection();
+
+		try
+		{
+			statement = connection.getConnection().prepareStatement(
+					"SELECT * FROM zustand WHERE zustandsid = ?");
+			statement.setInt(1, dieId);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				einZustand = new Zustand(rs.getInt(1), rs.getString(2));
+			}
+		} catch (SQLException e)
+		{
+			e.getMessage();
+		} finally
+		{
+			closeStmt();
+		}
+
+		return einZustand;
+	}
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#update(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void update(String derName, String derWert)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void refreshConnection()
+	{
+		try
+		{
+			if (connection.getConnection().isClosed())
+				connection = new MySQLConnection();
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void closeStmt()
+	{
+		try
+		{
+			statement.close();
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+}
