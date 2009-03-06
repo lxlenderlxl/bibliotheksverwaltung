@@ -1,15 +1,11 @@
 package bibliotheksverwaltung.model.daos.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import bibliotheksverwaltung.model.daos.exceptions.DataStoreException;
 import bibliotheksverwaltung.model.domain.Anwender;
-import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 
