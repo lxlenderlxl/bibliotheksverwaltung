@@ -41,7 +41,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			statement = connection.getConnection().prepareStatement("INSERT INTO Exemplar (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			statement.setString(1, derTitel);
 			statement.setString(2, derAutorVorname);
 			statement.setString(3, derAutorNachname);
