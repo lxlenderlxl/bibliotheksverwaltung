@@ -1,4 +1,4 @@
-package BibliotheksVerwaltungUML;
+package bibliotheksverwaltung.model.domain;
 
 public class Schlagwort {
 
