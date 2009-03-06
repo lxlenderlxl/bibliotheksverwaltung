@@ -14,14 +14,30 @@ public class Exemplar
 
 	public Exemplar(int dieId, int derZustand, int derAusleiher, int dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
 	{
-		id = dieId;
-		zustandsId = derZustand;
-		ausleiherID = derAusleiher;
-		mediumId = dasMedium;
-		rueckgabeDatum = dasDatum;
-		verlaengerung = dieVerlaengerung;
+		this.id = dieId;
+		this.zustandsId = derZustand;
+		this.ausleiherID = derAusleiher;
+		this.mediumId = dasMedium;
+		this.rueckgabeDatum = dasDatum;
+		this.verlaengerung = dieVerlaengerung;
 		this.aktiv = aktiv;
 	}
+
+	/**
+	 *
+	 */
+	public Exemplar(int id) {
+		Exemplar exemplar = new Exemplar(id);
+		this.id = exemplar.id;
+		this.zustandsId = exemplar.zustandsId;
+		this.ausleiherID = exemplar.ausleiherID;
+		this.mediumId = exemplar.mediumId;
+		this.rueckgabeDatum = exemplar.rueckgabeDatum;
+		this.verlaengerung = exemplar.verlaengerung;
+		this.aktiv = exemplar.aktiv;
+	}
+
+
 	/**
 	 * @return the id
 	 */

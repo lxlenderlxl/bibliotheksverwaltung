@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.util;
 
@@ -14,11 +14,11 @@ import java.sql.SQLException;
 public class MySQLConnection
 {
 	private Connection dieVerbindung = null;
-	
+
 	public MySQLConnection()
 	{
 		// TODO evtl *.ini auslesen
-		try 
+		try
 		{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			dieVerbindung = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotheksverwaltung","root", "");
@@ -43,5 +43,5 @@ public class MySQLConnection
 	public Connection getConnection()
 	{
 		return dieVerbindung;
-	}	
+	}
 }
