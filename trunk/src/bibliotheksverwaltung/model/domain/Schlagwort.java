@@ -10,15 +10,16 @@ public class Schlagwort {
 	/**
 	 *
 	 */
-	public Schlagwort(int id) {
+	public Schlagwort(int id, String bezeichnung) {
 		this.id = id;
+		this.bezeichnung = bezeichnung;
 	}
 
 	/**
 	 * @param bezeichnung
 	 * @param id
 	 */
-	public Schlagwort(String bezeichnung, int id) {
+	public Schlagwort(int id) {
 		this.id = id;
 		this.bezeichnung = new MySQLSchlagwortDAO().get(id).bezeichnung;
 	}
