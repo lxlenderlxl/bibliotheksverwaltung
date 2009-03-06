@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.model.daos.dao;
 
@@ -9,14 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
-import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLKonfigurationDAO implements KonfigurationDAO
 {
 	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
-	
+
 	public MySQLKonfigurationDAO()
 	{
 		connection = new MySQLConnection();
@@ -28,7 +27,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 		connection = dieConnection;
 		refreshConnection();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#add(java.lang.String)
 	 */
@@ -129,7 +128,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			closeStmt();
 		}
 	}
-	
+
 	private void refreshConnection()
 	{
 		try
@@ -154,6 +153,6 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 }

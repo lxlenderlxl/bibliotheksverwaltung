@@ -1,6 +1,5 @@
 package bibliotheksverwaltung.model.domain;
 
-import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 
 public class Medium
@@ -13,7 +12,7 @@ public class Medium
 	private int erscheinungsJahr = 0;
 	private String isbn = null;
 	private boolean aktiv = true;
-	
+
 	public Medium(int dieId)
 	{
 		Medium medium = new MySQLMediumDAO().get(dieId);
@@ -26,7 +25,7 @@ public class Medium
 		isbn = medium.isbn;
 		aktiv = medium.aktiv;
 	}
-	
+
 	public Medium(int dieId, String derTitel, String derVorname, String derNachname, String derVerlag, int dasJahr, String dieISBN, boolean aktiv)
 	{
 		id = dieId;
@@ -43,72 +42,72 @@ public class Medium
 	{
 		return id;
 	}
-	
+
 	public void setId(int id)
 	{
 		this.id = id;
 	}
-	
+
 	public String getTitel()
 	{
 		return titel;
 	}
-	
+
 	public void setTitel(String titel)
 	{
 		this.titel = titel;
 	}
-	
+
 	public String getAutorVorname()
 	{
 		return autorVorname;
 	}
-	
+
 	public void setAutorVorname(String autorVorname)
 	{
 		this.autorVorname = autorVorname;
 	}
-	
+
 	public String getAutorNachname()
 	{
 		return autorNachname;
 	}
-	
+
 	public void setAutorNachname(String autorNachname)
 	{
 		this.autorNachname = autorNachname;
 	}
-	
+
 	public String getVerlag()
 	{
 		return verlag;
 	}
-	
+
 	public void setVerlag(String verlag)
 	{
 		this.verlag = verlag;
 	}
-	
+
 	public int getErscheinungsJahr()
 	{
 		return erscheinungsJahr;
 	}
-	
+
 	public void setErscheinungsJahr(int erscheinungsJahr)
 	{
 		this.erscheinungsJahr = erscheinungsJahr;
 	}
-	
+
 	public String getIsbn()
 	{
 		return isbn;
 	}
-	
+
 	public void setIsbn(String isbn)
 	{
 		this.isbn = isbn;
 	}
-	
+
 	public boolean isAktiv()
 	{
 		return aktiv;
@@ -118,5 +117,5 @@ public class Medium
 	{
 		this.aktiv = aktiv;
 	}
-	
+
 }

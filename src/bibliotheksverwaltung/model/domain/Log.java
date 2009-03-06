@@ -84,38 +84,38 @@ public class Log {
 	}
 
 	/**
-	 * @param ausleiherID the ausleiherID to set
+	 * @param ausleiher the ausleiherID to set
 	 */
 	public void setAusleiher(Ausleiher ausleiher) {
-		this.ausleiherID = new Ausleiher(ausleiherID);
+		this.ausleiherID = ausleiher.getId();
 	}
 
 	/**
 	 * @return the anwender
 	 */
-	public String getAnwender() {
-		return anwender;
+	public Anwender getAnwender() {
+		return new Anwender(anwender);
 	}
 
 	/**
 	 * @param anwender the anwender to set
 	 */
-	public void setAnwender(String anwender) {
-		this.anwender = anwender;
+	public void setAnwender(Anwender anwender) {
+		this.anwender = anwender.getAnwenderName();
 	}
 
 	/**
-	 * @return the exemplarID
+	 * @return the exemplar
 	 */
-	public int getExemplarID() {
-		return exemplarID;
+	public Exemplar getExemplar() {
+		return new Exemplar(exemplarID);
 	}
 
 	/**
-	 * @param exemplarID the exemplarID to set
+	 * @param exemplar the exemplarID to set
 	 */
-	public void setExemplarID(int exemplarID) {
-		this.exemplarID = exemplarID;
+	public void setExemplarID(Exemplar exemplar) {
+		this.exemplarID = exemplar.getId();
 	}
 
 	/**
