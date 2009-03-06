@@ -89,7 +89,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM zustand WHERE zustandsid = ?");
+					"SELECT * FROM konfiguration WHERE zustandsid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
