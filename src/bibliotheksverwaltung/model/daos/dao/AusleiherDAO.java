@@ -12,5 +12,4 @@ public interface AusleiherDAO
 	public Ausleiher get(int dieId);
 	public void add(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv);
 	public void update(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv);
-
 }
