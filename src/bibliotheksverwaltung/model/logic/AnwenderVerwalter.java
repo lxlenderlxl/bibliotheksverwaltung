@@ -6,7 +6,7 @@ import bibliotheksverwaltung.model.domain.Anwender;
 
 public class AnwenderVerwalter implements Verwaltbar {
 
-	private ArrayList<Anwender> benutzer;
+	private ArrayList<Anwender> ausleiher;
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)

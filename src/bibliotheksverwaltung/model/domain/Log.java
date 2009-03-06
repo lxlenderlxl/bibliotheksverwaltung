@@ -63,9 +63,9 @@ public class Log {
 	}
 
 	/**
-	 * @return the vorgangs
+	 * @return the vorgang
 	 */
-	public Vorgang getVorgangs() {
+	public Vorgang getVorgang() {
 		return new Vorgang(vorgangsID);
 	}
 
@@ -84,10 +84,10 @@ public class Log {
 	}
 
 	/**
-	 * @param benutzerID the benutzerID to set
+	 * @param ausleiherID the ausleiherID to set
 	 */
-	public void setBenutzerID(int benutzerID) {
-		this.ausleiherID = benutzerID;
+	public void setAusleiher(Ausleiher ausleiher) {
+		this.ausleiherID = new Ausleiher(ausleiherID);
 	}
 
 	/**

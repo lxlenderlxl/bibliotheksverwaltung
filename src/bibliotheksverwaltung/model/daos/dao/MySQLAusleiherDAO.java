@@ -90,7 +90,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM ausleiher WHERE benutzerid = ?");
+					"SELECT * FROM ausleiher WHERE ausleiherID = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -117,7 +117,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE benutzerid = ?");
+					"UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE ausleiherID = ?");
 			statement.setString(1, derVorname);
 			statement.setString(2, derNachname);
 			statement.setString(3, dieStrasse);
