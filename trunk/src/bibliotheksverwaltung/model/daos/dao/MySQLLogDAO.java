@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Log;
-import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLLogDAO implements LogDAO
@@ -103,7 +102,7 @@ public class MySQLLogDAO implements LogDAO
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				einLog = new Log(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7);
+				einLog = new Log(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7));
 			}
 		} catch (SQLException e)
 		{

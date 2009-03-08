@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 /**

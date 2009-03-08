@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Schlagwort;
 import bibliotheksverwaltung.util.MySQLConnection;
 
