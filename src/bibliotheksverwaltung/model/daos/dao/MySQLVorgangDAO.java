@@ -8,28 +8,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import bibliotheksverwaltung.model.domain.Schlagwort;
+import bibliotheksverwaltung.model.domain.Vorgang;
 import bibliotheksverwaltung.util.MySQLConnection;
 
-public class MySQLSchlagwortDAO implements SchlagwortDAO
+public class MySQLVorgangDAO implements VorgangDAO
 {
 	private MySQLConnection connection = null;
 	private PreparedStatement statement = null;
 	
-	public MySQLSchlagwortDAO()
+	public MySQLVorgangDAO()
 	{
 		connection = new MySQLConnection();
 		refreshConnection();
 	}
 
-	public MySQLSchlagwortDAO(MySQLConnection dieConnection)
+	public MySQLVorgangDAO(MySQLConnection dieConnection)
 	{
 		connection = dieConnection;
 		refreshConnection();
 	}
 
 	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.daos.dao.SchlagwortDAO#add(java.lang.String)
+	 * @see bibliotheksverwaltung.model.daos.dao.VorgangDAO#add(java.lang.String)
 	 */
 	@Override
 	public void add(String derInhalt)
@@ -37,7 +37,7 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO schlagworte (inhalt) VALUES (?)");
+			statement = connection.getConnection().prepareStatement("INSERT INTO vorgang (inhalt) VALUES (?)");
 			statement.setString(1, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
@@ -50,21 +50,21 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 	}
 
 	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.daos.dao.SchlagwortDAO#get(boolean)
+	 * @see bibliotheksverwaltung.model.daos.dao.VorgangDAO#get()
 	 */
 	@Override
-	public ArrayList<Schlagwort> get()
+	public ArrayList<Vorgang> get()
 	{
 		this.refreshConnection();
-		ArrayList<Schlagwort> liste = new ArrayList<Schlagwort>();;
+		ArrayList<Vorgang> liste = new ArrayList<Vorgang>();;
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM schlagworte");
+					"SELECT * FROM vorgang");
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				liste.add(new Schlagwort(rs.getInt(1), rs.getString(2)));
+				liste.add(new Vorgang(rs.getInt(1), rs.getString(2)));
 			}
 		} catch (SQLException e)
 		{
@@ -77,22 +77,22 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 	}
 
 	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.daos.dao.SchlagwortDAO#get(java.lang.String)
+	 * @see bibliotheksverwaltung.model.daos.dao.VorgangDAO#get(int)
 	 */
 	@Override
-	public Schlagwort get(int dieTagId)
+	public Vorgang get(int dieVorgangsID)
 	{
-		Schlagwort einSchlagwort = null;
+		Vorgang einVorgang = null;
 		this.refreshConnection();
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM schlagwort WHERE tagid = ?");
-			statement.setInt(1, dieTagId);
+					"SELECT * FROM vorgang WHERE vorgangsid = ?");
+			statement.setInt(1, dieVorgangsID);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				einSchlagwort = new Schlagwort(rs.getInt(1), rs.getString(2));
+				einVorgang = new Vorgang(rs.getInt(1), rs.getString(2));
 			}
 		} catch (SQLException e)
 		{
@@ -101,21 +101,21 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 		{
 			closeStmt();
 		}
-		return einSchlagwort;
+		return einVorgang;
 	}
 
 	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.daos.dao.SchlagwortDAO#update(int, java.lang.String)
+	 * @see bibliotheksverwaltung.model.daos.dao.VorgangDAO#update(int, java.lang.String)
 	 */
 	@Override
-	public void update(int dieTagID, String derInhalt)
+	public void update(int dieVorgangsID, String derInhalt)
 	{
 		this.refreshConnection();
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE schlagwort SET inhalt = ? WHERE tagid = ?");
-			statement.setInt(1, dieTagID);
+					"UPDATE vorgang SET inhalt = ? WHERE vorgangsid = ?");
+			statement.setInt(1, dieVorgangsID);
 			statement.setString(2, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
@@ -135,7 +135,6 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 				connection = new MySQLConnection();
 		} catch (SQLException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -147,7 +146,6 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			statement.close();
 		} catch (SQLException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

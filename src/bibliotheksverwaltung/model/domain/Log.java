@@ -2,7 +2,7 @@ package bibliotheksverwaltung.model.domain;
 
 import java.sql.Date;
 
-import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
 
 public class Log {
 
@@ -18,7 +18,7 @@ public class Log {
 	 *
 	 */
 	public Log(int id) {
-		Log log = new MySQLogDAO().get(id);
+		Log log = new MySQLLogDAO().get(id);
 		this.id = log.id;
 		this.anwender = log.anwender;
 		this.ausleiherID = log.ausleiherID;
