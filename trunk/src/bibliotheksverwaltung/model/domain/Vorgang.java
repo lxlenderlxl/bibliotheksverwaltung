@@ -1,6 +1,6 @@
 package bibliotheksverwaltung.model.domain;
 
-import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLVorgangDAO;
 
 public class Vorgang {
 
