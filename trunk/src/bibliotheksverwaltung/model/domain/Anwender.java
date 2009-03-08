@@ -1,7 +1,6 @@
 package bibliotheksverwaltung.model.domain;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
-import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 
 public class Anwender
 {

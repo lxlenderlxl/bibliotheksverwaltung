@@ -1,6 +1,6 @@
 package bibliotheksverwaltung.model.domain;
 
-import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
 
 public class Schlagwort {
 
