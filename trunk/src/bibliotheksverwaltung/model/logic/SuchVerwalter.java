@@ -10,15 +10,17 @@ public class SuchVerwalter implements Verwaltbar {
 
 	}
 
-	public SuchVerwalter(String[] suchworte, String[] spalten) {
-
+	public SuchVerwalter(String tabelle, String[] suchworte, String[] spalten) {
+		this.tabelle = tabelle;
+		this.suchworte = suchworte;
+		this.spalten = spalten;		
 	}
 
 	public int[] suche() {
 		return null;
 	}
 
-	public int[] suche(String[] suchworte, String[] spalten) {
+	public int[] suche(String tabelle, String[] suchworte, String[] spalten) {
 		return null;
 	}
 
