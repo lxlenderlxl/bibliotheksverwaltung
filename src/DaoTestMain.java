@@ -50,8 +50,8 @@ public class DaoTestMain
 		//Ausgabe dient nur zum Test
 		for (int i = 0; i < liste.size(); i++)
 		{
-			System.out.println(liste.get(i).getId());	
-			System.out.println(liste.get(i).getFrequenz());
+			System.out.println("MEDIENID:" + liste.get(i).getId());	
+			System.out.println("Häufgikeit:" + liste.get(i).getFrequenz());
 			System.out.println("---------------------------------------------");
 		}	
 	}
