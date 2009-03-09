@@ -12,7 +12,7 @@ import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.MySQLSuche;
-import bibliotheksverwaltung.util.Suchwort;
+import bibliotheksverwaltung.util.Suchergebnis;
 
 public class DaoTestMain
 {
@@ -44,7 +44,7 @@ public class DaoTestMain
 		suchkat[2] = "autorvorname";
 		
 		//Suchen
-		ArrayList<Suchwort> liste = suche.find("medium", suchworte, suchkat);
+		ArrayList<Suchergebnis> liste = suche.find("medium", suchworte, suchkat);
 		System.out.println(liste.size());
 		
 		//Ausgabe dient nur zum Test

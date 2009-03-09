@@ -34,11 +34,11 @@ public class MySQLSuche
 		refreshConnection();
 	}
 
-	public ArrayList<Suchwort> find(String tabelle, String suchworte[], String suchKategorien[])
+	public ArrayList<Suchergebnis> find(String tabelle, String suchworte[], String suchKategorien[])
 	{
 		this.refreshConnection();
-		ArrayList<Suchwort> liste = new ArrayList<Suchwort>();
-		Suchwort neuesElement = null;
+		ArrayList<Suchergebnis> liste = new ArrayList<Suchergebnis>();
+		Suchergebnis neuesElement = null;
 		try
 		{
 			for (int i = 0; i < suchKategorien.length; i++)
@@ -51,11 +51,11 @@ public class MySQLSuche
 					System.out.println(statement);
 					while (rs.next())
 					{
-						neuesElement = new Suchwort(rs.getInt(1)); 
+						neuesElement = new Suchergebnis(rs.getInt(1)); 
 						if (liste.contains(neuesElement))
 							liste.get(liste.indexOf(neuesElement)).erhoehe();
 						else
-							liste.add(new Suchwort(rs.getInt(1)));
+							liste.add(new Suchergebnis(rs.getInt(1)));
 					}
 				}
 			}
