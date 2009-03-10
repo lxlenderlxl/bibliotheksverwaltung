@@ -1,6 +1,6 @@
 package bibliotheksverwaltung.model.logic;
 
-public class BenutzerVerwalter implements Verwaltbar {
+public class AusleiherVerwalter implements Verwaltbar {
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
