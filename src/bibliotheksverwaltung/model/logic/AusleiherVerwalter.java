@@ -3,14 +3,15 @@ package bibliotheksverwaltung.model.logic;
 import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 public class AusleiherVerwalter implements Verwaltbar 
 {
 	private MySQLAusleiherDAO ausleiherDAO = null;
 	
-	public AusleiherVerwalter()
+	public AusleiherVerwalter(MySQLConnection dieVerbindung)
 	{
-		ausleiherDAO = new MySQLAusleiherDAO();
+		ausleiherDAO = new MySQLAusleiherDAO(dieVerbindung);
 	}
 
 	/* (non-Javadoc)
@@ -22,7 +23,7 @@ public class AusleiherVerwalter implements Verwaltbar
 		try 
 		{
 			Ausleiher ausleiher = (Ausleiher) objekt;
-			new MySQLAusleiherDAO().add(ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), ausleiher.isAktiv());
+			ausleiherDAO.add(ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), ausleiher.isAktiv());
 		} 
 		catch (java.lang.ClassCastException e) 
 		{
@@ -36,8 +37,15 @@ public class AusleiherVerwalter implements Verwaltbar
 	@Override
 	public void delete(Object objekt)
 	{
-		// TODO Auto-generated method stub
+		try 
+		{
+			Ausleiher ausleiher = (Ausleiher) objekt;
+			ausleiherDAO.update(ausleiher.getId(), ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), false);
+		} 
+		catch (java.lang.ClassCastException e) 
+		{
 
+		}
 	}
 
 	/* (non-Javadoc)
