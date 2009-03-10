@@ -92,7 +92,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM medium WHERE mediumid = ?");
+					"SELECT * FROM medium WHERE medienid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -121,7 +121,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.getConnection().prepareStatement(
-					"UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE mediumid = ?");
+					"UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE medienid = ?");
 			statement.setString(1, derTitel);
 			statement.setString(2, derAutorVorname);
 			statement.setString(3, derAutorNachname);

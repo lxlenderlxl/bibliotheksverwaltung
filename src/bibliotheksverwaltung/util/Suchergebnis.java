@@ -3,6 +3,8 @@
  */
 package bibliotheksverwaltung.util;
 
+import java.text.DecimalFormat;
+
 public class Suchergebnis implements Comparable<Suchergebnis>
 {
 	private int id = 0;
@@ -27,6 +29,13 @@ public class Suchergebnis implements Comparable<Suchergebnis>
 	public int getFrequenz()
 	{
 		return frequenz;
+	}
+	
+	public String getProzFrequenz(String[] alleSuchworte)
+	{
+		DecimalFormat format = new DecimalFormat("##.##%");
+		double rueck = new Double(alleSuchworte.length)/new Double(frequenz);
+		return format.format(rueck);
 	}
 	
 	public void erhoehe()
