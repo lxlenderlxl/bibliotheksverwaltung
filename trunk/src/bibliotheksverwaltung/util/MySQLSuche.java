@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.util;
 
@@ -7,16 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
-import bibliotheksverwaltung.model.domain.Medium;
 
 public class MySQLSuche
 {
@@ -51,7 +43,7 @@ public class MySQLSuche
 
 	public ArrayList<Suchergebnis> find()
 	{
-		this.refreshConnection();		
+		this.refreshConnection();
 		Suchergebnis neuesElement = null;
 		String sqlStmt = null;
 		try
@@ -59,20 +51,21 @@ public class MySQLSuche
 			for (int i = 0; i < suchKategorien.length; i++)
 			{
 
-				sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert(); 	
-				for (int j = 0; j < suchworte.length; j++)
-				{
-					if (j == 0)
-						sqlStmt +=" WHERE " + suchKategorien[i] + " LIKE " + stringLikeTransformator(suchworte[j]);
-					else
-						sqlStmt += " OR " + suchKategorien[i] + " LIKE " + stringLikeTransformator(suchworte[j]);
-				}
-				System.out.println(sqlStmt);
+				sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
+									+ " WHERE " + suchKategorien[i] + " LIKE ?";
+
+				for (int j = 1; j < suchworte.length; j++)
+						sqlStmt += " OR " + suchKategorien[i] + " LIKE ?";
+
 				statement = connection.getConnection().prepareStatement(sqlStmt);
+
+				for (int j = 0; j < suchworte.length; j++)
+					statement.setString(j + 1, stringLikeTransformator(suchworte[j]));
+
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
 				{
-					neuesElement = new Suchergebnis(rs.getInt(1)); 
+					neuesElement = new Suchergebnis(rs.getInt(1));
 					if (suchergebnisListe.contains(neuesElement))
 						suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement)).erhoehe();
 					else
@@ -92,7 +85,7 @@ public class MySQLSuche
 
 	private String stringLikeTransformator(String dasWort)
 	{
-		return "'%" + dasWort + "%'";
+		return "%" + dasWort + "%";
 	}
 
 	private void refreshConnection()
