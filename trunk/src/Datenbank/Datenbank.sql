@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 06. März 2009 um 20:11
+-- Erstellungszeit: 10. März 2009 um 13:20
 -- Server Version: 5.0.67
 -- PHP-Version: 5.2.6
 
@@ -164,6 +164,11 @@ CREATE TABLE IF NOT EXISTS `konfiguration` (
 -- Daten für Tabelle `konfiguration`
 --
 
+INSERT INTO `konfiguration` (`NAME`, `WERT`) VALUES
+('ausleiher_prikey', 'ausleiherid'),
+('ausleiher_tabelle', 'ausleiher'),
+('medium_prikey', 'medienid'),
+('medium_tabelle', 'medium');
 
 -- --------------------------------------------------------
 
