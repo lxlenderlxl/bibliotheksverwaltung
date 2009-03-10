@@ -5,10 +5,10 @@ import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.MySQLConnection;
 
-public class AusleiherVerwalter implements Verwaltbar 
+public class AusleiherVerwalter implements Verwaltbar
 {
 	private MySQLAusleiherDAO ausleiherDAO = null;
-	
+
 	public AusleiherVerwalter(MySQLConnection dieVerbindung)
 	{
 		ausleiherDAO = new MySQLAusleiherDAO(dieVerbindung);
@@ -20,12 +20,12 @@ public class AusleiherVerwalter implements Verwaltbar
 	@Override
 	public void add(Object objekt)
 	{
-		try 
+		try
 		{
 			Ausleiher ausleiher = (Ausleiher) objekt;
 			ausleiherDAO.add(ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), ausleiher.isAktiv());
-		} 
-		catch (java.lang.ClassCastException e) 
+		}
+		catch (java.lang.ClassCastException e)
 		{
 
 		}
@@ -49,20 +49,10 @@ public class AusleiherVerwalter implements Verwaltbar
 	}
 
 	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#get(java.lang.Object)
-	 */
-	@Override
-	public Object get(Object objekt)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
 	 */
 	@Override
-	public void update()
+	public void update(Object objekt)
 	{
 		// TODO Auto-generated method stub
 
