@@ -1,6 +1,17 @@
 package bibliotheksverwaltung.model.logic;
 
-public class AusleiherVerwalter implements Verwaltbar {
+import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
+import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.model.domain.Medium;
+
+public class AusleiherVerwalter implements Verwaltbar 
+{
+	private MySQLAusleiherDAO ausleiherDAO = null;
+	
+	public AusleiherVerwalter()
+	{
+		ausleiherDAO = new MySQLAusleiherDAO();
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -8,8 +19,15 @@ public class AusleiherVerwalter implements Verwaltbar {
 	@Override
 	public void add(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try 
+		{
+			Ausleiher ausleiher = (Ausleiher) objekt;
+			new MySQLAusleiherDAO().add(ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), ausleiher.isAktiv());
+		} 
+		catch (java.lang.ClassCastException e) 
+		{
+
+		}
 	}
 
 	/* (non-Javadoc)
@@ -19,7 +37,7 @@ public class AusleiherVerwalter implements Verwaltbar {
 	public void delete(Object objekt)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -39,7 +57,7 @@ public class AusleiherVerwalter implements Verwaltbar {
 	public void update()
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
