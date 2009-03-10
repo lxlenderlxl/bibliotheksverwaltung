@@ -32,10 +32,10 @@ public class DaoTestMain
 		//System.out.println(new Ausleiher(1).getNachName());
 
 		//Benutzereingabe
-		String[] suchworte = new String[1];
-		suchworte[0] = "hirsch";
-		//suchworte[1] = "";
-		//suchworte[2] = "";
+		String[] suchworte = new String[3];
+		suchworte[0] = "peter";
+		suchworte[1] = "hirsch";
+		suchworte[2] = "12";
 
 		//Benutzereingabe
 		String[] suchkat = new String[3];

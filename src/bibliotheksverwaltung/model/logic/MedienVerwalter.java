@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
+import bibliotheksverwaltung.model.domain.Medium;
+
 public class MedienVerwalter implements Verwaltbar {
 
 	/* (non-Javadoc)
@@ -8,8 +10,12 @@ public class MedienVerwalter implements Verwaltbar {
 	@Override
 	public void add(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try {
+			Medium medium = (Medium) objekt;
+		} catch (java.lang.ClassCastException e) {
+			
+		}
+
 	}
 
 	/* (non-Javadoc)
@@ -19,7 +25,7 @@ public class MedienVerwalter implements Verwaltbar {
 	public void delete(Object objekt)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -39,7 +45,7 @@ public class MedienVerwalter implements Verwaltbar {
 	public void update()
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
