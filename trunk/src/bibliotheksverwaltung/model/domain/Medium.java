@@ -5,12 +5,12 @@ import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 public class Medium
 {
 	private int id = 0;
-	private String titel = null;
-	private String autorVorname = null;
-	private String autorNachname = null;
-	private String verlag = null;
+	private String titel = "";
+	private String autorVorname = "";
+	private String autorNachname = "";
+	private String verlag = "";
 	private int erscheinungsJahr = 0;
-	private String isbn = null;
+	private String isbn = "";
 	private boolean aktiv = true;
 
 	public Medium(int dieId)

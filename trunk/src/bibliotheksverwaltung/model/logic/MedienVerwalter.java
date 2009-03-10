@@ -1,6 +1,8 @@
 package bibliotheksverwaltung.model.logic;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.LocalLog;
 
 public class MedienVerwalter implements Verwaltbar {
 
@@ -12,10 +14,17 @@ public class MedienVerwalter implements Verwaltbar {
 	{
 		try {
 			Medium medium = (Medium) objekt;
+			new MySQLMediumDAO().add(
+					medium.getTitel(),
+					medium.getAutorVorname(),
+					medium.getAutorNachname(),
+					medium.getVerlag(),
+					medium.getErscheinungsJahr() + "",
+					medium.getIsbn(),
+					medium.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			
+			new LocalLog(e.getMessage(), this);
 		}
-
 	}
 
 	/* (non-Javadoc)
@@ -24,28 +33,42 @@ public class MedienVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#get(java.lang.Object)
-	 */
-	@Override
-	public Object get(Object objekt)
-	{
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Medium medium = (Medium) objekt;
+			new MySQLMediumDAO().update(
+					medium.getId(),
+					medium.getTitel(),
+					medium.getAutorVorname(),
+					medium.getAutorNachname(),
+					medium.getVerlag(),
+					medium.getErscheinungsJahr() + "",
+					medium.getIsbn(),
+					false);
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
 	 */
 	@Override
-	public void update()
+	public void update(Object objekt)
 	{
-		// TODO Auto-generated method stub
-
+		try {
+			Medium medium = (Medium) objekt;
+			new MySQLMediumDAO().update(
+					medium.getId(),
+					medium.getTitel(),
+					medium.getAutorVorname(),
+					medium.getAutorNachname(),
+					medium.getVerlag(),
+					medium.getErscheinungsJahr() + "",
+					medium.getIsbn(),
+					medium.isAktiv());
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 }

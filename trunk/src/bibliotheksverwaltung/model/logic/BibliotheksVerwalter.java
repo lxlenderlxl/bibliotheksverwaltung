@@ -25,20 +25,10 @@ public class BibliotheksVerwalter implements Verwaltbar {
 	}
 
 	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#get(java.lang.Object)
-	 */
-	@Override
-	public Object get(Object objekt)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
 	 */
 	@Override
-	public void update()
+	public void update(Object objekt)
 	{
 		// TODO Auto-generated method stub
 		

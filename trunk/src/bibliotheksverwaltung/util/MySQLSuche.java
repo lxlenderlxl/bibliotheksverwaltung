@@ -52,10 +52,10 @@ public class MySQLSuche
 			{
 
 				sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
-									+ " WHERE " + suchKategorien[i] + " LIKE ?";
+				+ " WHERE " + suchKategorien[i] + " LIKE ?";
 
 				for (int j = 1; j < suchworte.length; j++)
-						sqlStmt += " OR " + suchKategorien[i] + " LIKE ?";
+					sqlStmt += " OR " + suchKategorien[i] + " LIKE ?";
 
 				statement = connection.getConnection().prepareStatement(sqlStmt);
 
@@ -88,28 +88,20 @@ public class MySQLSuche
 		return "%" + dasWort + "%";
 	}
 
-	private void refreshConnection()
-	{
-		try
-		{
+	private void refreshConnection() {
+		try {
 			if (connection.getConnection().isClosed())
 				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException e) {
+			new LocalLog(e.getMessage(), this);
 		}
 	}
 
-	private void closeStmt()
-	{
-		try
-		{
+	private void closeStmt() {
+		try	{
 			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException e) {
+			new LocalLog(e.getMessage(), this);
 		}
 	}
 }

@@ -2,9 +2,7 @@ package bibliotheksverwaltung.model.logic;
 
 public interface Verwaltbar {
 
-	public Object get(Object objekt);
-
-	public void update();
+	public void update(Object objekt);
 
 	void add(Object objekt);
 

@@ -11,6 +11,8 @@ import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.MedienVerwalter;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 import bibliotheksverwaltung.util.MySQLSuche;
 import bibliotheksverwaltung.util.Suchergebnis;
@@ -23,6 +25,13 @@ public class DaoTestMain
 	 */
 	public static void main(String[] args)
 	{
+
+		//		new MedienVerwalter().add(new Medium(200, "testTitel", "testVorname", "testNachname", "testVerlag",
+		//				2009, "testISBN", true));
+		//		new MedienVerwalter().update(new Medium(197, "testTitel2", "testVorname2", "testNachname2", "testVerlag",
+		//				2009, "testISBN", true));
+		//		new MedienVerwalter().delete(new Medium(197));
+
 		//AnwenderDAO testDAO = new MySQLAnwenderDAO();
 		//Medium suchMedium = new Medium(0,"", "rin", "", "", 0, "",true);
 		//Anwender einAnwender = new Anwender("s.blaurock", "");
