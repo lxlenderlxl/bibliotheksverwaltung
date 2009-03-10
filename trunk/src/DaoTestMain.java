@@ -11,6 +11,7 @@ import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.MySQLConnection;
 import bibliotheksverwaltung.util.MySQLSuche;
 import bibliotheksverwaltung.util.Suchergebnis;
 
@@ -31,27 +32,40 @@ public class DaoTestMain
 		//System.out.println(new Ausleiher(1).getNachName());
 		
 		//Benutzereingabe
-		MySQLSuche suche = new MySQLSuche();
 		String[] suchworte = new String[3];
-		suchworte[0] = "Katrin";
-		suchworte[1] = "Schmoll";
-		suchworte[2] = "Ich";
+		suchworte[0] = "e";
+		suchworte[1] = "a";
+		suchworte[2] = "s";
 		
 		//Benutzereingabe
 		String[] suchkat = new String[3];
-		suchkat[0] = "titel";
-		suchkat[1] = "autornachname";
-		suchkat[2] = "autorvorname";
+		suchkat[0] = "vorname";
+		suchkat[1] = "nachname";
+		suchkat[2] = "plz";
 		
 		//Suchen
-		ArrayList<Suchergebnis> liste = suche.find("medium", suchworte, suchkat);
-		System.out.println(liste.size());
+		MySQLSuche suche = new MySQLSuche(new MySQLConnection(), "ausleiher", suchworte, suchkat);
+		ArrayList<Suchergebnis> liste = suche.find();
+		System.out.println("Ihre Suche ergab " + liste.size() + " Treffer\n\n");
 		
-		//Ausgabe dient nur zum Test
+		/*//Ausgabe dient nur zum Test
 		for (int i = 0; i < liste.size(); i++)
 		{
-			System.out.println("MEDIENID:" + liste.get(i).getId());	
-			System.out.println("Häufgikeit:" + liste.get(i).getFrequenz());
+			Medium dasMedium = new Medium(liste.get(i).getId());
+			System.out.println("MEDIENID  : " + liste.get(i).getId());	
+			System.out.println("Häufgikeit: " + liste.get(i).getFrequenz());
+			System.out.println("Titel     : " + dasMedium.getTitel());
+			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
+			System.out.println("---------------------------------------------");
+		}*/
+		
+		for (int i = 0; i < liste.size(); i++)
+		{
+			Ausleiher derAusleiher = new Ausleiher(liste.get(i).getId());
+			System.out.println("AusleiherID  : " + liste.get(i).getId());	
+			System.out.println("Häufgikeit   : " + liste.get(i).getFrequenz());
+			System.out.println("Vorname      : " + derAusleiher.getVorName());
+			System.out.println("Nachname     : " + derAusleiher.getNachName());
 			System.out.println("---------------------------------------------");
 		}	
 	}
