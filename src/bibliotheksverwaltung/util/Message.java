@@ -12,7 +12,7 @@ public class Message {
 	/**
 	 *
 	 */
-	public Message(String message) {
+	public static void raise(String message, int level) {
 		//TODO Fehlernachricht an Fehlermethode in GUI weiterreichen
 	}
 

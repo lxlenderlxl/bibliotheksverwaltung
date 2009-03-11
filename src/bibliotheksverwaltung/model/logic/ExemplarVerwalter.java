@@ -7,12 +7,7 @@ import bibliotheksverwaltung.util.LocalLog;
 
 public class ExemplarVerwalter implements Verwaltbar {
 
-	private MySQLExemplarDAO exemplarDAO = null;
-
-	public ExemplarVerwalter()
-	{
-		exemplarDAO = new MySQLExemplarDAO();
-	}
+	private MySQLExemplarDAO exemplarDAO = new MySQLExemplarDAO();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)

@@ -3,16 +3,10 @@ package bibliotheksverwaltung.model.logic;
 import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
 
 public class AusleiherVerwalter implements Verwaltbar
 {
-	private MySQLAusleiherDAO ausleiherDAO = null;
-
-	public AusleiherVerwalter(MySQLConnection dieVerbindung)
-	{
-		ausleiherDAO = new MySQLAusleiherDAO(dieVerbindung);
-	}
+	private MySQLAusleiherDAO ausleiherDAO = new MySQLAusleiherDAO();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -60,18 +54,18 @@ public class AusleiherVerwalter implements Verwaltbar
 			LocalLog.add(e.getMessage(), this);
 		}
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
 	 */
 	public void unDelete(Object objekt)
 	{
-		try 
+		try
 		{
 			Ausleiher ausleiher = (Ausleiher) objekt;
 			ausleiherDAO.update(ausleiher.getId(), ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), true);
-		} 
-		catch (java.lang.ClassCastException e) 
+		}
+		catch (java.lang.ClassCastException e)
 		{
 
 		}

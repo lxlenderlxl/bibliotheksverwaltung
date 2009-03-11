@@ -7,14 +7,7 @@ import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MedienVerwalter implements Verwaltbar {
 
-	private MySQLMediumDAO mediumDAO;
-
-	/**
-	 *
-	 */
-	public MedienVerwalter(MySQLConnection dieVerbindung) {
-		mediumDAO = new MySQLMediumDAO(dieVerbindung);
-	}
+	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)

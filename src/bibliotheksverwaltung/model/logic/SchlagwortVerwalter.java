@@ -2,33 +2,36 @@ package bibliotheksverwaltung.model.logic;
 
 import java.util.ArrayList;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
+import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Schlagwort;
+import bibliotheksverwaltung.util.LocalLog;
 
 
 public class SchlagwortVerwalter implements Verwaltbar {
 
-	private ArrayList<Schlagwort> schlagworte = null;
+	private MySQLSchlagwortDAO schlagwortDAO = new MySQLSchlagwortDAO();
 
-	public void add(String schlagwort) {
-
-	}
 
 	public void connect(int mediumID, int schlagwortID) {
-
+		//TODO Wenn BeinhaltetDAO fertig --> .add()
 	}
 
 	public void unconnect(int mediumID, int schlagwortID) {
-
+		//TODO Wenn BeinhaltetDAO fertig --> .delete()
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
+	/**
+	 * Fügt ein Schlagwort dem Bestand hinzu.
+	 * @param objekt Das Schlagwort
 	 */
-	@Override
-	public void add(Object objekt)
-	{
-		// TODO Auto-generated method stub
-		
+	public void add(Object objekt) {
+		try {
+			Schlagwort schlagwort = (Schlagwort) objekt;
+			schlagwortDAO.add(schlagwort.getBezeichnung());
+		} catch (java.lang.ClassCastException e) {
+			LocalLog.add(e.getMessage(), this);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -37,8 +40,12 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try {
+			Schlagwort schlagwort = (Schlagwort) objekt;
+			schlagwortDAO.delete(schlagwort.getBezeichnung());
+		} catch (java.lang.ClassCastException e) {
+			LocalLog.add(e.getMessage(), this);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -47,8 +54,14 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	@Override
 	public void update(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try {
+			Schlagwort schlagwort = (Schlagwort) objekt;
+			schlagwortDAO.update(
+					schlagwort.getId(),
+					schlagwort.getBezeichnung());
+		} catch (java.lang.ClassCastException e) {
+			LocalLog.add(e.getMessage(), this);
+		}
 	}
 
 }

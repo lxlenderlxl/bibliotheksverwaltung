@@ -1,5 +1,9 @@
 package bibliotheksverwaltung.model.logic;
 
+/**
+ * @deprecated
+ */
+
 public class SuchVerwalter implements Verwaltbar {
 
 	private String tabelle = null;
@@ -13,7 +17,7 @@ public class SuchVerwalter implements Verwaltbar {
 	public SuchVerwalter(String tabelle, String[] suchworte, String[] spalten) {
 		this.tabelle = tabelle;
 		this.suchworte = suchworte;
-		this.spalten = spalten;		
+		this.spalten = spalten;
 	}
 
 	public int[] suche() {
@@ -34,7 +38,7 @@ public class SuchVerwalter implements Verwaltbar {
 	@Override
 	public void add(Object objekt)
 	{
-		// TODO Auto-generated method stub
+		// Kein Hinzufügen von Suchen erforderlich.
 
 	}
 
@@ -44,8 +48,7 @@ public class SuchVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
-		// TODO Auto-generated method stub
-
+		// Kein Löschen von Suchen erforderlich.
 	}
 
 	/* (non-Javadoc)
@@ -54,8 +57,7 @@ public class SuchVerwalter implements Verwaltbar {
 	@Override
 	public void update(Object objekt)
 	{
-		// TODO Auto-generated method stub
-
+		// Kein Updaten von Suchen erforderlich.
 	}
 
 }
