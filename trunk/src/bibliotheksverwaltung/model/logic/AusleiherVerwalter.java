@@ -47,6 +47,22 @@ public class AusleiherVerwalter implements Verwaltbar
 
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
+	 */
+	public void unDelete(Object objekt)
+	{
+		try 
+		{
+			Ausleiher ausleiher = (Ausleiher) objekt;
+			ausleiherDAO.update(ausleiher.getId(), ausleiher.getVorName(), ausleiher.getNachName(), ausleiher.getStrasse(), ausleiher.getHausnummer(), ausleiher.getPlz(), ausleiher.getStadt(), true);
+		} 
+		catch (java.lang.ClassCastException e) 
+		{
+
+		}
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
