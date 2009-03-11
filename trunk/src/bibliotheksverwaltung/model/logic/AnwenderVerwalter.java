@@ -29,7 +29,7 @@ public class AnwenderVerwalter implements Verwaltbar {
 					anwender.getHierarchieStufe(),
 					anwender.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 
@@ -47,7 +47,7 @@ public class AnwenderVerwalter implements Verwaltbar {
 					anwender.getHierarchieStufe(),
 					false);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 
 	}
@@ -66,7 +66,7 @@ public class AnwenderVerwalter implements Verwaltbar {
 					anwender.getHierarchieStufe(),
 					anwender.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 

@@ -3,16 +3,15 @@ package bibliotheksverwaltung.model.logic;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
 
 
 public class ExemplarVerwalter implements Verwaltbar {
 
 	private MySQLExemplarDAO exemplarDAO = null;
 
-	public ExemplarVerwalter(MySQLConnection dieVerbindung)
+	public ExemplarVerwalter()
 	{
-		exemplarDAO = new MySQLExemplarDAO(dieVerbindung);
+		exemplarDAO = new MySQLExemplarDAO();
 	}
 
 	/* (non-Javadoc)
@@ -33,7 +32,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 					exemplar.isAktiv()
 			);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 
@@ -56,7 +55,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 					false
 					);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 
 	}
@@ -79,7 +78,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 					exemplar.isAktiv()
 					);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 

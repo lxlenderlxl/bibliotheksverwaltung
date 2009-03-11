@@ -34,15 +34,15 @@ public class MySQLConnection
 		}
 		catch (ClassNotFoundException e)
 		{
-			new LocalLog(e.getMessage());
+			LocalLog.add(e.getMessage());
 		}
 		catch (SQLException e)
 		{
-			new LocalLog(e.getMessage());
+			LocalLog.add(e.getMessage());
 		}
 		catch (Exception e)
 		{
-			new LocalLog(e.getMessage());
+			LocalLog.add(e.getMessage());
 		}
 	}
 
@@ -63,7 +63,7 @@ public class MySQLConnection
 			stmt.close();
 		} catch (SQLException e)
 		{
-			new LocalLog(e.getMessage());
+			LocalLog.add(e.getMessage());
 		}
 	}
 
@@ -75,9 +75,9 @@ public class MySQLConnection
 		try {
 			return new BufferedReader(new FileReader("Connection.txt")).readLine().split(" ");
 		} catch (FileNotFoundException e) {
-			new LocalLog(e.getMessage());
+			LocalLog.add(e.getMessage());
 		} catch (IOException e) {
-			new LocalLog(e.getMessage());
+			LocalLog.add(e.getMessage());
 		}
 		return null;
 	}

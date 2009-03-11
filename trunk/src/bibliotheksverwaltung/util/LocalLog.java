@@ -16,14 +16,14 @@ public class LocalLog {
 	/**
 	 *
 	 */
-	public LocalLog(String message) {
-		new LocalLog(message, null);
+	public static void add(String message) {
+		add(message, null);
 	}
 
 	/**
 	 *
 	 */
-	public LocalLog(String message, Object objekt) {
+	public static void add(String message, Object objekt) {
 
 		File file = new File("ErrorLog.txt"); // Präziser Pfad: this.getClass().getResource("/").toString().replace("file:/", "") +
 		if(!file.exists()) {
@@ -33,11 +33,11 @@ public class LocalLog {
 				System.out.println("ErrorLog-Datei konnte nicht geschrieben werden.");
 			}
 		}
-		PrintStream ps;
+		PrintStream stream;
 		try {
-			ps = new PrintStream(new FileOutputStream(file, true));
-			ps.println(new GregorianCalendar().getTime() + "\t" + message + (objekt != null ? "\t in " + objekt.getClass() : ""));
-			ps.close();
+			stream = new PrintStream(new FileOutputStream(file, true));
+			stream.println(new GregorianCalendar().getTime() + "\t" + message + (objekt != null ? "\t in " + objekt.getClass() : ""));
+			stream.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("ErrorLog konnte nicht beschrieben werden.");
 		}
