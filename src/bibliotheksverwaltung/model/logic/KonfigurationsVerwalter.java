@@ -1,6 +1,8 @@
 package bibliotheksverwaltung.model.logic;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
+import bibliotheksverwaltung.model.domain.Konfiguration;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 public class KonfigurationsVerwalter implements Verwaltbar {
@@ -19,8 +21,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void add(Object objekt) {
-		// TODO Auto-generated method stub
-
+		// Konfigurationen können nicht vom Programm aus hinzugefügt werden.
 	}
 
 	/* (non-Javadoc)
@@ -28,8 +29,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void delete(Object objekt) {
-		// TODO Auto-generated method stub
-
+		// Konfigurationen können nicht im Programm geändert werden.
 	}
 
 	/* (non-Javadoc)
@@ -37,8 +37,15 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void update(Object objekt) {
-		// TODO Auto-generated method stub
-
+		try {
+			Konfiguration konfiguration = (Konfiguration) objekt;
+			konfigurationsDAO.update(
+					konfiguration.getName(),
+					konfiguration.getWert()
+			);
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 }
