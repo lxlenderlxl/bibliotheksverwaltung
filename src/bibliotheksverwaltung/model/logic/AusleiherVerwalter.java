@@ -57,7 +57,7 @@ public class AusleiherVerwalter implements Verwaltbar
 					ausleiher.getStadt(),
 					false);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class AusleiherVerwalter implements Verwaltbar
 					ausleiher.getStadt(),
 					ausleiher.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 
 	}

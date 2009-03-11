@@ -88,7 +88,7 @@ public class MySQLSuche
 		try	{
 			statement.close();
 		} catch (SQLException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 }

@@ -44,7 +44,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 					konfiguration.getWert()
 			);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 

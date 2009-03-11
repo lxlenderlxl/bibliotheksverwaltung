@@ -33,7 +33,7 @@ public class MedienVerwalter implements Verwaltbar {
 					medium.getIsbn(),
 					medium.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 
@@ -55,7 +55,7 @@ public class MedienVerwalter implements Verwaltbar {
 					medium.getIsbn(),
 					false);
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 
@@ -77,7 +77,7 @@ public class MedienVerwalter implements Verwaltbar {
 					medium.getIsbn(),
 					medium.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			new LocalLog(e.getMessage(), this);
+			LocalLog.add(e.getMessage(), this);
 		}
 	}
 
