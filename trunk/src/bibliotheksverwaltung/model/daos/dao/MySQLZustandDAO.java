@@ -1,11 +1,13 @@
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Zustand;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 /**
@@ -14,19 +16,11 @@ import bibliotheksverwaltung.util.MySQLConnection;
  */
 public class MySQLZustandDAO implements ZustandDAO
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
 
 	public MySQLZustandDAO()
 	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
-
-	public MySQLZustandDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
 	}
 
 	/*
@@ -39,19 +33,18 @@ public class MySQLZustandDAO implements ZustandDAO
 	@Override
 	public void add(String dieBezeichnung)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"INSERT INTO zustand (inhalt) VALUES (?)");
 			statement.setString(1, dieBezeichnung);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 
@@ -64,11 +57,9 @@ public class MySQLZustandDAO implements ZustandDAO
 	public Zustand get(int dieId)
 	{
 		Zustand einZustand = null;
-		this.refreshConnection();
-
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM zustand WHERE zustandsid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
@@ -78,10 +69,10 @@ public class MySQLZustandDAO implements ZustandDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 
 		return einZustand;
@@ -98,20 +89,19 @@ public class MySQLZustandDAO implements ZustandDAO
 	@Override
 	public void update(int dieId, String dieBezeichnung)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"UPDATE zustand SET bezeichnung = ? WHERE zustandsid = ?");
 			statement.setString(1, dieBezeichnung);
 			statement.setInt(2, dieId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 
@@ -121,11 +111,10 @@ public class MySQLZustandDAO implements ZustandDAO
 	@Override
 	public ArrayList<Zustand> get()
 	{
-		this.refreshConnection();
 		ArrayList<Zustand> liste = new ArrayList<Zustand>();;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM zustand");
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -134,37 +123,12 @@ public class MySQLZustandDAO implements ZustandDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 
 		return liste;
-	}
-
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

@@ -3,29 +3,23 @@
  */
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Schlagwort;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLSchlagwortDAO implements SchlagwortDAO
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
-	
+
 	public MySQLSchlagwortDAO()
 	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
-
-	public MySQLSchlagwortDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
 	}
 
 	/* (non-Javadoc)
@@ -34,18 +28,17 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 	@Override
 	public void add(String derInhalt)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO schlagworte (inhalt) VALUES (?)");
+			statement = connection.prepareStatement("INSERT INTO schlagworte (inhalt) VALUES (?)");
 			statement.setString(1, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 
@@ -55,12 +48,11 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 	@Override
 	public ArrayList<Schlagwort> get()
 	{
-		this.refreshConnection();
 		ArrayList<Schlagwort> liste = new ArrayList<Schlagwort>();;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM schlagworte");
+			statement = connection.prepareStatement(
+			"SELECT * FROM schlagworte");
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -68,10 +60,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -83,11 +75,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 	public Schlagwort get(int dieTagId)
 	{
 		Schlagwort einSchlagwort = null;
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM schlagwort WHERE tagid = ?");
+			statement = connection.prepareStatement(
+			"SELECT * FROM schlagwort WHERE tagid = ?");
 			statement.setInt(1, dieTagId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -96,10 +87,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return einSchlagwort;
 	}
@@ -110,45 +101,19 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 	@Override
 	public void update(int dieTagID, String derInhalt)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
-					"UPDATE schlagwort SET inhalt = ? WHERE tagid = ?");
+			statement = connection.prepareStatement(
+			"UPDATE schlagwort SET inhalt = ? WHERE tagid = ?");
 			statement.setInt(1, dieTagID);
 			statement.setString(2, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
-		}
-	}
-	
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 }

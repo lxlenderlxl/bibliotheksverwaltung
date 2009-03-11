@@ -3,6 +3,7 @@
  */
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 /**
@@ -18,19 +20,11 @@ import bibliotheksverwaltung.util.MySQLConnection;
  */
 public class MySQLExemplarDAO implements ExemplarDAO
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
 	
 	public MySQLExemplarDAO()
 	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
-
-	public MySQLExemplarDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
 	}
 	
 	/* (non-Javadoc)
@@ -39,10 +33,9 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public void add(int zustandsid, int ausleiherID, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO exemplar (zustandsid, ausleiherID, medienid, rueckgabedatum, verlaengerung, aktiv) VALUES (?, ?, ?, ?, ?, ?)");
+			statement = connection.prepareStatement("INSERT INTO exemplar (zustandsid, ausleiherID, medienid, rueckgabedatum, verlaengerung, aktiv) VALUES (?, ?, ?, ?, ?, ?)");
 			statement.setInt(1, zustandsid);
 			statement.setInt(2, ausleiherID);
 			statement.setInt(3, medienid);
@@ -52,10 +45,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 	/* (non-Javadoc)
@@ -64,11 +57,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public ArrayList<Exemplar> get(boolean aktiv)
 	{
-		this.refreshConnection();
 		ArrayList<Exemplar> liste = new ArrayList<Exemplar>();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM exemplar WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
@@ -78,10 +70,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -91,11 +83,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public Exemplar get(int dieId)
 	{
-		this.refreshConnection();
 		Exemplar einExemplar = null;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM exemplar WHERE exemplarid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
@@ -105,10 +96,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return einExemplar;
 	}
@@ -119,10 +110,9 @@ public class MySQLExemplarDAO implements ExemplarDAO
 	@Override
 	public void update(int dieId, int zustandsid, int ausleiherID, int medienid, Date rueckgabedatum, int verlaengerung, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"UPDATE exemplar SET zustandsid = ?, ausleiherID = ?, medienid = ?, rueckgabedatum = ?, verlaengerung = ?, aktiv = ? WHERE exemplarid = ?");
 			statement.setInt(1, zustandsid);
 			statement.setInt(2, ausleiherID);
@@ -134,35 +124,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
-		}
-	}
-	
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Anwender;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 
@@ -36,7 +37,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
 			MySQLConnection.closeStmt(statement);
@@ -61,7 +62,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
 			MySQLConnection.closeStmt(statement);
@@ -87,7 +88,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
 			MySQLConnection.closeStmt(statement);
@@ -112,7 +113,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
 			MySQLConnection.closeStmt(statement);

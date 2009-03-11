@@ -3,29 +3,23 @@
  */
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Vorgang;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLVorgangDAO implements VorgangDAO
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
-	
+
 	public MySQLVorgangDAO()
 	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
-
-	public MySQLVorgangDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
 	}
 
 	/* (non-Javadoc)
@@ -34,18 +28,17 @@ public class MySQLVorgangDAO implements VorgangDAO
 	@Override
 	public void add(String derInhalt)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO vorgang (inhalt) VALUES (?)");
+			statement = connection.prepareStatement("INSERT INTO vorgang (inhalt) VALUES (?)");
 			statement.setString(1, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 
@@ -55,12 +48,11 @@ public class MySQLVorgangDAO implements VorgangDAO
 	@Override
 	public ArrayList<Vorgang> get()
 	{
-		this.refreshConnection();
 		ArrayList<Vorgang> liste = new ArrayList<Vorgang>();;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM vorgang");
+			statement = connection.prepareStatement(
+			"SELECT * FROM vorgang");
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -68,10 +60,10 @@ public class MySQLVorgangDAO implements VorgangDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -83,11 +75,10 @@ public class MySQLVorgangDAO implements VorgangDAO
 	public Vorgang get(int dieVorgangsID)
 	{
 		Vorgang einVorgang = null;
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
-					"SELECT * FROM vorgang WHERE vorgangsid = ?");
+			statement = connection.prepareStatement(
+			"SELECT * FROM vorgang WHERE vorgangsid = ?");
 			statement.setInt(1, dieVorgangsID);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -96,10 +87,10 @@ public class MySQLVorgangDAO implements VorgangDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return einVorgang;
 	}
@@ -110,43 +101,19 @@ public class MySQLVorgangDAO implements VorgangDAO
 	@Override
 	public void update(int dieVorgangsID, String derInhalt)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
-					"UPDATE vorgang SET inhalt = ? WHERE vorgangsid = ?");
+			statement = connection.prepareStatement(
+			"UPDATE vorgang SET inhalt = ? WHERE vorgangsid = ?");
 			statement.setInt(1, dieVorgangsID);
 			statement.setString(2, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
-		}
-	}
-	
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 }
