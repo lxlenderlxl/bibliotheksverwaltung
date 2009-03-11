@@ -26,7 +26,6 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	@Override
 	public void add(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO anwender (anwendername, passwort, hierarchiestufe, aktiv) VALUES (?, ?, ?, ?)");
@@ -40,7 +39,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			e.getMessage();
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 	/* (non-Javadoc)
@@ -49,11 +48,10 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	@Override
 	public ArrayList<Anwender> get(boolean aktiv)
 	{
-		this.refreshConnection();
 		ArrayList<Anwender> liste = new ArrayList<Anwender>();;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM anwender WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
@@ -66,7 +64,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			e.getMessage();
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -77,10 +75,9 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	public Anwender get(String anwenderName)
 	{
 		Anwender einAnwender = null;
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM anwender WHERE anwendername = ?");
 			statement.setString(1, anwenderName);
 			ResultSet rs = statement.executeQuery();
@@ -93,7 +90,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			e.getMessage();
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return einAnwender;
 	}
@@ -103,10 +100,9 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 	@Override
 	public void update(String derName, String dasPasswort, int dieHierarchieStufe, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"UPDATE anwender SET anwendername = ?, passwort = ?, hierarchiestufe = ?, aktiv = ? WHERE anwendername = ?");
 			statement.setString(1, derName);
 			statement.setString(2, dasPasswort);
@@ -119,21 +115,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 			e.getMessage();
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-
 }

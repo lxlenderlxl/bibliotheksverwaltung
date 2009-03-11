@@ -10,8 +10,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Statement;
+import java.sql.Statement;
 
 /**
  * @author Sven Blaurock 02.03.2009 23:50:10
@@ -56,11 +55,11 @@ public class MySQLConnection
 		return dieVerbindung;
 	}
 
-	public static void closeStmt(Statement stmt)
+	public static void closeStmt(Statement preparedStatement)
 	{
 		try
 		{
-			stmt.close();
+			preparedStatement.close();
 		} catch (SQLException e)
 		{
 			LocalLog.add(e.getMessage());
