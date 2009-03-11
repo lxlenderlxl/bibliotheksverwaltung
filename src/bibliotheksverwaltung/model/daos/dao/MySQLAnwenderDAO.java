@@ -1,5 +1,6 @@
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,19 +12,12 @@ import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLAnwenderDAO implements AnwenderDAO
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
 
 	public MySQLAnwenderDAO()
 	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
-
-	public MySQLAnwenderDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
+		
 	}
 
 	/* (non-Javadoc)
@@ -35,7 +29,7 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO anwender (anwendername, passwort, hierarchiestufe, aktiv) VALUES (?, ?, ?, ?)");
+			statement = connection.prepareStatement("INSERT INTO anwender (anwendername, passwort, hierarchiestufe, aktiv) VALUES (?, ?, ?, ?)");
 			statement.setString(1, derName);
 			statement.setString(2, dasPasswort);
 			statement.setInt(3, dieHierarchieStufe);
@@ -126,19 +120,6 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		} finally
 		{
 			closeStmt();
-		}
-	}
-
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
