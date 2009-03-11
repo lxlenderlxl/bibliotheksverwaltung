@@ -74,4 +74,16 @@ public class MedienVerwalter implements Verwaltbar {
 		}
 	}
 
+	/**
+	 * @param medium
+	 * @return
+	 */
+	public boolean hasExemplare(Medium medium) {
+		 return (mediumDAO.getAnzahlExemplare(medium.getId()) > 0);
+	}
+
+	public int getAnzahlExemplare(Medium medium) {
+		return mediumDAO.getAnzahlExemplare(medium.getId());
+	}
+
 }
