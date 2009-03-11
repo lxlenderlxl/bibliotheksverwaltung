@@ -42,8 +42,8 @@ public class DaoTestMain
 
 		//Benutzereingabe
 		String[] suchworte = new String[3];
-		suchworte[0] = "peter";
-		suchworte[1] = "hirsch";
+		suchworte[0] = "hirsch";
+		suchworte[1] = "peter";
 		suchworte[2] = "12";
 
 		//Benutzereingabe
