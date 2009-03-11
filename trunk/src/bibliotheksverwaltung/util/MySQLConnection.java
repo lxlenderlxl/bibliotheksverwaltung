@@ -24,7 +24,8 @@ public class MySQLConnection
 	{
 		try
 		{
-			if (dieVerbindung.isClosed() || dieVerbindung == null) {
+			//System.out.println(dieVerbindung.isClosed());
+			if (dieVerbindung == null || dieVerbindung.isClosed()) {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				String[] verbindungsdaten = getConnectionData();
 				System.out.println(verbindungsdaten[0] + " " + verbindungsdaten[1]);
@@ -51,7 +52,7 @@ public class MySQLConnection
 	 */
 	public static Connection getConnection()
 	{
-		refreshConnection();
+		MySQLConnection.refreshConnection();
 		return dieVerbindung;
 	}
 

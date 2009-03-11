@@ -56,7 +56,7 @@ public class MySQLSuche
 				statement = connection.prepareStatement(sqlStmt);
 
 				for (int j = 0; j < suchworte.length; j++)
-					statement.setString(j + 1, stringLikeTransformator(suchworte[j]));
+					statement.setString(j + 1, fullLike(suchworte[j]));
 
 				ResultSet rs = statement.executeQuery();
 				while (rs.next())
@@ -70,25 +70,17 @@ public class MySQLSuche
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 			System.out.println(e.getLocalizedMessage());
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return suchergebnisListe;
 	}
 
-	private String stringLikeTransformator(String dasWort)
+	private String fullLike(String dasWort)
 	{
 		return "%" + dasWort + "%";
-	}
-
-	private void closeStmt() {
-		try	{
-			statement.close();
-		} catch (SQLException e) {
-			LocalLog.add(e.getMessage(), this);
-		}
 	}
 }

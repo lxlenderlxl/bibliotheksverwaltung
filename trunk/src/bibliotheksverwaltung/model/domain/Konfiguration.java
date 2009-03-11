@@ -12,7 +12,7 @@ public class Konfiguration {
 	 */
 	public Konfiguration(String name) {
 		this.name = name;
-		this.wert = new MySQLKonfigurationDAO().get(name).wert;
+		this.wert = new MySQLKonfigurationDAO().get(name).getWert();
 	}
 
 	/**
