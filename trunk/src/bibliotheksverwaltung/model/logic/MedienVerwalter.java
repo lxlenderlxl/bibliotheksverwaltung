@@ -3,8 +3,18 @@ package bibliotheksverwaltung.model.logic;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MedienVerwalter implements Verwaltbar {
+
+	private MySQLMediumDAO mediumDAO;
+
+	/**
+	 *
+	 */
+	public MedienVerwalter(MySQLConnection dieVerbindung) {
+		mediumDAO = new MySQLMediumDAO(dieVerbindung);
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -14,7 +24,7 @@ public class MedienVerwalter implements Verwaltbar {
 	{
 		try {
 			Medium medium = (Medium) objekt;
-			new MySQLMediumDAO().add(
+			mediumDAO.add(
 					medium.getTitel(),
 					medium.getAutorVorname(),
 					medium.getAutorNachname(),
@@ -35,7 +45,7 @@ public class MedienVerwalter implements Verwaltbar {
 	{
 		try {
 			Medium medium = (Medium) objekt;
-			new MySQLMediumDAO().update(
+			mediumDAO.update(
 					medium.getId(),
 					medium.getTitel(),
 					medium.getAutorVorname(),
@@ -57,7 +67,7 @@ public class MedienVerwalter implements Verwaltbar {
 	{
 		try {
 			Medium medium = (Medium) objekt;
-			new MySQLMediumDAO().update(
+			mediumDAO.update(
 					medium.getId(),
 					medium.getTitel(),
 					medium.getAutorVorname(),

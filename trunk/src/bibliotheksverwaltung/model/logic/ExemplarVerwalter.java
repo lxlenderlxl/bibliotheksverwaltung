@@ -1,13 +1,19 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.ArrayList;
-
+import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 
 public class ExemplarVerwalter implements Verwaltbar {
 
-	private ArrayList<Exemplar> exemplare;
+	private MySQLExemplarDAO exemplarDAO = null;
+
+	public ExemplarVerwalter(MySQLConnection dieVerbindung)
+	{
+		exemplarDAO = new MySQLExemplarDAO(dieVerbindung);
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -15,8 +21,20 @@ public class ExemplarVerwalter implements Verwaltbar {
 	@Override
 	public void add(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try
+		{
+			Exemplar exemplar = (Exemplar) objekt;
+			exemplarDAO.add(
+					exemplar.getZustand().getId(),
+					exemplar.getAusleiher().getId(),
+					exemplar.getMedium().getId(),
+					exemplar.getRueckgabeDatum(),
+					exemplar.getVerlaengerung(),
+					exemplar.isAktiv()
+			);
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -25,8 +43,22 @@ public class ExemplarVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try
+		{
+			Exemplar exemplar = (Exemplar) objekt;
+			exemplarDAO.update(
+					exemplar.getId(),
+					exemplar.getZustand().getId(),
+					exemplar.getAusleiher().getId(),
+					exemplar.getMedium().getId(),
+					exemplar.getRueckgabeDatum(),
+					exemplar.getVerlaengerung(),
+					false
+					);
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
+
 	}
 
 	/* (non-Javadoc)
@@ -35,8 +67,20 @@ public class ExemplarVerwalter implements Verwaltbar {
 	@Override
 	public void update(Object objekt)
 	{
-		// TODO Auto-generated method stub
-		
+		try
+		{
+			Exemplar exemplar = (Exemplar) objekt;
+			exemplarDAO.add(
+					exemplar.getZustand().getId(),
+					exemplar.getAusleiher().getId(),
+					exemplar.getMedium().getId(),
+					exemplar.getRueckgabeDatum(),
+					exemplar.getVerlaengerung(),
+					exemplar.isAktiv()
+					);
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 }

@@ -1,12 +1,18 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.ArrayList;
-
-import bibliotheksverwaltung.model.domain.Konfiguration;
+import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 public class KonfigurationsVerwalter implements Verwaltbar {
 
-	private ArrayList<Konfiguration> konfigurationen;
+	private MySQLKonfigurationDAO konfigurationsDAO = null;
+
+	/**
+	 *
+	 */
+	public KonfigurationsVerwalter(MySQLConnection connection) {
+		konfigurationsDAO = new MySQLKonfigurationDAO(connection);
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
