@@ -17,16 +17,18 @@ import java.sql.SQLException;
  */
 public class MySQLConnection
 {
-	private Connection dieVerbindung = null;
+	private static Connection dieVerbindung = null;
 
-	public MySQLConnection()
+	private static void refreshConnection()
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String[] verbindungsdaten = getConnectionData();
-			System.out.println(verbindungsdaten[0] + " " + verbindungsdaten[1]);
-			dieVerbindung = DriverManager.getConnection(verbindungsdaten[0], verbindungsdaten[1], "");
+			if (dieVerbindung.isClosed() || dieVerbindung == null) {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				String[] verbindungsdaten = getConnectionData();
+				System.out.println(verbindungsdaten[0] + " " + verbindungsdaten[1]);
+				dieVerbindung = DriverManager.getConnection(verbindungsdaten[0], verbindungsdaten[1], "");
+			}
 		}
 		catch (ClassNotFoundException e)
 		{
@@ -42,11 +44,13 @@ public class MySQLConnection
 		}
 	}
 
+
 	/**
 	 * @return the dieVerbindung
 	 */
-	public Connection getConnection()
+	public static Connection getConnection()
 	{
+		refreshConnection();
 		return dieVerbindung;
 	}
 
@@ -54,13 +58,13 @@ public class MySQLConnection
 	 * Liest die Verbindungsdaten aus der Connection.txt aus und gibt sie zurück.
 	 * @return die Verbindungsdaten
 	 */
-	private String[] getConnectionData() {
+	private static String[] getConnectionData() {
 		try {
 			return new BufferedReader(new FileReader("Connection.txt")).readLine().split(" ");
 		} catch (FileNotFoundException e) {
-			new LocalLog(e.getMessage(), this);
+			new LocalLog(e.getMessage());
 		} catch (IOException e) {
-			new LocalLog(e.getMessage(), this);
+			new LocalLog(e.getMessage());
 		}
 		return null;
 	}

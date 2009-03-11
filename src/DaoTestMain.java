@@ -53,7 +53,7 @@ public class DaoTestMain
 		suchkat[2] = "plz";
 
 		//Suchen
-		MySQLSuche suche = new MySQLSuche(new MySQLConnection(), "ausleiher", suchworte, suchkat);
+		MySQLSuche suche = new MySQLSuche("ausleiher", suchworte, suchkat);
 		ArrayList<Suchergebnis> liste = suche.find();
 		System.out.println("Ihre Suche ergab " + liste.size() + " Treffer\n\n");
 
