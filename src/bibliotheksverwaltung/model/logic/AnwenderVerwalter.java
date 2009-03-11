@@ -1,21 +1,36 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.ArrayList;
-
+import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
+import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.MySQLConnection;
 
 public class AnwenderVerwalter implements Verwaltbar {
 
-	private ArrayList<Anwender> ausleiher;
+	private MySQLAnwenderDAO anwenderDAO = null;
+
+	/**
+	 *
+	 */
+	public AnwenderVerwalter(MySQLConnection dieVerbindung) {
+		anwenderDAO = new MySQLAnwenderDAO(dieVerbindung);
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
 	 */
 	@Override
-	public void add(Object objekt)
-	{
-		// TODO Auto-generated method stub
-
+	public void add(Object objekt) {
+		try {
+			Anwender anwender = (Anwender) objekt;
+			anwenderDAO.add(
+					anwender.getAnwenderName(),
+					anwender.getPasswort(),
+					anwender.getHierarchieStufe(),
+					anwender.isAktiv());
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -24,7 +39,16 @@ public class AnwenderVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
-		// TODO Auto-generated method stub
+		try {
+			Anwender anwender = (Anwender) objekt;
+			anwenderDAO.update(
+					anwender.getAnwenderName(),
+					anwender.getPasswort(),
+					anwender.getHierarchieStufe(),
+					false);
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 
 	}
 
@@ -34,8 +58,16 @@ public class AnwenderVerwalter implements Verwaltbar {
 	@Override
 	public void update(Object objekt)
 	{
-		// TODO Auto-generated method stub
-
+		try {
+			Anwender anwender = (Anwender) objekt;
+			anwenderDAO.update(
+					anwender.getAnwenderName(),
+					anwender.getPasswort(),
+					anwender.getHierarchieStufe(),
+					anwender.isAktiv());
+		} catch (java.lang.ClassCastException e) {
+			new LocalLog(e.getMessage(), this);
+		}
 	}
 
 }
