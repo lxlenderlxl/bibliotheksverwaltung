@@ -4,24 +4,17 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 
 public class MySQLMediumDAO implements MediumDAO
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
 	
 	public MySQLMediumDAO()
-	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
-
-	public MySQLMediumDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
+	{		
 	}
 
 	/* (non-Javadoc)
@@ -32,10 +25,9 @@ public class MySQLMediumDAO implements MediumDAO
 			String derAutorNachname, String derVerlag, String dasErscheinungsjahr,
 			String dieISBN, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			statement = connection.prepareStatement("INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			statement.setString(1, derTitel);
 			statement.setString(2, derAutorVorname);
 			statement.setString(3, derAutorNachname);
@@ -46,10 +38,10 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 
@@ -59,11 +51,10 @@ public class MySQLMediumDAO implements MediumDAO
 	@Override
 	public ArrayList<Medium> get(boolean aktiv)
 	{
-		this.refreshConnection();
 		ArrayList<Medium> liste = new ArrayList<Medium>();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM medium WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
@@ -73,10 +64,10 @@ public class MySQLMediumDAO implements MediumDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -87,11 +78,10 @@ public class MySQLMediumDAO implements MediumDAO
 	@Override
 	public Medium get(int dieId)
 	{
-		this.refreshConnection();
 		Medium einMedium = null;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM medium WHERE medienid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
@@ -101,10 +91,10 @@ public class MySQLMediumDAO implements MediumDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return einMedium;
 	}
@@ -117,10 +107,9 @@ public class MySQLMediumDAO implements MediumDAO
 			String derAutorNachname, String derVerlag, String dasErscheinungsjahr,
 			String dieISBN, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE medienid = ?");
 			statement.setString(1, derTitel);
 			statement.setString(2, derAutorVorname);
@@ -133,35 +122,10 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
-		}
-	}
-
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 }

@@ -1,28 +1,23 @@
 package bibliotheksverwaltung.model.daos.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
 
 public class MySQLAusleiherDAO implements AusleiherDAO
 {	
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
 	
 	public MySQLAusleiherDAO()
 	{
-		connection = new MySQLConnection();
-		refreshConnection();
-	}
 
-	public MySQLAusleiherDAO(MySQLConnection dieConnection)
-	{
-		connection = dieConnection;
-		refreshConnection();
 	}
 
 	/* (non-Javadoc)
@@ -31,10 +26,9 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	@Override
 	public void add(String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement("INSERT INTO ausleiher (vorname, nachname, strasse, hausnummer, plz, stadt, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			statement = connection.prepareStatement("INSERT INTO ausleiher (vorname, nachname, strasse, hausnummer, plz, stadt, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			statement.setString(1, derVorname);
 			statement.setString(2, derNachname);
 			statement.setString(3, dieStrasse);
@@ -45,10 +39,10 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 	/* (non-Javadoc)
@@ -57,11 +51,10 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	@Override
 	public ArrayList<Ausleiher> get(boolean aktiv)
 	{
-		this.refreshConnection();
 		ArrayList<Ausleiher> liste = new ArrayList<Ausleiher>();;
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM ausleiher WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
@@ -71,10 +64,10 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -86,10 +79,9 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	public Ausleiher get(int dieId)
 	{
 		Ausleiher einAusleiher = null;
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"SELECT * FROM ausleiher WHERE ausleiherID = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
@@ -99,10 +91,10 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			}
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
+			MySQLConnection.closeStmt(statement);
 		}
 		return einAusleiher;
 	}
@@ -113,10 +105,9 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 	@Override
 	public void update(int dieId, String derVorname, String derNachname, String dieStrasse, String dieHausnummer, String diePLZ, String dieStadt, boolean aktiv)
 	{
-		this.refreshConnection();
 		try
 		{
-			statement = connection.getConnection().prepareStatement(
+			statement = connection.prepareStatement(
 					"UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE ausleiherID = ?");
 			statement.setString(1, derVorname);
 			statement.setString(2, derNachname);
@@ -129,34 +120,10 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			e.getMessage();
+			LocalLog.add(e.getMessage(), this);
 		} finally
 		{
-			closeStmt();
-		}
-	}
-
-	private void refreshConnection()
-	{
-		try
-		{
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	private void closeStmt()
-	{
-		try
-		{
-			statement.close();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			MySQLConnection.closeStmt(statement);
 		}
 	}
 }
