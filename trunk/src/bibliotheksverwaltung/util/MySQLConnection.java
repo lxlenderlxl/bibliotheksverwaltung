@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Statement;
+
 /**
  * @author Sven Blaurock 02.03.2009 23:50:10
  *
@@ -32,15 +34,15 @@ public class MySQLConnection
 		}
 		catch (ClassNotFoundException e)
 		{
-			e.getMessage();
+			new LocalLog(e.getMessage());
 		}
 		catch (SQLException e)
 		{
-			e.getMessage();
+			new LocalLog(e.getMessage());
 		}
 		catch (Exception e)
 		{
-			e.getMessage();
+			new LocalLog(e.getMessage());
 		}
 	}
 
@@ -52,6 +54,17 @@ public class MySQLConnection
 	{
 		refreshConnection();
 		return dieVerbindung;
+	}
+
+	public static void closeStmt(Statement stmt)
+	{
+		try
+		{
+			stmt.close();
+		} catch (SQLException e)
+		{
+			new LocalLog(e.getMessage());
+		}
 	}
 
 	/**
