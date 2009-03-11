@@ -11,6 +11,6 @@ public interface KonfigurationDAO
 {
 	public ArrayList<Konfiguration> get();
 	public Konfiguration get(String derName);
-	public void add(String derWert);
+	public void add(String derName, String derWert);
 	public void update(String derName, String derWert);
 }

@@ -32,7 +32,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.KonfigurationDAO#add(java.lang.String)
 	 */
 	@Override
-	public void add(String derWert)
+	public void add(String derName, String derWert)
 	{
 		this.refreshConnection();
 		try
