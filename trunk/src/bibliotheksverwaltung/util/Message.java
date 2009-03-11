@@ -9,6 +9,10 @@ package bibliotheksverwaltung.util;
  */
 public class Message {
 
+	public static final int GRUEN = 1;
+	public static final int GELB = 2;
+	public static final int ROT = 3;
+
 	/**
 	 *
 	 */

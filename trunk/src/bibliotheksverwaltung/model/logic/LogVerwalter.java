@@ -5,17 +5,13 @@ import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.util.LocalLog;
 
 
-public class LogVerwalter implements Verwaltbar {
+public class LogVerwalter {
 
-	private MySQLLogDAO logDAO = new MySQLLogDAO();
+	private static MySQLLogDAO logDAO = new MySQLLogDAO();
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
-	 */
-	@Override
-	public void add(Object objekt) {
+	public static void add(Log log) {
+		//TODO Aktuellen Benutzer holen, Zeitstempel hinzufügen
 		try {
-			Log log = (Log) objekt;
 			logDAO.add(
 					log.getVorgang().getId(),
 					log.getAusleiher().getId(),
@@ -25,26 +21,12 @@ public class LogVerwalter implements Verwaltbar {
 					log.getKommentar()
 			);
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalLog.add(e.getMessage());
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
-	 */
-	@Override
-	public void delete(Object objekt)
-	{
-		// Aus Sicherheitsgründen is ist nicht gestattet, Logs zu löschen.
-	}
-
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
-	 */
-	@Override
-	public void update(Object objekt)
-	{
-		// Aus Sicherheitsgründen is ist nicht gestattet, Logs zu verändern.
+	public static Log getLog(int id) {
+		return new Log(id);
 	}
 
 }

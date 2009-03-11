@@ -71,6 +71,8 @@ public class Exemplar
 	 */
 	public Ausleiher getAusleiher()
 	{
+		if (ausleiherID == 0)
+			return null;
 		return new Ausleiher(ausleiherID);
 	}
 	/**
