@@ -11,4 +11,5 @@ public interface MediumDAO
 	public Medium get(int dieId);
 	public void add(String derTitel, String derAutorVorname, String derAutorNachname, String derVerlag, String dasErscheinungsjahr, String dieISBN, boolean aktiv);
 	public void update(int dieId, String derTitel, String derAutorVorname, String derAutorNachname, String derVerlag, String dasErscheinungsjahr, String dieISBN, boolean aktiv);
+	public int getAnzahlExemplare(int dieId);
 }

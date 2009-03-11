@@ -128,4 +128,32 @@ public class MySQLMediumDAO implements MediumDAO
 			MySQLConnection.closeStmt(statement);
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.MediumDAO#getAnzahlExemplare(int)
+	 */
+	@Override
+	public int getAnzahlExemplare(int dieId)
+	{
+		int anzahl = 0;
+		try
+		{
+			statement = connection.prepareStatement(
+					"SELECT count(*) FROM exemplare WHERE medienid = ?");
+			statement.setInt(1, dieId);
+			
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				anzahl = rs.getInt(1);
+			}
+		} catch (SQLException e)
+		{
+			LocalLog.add(e.getMessage(), this);
+		} finally
+		{
+			MySQLConnection.closeStmt(statement);
+		}
+		return anzahl;
+	}
 }
