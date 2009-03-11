@@ -72,8 +72,6 @@ public class MySQLSuchExperte
 	{
 		Suchergebnis neuesElement = null;
 		statement.setString(1, dasSuchwort);
-		System.out.println(statement.toString());
-
 		ResultSet rs = statement.executeQuery();
 		while (rs.next())
 		{
