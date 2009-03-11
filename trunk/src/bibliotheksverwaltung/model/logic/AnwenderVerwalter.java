@@ -3,18 +3,10 @@ package bibliotheksverwaltung.model.logic;
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
 
 public class AnwenderVerwalter implements Verwaltbar {
 
-	private MySQLAnwenderDAO anwenderDAO = null;
-
-	/**
-	 *
-	 */
-	public AnwenderVerwalter(MySQLConnection dieVerbindung) {
-		anwenderDAO = new MySQLAnwenderDAO(dieVerbindung);
-	}
+	private MySQLAnwenderDAO anwenderDAO = new MySQLAnwenderDAO();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
