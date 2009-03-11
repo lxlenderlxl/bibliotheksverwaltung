@@ -11,10 +11,7 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
 
-/**
- * @deprecated
- */
-public class MySQLSuche
+public class MySQLSuchExperte
 {
 	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
@@ -26,12 +23,12 @@ public class MySQLSuche
 	private String suchTyp = null;
 
 
-	public MySQLSuche()
+	public MySQLSuchExperte()
 	{
 		this.suchergebnisListe = new ArrayList<Suchergebnis>();
 	}
 
-	public MySQLSuche(String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
+	public MySQLSuchExperte(String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
 	{
 		this.suchergebnisListe = new ArrayList<Suchergebnis>();
 		this.suchworte = dieSuchworte;
@@ -43,31 +40,22 @@ public class MySQLSuche
 
 	public ArrayList<Suchergebnis> find()
 	{
-		Suchergebnis neuesElement = null;
 		String sqlStmt = null;
 		try
 		{
 			for (int i = 0; i < suchKategorien.length; i++)
 			{
-				sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
-				+ " WHERE " + suchKategorien[i] + " LIKE ?";
-
 				for (int j = 1; j < suchworte.length; j++)
-					sqlStmt += " OR " + suchKategorien[i] + " LIKE ?";
-
-				statement = connection.prepareStatement(sqlStmt);
-
-				for (int j = 0; j < suchworte.length; j++)
-					statement.setString(j + 1, fullLike(suchworte[j]));
-
-				ResultSet rs = statement.executeQuery();
-				while (rs.next())
 				{
-					neuesElement = new Suchergebnis(rs.getInt(1));
-					if (suchergebnisListe.contains(neuesElement))
-						suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement)).erhoehe();
-					else
-						suchergebnisListe.add(neuesElement);
+					sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
+					+ " WHERE " + suchKategorien[i] + " LIKE ?";
+					
+					statement = connection.prepareStatement(sqlStmt);
+					this.optimalLike("%" + suchworte[j] + "%");
+					this.optimalLike("%" + suchworte[j]);
+					this.optimalLike(suchworte[j] + "%");
+					this.optimalLike(suchworte[j]);
+					
 				}
 			}
 		} catch (SQLException e)
@@ -80,8 +68,20 @@ public class MySQLSuche
 		return suchergebnisListe;
 	}
 
-	private String fullLike(String dasWort)
+	private void optimalLike(String dasSuchwort) throws SQLException
 	{
-		return "%" + dasWort + "%";
+		Suchergebnis neuesElement = null;
+		statement.setString(1, dasSuchwort);
+		System.out.println(statement.toString());
+
+		ResultSet rs = statement.executeQuery();
+		while (rs.next())
+		{
+			neuesElement = new Suchergebnis(rs.getInt(1));
+			if (suchergebnisListe.contains(neuesElement))
+				suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement)).erhoehe();
+			else
+				suchergebnisListe.add(neuesElement);
+		}
 	}
 }

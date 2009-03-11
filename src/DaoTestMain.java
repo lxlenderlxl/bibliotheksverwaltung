@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -14,6 +15,7 @@ import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.LocalLog;
 import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.MySQLSuchExperte;
 import bibliotheksverwaltung.util.MySQLSuche;
 import bibliotheksverwaltung.util.Suchergebnis;
 
@@ -42,22 +44,24 @@ public class DaoTestMain
 
 		//Benutzereingabe
 		String[] suchworte = new String[3];
-		suchworte[0] = "hirsch";
-		suchworte[1] = "peter";
-		suchworte[2] = "12";
+		suchworte[0] = "balt";
+		suchworte[1] = "mich";
+		suchworte[2] = "s";
 
 		//Benutzereingabe
 		String[] suchkat = new String[3];
-		suchkat[0] = "vorname";
-		suchkat[1] = "nachname";
-		suchkat[2] = "plz";
+		suchkat[0] = "titel";
+		suchkat[1] = "autorvorname";
+		suchkat[2] = "autornachname";
 
 		//Suchen
-		MySQLSuche suche = new MySQLSuche("ausleiher", suchworte, suchkat);
+		//MySQLSuche suche = new MySQLSuche("medium", suchworte, suchkat);
+		MySQLSuchExperte suche = new MySQLSuchExperte("medium", suchworte, suchkat);
 		ArrayList<Suchergebnis> liste = suche.find();
+		Collections.sort(liste);
 		System.out.println("Ihre Suche ergab " + liste.size() + " Treffer\n\n");
 
-		/*//Ausgabe dient nur zum Test
+		//Ausgabe dient nur zum Test
 		for (int i = 0; i < liste.size(); i++)
 		{
 			Medium dasMedium = new Medium(liste.get(i).getId());
@@ -66,9 +70,9 @@ public class DaoTestMain
 			System.out.println("Titel     : " + dasMedium.getTitel());
 			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
 			System.out.println("---------------------------------------------");
-		}*/
+		}
 
-		for (int i = 0; i < liste.size(); i++)
+		/*for (int i = 0; i < liste.size(); i++)
 		{
 			Ausleiher derAusleiher = new Ausleiher(liste.get(i).getId());
 			System.out.println("AusleiherID  : " + liste.get(i).getId());
@@ -76,7 +80,7 @@ public class DaoTestMain
 			System.out.println("Vorname      : " + derAusleiher.getVorName());
 			System.out.println("Nachname     : " + derAusleiher.getNachName());
 			System.out.println("---------------------------------------------");
-		}
+		}*/
 	}
 
 }
