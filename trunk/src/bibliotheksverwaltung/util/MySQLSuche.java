@@ -3,6 +3,7 @@
  */
 package bibliotheksverwaltung.util;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ import bibliotheksverwaltung.model.domain.Konfiguration;
 
 public class MySQLSuche
 {
-	private MySQLConnection connection = null;
+	private Connection connection = MySQLConnection.getConnection();
 	private PreparedStatement statement = null;
 	private ArrayList<Suchergebnis> suchergebnisListe = null;
 	private String[] suchworte = null;
@@ -24,26 +25,21 @@ public class MySQLSuche
 
 	public MySQLSuche()
 	{
-		this.connection = new MySQLConnection();
 		this.suchergebnisListe = new ArrayList<Suchergebnis>();
-		this.refreshConnection();
 	}
 
-	public MySQLSuche(MySQLConnection dieConnection, String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
+	public MySQLSuche(String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
 	{
-		this.connection = dieConnection;
 		this.suchergebnisListe = new ArrayList<Suchergebnis>();
 		this.suchworte = dieSuchworte;
 		this.suchKategorien = dieSuchKategorien;
 		this.suchTyp = suchTyp;
 		tabelle = new Konfiguration(this.suchTyp + "_tabelle");
 		priKey = new Konfiguration(this.suchTyp + "_priKey");
-		this.refreshConnection();
 	}
 
 	public ArrayList<Suchergebnis> find()
 	{
-		this.refreshConnection();
 		Suchergebnis neuesElement = null;
 		String sqlStmt = null;
 		try
@@ -57,7 +53,7 @@ public class MySQLSuche
 				for (int j = 1; j < suchworte.length; j++)
 					sqlStmt += " OR " + suchKategorien[i] + " LIKE ?";
 
-				statement = connection.getConnection().prepareStatement(sqlStmt);
+				statement = connection.prepareStatement(sqlStmt);
 
 				for (int j = 0; j < suchworte.length; j++)
 					statement.setString(j + 1, stringLikeTransformator(suchworte[j]));
@@ -86,15 +82,6 @@ public class MySQLSuche
 	private String stringLikeTransformator(String dasWort)
 	{
 		return "%" + dasWort + "%";
-	}
-
-	private void refreshConnection() {
-		try {
-			if (connection.getConnection().isClosed())
-				connection = new MySQLConnection();
-		} catch (SQLException e) {
-			new LocalLog(e.getMessage(), this);
-		}
 	}
 
 	private void closeStmt() {
