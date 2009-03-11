@@ -14,7 +14,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void add(Object objekt) {
-		// Konfigurationen können nicht vom Programm aus hinzugefügt werden.
+		// Konfigurationen können vorerst nicht vom Programm aus hinzugefügt werden.
 	}
 
 	/* (non-Javadoc)
@@ -22,7 +22,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void delete(Object objekt) {
-		// Konfigurationen können nicht im Programm geändert werden.
+		// Konfigurationen können voerst nicht im Programm geändert werden.
 	}
 
 	/* (non-Javadoc)
