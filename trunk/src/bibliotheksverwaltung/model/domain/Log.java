@@ -16,6 +16,7 @@ public class Log {
 
 	/**
 	 *
+	 * @param id
 	 */
 	public Log(int id) {
 		Log log = new MySQLLogDAO().get(id);
@@ -29,11 +30,11 @@ public class Log {
 	}
 
 	/**
-	 * @param ausleiderID
-	 * @param exemplarID
-	 * @param kommentar
-	 * @param logDatum
-	 * @param vorgangsID
+	 *
+	 * @param dieVorgangsID
+	 * @param dieAusleiherID
+	 * @param dieExemplarID
+	 * @param dasKommentar
 	 */
 	public Log(int dieVorgangsID, int dieAusleiherID, int dieExemplarID, String dasKommentar) {
 		this.vorgangsID = dieVorgangsID;
@@ -43,11 +44,10 @@ public class Log {
 	}
 
 	/**
-	 * @param ausleiderID
-	 * @param exemplarID
-	 * @param kommentar
-	 * @param logDatum
-	 * @param vorgangsID
+	 *
+	 * @param dieVorgangsID
+	 * @param dieAusleiherID
+	 * @param dieExemplarID
 	 */
 	public Log(int dieVorgangsID, int dieAusleiherID, int dieExemplarID) {
 		this.vorgangsID = dieVorgangsID;
@@ -56,13 +56,14 @@ public class Log {
 	}
 
 	/**
-	 * @param anwender
-	 * @param ausleiderID
-	 * @param exemplarID
-	 * @param id
-	 * @param kommentar
-	 * @param logDatum
-	 * @param vorgangsID
+	 *
+	 * @param dieID
+	 * @param dieVorgangsID
+	 * @param dieAusleiherID
+	 * @param derAnwender
+	 * @param dieExemplarID
+	 * @param dasLogDatum
+	 * @param dasKommentar
 	 */
 	public Log(int dieID, int dieVorgangsID, int dieAusleiherID, String derAnwender, int dieExemplarID, Date dasLogDatum, String dasKommentar) {
 		this.id = dieID;

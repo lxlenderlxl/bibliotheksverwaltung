@@ -1,5 +1,6 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.sql.Date;
 import java.util.GregorianCalendar;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
@@ -23,16 +24,11 @@ public class BibliotheksVerwalter {
 		if (exemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits ausgeliehen.", Message.ROT);
 		else {
-		new ExemplarVerwalter().update(new Exemplar(
-				exemplar.getId(),
-				exemplar.getZustand(),
-				ausleiher.getId(),
-				exemplar.getMedium(),
-				new java.sql.Date(new GregorianCalendar().getTimeInMillis()),
-				0,
-				true)
-		);
-		//TODO Log-Eintrag: Buch wurde ausgeliehen.
+			exemplar.setAusleiher(ausleiher.getId());
+			exemplar.setRueckgabeDatum((Date) new GregorianCalendar().getTime());
+			//TODO neues Ausleihdatum += Verlängerungstage aus Konfiguration
+		new ExemplarVerwalter().update(exemplar);
+		LogVerwalter.add(new Log(1, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
@@ -50,7 +46,7 @@ public class BibliotheksVerwalter {
 					true)
 			);
 
-			//TODO Log-Eintrag: Ausleihe wurde verlängert.
+			LogVerwalter.add(new Log(12, exemplar.getAusleiher(), exemplar.getId()));
 
 			if (exemplar.getVerlaengerung() == maximaleAnzahlVerlaengerungen - 1)
 				Message.raise("Ausleihung wurde verlängert.\n" +
@@ -76,18 +72,18 @@ public class BibliotheksVerwalter {
 				0,
 				true)
 		);
-		//TODO Log-Eintrag: Buch zurück gegeben.
+		LogVerwalter.add(new Log(2, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
 	public void buchBearbeiten (Exemplar exemplar) {
 		new ExemplarVerwalter().update(exemplar);
-		//TODO Buch-Daten wurden geändert
+		LogVerwalter.add(new Log(10, 0, exemplar.getId()));
 	}
 
 	public void buchHinzufuegen(Exemplar exemplar) {
 		new ExemplarVerwalter().add(exemplar);
-		//TODO Log: Buch wurde hinzugefügt
+		LogVerwalter.add(new Log(3, 0, exemplar.getId()));
 	}
 
 	public void buchEntfernen(Exemplar exemplar) {
@@ -98,6 +94,7 @@ public class BibliotheksVerwalter {
 					mediumEntfernen(exemplar.getMedium());
 					log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
 			}
+			LogVerwalter.add(log);
 		}
 		else
 			Message.raise("Das Buch kann nicht entfernt werden, da es zurzeit ausgeliehen ist.", Message.ROT);
