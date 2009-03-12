@@ -13,4 +13,5 @@ public interface SchlagwortDAO
 	public Schlagwort get(int dieTagId);
 	public void add(String derInhalt);
 	public void update(int dieTagID, String derInhalt);
+	public void delete(int dieTagID);
 }
