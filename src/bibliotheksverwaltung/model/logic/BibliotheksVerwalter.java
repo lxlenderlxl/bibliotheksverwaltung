@@ -19,7 +19,7 @@ public class BibliotheksVerwalter {
 	}
 
 	public void buchAusleihen(Exemplar exemplar, Ausleiher ausleiher) {
-		if (exemplar.getAusleiher() == null)
+		if (exemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits ausgeliehen.", Message.ROT);
 		else {
 		new ExemplarVerwalter().update(new Exemplar(
@@ -42,7 +42,7 @@ public class BibliotheksVerwalter {
 			new ExemplarVerwalter().update(new Exemplar(
 					exemplar.getId(),
 					exemplar.getZustand().getId(),
-					exemplar.getAusleiher().getId(),
+					exemplar.getAusleiher(),
 					exemplar.getMedium().getId(),
 					new java.sql.Date(new GregorianCalendar().getTimeInMillis()),
 					exemplar.getVerlaengerung() + 1, // Erhöht die aktuelle Ausleihzahl um eins
@@ -63,7 +63,7 @@ public class BibliotheksVerwalter {
 	}
 
 	public void buchZurueckgeben(Exemplar exemplar) {
-		if (exemplar.getAusleiher() == null)
+		if (exemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits zurück gegeben.", Message.ROT);
 		else {
 		new ExemplarVerwalter().update(new Exemplar(
@@ -90,7 +90,7 @@ public class BibliotheksVerwalter {
 	}
 
 	public void buchEntfernen(Exemplar exemplar) {
-		if (exemplar.getAusleiher() != null) {
+		if (exemplar.getAusleiher() != 0) {
 			new ExemplarVerwalter().delete(exemplar);
 			//TODO Log: Exemplar wurde entfernt
 			if (!new MedienVerwalter().hasExemplare(exemplar.getMedium())) {

@@ -20,12 +20,14 @@ public class ExemplarVerwalter implements Verwaltbar {
 			Exemplar exemplar = (Exemplar) objekt;
 			exemplarDAO.add(
 					exemplar.getZustand().getId(),
-					exemplar.getAusleiher().getId(),
+					exemplar.getAusleiher(),
 					exemplar.getMedium().getId(),
 					exemplar.getRueckgabeDatum(),
 					exemplar.getVerlaengerung(),
 					exemplar.isAktiv()
 			);
+			System.out.println("Buch erfolgreich hinzugefügt (MAIN)!");
+
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
@@ -43,7 +45,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 			exemplarDAO.update(
 					exemplar.getId(),
 					exemplar.getZustand().getId(),
-					exemplar.getAusleiher().getId(),
+					exemplar.getAusleiher(),
 					exemplar.getMedium().getId(),
 					exemplar.getRueckgabeDatum(),
 					exemplar.getVerlaengerung(),
@@ -66,7 +68,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 			Exemplar exemplar = (Exemplar) objekt;
 			exemplarDAO.add(
 					exemplar.getZustand().getId(),
-					exemplar.getAusleiher().getId(),
+					exemplar.getAusleiher(),
 					exemplar.getMedium().getId(),
 					exemplar.getRueckgabeDatum(),
 					exemplar.getVerlaengerung(),
