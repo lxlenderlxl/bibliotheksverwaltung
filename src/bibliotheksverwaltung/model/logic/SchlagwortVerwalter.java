@@ -2,8 +2,11 @@ package bibliotheksverwaltung.model.logic;
 
 import java.util.ArrayList;
 
+import bibliotheksverwaltung.model.daos.dao.BeinhaltetDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLBeinhaltetDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.domain.Schlagwort;
 import bibliotheksverwaltung.util.LocalLog;
 
@@ -13,8 +16,10 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	private MySQLSchlagwortDAO schlagwortDAO = new MySQLSchlagwortDAO();
 
 
-	public void connect(int mediumID, int schlagwortID) {
+	public void connect(Medium dasMedium, Schlagwort dasSchlagwort) {
 		//TODO Wenn BeinhaltetDAO fertig --> .add()
+		MySQLBeinhaltetDAO beinhaltet = new MySQLBeinhaltetDAO();
+		
 	}
 
 	public void unconnect(int mediumID, int schlagwortID) {
