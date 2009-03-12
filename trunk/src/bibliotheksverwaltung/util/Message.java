@@ -18,6 +18,7 @@ public class Message {
 	 */
 	public static void raise(String message, int level) {
 		//TODO Fehlernachricht an Fehlermethode in GUI weiterreichen
+		System.out.println("Message: " + message + " - Level: " + level);
 	}
 
 }
