@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.model.daos.dao;
 
@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 /**
  * @author Sven Blaurock 28.02.2009 18:28:58
@@ -20,13 +19,13 @@ import bibliotheksverwaltung.util.MySQLConnection;
  */
 public class MySQLExemplarDAO implements ExemplarDAO
 {
-	private Connection connection = MySQLConnection.getConnection();
+	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
-	
+
 	public MySQLExemplarDAO()
 	{
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.daos.dao.ExemplarDAO#add(java.lang.String, java.lang.String, int, boolean)
 	 */
@@ -45,10 +44,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 	/* (non-Javadoc)
@@ -70,10 +69,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -96,14 +95,14 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return einExemplar;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.daos.dao.ExemplarDAO#update(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)
 	 */
@@ -124,10 +123,10 @@ public class MySQLExemplarDAO implements ExemplarDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 }

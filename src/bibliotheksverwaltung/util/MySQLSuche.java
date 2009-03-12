@@ -16,7 +16,7 @@ import bibliotheksverwaltung.model.domain.Konfiguration;
  */
 public class MySQLSuche
 {
-	private Connection connection = MySQLConnection.getConnection();
+	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
 	private ArrayList<Suchergebnis> suchergebnisListe = null;
 	private String[] suchworte = null;
@@ -72,10 +72,10 @@ public class MySQLSuche
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return suchergebnisListe;
 	}

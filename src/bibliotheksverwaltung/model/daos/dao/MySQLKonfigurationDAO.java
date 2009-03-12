@@ -10,12 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLKonfigurationDAO implements KonfigurationDAO
 {
-	private Connection connection = MySQLConnection.getConnection();
+	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
 
 	public MySQLKonfigurationDAO()
@@ -36,10 +36,10 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 	/* (non-Javadoc)
@@ -60,10 +60,10 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 
 		return liste;
@@ -87,10 +87,10 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 
 		return eineKonfiguration;
@@ -111,10 +111,10 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 }

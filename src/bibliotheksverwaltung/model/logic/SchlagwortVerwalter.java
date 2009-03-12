@@ -8,7 +8,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.domain.Schlagwort;
-import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 
 public class SchlagwortVerwalter implements Verwaltbar {
@@ -35,7 +35,7 @@ public class SchlagwortVerwalter implements Verwaltbar {
 			Schlagwort schlagwort = (Schlagwort) objekt;
 			schlagwortDAO.add(schlagwort.getBezeichnung());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
@@ -49,7 +49,7 @@ public class SchlagwortVerwalter implements Verwaltbar {
 			Schlagwort schlagwort = (Schlagwort) objekt;
 			schlagwortDAO.delete(schlagwort.getId());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
@@ -65,7 +65,7 @@ public class SchlagwortVerwalter implements Verwaltbar {
 					schlagwort.getId(),
 					schlagwort.getBezeichnung());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 

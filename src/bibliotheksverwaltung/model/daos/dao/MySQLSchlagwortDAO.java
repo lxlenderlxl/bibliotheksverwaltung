@@ -10,12 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Schlagwort;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLSchlagwortDAO implements SchlagwortDAO
 {
-	private Connection connection = MySQLConnection.getConnection();
+	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
 
 	public MySQLSchlagwortDAO()
@@ -35,10 +35,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 
@@ -60,10 +60,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -87,10 +87,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return einSchlagwort;
 	}
@@ -110,10 +110,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 
@@ -131,10 +131,10 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 }

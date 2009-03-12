@@ -2,7 +2,7 @@ package bibliotheksverwaltung.model.logic;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
 import bibliotheksverwaltung.model.domain.Log;
-import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 
 public class LogVerwalter {
@@ -21,7 +21,7 @@ public class LogVerwalter {
 					log.getKommentar()
 			);
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		}
 	}
 

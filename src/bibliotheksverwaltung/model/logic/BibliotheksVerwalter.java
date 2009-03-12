@@ -6,7 +6,7 @@ import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
 
 public class BibliotheksVerwalter {
@@ -113,7 +113,7 @@ public class BibliotheksVerwalter {
 			//TODO Medium wurde entfernt
 		}
 		else
-			LocalLog.add("Medium " + medium.getId() + " konnte nicht gelöscht werden, " +
+			LocalEnvironment.log("Medium " + medium.getId() + " konnte nicht gelöscht werden, " +
 					"da noch Exemplare vorhanden sind.", this);
 	}
 

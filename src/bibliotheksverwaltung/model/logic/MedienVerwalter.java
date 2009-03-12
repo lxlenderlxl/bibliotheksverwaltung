@@ -2,8 +2,8 @@ package bibliotheksverwaltung.model.logic;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MedienVerwalter implements Verwaltbar {
 
@@ -26,7 +26,7 @@ public class MedienVerwalter implements Verwaltbar {
 					medium.getIsbn(),
 					medium.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
@@ -48,7 +48,7 @@ public class MedienVerwalter implements Verwaltbar {
 					medium.getIsbn(),
 					false);
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class MedienVerwalter implements Verwaltbar {
 					medium.getIsbn(),
 					medium.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 

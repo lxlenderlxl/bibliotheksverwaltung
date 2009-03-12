@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Zustand;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 /**
  * @author Sven Blaurock 03.03.2009 00:27:23
@@ -16,7 +16,7 @@ import bibliotheksverwaltung.util.MySQLConnection;
  */
 public class MySQLZustandDAO implements ZustandDAO
 {
-	private Connection connection = MySQLConnection.getConnection();
+	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
 
 	public MySQLZustandDAO()
@@ -41,10 +41,10 @@ public class MySQLZustandDAO implements ZustandDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 
@@ -69,10 +69,10 @@ public class MySQLZustandDAO implements ZustandDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 
 		return einZustand;
@@ -98,10 +98,10 @@ public class MySQLZustandDAO implements ZustandDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 
@@ -123,10 +123,10 @@ public class MySQLZustandDAO implements ZustandDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 
 		return liste;

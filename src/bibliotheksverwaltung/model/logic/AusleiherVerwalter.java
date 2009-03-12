@@ -2,7 +2,7 @@ package bibliotheksverwaltung.model.logic;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
 import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class AusleiherVerwalter implements Verwaltbar
 {
@@ -51,7 +51,7 @@ public class AusleiherVerwalter implements Verwaltbar
 					ausleiher.getStadt(),
 					false);
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
@@ -90,7 +90,7 @@ public class AusleiherVerwalter implements Verwaltbar
 					ausleiher.getStadt(),
 					ausleiher.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 
 	}
