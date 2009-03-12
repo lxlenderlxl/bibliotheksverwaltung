@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLLogDAO implements LogDAO
 {
@@ -34,12 +33,12 @@ public class MySQLLogDAO implements LogDAO
 		{
 			statement = connection.prepareStatement(
 			"INSERT INTO log (vorgangsid, ausleiherid, anwendername, exemplarid, logdatum, kommentar) VALUES (?, ?, ?, ?, ?, ?)");
-			statement.setInt(1, vorgangsID);
-			statement.setInt(2, ausleiherID);
-			statement.setString(3, anwenderName);
-			statement.setInt(4, exemplarID);
-			statement.setDate(5, logDatum);
-			statement.setString(6, kommentar);
+			LocalEnvironment.statementChecker(statement, 1, vorgangsID);
+			LocalEnvironment.statementChecker(statement, 2, ausleiherID);
+			LocalEnvironment.statementChecker(statement, 3, anwenderName);
+			LocalEnvironment.statementChecker(statement, 4, exemplarID);
+			LocalEnvironment.statementChecker(statement, 5, logDatum);
+			LocalEnvironment.statementChecker(statement, 6, kommentar);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -88,7 +87,7 @@ public class MySQLLogDAO implements LogDAO
 		{
 			statement = connection.prepareStatement(
 			"SELECT * FROM log WHERE logid = ?");
-			statement.setInt(1, dieId);
+			LocalEnvironment.statementChecker(statement, 1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{

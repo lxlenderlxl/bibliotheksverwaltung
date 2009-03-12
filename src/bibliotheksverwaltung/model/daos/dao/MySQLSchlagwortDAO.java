@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Schlagwort;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLSchlagwortDAO implements SchlagwortDAO
 {
@@ -31,7 +30,7 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO schlagworte (inhalt) VALUES (?)");
-			statement.setString(1, derInhalt);
+			LocalEnvironment.statementChecker(statement, 1, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -79,7 +78,7 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 		{
 			statement = connection.prepareStatement(
 			"SELECT * FROM schlagwort WHERE tagid = ?");
-			statement.setInt(1, dieTagId);
+			LocalEnvironment.statementChecker(statement, 1, dieTagId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -105,8 +104,8 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 		{
 			statement = connection.prepareStatement(
 			"UPDATE schlagwort SET inhalt = ? WHERE tagid = ?");
-			statement.setInt(1, dieTagID);
-			statement.setString(2, derInhalt);
+			LocalEnvironment.statementChecker(statement, 1, derInhalt);
+			LocalEnvironment.statementChecker(statement, 2, dieTagID);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -127,7 +126,7 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 		{
 			statement = connection.prepareStatement(
 			"DELETE FROM schlagwort WHERE tagid = ?");
-			statement.setInt(1, dieTagID);
+			LocalEnvironment.statementChecker(statement, 1, dieTagID);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

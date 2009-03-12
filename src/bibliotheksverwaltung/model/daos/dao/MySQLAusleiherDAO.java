@@ -29,12 +29,12 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO ausleiher (vorname, nachname, strasse, hausnummer, plz, stadt, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
-			statement.setString(1, derVorname);
-			statement.setString(2, derNachname);
-			statement.setString(3, dieStrasse);
-			statement.setString(4, dieHausnummer);
-			statement.setString(5, diePLZ);
-			statement.setString(6, dieStadt);
+			LocalEnvironment.statementChecker(statement, 1, derVorname);
+			LocalEnvironment.statementChecker(statement, 2, derNachname);
+			LocalEnvironment.statementChecker(statement, 3, dieStrasse);
+			LocalEnvironment.statementChecker(statement, 4, dieHausnummer);
+			LocalEnvironment.statementChecker(statement, 5, diePLZ);
+			LocalEnvironment.statementChecker(statement, 6, dieStadt);
 			statement.setBoolean(7, aktiv);
 			statement.executeUpdate();
 		} catch (SQLException e)
@@ -109,14 +109,14 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 		{
 			statement = connection.prepareStatement(
 					"UPDATE ausleiher SET vorname = ?, nachname = ?, strasse = ?, hausnummer = ?, plz = ?, stadt = ?, aktiv = ? WHERE ausleiherID = ?");
-			statement.setString(1, derVorname);
-			statement.setString(2, derNachname);
-			statement.setString(3, dieStrasse);
-			statement.setString(4, dieHausnummer);
-			statement.setString(5, diePLZ);
-			statement.setString(6, dieStadt);
+			LocalEnvironment.statementChecker(statement, 1, derVorname);
+			LocalEnvironment.statementChecker(statement, 2, derNachname);
+			LocalEnvironment.statementChecker(statement, 3, dieStrasse);
+			LocalEnvironment.statementChecker(statement, 4, dieHausnummer);
+			LocalEnvironment.statementChecker(statement, 5, diePLZ);
+			LocalEnvironment.statementChecker(statement, 6, dieStadt);
 			statement.setBoolean(7, aktiv);
-			statement.setInt(8, dieId);
+			LocalEnvironment.statementChecker(statement, 8, dieId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

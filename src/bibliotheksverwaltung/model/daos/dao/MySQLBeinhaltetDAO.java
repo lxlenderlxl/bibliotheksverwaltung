@@ -30,8 +30,8 @@ public class MySQLBeinhaltetDAO implements BeinhaltetDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO beinhaltet (tagid, medienid) VALUES (?, ?)");
-			statement.setInt(1, dieTagId);
-			statement.setInt(2, dieMedienId);
+			LocalEnvironment.statementChecker(statement, 1, dieTagId);
+			LocalEnvironment.statementChecker(statement, 2, dieMedienId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -51,8 +51,8 @@ public class MySQLBeinhaltetDAO implements BeinhaltetDAO
 		try
 		{
 			statement = connection.prepareStatement("DELETE FROM beinhaltet WHERE tagid = ? AND medienID = ?");
-			statement.setInt(1, dieTagId);
-			statement.setInt(2, dieMedienId);
+			LocalEnvironment.statementChecker(statement, 1, dieTagId);
+			LocalEnvironment.statementChecker(statement, 2, dieMedienId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

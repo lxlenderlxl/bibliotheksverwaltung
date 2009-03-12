@@ -28,12 +28,12 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO medium (titel, autorvorname, autornachname, verlag, erscheinungsjahr, isbn, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?)");
-			statement.setString(1, derTitel);
-			statement.setString(2, derAutorVorname);
-			statement.setString(3, derAutorNachname);
-			statement.setString(4, derVerlag);
-			statement.setString(5, dasErscheinungsjahr);
-			statement.setString(6, dieISBN);
+			LocalEnvironment.statementChecker(statement, 1, derTitel);
+			LocalEnvironment.statementChecker(statement, 2, derAutorVorname);
+			LocalEnvironment.statementChecker(statement, 3, derAutorNachname);
+			LocalEnvironment.statementChecker(statement, 4, derVerlag);
+			LocalEnvironment.statementChecker(statement, 5, dasErscheinungsjahr);
+			LocalEnvironment.statementChecker(statement, 6, dieISBN);
 			statement.setBoolean(7, aktiv);
 			statement.executeUpdate();
 		} catch (SQLException e)
@@ -83,7 +83,7 @@ public class MySQLMediumDAO implements MediumDAO
 		{
 			statement = connection.prepareStatement(
 					"SELECT * FROM medium WHERE medienid = ?");
-			statement.setInt(1, dieId);
+			LocalEnvironment.statementChecker(statement, 1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -111,14 +111,14 @@ public class MySQLMediumDAO implements MediumDAO
 		{
 			statement = connection.prepareStatement(
 					"UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE medienid = ?");
-			statement.setString(1, derTitel);
-			statement.setString(2, derAutorVorname);
-			statement.setString(3, derAutorNachname);
-			statement.setString(4, derVerlag);
-			statement.setString(5, dasErscheinungsjahr);
-			statement.setString(6, dieISBN);
+			LocalEnvironment.statementChecker(statement, 1, derTitel);
+			LocalEnvironment.statementChecker(statement, 2, derAutorVorname);
+			LocalEnvironment.statementChecker(statement, 3, derAutorNachname);
+			LocalEnvironment.statementChecker(statement, 4, derVerlag);
+			LocalEnvironment.statementChecker(statement, 5, dasErscheinungsjahr);
+			LocalEnvironment.statementChecker(statement, 6, dieISBN);
 			statement.setBoolean(7, aktiv);
-			statement.setInt(8, dieId);
+			LocalEnvironment.statementChecker(statement, 8, dieId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
