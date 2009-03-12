@@ -29,6 +29,33 @@ public class Log {
 	}
 
 	/**
+	 * @param ausleiderID
+	 * @param exemplarID
+	 * @param kommentar
+	 * @param logDatum
+	 * @param vorgangsID
+	 */
+	public Log(int dieVorgangsID, int dieAusleiherID, int dieExemplarID, String dasKommentar) {
+		this.vorgangsID = dieVorgangsID;
+		this.ausleiherID = dieAusleiherID;
+		this.exemplarID = dieExemplarID;
+		this.kommentar = dasKommentar;
+	}
+
+	/**
+	 * @param ausleiderID
+	 * @param exemplarID
+	 * @param kommentar
+	 * @param logDatum
+	 * @param vorgangsID
+	 */
+	public Log(int dieVorgangsID, int dieAusleiherID, int dieExemplarID) {
+		this.vorgangsID = dieVorgangsID;
+		this.ausleiherID = dieAusleiherID;
+		this.exemplarID = dieExemplarID;
+	}
+
+	/**
 	 * @param anwender
 	 * @param ausleiderID
 	 * @param exemplarID
@@ -64,57 +91,57 @@ public class Log {
 	/**
 	 * @return the vorgang
 	 */
-	public Vorgang getVorgang() {
-		return new Vorgang(vorgangsID);
+	public int getVorgang() {
+		return vorgangsID;
 	}
 
 	/**
 	 * @param vorgang the vorgangsID to set
 	 */
-	public void setVorgangs(Vorgang vorgang) {
-		this.vorgangsID = vorgang.getId();
+	public void setVorgangs(int vorgangsID) {
+		this.vorgangsID = vorgangsID;
 	}
 
 	/**
 	 * @return the ausleiher
 	 */
-	public Ausleiher getAusleiher() {
-		return new Ausleiher(ausleiherID);
+	public int getAusleiher() {
+		return ausleiherID;
 	}
 
 	/**
 	 * @param ausleiher the ausleiherID to set
 	 */
-	public void setAusleiher(Ausleiher ausleiher) {
-		this.ausleiherID = ausleiher.getId();
+	public void setAusleiher(int ausleiherID) {
+		this.ausleiherID = ausleiherID;
 	}
 
 	/**
 	 * @return the anwender
 	 */
-	public Anwender getAnwender() {
-		return new Anwender(anwender);
+	public String getAnwender() {
+		return anwender;
 	}
 
 	/**
 	 * @param anwender the anwender to set
 	 */
-	public void setAnwender(Anwender anwender) {
-		this.anwender = anwender.getAnwenderName();
+	public void setAnwender(String anwender) {
+		this.anwender = anwender;
 	}
 
 	/**
 	 * @return the exemplar
 	 */
-	public Exemplar getExemplar() {
-		return new Exemplar(exemplarID);
+	public int getExemplar() {
+		return exemplarID;
 	}
 
 	/**
 	 * @param exemplar the exemplarID to set
 	 */
-	public void setExemplarID(Exemplar exemplar) {
-		this.exemplarID = exemplar.getId();
+	public void setExemplarID(int exemplarID) {
+		this.exemplarID = exemplarID;
 	}
 
 	/**

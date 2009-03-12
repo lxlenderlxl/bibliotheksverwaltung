@@ -1,11 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.ArrayList;
-
-import bibliotheksverwaltung.model.daos.dao.BeinhaltetDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLBeinhaltetDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
-import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.domain.Schlagwort;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -23,9 +19,9 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	public void connect(Schlagwort dasSchlagwort, Medium dasMedium) {
 		//TODO evtl. Prüfung ob Objekte == null ??
 		MySQLBeinhaltetDAO beinhaltet = new MySQLBeinhaltetDAO();
-		beinhaltet.add(dasSchlagwort.getId(), dasMedium.getId());		
+		beinhaltet.add(dasSchlagwort.getId(), dasMedium.getId());
 	}
-	
+
 	/**
 	 * Entfernt genau ein Schlagwort aus genau einem Medium (Zugriff auf die Datenbanktabelle "beinhaltet"
 	 * @param dasSchlagwort Das Schlagwort

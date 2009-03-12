@@ -1,7 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
 import java.util.GregorianCalendar;
-
+import java.sql.Date;
 import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Log;
@@ -20,7 +20,7 @@ public class LogVerwalter {
 					log.getAusleiher(),
 					anwender.getAnwenderName(),
 					log.getExemplar(),
-					new GregorianCalendar().getTime(),
+					(Date) new GregorianCalendar().getTime(),
 					log.getKommentar()
 			);
 		} catch (java.lang.ClassCastException e) {

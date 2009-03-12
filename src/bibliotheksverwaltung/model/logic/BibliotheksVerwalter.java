@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Konfiguration;
+import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
@@ -24,9 +25,9 @@ public class BibliotheksVerwalter {
 		else {
 		new ExemplarVerwalter().update(new Exemplar(
 				exemplar.getId(),
-				exemplar.getZustand().getId(),
+				exemplar.getZustand(),
 				ausleiher.getId(),
-				exemplar.getMedium().getId(),
+				exemplar.getMedium(),
 				new java.sql.Date(new GregorianCalendar().getTimeInMillis()),
 				0,
 				true)
@@ -41,9 +42,9 @@ public class BibliotheksVerwalter {
 		if (exemplar.getVerlaengerung() < maximaleAnzahlVerlaengerungen) {
 			new ExemplarVerwalter().update(new Exemplar(
 					exemplar.getId(),
-					exemplar.getZustand().getId(),
+					exemplar.getZustand(),
 					exemplar.getAusleiher(),
-					exemplar.getMedium().getId(),
+					exemplar.getMedium(),
 					new java.sql.Date(new GregorianCalendar().getTimeInMillis()),
 					exemplar.getVerlaengerung() + 1, // Erhöht die aktuelle Ausleihzahl um eins
 					true)
@@ -68,9 +69,9 @@ public class BibliotheksVerwalter {
 		else {
 		new ExemplarVerwalter().update(new Exemplar(
 				exemplar.getId(),
-				exemplar.getZustand().getId(),
+				exemplar.getZustand(),
 				0,
-				exemplar.getMedium().getId(),
+				exemplar.getMedium(),
 				null,
 				0,
 				true)
@@ -92,10 +93,10 @@ public class BibliotheksVerwalter {
 	public void buchEntfernen(Exemplar exemplar) {
 		if (exemplar.getAusleiher() != 0) {
 			new ExemplarVerwalter().delete(exemplar);
-			//TODO Log: Exemplar wurde entfernt
+			Log log = new Log(4, 0, exemplar.getId());
 			if (!new MedienVerwalter().hasExemplare(exemplar.getMedium())) {
 					mediumEntfernen(exemplar.getMedium());
-					//TODO Log: Letztes Exemplar wurde entfernt, Medium wird entfernt
+					log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
 			}
 		}
 		else
@@ -107,13 +108,11 @@ public class BibliotheksVerwalter {
 		//TODO Log: Medium wurde hinzugefügt
 	}
 
-	public void mediumEntfernen(Medium medium) {
-		if (!new MedienVerwalter().hasExemplare(medium)) {
-			new MedienVerwalter().delete(medium);
-			//TODO Medium wurde entfernt
-		}
+	public void mediumEntfernen(int mediumID) {
+		if (!new MedienVerwalter().hasExemplare(mediumID))
+			new MedienVerwalter().delete(new Medium(mediumID));
 		else
-			LocalEnvironment.log("Medium " + medium.getId() + " konnte nicht gelöscht werden, " +
+			LocalEnvironment.log("Medium " + mediumID + " konnte nicht gelöscht werden, " +
 					"da noch Exemplare vorhanden sind.", this);
 	}
 
