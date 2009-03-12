@@ -21,14 +21,14 @@ public class BibliotheksVerwalter {
 	}
 
 	public void buchAusleihen(Exemplar exemplar, Ausleiher ausleiher) {
-		if (exemplar.getAusleiher() != 0)
+		if (exemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits ausgeliehen.", Message.ROT);
 		else {
 			exemplar.setAusleiher(ausleiher.getId());
-			exemplar.setRueckgabeDatum((Date) new GregorianCalendar().getTime());
-			//TODO neues Ausleihdatum += Verlängerungstage aus Konfiguration
-		new ExemplarVerwalter().update(exemplar);
-		LogVerwalter.add(new Log(1, exemplar.getAusleiher(), exemplar.getId()));
+			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()));
+			//TODO aktuelles Datum += Verlängerungstage aus Konfiguration
+			new ExemplarVerwalter().update(exemplar);
+			LogVerwalter.add(new Log(1, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
@@ -36,15 +36,10 @@ public class BibliotheksVerwalter {
 		int maximaleAnzahlVerlaengerungen = new Integer(new Konfiguration("verlaengerung").getWert());
 		// Ist die Anzahl maximalen Verlängerungen laut der Konfiguration überschritten?
 		if (exemplar.getVerlaengerung() < maximaleAnzahlVerlaengerungen) {
-			new ExemplarVerwalter().update(new Exemplar(
-					exemplar.getId(),
-					exemplar.getZustand(),
-					exemplar.getAusleiher(),
-					exemplar.getMedium(),
-					new java.sql.Date(new GregorianCalendar().getTimeInMillis()),
-					exemplar.getVerlaengerung() + 1, // Erhöht die aktuelle Ausleihzahl um eins
-					true)
-			);
+			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()));
+			//TODO altes Ausleihdatum += Verlängerungstage aus Konfiguration
+			exemplar.setVerlaengerung(exemplar.getVerlaengerung() + 1);
+			new ExemplarVerwalter().update(exemplar);
 
 			LogVerwalter.add(new Log(12, exemplar.getAusleiher(), exemplar.getId()));
 
@@ -63,16 +58,11 @@ public class BibliotheksVerwalter {
 		if (exemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits zurück gegeben.", Message.ROT);
 		else {
-		new ExemplarVerwalter().update(new Exemplar(
-				exemplar.getId(),
-				exemplar.getZustand(),
-				0,
-				exemplar.getMedium(),
-				null,
-				0,
-				true)
-		);
-		LogVerwalter.add(new Log(2, exemplar.getAusleiher(), exemplar.getId()));
+			exemplar.setAusleiher(0);
+			exemplar.setRueckgabeDatum(null);
+			exemplar.setVerlaengerung(0);
+			new ExemplarVerwalter().update(exemplar);
+			LogVerwalter.add(new Log(2, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
@@ -91,8 +81,8 @@ public class BibliotheksVerwalter {
 			new ExemplarVerwalter().delete(exemplar);
 			Log log = new Log(4, 0, exemplar.getId());
 			if (!new MedienVerwalter().hasExemplare(exemplar.getMedium())) {
-					mediumEntfernen(exemplar.getMedium());
-					log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
+				mediumEntfernen(exemplar.getMedium());
+				log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
 			}
 			LogVerwalter.add(log);
 		}
@@ -102,7 +92,6 @@ public class BibliotheksVerwalter {
 
 	public void mediumHinzufuegen(Medium medium) {
 		new MedienVerwalter().add(medium);
-		//TODO Log: Medium wurde hinzugefügt
 	}
 
 	public void mediumEntfernen(int mediumID) {
