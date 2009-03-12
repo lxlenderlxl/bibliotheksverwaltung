@@ -2,7 +2,7 @@ package bibliotheksverwaltung.model.logic;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
-import bibliotheksverwaltung.util.LocalLog;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class AnwenderVerwalter implements Verwaltbar {
 
@@ -21,7 +21,7 @@ public class AnwenderVerwalter implements Verwaltbar {
 					anwender.getHierarchieStufe(),
 					anwender.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class AnwenderVerwalter implements Verwaltbar {
 					anwender.getHierarchieStufe(),
 					false);
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 
 	}
@@ -58,7 +58,7 @@ public class AnwenderVerwalter implements Verwaltbar {
 					anwender.getHierarchieStufe(),
 					anwender.isAktiv());
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 

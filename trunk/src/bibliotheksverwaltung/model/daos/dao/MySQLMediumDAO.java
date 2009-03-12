@@ -4,13 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 
 public class MySQLMediumDAO implements MediumDAO
 {
-	private Connection connection = MySQLConnection.getConnection();
+	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
 	
 	public MySQLMediumDAO()
@@ -38,10 +38,10 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 
@@ -64,10 +64,10 @@ public class MySQLMediumDAO implements MediumDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return liste;
 	}
@@ -91,10 +91,10 @@ public class MySQLMediumDAO implements MediumDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return einMedium;
 	}
@@ -122,10 +122,10 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 	}
 
@@ -149,10 +149,10 @@ public class MySQLMediumDAO implements MediumDAO
 			}
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
-			MySQLConnection.closeStmt(statement);
+			LocalEnvironment.closeStmt(statement);
 		}
 		return anzahl;
 	}

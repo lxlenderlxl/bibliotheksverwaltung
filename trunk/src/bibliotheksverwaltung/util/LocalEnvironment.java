@@ -4,21 +4,57 @@
 package bibliotheksverwaltung.util;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.GregorianCalendar;
+
+import bibliotheksverwaltung.model.domain.Anwender;
 
 /**
  * @author Sven Blaurock 02.03.2009 23:50:10
  *
  */
-public class MySQLConnection
+public class LocalEnvironment
 {
 	private static Connection dieVerbindung = null;
+
+	private static Anwender anwender = null;
+
+	public static void log(String message) {
+		log(message, null);
+	}
+
+	/**
+	 *
+	 */
+	public static void log(String message, Object objekt) {
+
+		File file = new File("ErrorLog.txt"); // Präziser Pfad: this.getClass().getResource("/").toString().replace("file:/", "") +
+		if(!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println("ErrorLog-Datei konnte nicht geschrieben werden.");
+			}
+		}
+		PrintStream stream;
+		try {
+			stream = new PrintStream(new FileOutputStream(file, true));
+			stream.println(new GregorianCalendar().getTime() + "\t" + message + (objekt != null ? "\t in " + objekt.getClass() : ""));
+			stream.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("ErrorLog konnte nicht beschrieben werden.");
+		}
+	}
+
 
 	private static void refreshConnection()
 	{
@@ -34,15 +70,15 @@ public class MySQLConnection
 		}
 		catch (ClassNotFoundException e)
 		{
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		}
 		catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		}
 		catch (Exception e)
 		{
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		}
 	}
 
@@ -52,7 +88,7 @@ public class MySQLConnection
 	 */
 	public static Connection getConnection()
 	{
-		MySQLConnection.refreshConnection();
+		LocalEnvironment.refreshConnection();
 		return dieVerbindung;
 	}
 
@@ -63,7 +99,7 @@ public class MySQLConnection
 			preparedStatement.close();
 		} catch (SQLException e)
 		{
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		}
 	}
 
@@ -75,10 +111,18 @@ public class MySQLConnection
 		try {
 			return new BufferedReader(new FileReader("Connection.txt")).readLine().split(" ");
 		} catch (FileNotFoundException e) {
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		} catch (IOException e) {
-			LocalLog.add(e.getMessage());
+			LocalEnvironment.log(e.getMessage());
 		}
 		return null;
+	}
+
+	public static void setAnwender(Anwender derAnwender) {
+		anwender = derAnwender;
+	}
+
+	public static Anwender getAnwender() {
+		return anwender;
 	}
 }

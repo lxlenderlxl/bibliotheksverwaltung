@@ -2,8 +2,8 @@ package bibliotheksverwaltung.model.logic;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
 import bibliotheksverwaltung.model.domain.Konfiguration;
-import bibliotheksverwaltung.util.LocalLog;
-import bibliotheksverwaltung.util.MySQLConnection;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class KonfigurationsVerwalter implements Verwaltbar {
 
@@ -37,7 +37,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 					konfiguration.getWert()
 			);
 		} catch (java.lang.ClassCastException e) {
-			LocalLog.add(e.getMessage(), this);
+			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
 
