@@ -30,9 +30,9 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO anwender (anwendername, passwort, hierarchiestufe, aktiv) VALUES (?, ?, ?, ?)");
-			statement.setString(1, derName);
-			statement.setString(2, dasPasswort);
-			statement.setInt(3, dieHierarchieStufe);
+			LocalEnvironment.statementChecker(statement, 1, derName);
+			LocalEnvironment.statementChecker(statement, 2, dasPasswort);
+			LocalEnvironment.statementChecker(statement, 3, dieHierarchieStufe);
 			statement.setBoolean(4, aktiv);
 			statement.executeUpdate();
 		} catch (SQLException e)
@@ -105,11 +105,11 @@ public class MySQLAnwenderDAO implements AnwenderDAO
 		{
 			statement = connection.prepareStatement(
 					"UPDATE anwender SET anwendername = ?, passwort = ?, hierarchiestufe = ?, aktiv = ? WHERE anwendername = ?");
-			statement.setString(1, derName);
-			statement.setString(2, dasPasswort);
-			statement.setInt(3, dieHierarchieStufe);
+			LocalEnvironment.statementChecker(statement, 1, derName);
+			LocalEnvironment.statementChecker(statement, 2, dasPasswort);
+			LocalEnvironment.statementChecker(statement, 3, dieHierarchieStufe);
 			statement.setBoolean(4, aktiv);
-			statement.setString(4, derName);
+			LocalEnvironment.statementChecker(statement, 5, derName);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

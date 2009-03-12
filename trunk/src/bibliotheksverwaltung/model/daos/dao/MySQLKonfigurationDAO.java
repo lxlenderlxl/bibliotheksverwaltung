@@ -32,7 +32,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 		{
 			statement = connection.prepareStatement(
 			"INSERT INTO konfiguration (wert) VALUES (?)");
-			statement.setString(1, derWert);
+			LocalEnvironment.statementChecker(statement, 1, derWert);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -79,7 +79,7 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 		{
 			statement = connection.prepareStatement(
 			"SELECT * FROM konfiguration WHERE name = ?");
-			statement.setString(1, derName);
+			LocalEnvironment.statementChecker(statement, 1, derName);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -105,9 +105,9 @@ public class MySQLKonfigurationDAO implements KonfigurationDAO
 		{
 			statement = connection.prepareStatement(
 			"UPDATE konfiguration SET name = ?, wert = ? WHERE name = ?");
-			statement.setString(1, derName);
-			statement.setString(2, derWert);
-			statement.setString(2, derName);
+			LocalEnvironment.statementChecker(statement, 1, derName);
+			LocalEnvironment.statementChecker(statement, 2, derWert);
+			LocalEnvironment.statementChecker(statement, 3, derName);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

@@ -31,7 +31,7 @@ public class MySQLVorgangDAO implements VorgangDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO vorgang (inhalt) VALUES (?)");
-			statement.setString(1, derInhalt);
+			LocalEnvironment.statementChecker(statement, 1, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -79,7 +79,7 @@ public class MySQLVorgangDAO implements VorgangDAO
 		{
 			statement = connection.prepareStatement(
 			"SELECT * FROM vorgang WHERE vorgangsid = ?");
-			statement.setInt(1, dieVorgangsID);
+			LocalEnvironment.statementChecker(statement, 1, dieVorgangsID);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -105,8 +105,8 @@ public class MySQLVorgangDAO implements VorgangDAO
 		{
 			statement = connection.prepareStatement(
 			"UPDATE vorgang SET inhalt = ? WHERE vorgangsid = ?");
-			statement.setInt(1, dieVorgangsID);
-			statement.setString(2, derInhalt);
+			LocalEnvironment.statementChecker(statement, 1, dieVorgangsID);
+			LocalEnvironment.statementChecker(statement, 2, derInhalt);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

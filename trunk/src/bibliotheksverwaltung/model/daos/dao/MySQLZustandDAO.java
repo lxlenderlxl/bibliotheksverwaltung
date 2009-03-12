@@ -37,7 +37,7 @@ public class MySQLZustandDAO implements ZustandDAO
 		{
 			statement = connection.prepareStatement(
 					"INSERT INTO zustand (inhalt) VALUES (?)");
-			statement.setString(1, dieBezeichnung);
+			LocalEnvironment.statementChecker(statement, 1, dieBezeichnung);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
@@ -61,7 +61,7 @@ public class MySQLZustandDAO implements ZustandDAO
 		{
 			statement = connection.prepareStatement(
 					"SELECT * FROM zustand WHERE zustandsid = ?");
-			statement.setInt(1, dieId);
+			LocalEnvironment.statementChecker(statement, 1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -93,8 +93,8 @@ public class MySQLZustandDAO implements ZustandDAO
 		{
 			statement = connection.prepareStatement(
 					"UPDATE zustand SET bezeichnung = ? WHERE zustandsid = ?");
-			statement.setString(1, dieBezeichnung);
-			statement.setInt(2, dieId);
+			LocalEnvironment.statementChecker(statement, 1, dieBezeichnung);
+			LocalEnvironment.statementChecker(statement, 2, dieId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
