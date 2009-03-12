@@ -1,6 +1,9 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.util.GregorianCalendar;
+
 import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
+import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.util.LocalEnvironment;
 
@@ -8,16 +11,16 @@ import bibliotheksverwaltung.util.LocalEnvironment;
 public class LogVerwalter {
 
 	private static MySQLLogDAO logDAO = new MySQLLogDAO();
+	private static Anwender anwender;
 
 	public static void add(Log log) {
-		//TODO Aktuellen Benutzer holen, Zeitstempel hinzufügen
 		try {
 			logDAO.add(
-					log.getVorgang().getId(),
-					log.getAusleiher().getId(),
-					log.getAnwender().getAnwenderName(),
-					log.getExemplar().getId(),
-					log.getLogDatum(),
+					log.getVorgang(),
+					log.getAusleiher(),
+					anwender.getAnwenderName(),
+					log.getExemplar(),
+					new GregorianCalendar().getTime(),
 					log.getKommentar()
 			);
 		} catch (java.lang.ClassCastException e) {
