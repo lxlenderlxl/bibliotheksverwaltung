@@ -11,10 +11,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.GregorianCalendar;
+
+import com.mysql.jdbc.PreparedStatement;
 
 import bibliotheksverwaltung.model.domain.Anwender;
 
@@ -54,7 +57,30 @@ public class LocalEnvironment
 			System.out.println("ErrorLog konnte nicht beschrieben werden.");
 		}
 	}
-
+	
+	public static void statementChecker(java.sql.PreparedStatement statement, int dieStelle, int derWert) throws SQLException
+	{
+		if (derWert == 0)
+			statement.setNull(dieStelle, java.sql.Types.NULL);
+		else
+			statement.setInt(dieStelle, derWert);
+	}
+	
+	public static void statementChecker(java.sql.PreparedStatement dasStatement, int dieStelle, String derWert) throws SQLException
+	{
+		if (derWert == null)
+			dasStatement.setNull(dieStelle, java.sql.Types.NULL);
+		else
+			dasStatement.setString(dieStelle, derWert);
+	}
+	
+	public static void statementChecker(java.sql.PreparedStatement dasStatement, int dieStelle, Date derWert) throws SQLException
+	{
+		if (derWert == null)
+			dasStatement.setNull(dieStelle, java.sql.Types.NULL);
+		else
+			dasStatement.setDate(dieStelle, derWert);
+	}
 
 	private static void refreshConnection()
 	{

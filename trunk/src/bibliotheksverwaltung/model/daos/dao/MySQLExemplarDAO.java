@@ -35,15 +35,16 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		try
 		{
 			statement = connection.prepareStatement("INSERT INTO exemplar (zustandsid, ausleiherID, medienid, rueckgabedatum, verlaengerung, aktiv) VALUES (?, ?, ?, ?, ?, ?)");
-			statement.setInt(1, zustandsid);
-			statement.setInt(2, ausleiherID);
-			statement.setInt(3, medienid);
-			statement.setDate(4, rueckgabedatum);
-			statement.setInt(5, verlaengerung);
+			LocalEnvironment.statementChecker(statement, 1, zustandsid);
+			LocalEnvironment.statementChecker(statement, 2, ausleiherID);
+			LocalEnvironment.statementChecker(statement, 3, medienid);
+			LocalEnvironment.statementChecker(statement, 4, rueckgabedatum);
+			LocalEnvironment.statementChecker(statement, 5, verlaengerung);
 			statement.setBoolean(6, aktiv);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{
+			System.out.println(e.getMessage());
 			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
@@ -113,13 +114,13 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		{
 			statement = connection.prepareStatement(
 					"UPDATE exemplar SET zustandsid = ?, ausleiherID = ?, medienid = ?, rueckgabedatum = ?, verlaengerung = ?, aktiv = ? WHERE exemplarid = ?");
-			statement.setInt(1, zustandsid);
-			statement.setInt(2, ausleiherID);
-			statement.setInt(3, medienid);
-			statement.setDate(4, rueckgabedatum);
-			statement.setInt(5, verlaengerung);
+			LocalEnvironment.statementChecker(statement, 1, zustandsid);
+			LocalEnvironment.statementChecker(statement, 2, ausleiherID);
+			LocalEnvironment.statementChecker(statement, 3, medienid);
+			LocalEnvironment.statementChecker(statement, 4, rueckgabedatum);
+			LocalEnvironment.statementChecker(statement, 5, verlaengerung);
 			statement.setBoolean(6, aktiv);
-			statement.setInt(7, dieId);
+			LocalEnvironment.statementChecker(statement, 7, dieId);
 			statement.executeUpdate();
 		} catch (SQLException e)
 		{

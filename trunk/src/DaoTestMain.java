@@ -1,10 +1,13 @@
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.TreeMap;
 
 
 import bibliotheksverwaltung.model.daos.dao.AnwenderDAO;
+import bibliotheksverwaltung.model.daos.dao.ExemplarDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
@@ -13,6 +16,7 @@ import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
+import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -81,11 +85,28 @@ public class DaoTestMain
 			System.out.println("Vorname      : " + derAusleiher.getVorName());
 			System.out.println("Nachname     : " + derAusleiher.getNachName());
 			System.out.println("---------------------------------------------");
-		}*/
+		}
+
+		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
+		verwalter.buchHinzufuegen(new Exemplar(0, 0, 0, null, 0, true));
+		System.out.println("Buch erfolgreich hinzugefügt!");*/
+
+		ExemplarDAO nnn = new MySQLExemplarDAO();
+		Exemplar test = nnn.get(9);
+		
+		System.out.println("Ausleiherid  : " + test.getAusleiher());
+		System.out.println("Exemplarid   : " + test.getId());
+		System.out.println("Mediumid     : " + test.getMedium());
+		System.out.println("Verlängerung : " + test.getVerlaengerung());
+		System.out.println("Zustandsid   : " + test.getZustand());
+		System.out.println("---------------------------------------------");
 		
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
-		verwalter.buchHinzufuegen(new Exemplar(1, 7));
-		System.out.println("Buch erfolgreich hinzugefügt (MAIN)!");
+		verwalter.buchHinzufuegen(test);
+		System.out.println("Buch erfolgreich hinzugefügt!");		
+
+
+
 	}
 
 }
