@@ -2,6 +2,8 @@ package bibliotheksverwaltung.model.domain;
 
 import java.sql.Date;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
+
 public class Exemplar
 {
 	private int id = 0;
@@ -37,7 +39,7 @@ public class Exemplar
 	 *
 	 */
 	public Exemplar(int id) {
-		Exemplar exemplar = new Exemplar(id);
+		Exemplar exemplar = new MySQLExemplarDAO().get(id);
 		this.id = exemplar.id;
 		this.zustandsId = exemplar.zustandsId;
 		this.ausleiherID = exemplar.ausleiherID;
