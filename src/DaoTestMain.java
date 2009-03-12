@@ -32,7 +32,7 @@ public class DaoTestMain
 	 */
 	public static void main(String[] args)
 	{
-
+		//TODO Main nur zum Testzweck so voll
 		//		new MedienVerwalter().add(new Medium(200, "testTitel", "testVorname", "testNachname", "testVerlag",
 		//				2009, "testISBN", true));
 		//		new MedienVerwalter().update(new Medium(197, "testTitel2", "testVorname2", "testNachname2", "testVerlag",
@@ -89,7 +89,7 @@ public class DaoTestMain
 
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchHinzufuegen(new Exemplar(0, 0, 0, null, 0, true));
-		System.out.println("Buch erfolgreich hinzugefügt!");*/
+		System.out.println("Buch erfolgreich hinzugefügt!");
 
 		ExemplarDAO nnn = new MySQLExemplarDAO();
 		Exemplar test = nnn.get(9);
@@ -103,7 +103,11 @@ public class DaoTestMain
 		
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchHinzufuegen(test);
-		System.out.println("Buch erfolgreich hinzugefügt!");		
+		System.out.println("Buch erfolgreich hinzugefügt!");		*/
+		
+		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
+		verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
+		System.out.println("Buch erfolgreich ausgeliehen!");
 
 
 
