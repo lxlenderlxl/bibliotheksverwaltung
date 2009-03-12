@@ -15,15 +15,26 @@ public class SchlagwortVerwalter implements Verwaltbar {
 
 	private MySQLSchlagwortDAO schlagwortDAO = new MySQLSchlagwortDAO();
 
-
-	public void connect(Medium dasMedium, Schlagwort dasSchlagwort) {
-		//TODO Wenn BeinhaltetDAO fertig --> .add()
+	/**
+	 * Weist genau einem Medium genau ein Schlagwort hinzu (Zugriff auf die Datenbanktabelle "beinhaltet"
+	 * @param dasSchlagwort Das Schlagwort
+	 * @param dasMedium Das Medium
+	 */
+	public void connect(Schlagwort dasSchlagwort, Medium dasMedium) {
+		//TODO evtl. Prüfung ob Objekte == null ??
 		MySQLBeinhaltetDAO beinhaltet = new MySQLBeinhaltetDAO();
-		
+		beinhaltet.add(dasSchlagwort.getId(), dasMedium.getId());		
 	}
-
-	public void unconnect(int mediumID, int schlagwortID) {
-		//TODO Wenn BeinhaltetDAO fertig --> .delete()
+	
+	/**
+	 * Entfernt genau ein Schlagwort aus genau einem Medium (Zugriff auf die Datenbanktabelle "beinhaltet"
+	 * @param dasSchlagwort Das Schlagwort
+	 * @param dasMedium Das Medium
+	 */
+	public void unconnect(Schlagwort dasSchlagwort, Medium dasMedium) {
+		//TODO evtl. Prüfung ob Objekte == null ??
+		MySQLBeinhaltetDAO beinhaltet = new MySQLBeinhaltetDAO();
+		beinhaltet.delete(dasSchlagwort.getId(), dasMedium.getId());
 	}
 
 	/**
