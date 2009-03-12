@@ -21,7 +21,7 @@ public class BibliotheksVerwalter {
 	}
 
 	public void buchAusleihen(Exemplar exemplar, Ausleiher ausleiher) {
-		if (exemplar.getAusleiher() == 0)
+		if (exemplar.getAusleiher() != 0)
 			Message.raise("Dieses Exemplar ist bereits ausgeliehen.", Message.ROT);
 		else {
 			exemplar.setAusleiher(ausleiher.getId());
