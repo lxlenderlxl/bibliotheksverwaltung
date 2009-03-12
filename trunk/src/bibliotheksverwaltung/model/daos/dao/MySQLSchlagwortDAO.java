@@ -116,4 +116,25 @@ public class MySQLSchlagwortDAO implements SchlagwortDAO
 			MySQLConnection.closeStmt(statement);
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.SchlagwortDAO#delete(int)
+	 */
+	@Override
+	public void delete(int dieTagID)
+	{
+		try
+		{
+			statement = connection.prepareStatement(
+			"DELETE FROM schlagwort WHERE tagid = ?");
+			statement.setInt(1, dieTagID);
+			statement.executeUpdate();
+		} catch (SQLException e)
+		{
+			LocalLog.add(e.getMessage(), this);
+		} finally
+		{
+			MySQLConnection.closeStmt(statement);
+		}
+	}
 }
