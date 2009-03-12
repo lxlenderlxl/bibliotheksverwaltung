@@ -7,7 +7,7 @@ import bibliotheksverwaltung.util.MySQLConnection;
 
 public class KonfigurationsVerwalter implements Verwaltbar {
 
-	private MySQLKonfigurationDAO konfigurationsDAO = MySQLKonfigurationDAO();
+	private MySQLKonfigurationDAO konfigurationsDAO = new MySQLKonfigurationDAO();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)

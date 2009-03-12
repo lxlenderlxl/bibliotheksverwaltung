@@ -42,7 +42,7 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	{
 		try {
 			Schlagwort schlagwort = (Schlagwort) objekt;
-			schlagwortDAO.delete(schlagwort.getBezeichnung());
+			schlagwortDAO.delete(schlagwort.getId());
 		} catch (java.lang.ClassCastException e) {
 			LocalLog.add(e.getMessage(), this);
 		}
