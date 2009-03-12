@@ -22,7 +22,7 @@ public class Exemplar
 		this.verlaengerung = dieVerlaengerung;
 		this.aktiv = aktiv;
 	}
-	
+
 	public Exemplar(int derZustand, int derAusleiher, int dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
 	{
 		this.zustandsId = derZustand;
@@ -53,7 +53,7 @@ public class Exemplar
 		this.mediumId = dasMedium;
 		this.aktiv = true;
 	}
-	
+
 	public Exemplar(Zustand derZustand, Medium dasMedium)
 	{
 		this.zustandsId = derZustand.getId();
@@ -103,13 +103,7 @@ public class Exemplar
 	{
 		this.ausleiherID = ausleiher;
 	}
-	/**
-	 * @param ausleiher the ausleiher to set
-	 */
-	public void setAusleiher(Ausleiher ausleiher)
-	{
-		this.ausleiherID = ausleiher.getId();
-	}
+
 	/**
 	 * @return the medium
 	 */

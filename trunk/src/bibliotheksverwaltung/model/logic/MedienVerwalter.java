@@ -3,7 +3,6 @@ package bibliotheksverwaltung.model.logic;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MedienVerwalter implements Verwaltbar {
 
@@ -75,11 +74,11 @@ public class MedienVerwalter implements Verwaltbar {
 	}
 
 	/**
-	 * @param medium
+	 * @param id
 	 * @return
 	 */
-	public boolean hasExemplare(Medium medium) {
-		 return (mediumDAO.getAnzahlExemplare(medium.getId()) > 0);
+	public boolean hasExemplare(int id) {
+		 return (mediumDAO.getAnzahlExemplare(id) > 0);
 	}
 
 	public int getAnzahlExemplare(Medium medium) {
