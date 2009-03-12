@@ -37,6 +37,17 @@ public class Medium
 		isbn = dieISBN;
 		this.aktiv = aktiv;
 	}
+	
+	public Medium(String derTitel, String derVorname, String derNachname, String derVerlag, int dasJahr, String dieISBN)
+	{
+		titel = derTitel;
+		autorVorname = derVorname;
+		autorNachname = derNachname;
+		verlag = derVerlag;
+		erscheinungsJahr = dasJahr;
+		isbn = dieISBN;
+		this.aktiv = true;
+	}
 
 	public int getId()
 	{

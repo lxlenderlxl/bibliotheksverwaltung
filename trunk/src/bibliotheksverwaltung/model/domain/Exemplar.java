@@ -37,6 +37,19 @@ public class Exemplar
 		this.aktiv = exemplar.aktiv;
 	}
 
+	public Exemplar(int derZustand, int dasMedium)
+	{
+		this.zustandsId = derZustand;
+		this.mediumId = dasMedium;
+		this.aktiv = true;
+	}
+	
+	public Exemplar(Zustand derZustand, Medium dasMedium)
+	{
+		this.zustandsId = derZustand.getId();
+		this.mediumId = dasMedium.getId();
+		this.aktiv = true;
+	}
 
 	/**
 	 * @return the id
@@ -69,11 +82,9 @@ public class Exemplar
 	/**
 	 * @return the ausleiher
 	 */
-	public Ausleiher getAusleiher()
+	public int getAusleiher()
 	{
-		if (ausleiherID == 0)
-			return null;
-		return new Ausleiher(ausleiherID);
+		return ausleiherID;
 	}
 	/**
 	 * @param ausleiher the ausleiher to set
@@ -81,6 +92,13 @@ public class Exemplar
 	public void setAusleiher(int ausleiher)
 	{
 		this.ausleiherID = ausleiher;
+	}
+	/**
+	 * @param ausleiher the ausleiher to set
+	 */
+	public void setAusleiher(Ausleiher ausleiher)
+	{
+		this.ausleiherID = ausleiher.getId();
 	}
 	/**
 	 * @return the medium

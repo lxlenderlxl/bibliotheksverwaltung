@@ -12,6 +12,7 @@ import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -42,7 +43,7 @@ public class DaoTestMain
 		//System.out.println(test.getId());
 		//System.out.println(new Ausleiher(1).getNachName());
 
-		//Benutzereingabe
+		/*//Benutzereingabe
 		String[] suchworte = new String[3];
 		suchworte[0] = "baltisch";
 		suchworte[1] = "michael";
@@ -72,7 +73,7 @@ public class DaoTestMain
 			System.out.println("---------------------------------------------");
 		}
 
-		/*for (int i = 0; i < liste.size(); i++)
+		for (int i = 0; i < liste.size(); i++)
 		{
 			Ausleiher derAusleiher = new Ausleiher(liste.get(i).getId());
 			System.out.println("AusleiherID  : " + liste.get(i).getId());
@@ -81,6 +82,10 @@ public class DaoTestMain
 			System.out.println("Nachname     : " + derAusleiher.getNachName());
 			System.out.println("---------------------------------------------");
 		}*/
+		
+		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
+		verwalter.buchHinzufuegen(new Exemplar(1, 7));
+		System.out.println("Buch erfolgreich hinzugefügt (MAIN)!");
 	}
 
 }
