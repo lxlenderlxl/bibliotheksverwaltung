@@ -108,9 +108,6 @@ public class DaoTestMain
 		//BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		//verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
 		//System.out.println("Buch erfolgreich ausgeliehen!");
-
-
-
 	}
 
 }
