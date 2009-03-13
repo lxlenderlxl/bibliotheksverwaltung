@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.util.LocalEnvironment;

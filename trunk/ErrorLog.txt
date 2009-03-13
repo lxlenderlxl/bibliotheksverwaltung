@@ -10,3 +10,13 @@ Last packet sent to the server was 0 ms ago.
 Fri Mar 13 14:47:05 CET 2009	Communications link failure
 
 Last packet sent to the server was 0 ms ago.
+Fri Mar 13 15:40:06 CET 2009	java.util.Date cannot be cast to java.sql.Date
+Fri Mar 13 15:50:55 CET 2009	java.util.Date cannot be cast to java.sql.Date
+Fri Mar 13 16:35:50 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:36:00 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:38:33 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:38:35 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:42:10 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:46:12 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:46:27 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO
+Fri Mar 13 16:47:46 CET 2009	Cannot add or update a child row: a foreign key constraint fails (`bibliotheksverwaltung/log`, CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`VORGANGSID`) REFERENCES `vorgang` (`VORGANGSID`))	 in class bibliotheksverwaltung.model.daos.dao.MySQLLogDAO

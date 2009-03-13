@@ -65,7 +65,8 @@ public class ExemplarVerwalter implements Verwaltbar {
 		try
 		{
 			Exemplar exemplar = (Exemplar) objekt;
-			exemplarDAO.add(
+			exemplarDAO.update(
+					exemplar.getId(),
 					exemplar.getZustand(),
 					exemplar.getAusleiher(),
 					exemplar.getMedium(),

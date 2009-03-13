@@ -20,6 +20,7 @@ import java.util.GregorianCalendar;
 import com.mysql.jdbc.PreparedStatement;
 
 import bibliotheksverwaltung.model.domain.Anwender;
+import bibliotheksverwaltung.model.domain.Konfiguration;
 
 /**
  * @author Sven Blaurock 02.03.2009 23:50:10
@@ -29,7 +30,26 @@ public class LocalEnvironment
 {
 	private static Connection dieVerbindung = null;
 
-	private static Anwender anwender = null;
+	private static Anwender anwender = new Anwender("test");
+	
+	private static Konfiguration maximaleVerlaengerung = new Konfiguration("verlaengerung");
+	private static Konfiguration ausleihdauer = new Konfiguration("ausleihdauer");
+
+	/**
+	 * @return the maximaleVerlaengerung
+	 */
+	public static Konfiguration getMaximaleVerlaengerung()
+	{
+		return maximaleVerlaengerung;
+	}
+
+	/**
+	 * @return the ausleihdauer
+	 */
+	public static Konfiguration getAusleihdauer()
+	{
+		return ausleihdauer;
+	}
 
 	public static void log(String message) {
 		log(message, null);

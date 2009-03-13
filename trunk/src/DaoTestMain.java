@@ -47,7 +47,7 @@ public class DaoTestMain
 		//System.out.println(test.getId());
 		//System.out.println(new Ausleiher(1).getNachName());
 
-		//Benutzereingabe
+		/*//Benutzereingabe
 		String[] suchworte = new String[3];
 		suchworte[0] = "e";
 		suchworte[1] = "a";
@@ -75,7 +75,7 @@ public class DaoTestMain
 			System.out.println("Titel     : " + dasMedium.getTitel());
 			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
 			System.out.println("---------------------------------------------");
-		}/*
+		}
 
 		for (int i = 0; i < liste.size(); i++)
 		{
@@ -105,9 +105,10 @@ public class DaoTestMain
 		verwalter.buchHinzufuegen(test);
 		System.out.println("Buch erfolgreich hinzugefügt!");		*/
 		
-		//BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
-		//verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
-		//System.out.println("Buch erfolgreich ausgeliehen!");
+		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
+		verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
+		//verwalter.buchZurueckgeben(new Exemplar(7));
+		//verwalter.buchVerlaengern(new Exemplar(7));
 	}
 
 }
