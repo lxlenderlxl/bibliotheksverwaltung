@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.domain.Vorgang;
@@ -18,33 +17,31 @@ public class BibliotheksVerwalter {
 	 *
 	 */
 	public BibliotheksVerwalter() {
-		// TODO Braucht die Bibliothek einen Konstruktor? NEIN
+	
 	}
 
 	public void buchAusleihen(Exemplar exemplar, Ausleiher ausleiher) {
 		if (exemplar.getAusleiher() != 0)
-			Message.raise("Dieses Exemplar ist bereits ausgeliehen.", Message.ROT);
+			Message.raise("Das Buch \"" + new Medium(exemplar.getMedium()).getTitel() + "\" ist bereits an \"" + new Ausleiher(exemplar.getAusleiher()).getName() + "\" ausgeliehen.", Message.ROT);
 		else {
 			exemplar.setAusleiher(ausleiher.getId());
-			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()));
-			//TODO aktuelles Datum += Verlängerungstage aus Konfiguration
+			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
 			new ExemplarVerwalter().update(exemplar);
 			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_AUSGELIEHEN, exemplar.getAusleiher(), exemplar.getId()));
+			Message.raise("Das Buch \"" + new Medium(exemplar.getMedium()).getTitel() + "\" wurde erfolgreich an \"" + new Ausleiher(exemplar.getAusleiher()).getName() + "\" ausgeliehen", Message.GRUEN);
 		}
 	}
 
 	public void buchVerlaengern(Exemplar exemplar) {
-		int maximaleAnzahlVerlaengerungen = new Integer(new Konfiguration("verlaengerung").getWert());
 		// Ist die Anzahl maximalen Verlängerungen laut der Konfiguration überschritten?
-		if (exemplar.getVerlaengerung() < maximaleAnzahlVerlaengerungen) {
-			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()));
-			//TODO altes Ausleihdatum += Verlängerungstage aus Konfiguration
+		if (exemplar.getVerlaengerung() < Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert())) {
+			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
 			exemplar.setVerlaengerung(exemplar.getVerlaengerung() + 1);
 			new ExemplarVerwalter().update(exemplar);
 
 			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, exemplar.getAusleiher(), exemplar.getId()));
 
-			if (exemplar.getVerlaengerung() == maximaleAnzahlVerlaengerungen - 1)
+			if (exemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()) - 1)
 				Message.raise("Ausleihung wurde verlängert.\n" +
 						"Achtung: Letzte Mögliche Verlängerung.", Message.GELB);
 			else
@@ -59,11 +56,11 @@ public class BibliotheksVerwalter {
 		if (exemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits zurück gegeben.", Message.ROT);
 		else {
+			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, exemplar.getAusleiher(), exemplar.getId()));
 			exemplar.setAusleiher(0);
 			exemplar.setRueckgabeDatum(null);
 			exemplar.setVerlaengerung(0);
 			new ExemplarVerwalter().update(exemplar);
-			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
