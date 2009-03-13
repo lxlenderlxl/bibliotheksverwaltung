@@ -47,11 +47,11 @@ public class DaoTestMain
 		//System.out.println(test.getId());
 		//System.out.println(new Ausleiher(1).getNachName());
 
-		/*//Benutzereingabe
+		//Benutzereingabe
 		String[] suchworte = new String[3];
-		suchworte[0] = "baltisch";
-		suchworte[1] = "michael";
-		suchworte[2] = "litauen";
+		suchworte[0] = "e";
+		suchworte[1] = "a";
+		suchworte[2] = "s";
 
 		//Benutzereingabe
 		String[] suchkat = new String[3];
@@ -75,7 +75,7 @@ public class DaoTestMain
 			System.out.println("Titel     : " + dasMedium.getTitel());
 			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
 			System.out.println("---------------------------------------------");
-		}
+		}/*
 
 		for (int i = 0; i < liste.size(); i++)
 		{
