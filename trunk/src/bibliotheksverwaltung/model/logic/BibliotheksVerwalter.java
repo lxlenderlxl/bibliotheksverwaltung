@@ -8,6 +8,7 @@ import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.domain.Vorgang;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
 
@@ -28,7 +29,7 @@ public class BibliotheksVerwalter {
 			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()));
 			//TODO aktuelles Datum += Verlängerungstage aus Konfiguration
 			new ExemplarVerwalter().update(exemplar);
-			LogVerwalter.add(new Log(1, exemplar.getAusleiher(), exemplar.getId()));
+			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_AUSGELIEHEN, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
@@ -41,7 +42,7 @@ public class BibliotheksVerwalter {
 			exemplar.setVerlaengerung(exemplar.getVerlaengerung() + 1);
 			new ExemplarVerwalter().update(exemplar);
 
-			LogVerwalter.add(new Log(12, exemplar.getAusleiher(), exemplar.getId()));
+			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, exemplar.getAusleiher(), exemplar.getId()));
 
 			if (exemplar.getVerlaengerung() == maximaleAnzahlVerlaengerungen - 1)
 				Message.raise("Ausleihung wurde verlängert.\n" +
@@ -62,24 +63,24 @@ public class BibliotheksVerwalter {
 			exemplar.setRueckgabeDatum(null);
 			exemplar.setVerlaengerung(0);
 			new ExemplarVerwalter().update(exemplar);
-			LogVerwalter.add(new Log(2, exemplar.getAusleiher(), exemplar.getId()));
+			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, exemplar.getAusleiher(), exemplar.getId()));
 		}
 	}
 
 	public void buchBearbeiten (Exemplar exemplar) {
 		new ExemplarVerwalter().update(exemplar);
-		LogVerwalter.add(new Log(10, 0, exemplar.getId()));
+		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_BEARBEITET, 0, exemplar.getId()));
 	}
 
 	public void buchHinzufuegen(Exemplar exemplar) {
 		new ExemplarVerwalter().add(exemplar);
-		LogVerwalter.add(new Log(3, 0, exemplar.getId()));
+		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_HINZUGEFUEGT, 0, exemplar.getId()));
 	}
 
 	public void buchEntfernen(Exemplar exemplar) {
 		if (exemplar.getAusleiher() != 0) {
 			new ExemplarVerwalter().delete(exemplar);
-			Log log = new Log(4, 0, exemplar.getId());
+			Log log = new Log(Vorgang.EXEMPLAR_ENTFERNT, 0, exemplar.getId());
 			if (!new MedienVerwalter().hasExemplare(exemplar.getMedium())) {
 				mediumEntfernen(exemplar.getMedium());
 				log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
