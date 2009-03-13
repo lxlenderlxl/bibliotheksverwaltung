@@ -6,6 +6,18 @@ public class Vorgang {
 
 	private int id;
 	private String inhalt;
+	
+	public static final int EXEMPLAR_AUSGELIEHEN = 1;
+	public static final int EXEMPLAR_ZUREUCKGEGEBEN = 2;
+	public static final int EXEMPLAR_HINZUGEFUEGT = 3;
+	public static final int EXEMPLAR_ENTFERNT = 4;
+	public static final int PERSON_HINZUGEFUEGT = 5;
+	public static final int PERSON_ENTFERNT = 6;
+	public static final int PERSON_ABGEMAHNT = 7;
+	public static final int BENUTZER_HINZUGEFUEGT = 8;
+	public static final int BENUTZER_GELOESCHT = 9;
+	public static final int EXEMPLAR_BEARBEITET = 10;
+	public static final int AUSLEIHE_VERLAENGERT = 11;
 
 	/**
 	 *
