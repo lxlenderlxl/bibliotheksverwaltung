@@ -1,0 +1,12 @@
+Fri Mar 13 14:43:55 CET 2009	Communications link failure
+
+Last packet sent to the server was 0 ms ago.
+Fri Mar 13 14:43:56 CET 2009	Communications link failure
+
+Last packet sent to the server was 0 ms ago.
+Fri Mar 13 14:47:04 CET 2009	Communications link failure
+
+Last packet sent to the server was 0 ms ago.
+Fri Mar 13 14:47:05 CET 2009	Communications link failure
+
+Last packet sent to the server was 0 ms ago.

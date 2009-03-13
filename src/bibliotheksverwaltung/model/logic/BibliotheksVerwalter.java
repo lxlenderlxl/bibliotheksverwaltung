@@ -17,7 +17,7 @@ public class BibliotheksVerwalter {
 	 *
 	 */
 	public BibliotheksVerwalter() {
-		// TODO Braucht die Bibliothek einen Konstruktor?
+		// TODO Braucht die Bibliothek einen Konstruktor? NEIN
 	}
 
 	public void buchAusleihen(Exemplar exemplar, Ausleiher ausleiher) {
