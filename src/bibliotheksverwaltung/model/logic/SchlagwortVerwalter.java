@@ -17,7 +17,6 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	 * @param dasMedium Das Medium
 	 */
 	public void connect(Schlagwort dasSchlagwort, Medium dasMedium) {
-		//TODO evtl. Prüfung ob Objekte == null ??
 		MySQLBeinhaltetDAO beinhaltet = new MySQLBeinhaltetDAO();
 		beinhaltet.add(dasSchlagwort.getId(), dasMedium.getId());
 	}
@@ -28,7 +27,6 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	 * @param dasMedium Das Medium
 	 */
 	public void unconnect(Schlagwort dasSchlagwort, Medium dasMedium) {
-		//TODO evtl. Prüfung ob Objekte == null ??
 		MySQLBeinhaltetDAO beinhaltet = new MySQLBeinhaltetDAO();
 		beinhaltet.delete(dasSchlagwort.getId(), dasMedium.getId());
 	}

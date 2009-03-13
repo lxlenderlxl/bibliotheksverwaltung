@@ -11,16 +11,15 @@ import bibliotheksverwaltung.util.LocalEnvironment;
 public class LogVerwalter {
 
 	private static MySQLLogDAO logDAO = new MySQLLogDAO();
-	private static Anwender anwender;
 
 	public static void add(Log log) {
 		try {
 			logDAO.add(
 					log.getVorgang(),
 					log.getAusleiher(),
-					anwender.getAnwenderName(),
+					LocalEnvironment.getAnwender().getAnwenderName(),
 					log.getExemplar(),
-					(Date) new GregorianCalendar().getTime(),
+					new Date(new GregorianCalendar().getTimeInMillis()),
 					log.getKommentar()
 			);
 		} catch (java.lang.ClassCastException e) {

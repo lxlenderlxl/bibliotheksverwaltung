@@ -125,6 +125,14 @@ public class Ausleiher
 	{
 		return plz;
 	}
+	
+	/**
+	 * @return the plz
+	 */
+	public String getName()
+	{
+		return this.vorName + " " + this.nachName;
+	}
 
 	/**
 	 * @param plz the plz to set
