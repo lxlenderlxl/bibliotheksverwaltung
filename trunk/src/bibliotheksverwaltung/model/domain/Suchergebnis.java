@@ -1,14 +1,14 @@
 /**
  * 
  */
-package bibliotheksverwaltung.util;
+package bibliotheksverwaltung.model.domain;
 
 import java.text.DecimalFormat;
 
 public class Suchergebnis implements Comparable<Suchergebnis>
 {
 	private int id = 0;
-	private int frequenz = 0;
+	private int bewertung = 0;
 	
 	public Suchergebnis()
 	{
@@ -18,7 +18,13 @@ public class Suchergebnis implements Comparable<Suchergebnis>
 	public Suchergebnis(int dieId)
 	{
 		id = dieId;
-		frequenz = 1;
+		bewertung = 1;
+	}
+	
+	public Suchergebnis(int dieId, int derWert)
+	{
+		id = dieId;
+		bewertung = derWert;
 	}
 	
 	public int getId()
@@ -26,21 +32,14 @@ public class Suchergebnis implements Comparable<Suchergebnis>
 		return id;
 	}
 	
-	public int getFrequenz()
+	public int getBewertung()
 	{
-		return frequenz;
+		return bewertung;
 	}
 	
-	public String getProzFrequenz(String[] alleSuchworte)
+	public void erhoehe(int derWert)
 	{
-		DecimalFormat format = new DecimalFormat("##.##%");
-		double rueck = new Double(alleSuchworte.length)/new Double(frequenz);
-		return format.format(rueck);
-	}
-	
-	public void erhoehe()
-	{
-		frequenz += 1;
+		bewertung += derWert;
 	}
 
 	/* (non-Javadoc)
@@ -49,7 +48,7 @@ public class Suchergebnis implements Comparable<Suchergebnis>
 	@Override
 	public int compareTo(Suchergebnis o)
 	{
-		return o.getFrequenz() -this.frequenz;
+		return o.getBewertung() - this.bewertung;
 	}
 	
 	public boolean equals(Object obj) {

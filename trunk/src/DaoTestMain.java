@@ -11,18 +11,19 @@ import bibliotheksverwaltung.model.daos.dao.ExemplarDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLSuchDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.domain.Suchergebnis;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
+import bibliotheksverwaltung.model.logic.SuchVerwalter;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.MySQLSuchExperte;
 import bibliotheksverwaltung.util.MySQLSuche;
-import bibliotheksverwaltung.util.Suchergebnis;
 
 public class DaoTestMain
 {
@@ -46,18 +47,21 @@ public class DaoTestMain
 
 		//System.out.println(test.getId());
 		//System.out.println(new Ausleiher(1).getNachName());
-
-		/*//Benutzereingabe
+/*
+		//Benutzereingabe
 		String[] suchworte = new String[3];
-		suchworte[0] = "e";
-		suchworte[1] = "a";
-		suchworte[2] = "s";
+		suchworte[0] = "schatten";
+		suchworte[1] = "andrzej";
+		suchworte[2] = "1953";
 
 		//Benutzereingabe
-		String[] suchkat = new String[3];
+		String[] suchkat = new String[6];
 		suchkat[0] = "titel";
 		suchkat[1] = "autorvorname";
 		suchkat[2] = "autornachname";
+		suchkat[3] = "verlag";
+		suchkat[4] = "erscheinungsjahr";
+		suchkat[5] = "isbn";
 
 		//Suchen
 		//MySQLSuche suche = new MySQLSuche("medium", suchworte, suchkat);
@@ -71,7 +75,7 @@ public class DaoTestMain
 		{
 			Medium dasMedium = new Medium(liste.get(i).getId());
 			System.out.println("MEDIENID  : " + liste.get(i).getId());
-			System.out.println("Häufgikeit: " + liste.get(i).getFrequenz());
+			System.out.println("Häufgikeit: " + liste.get(i).getBewertung());
 			System.out.println("Titel     : " + dasMedium.getTitel());
 			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
 			System.out.println("---------------------------------------------");
@@ -103,12 +107,15 @@ public class DaoTestMain
 		
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchHinzufuegen(test);
-		System.out.println("Buch erfolgreich hinzugefügt!");		*/
+		System.out.println("Buch erfolgreich hinzugefügt!");		
 		
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
 		//verwalter.buchZurueckgeben(new Exemplar(7));
-		//verwalter.buchVerlaengern(new Exemplar(7));
+		//verwalter.buchVerlaengern(new Exemplar(7));*/
+		
+		SuchVerwalter verwalter = new SuchVerwalter();
+		verwalter.sucheMedium("Dies ist ein Testsuchstring der gesplittet werden soll");
 	}
 
 }
