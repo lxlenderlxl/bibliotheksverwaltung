@@ -40,6 +40,7 @@ public class MySQLSuchDAO
 		priKey = new Konfiguration(this.suchTyp + "_priKey");
 	}
 
+	//TODO Schlagworte mit einbeziehen
 	private void find()
 	{
 		String sqlStmt = null;
