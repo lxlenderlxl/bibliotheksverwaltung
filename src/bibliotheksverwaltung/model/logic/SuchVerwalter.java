@@ -1,63 +1,45 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.util.ArrayList;
+
+import bibliotheksverwaltung.model.daos.dao.MySQLSuchDAO;
+import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.domain.Suchergebnis;
+
 /**
  * @deprecated
  */
 
-public class SuchVerwalter implements Verwaltbar {
+public class SuchVerwalter {
 
-	private String tabelle = null;
 	private String[] suchworte = null;
-	private String[] spalten = null;
+	private ArrayList<Suchergebnis> ergebnisListe = null;
+	
 
 	public SuchVerwalter() {
-
+		
 	}
 
-	public SuchVerwalter(String tabelle, String[] suchworte, String[] spalten) {
-		this.tabelle = tabelle;
+	public SuchVerwalter(String[] suchworte) {
 		this.suchworte = suchworte;
-		this.spalten = spalten;
+		ergebnisListe = new ArrayList<Suchergebnis>();
 	}
-
-	public int[] suche() {
+	
+	public ArrayList<Medium> sucheMedium(String suchString) {
+		this.prepareSuchworte(suchString);
+		
 		return null;
 	}
-
-	public int[] suche(String tabelle, String[] suchworte, String[] spalten) {
-		return null;
-	}
-
-	private int[] ranker(int[] idListe) {
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
-	 */
-	@Override
-	public void add(Object objekt)
+	
+	private String[] prepareSuchworte(String derSuchString)
 	{
-		// Kein Hinzufügen von Suchen erforderlich.
-
+		String[] suchString = derSuchString.split(" ");
+		String[] suchworte = new String[suchString.length + 1];
+		suchworte[0] = derSuchString;
+		for (int i = 1; i < suchworte.length; i++)
+		{
+			suchworte[i] = suchString[i - 1];
+		}
+		return suchworte;
 	}
-
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
-	 */
-	@Override
-	public void delete(Object objekt)
-	{
-		// Kein Löschen von Suchen erforderlich.
-	}
-
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
-	 */
-	@Override
-	public void update(Object objekt)
-	{
-		// Kein Updaten von Suchen erforderlich.
-	}
-
 }

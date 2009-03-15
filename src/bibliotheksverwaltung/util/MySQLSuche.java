@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
+import bibliotheksverwaltung.model.domain.Suchergebnis;
 
 /**
  * @deprecated

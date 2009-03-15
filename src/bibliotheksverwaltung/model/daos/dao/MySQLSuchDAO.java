@@ -1,7 +1,7 @@
 /**
  *
  */
-package bibliotheksverwaltung.util;
+package bibliotheksverwaltung.model.daos.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
+import bibliotheksverwaltung.model.domain.Suchergebnis;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
-public class MySQLSuchExperte
+public class MySQLSuchDAO
 {
 	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
@@ -23,12 +25,12 @@ public class MySQLSuchExperte
 	private String suchTyp = null;
 
 
-	public MySQLSuchExperte()
+	public MySQLSuchDAO()
 	{
 		this.suchergebnisListe = new ArrayList<Suchergebnis>();
 	}
 
-	public MySQLSuchExperte(String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
+	public MySQLSuchDAO(String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
 	{
 		this.suchergebnisListe = new ArrayList<Suchergebnis>();
 		this.suchworte = dieSuchworte;
@@ -45,16 +47,17 @@ public class MySQLSuchExperte
 		{
 			for (int i = 0; i < suchKategorien.length; i++)
 			{
-				for (int j = 1; j < suchworte.length; j++)
+				for (int j = 0; j < suchworte.length; j++)
 				{
+					//TODO ungesplitter suchbegriff exakt suchen lassen 
 					sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
 					+ " WHERE " + suchKategorien[i] + " LIKE ?";
 					
 					statement = connection.prepareStatement(sqlStmt);
-					this.optimalLike("%" + suchworte[j] + "%");
-					this.optimalLike("%" + suchworte[j]);
-					this.optimalLike(suchworte[j] + "%");
-					this.optimalLike(suchworte[j]);
+					this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());
+					this.optimalLike("%" + suchworte[j], 2 * suchworte[j].length());
+					this.optimalLike(suchworte[j] + "%", 2 * suchworte[j].length());
+					this.optimalLike(suchworte[j], 3 * suchworte[j].length());
 					
 				}
 			}
@@ -68,16 +71,27 @@ public class MySQLSuchExperte
 		return suchergebnisListe;
 	}
 
-	private void optimalLike(String dasSuchwort) throws SQLException
+	
+	//TODO optimalLike um einen Parameter erweitern (int priorität)
+	//TODO Prioritätsliste erstellen von 1 - 6 wobei 1 schlecht und 6 shr gut bedeutet
+	/*
+	 * 1 - %isch% z.B. litauisch hebräischer etc.
+	 * 2 - %isch oder isch% z.B. litauisch hebräisch etc.
+	 * 3 - exakt isch
+	 * 4 - ungesplitterter %string%
+	 * 5 - ungesplitterter % string oder string%
+	 * 6 - exakter ungesplitterter string
+	 */
+	private void optimalLike(String dasSuchwort, int bewertung) throws SQLException
 	{
 		Suchergebnis neuesElement = null;
 		statement.setString(1, dasSuchwort);
 		ResultSet rs = statement.executeQuery();
 		while (rs.next())
 		{
-			neuesElement = new Suchergebnis(rs.getInt(1));
+			neuesElement = new Suchergebnis(rs.getInt(1), bewertung);
 			if (suchergebnisListe.contains(neuesElement))
-				suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement)).erhoehe();
+				suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement)).erhoehe(bewertung);
 			else
 				suchergebnisListe.add(neuesElement);
 		}
