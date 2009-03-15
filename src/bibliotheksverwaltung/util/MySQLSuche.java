@@ -66,7 +66,7 @@ public class MySQLSuche
 				{
 					neuesElement = new Suchergebnis(rs.getInt(1));
 					if (suchergebnisListe.contains(neuesElement))
-						suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement)).erhoehe();
+						suchergebnisListe.get(suchergebnisListe.indexOf(neuesElement));
 					else
 						suchergebnisListe.add(neuesElement);
 				}

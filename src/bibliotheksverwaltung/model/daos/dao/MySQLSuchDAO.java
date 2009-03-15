@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.model.domain.Suchergebnis;
@@ -27,7 +28,6 @@ public class MySQLSuchDAO
 
 	public MySQLSuchDAO()
 	{
-		this.suchergebnisListe = new ArrayList<Suchergebnis>();
 	}
 
 	public MySQLSuchDAO(String suchTyp, String[] dieSuchworte, String[] dieSuchKategorien)
@@ -40,7 +40,7 @@ public class MySQLSuchDAO
 		priKey = new Konfiguration(this.suchTyp + "_priKey");
 	}
 
-	public ArrayList<Suchergebnis> find()
+	private void find()
 	{
 		String sqlStmt = null;
 		try
@@ -68,20 +68,26 @@ public class MySQLSuchDAO
 		{
 			LocalEnvironment.closeStmt(statement);
 		}
+		Collections.sort(suchergebnisListe);
+	}
+	
+	public int[] getSuchListe()
+	{
+		this.find();
+		int[] suchListe = new int[suchergebnisListe.size()];
+		for (int i = 0; i < suchergebnisListe.size(); i++)
+		{
+			suchListe[i] = suchergebnisListe.get(i).getId();
+		}
+		return suchListe;
+	}
+	
+	public ArrayList<Suchergebnis> getSuchergebnis()
+	{
+		this.find();
 		return suchergebnisListe;
 	}
-
 	
-	//TODO optimalLike um einen Parameter erweitern (int priorität)
-	//TODO Prioritätsliste erstellen von 1 - 6 wobei 1 schlecht und 6 shr gut bedeutet
-	/*
-	 * 1 - %isch% z.B. litauisch hebräischer etc.
-	 * 2 - %isch oder isch% z.B. litauisch hebräisch etc.
-	 * 3 - exakt isch
-	 * 4 - ungesplitterter %string%
-	 * 5 - ungesplitterter % string oder string%
-	 * 6 - exakter ungesplitterter string
-	 */
 	private void optimalLike(String dasSuchwort, int bewertung) throws SQLException
 	{
 		Suchergebnis neuesElement = null;

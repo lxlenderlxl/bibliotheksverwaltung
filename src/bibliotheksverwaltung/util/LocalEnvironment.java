@@ -34,6 +34,9 @@ public class LocalEnvironment
 	
 	private static Konfiguration maximaleVerlaengerung = new Konfiguration("verlaengerung");
 	private static Konfiguration ausleihdauer = new Konfiguration("ausleihdauer");
+	
+	public static final String[] mediumKategorien = new String[]{"titel", "autorvorname","autornachname","verlag", "erscheinungsjahr", "isbn"};
+	public static final String[] ausleiherKategorien = new String[]{"titel", "autorvorname","autornachname","verlag", "erscheinungsjahr", "isbn"};
 
 	/**
 	 * @return the maximaleVerlaengerung
