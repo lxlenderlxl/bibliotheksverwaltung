@@ -28,6 +28,9 @@ import bibliotheksverwaltung.model.domain.Konfiguration;
  */
 public class LocalEnvironment
 {
+	/**
+	 * Beschreibt die Verbindung zur Datenbank
+	 */
 	private static Connection dieVerbindung = null;
 
 	private static Anwender anwender = new Anwender("test");
@@ -35,11 +38,18 @@ public class LocalEnvironment
 	private static Konfiguration maximaleVerlaengerung = new Konfiguration("verlaengerung");
 	private static Konfiguration ausleihdauer = new Konfiguration("ausleihdauer");
 	
+	/**
+	 * Beschreibt die vorhandenen Spalten der Tabelle Medium in der Datenbank
+	 */
 	public static final String[] mediumKategorien = new String[]{"titel", "autorvorname","autornachname","verlag", "erscheinungsjahr", "isbn"};
+	/**
+	 * Beschreibt die vorhandenen Spalten der Tabelle Ausleiher in der Datenbank
+	 */
 	public static final String[] ausleiherKategorien = new String[]{"titel", "autorvorname","autornachname","verlag", "erscheinungsjahr", "isbn"};
 
 	/**
-	 * @return the maximaleVerlaengerung
+	 * Liefert die Konfiguration der maximalen Ausleihdauer
+	 * @return die Konfiguration der maximalen Ausleihdauer
 	 */
 	public static Konfiguration getMaximaleVerlaengerung()
 	{
@@ -47,19 +57,27 @@ public class LocalEnvironment
 	}
 
 	/**
-	 * @return the ausleihdauer
+	 * Liefert die Konfiguration der Ausleihdauer
+	 * @return die Konfiguration der Ausleihdauer
 	 */
 	public static Konfiguration getAusleihdauer()
 	{
 		return ausleihdauer;
 	}
 
+	/**
+	 * Erzeugt einen lokalen Log in der Textdatei ErrorLog.txt mit einer individuellen Nachricht
+	 * @param message die Nachricht
+	 */
 	public static void log(String message) {
 		log(message, null);
 	}
 
 	/**
-	 *
+	 * Erzeugt einen lokalen Log in der Textdatei ErrorLog.txt mit einer individuellen Nachricht und 
+	 * der Objektherkunft dieser Nachricht
+	 * @param message die Nachricht
+	 * @param objekt das Objekt
 	 */
 	public static void log(String message, Object objekt) {
 
@@ -81,6 +99,13 @@ public class LocalEnvironment
 		}
 	}
 	
+	/**
+	 * Prüft ein Integer auf 0 und setzt dieses an eine bestimmte Stelle in einem SQL-Statement
+	 * @param dasStatement das SQL-Statement
+	 * @param dieStelle die Position des Integers im Statement 
+	 * @param derWert das Integer
+	 * @throws SQLException bei Fehlzuweisung
+	 */
 	public static void statementChecker(java.sql.PreparedStatement statement, int dieStelle, int derWert) throws SQLException
 	{
 		if (derWert == 0)
@@ -89,6 +114,13 @@ public class LocalEnvironment
 			statement.setInt(dieStelle, derWert);
 	}
 	
+	/**
+	 * Prüft ein String auf NULL und setzt dieses an eine bestimmte Stelle in einem SQL-Statement
+	 * @param dasStatement das SQL-Statement
+	 * @param dieStelle die Position des Strings im Statement 
+	 * @param derWert der String
+	 * @throws SQLException bei Fehlzuweisung
+	 */
 	public static void statementChecker(java.sql.PreparedStatement dasStatement, int dieStelle, String derWert) throws SQLException
 	{
 		if (derWert == null)
@@ -97,6 +129,13 @@ public class LocalEnvironment
 			dasStatement.setString(dieStelle, derWert);
 	}
 	
+	/**
+	 * Prüft ein Datum auf NULL und setzt dieses an eine bestimmte Stelle in einem SQL-Statement
+	 * @param dasStatement das SQL-Statement
+	 * @param dieStelle die Position des Datums im Statement 
+	 * @param derWert das Datum
+	 * @throws SQLException bei Fehlzuweisung
+	 */
 	public static void statementChecker(java.sql.PreparedStatement dasStatement, int dieStelle, Date derWert) throws SQLException
 	{
 		if (derWert == null)
@@ -105,6 +144,9 @@ public class LocalEnvironment
 			dasStatement.setDate(dieStelle, derWert);
 	}
 
+	/**
+	 * Erneuert die Verbindung zur Datenbank
+	 */
 	private static void refreshConnection()
 	{
 		try
@@ -133,7 +175,8 @@ public class LocalEnvironment
 
 
 	/**
-	 * @return the dieVerbindung
+	 * Liefert eine Verbindung zur MySQL Datenbank
+	 * @return die Verbindung
 	 */
 	public static Connection getConnection()
 	{
@@ -141,6 +184,10 @@ public class LocalEnvironment
 		return dieVerbindung;
 	}
 
+	/**
+	 * Schließt eine Verbindung zur Datenbank
+	 * @param preparedStatement die Verbindung
+	 */
 	public static void closeStmt(Statement preparedStatement)
 	{
 		try
