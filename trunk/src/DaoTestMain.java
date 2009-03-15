@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Timer;
 import java.util.TreeMap;
 
 
@@ -114,8 +115,29 @@ public class DaoTestMain
 		//verwalter.buchZurueckgeben(new Exemplar(7));
 		//verwalter.buchVerlaengern(new Exemplar(7));*/
 		
+		long zstVorher = 0;
+		long zstZwischen = 0;
+		long zstNachher = 0;
+
+		zstVorher = System.currentTimeMillis();
+
+		// Aufruf lange dauernder Prozesse		
 		SuchVerwalter verwalter = new SuchVerwalter();
-		verwalter.sucheMedium("Dies ist ein Testsuchstring der gesplittet werden soll");
+		ArrayList<Medium> liste = new ArrayList<Medium>();
+		liste = verwalter.sucheMedium("michael litauen lettland garleff");
+		zstZwischen = System.currentTimeMillis();
+		System.out.println("Ihre Suche ergab " + liste.size() + " Treffer\n\n");
+		for (int i = 0; i < liste.size(); i++)
+		{
+			Medium dasMedium = new Medium(liste.get(i).getId());
+			System.out.println("MEDIENID  : " + liste.get(i).getId());
+			System.out.println("Titel     : " + dasMedium.getTitel());
+			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
+			System.out.println("---------------------------------------------");
+		}
+		
+		zstNachher = System.currentTimeMillis();
+		System.out.println("Insgesamt benötigte Zeit: " + ((zstNachher - zstVorher)) + " ms, davon " + ((zstZwischen - zstVorher)) + " ms für Datenbank");
 	}
 
 }

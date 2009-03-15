@@ -3,32 +3,41 @@ package bibliotheksverwaltung.model.logic;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLSuchDAO;
+import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.model.domain.Suchergebnis;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 /**
- * @deprecated
+ * 
  */
 
 public class SuchVerwalter {
 
-	private String[] suchworte = null;
-	private ArrayList<Suchergebnis> ergebnisListe = null;
-	
+	private MySQLSuchDAO suche = new MySQLSuchDAO();
 
 	public SuchVerwalter() {
-		
-	}
-
-	public SuchVerwalter(String[] suchworte) {
-		this.suchworte = suchworte;
-		ergebnisListe = new ArrayList<Suchergebnis>();
 	}
 	
 	public ArrayList<Medium> sucheMedium(String suchString) {
-		this.prepareSuchworte(suchString);
-		
-		return null;
+		ArrayList<Medium> ergebnisse = new ArrayList<Medium>();
+		suche = new MySQLSuchDAO("medium", this.prepareSuchworte(suchString), LocalEnvironment.mediumKategorien);
+		int[] suchListe = suche.getSuchListe();
+		for (int i = 0; i < suchListe.length; i++)
+		{
+			ergebnisse.add(new Medium(suchListe[i]));
+		}
+		return ergebnisse;
+	}
+	
+	public ArrayList<Ausleiher> sucheAusleiher(String suchString) {
+		ArrayList<Ausleiher> ergebnisse = new ArrayList<Ausleiher>();
+		suche = new MySQLSuchDAO("ausleiher", this.prepareSuchworte(suchString), LocalEnvironment.ausleiherKategorien);
+		int[] suchListe = suche.getSuchListe();
+		for (int i = 0; i < suchListe.length; i++)
+		{
+			ergebnisse.add(new Ausleiher(suchListe[i]));
+		}
+		return ergebnisse;
 	}
 	
 	private String[] prepareSuchworte(String derSuchString)
