@@ -121,7 +121,6 @@ public class DaoTestMain
 
 		zstVorher = System.currentTimeMillis();
 
-		// Aufruf lange dauernder Prozesse		
 		SuchVerwalter verwalter = new SuchVerwalter();
 		ArrayList<Medium> liste = new ArrayList<Medium>();
 		liste = verwalter.sucheMedium("michael litauen lettland garleff");
