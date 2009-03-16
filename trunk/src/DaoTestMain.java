@@ -1,28 +1,7 @@
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TreeMap;
 
-
-import bibliotheksverwaltung.model.daos.dao.AnwenderDAO;
-import bibliotheksverwaltung.model.daos.dao.ExemplarDAO;
-import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
-import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
-import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
-import bibliotheksverwaltung.model.daos.dao.MySQLSuchDAO;
-import bibliotheksverwaltung.model.domain.Anwender;
-import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.model.domain.Suchergebnis;
-import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
-import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.MySQLSuche;
 
 public class DaoTestMain
 {
