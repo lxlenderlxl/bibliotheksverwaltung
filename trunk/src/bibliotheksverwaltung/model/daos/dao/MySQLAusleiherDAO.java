@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLAusleiherDAO implements AusleiherDAO
 {	

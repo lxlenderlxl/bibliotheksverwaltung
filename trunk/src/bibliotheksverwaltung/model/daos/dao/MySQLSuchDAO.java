@@ -40,7 +40,6 @@ public class MySQLSuchDAO
 		priKey = new Konfiguration(this.suchTyp + "_priKey");
 	}
 
-	//TODO Schlagworte mit einbeziehen
 	private void find()
 	{
 		String sqlStmt = null;
@@ -50,16 +49,15 @@ public class MySQLSuchDAO
 			{
 				for (int j = 0; j < suchworte.length; j++)
 				{
-					//TODO ungesplitter suchbegriff exakt suchen lassen 
 					sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
 					+ " WHERE " + suchKategorien[i] + " LIKE ?";
-					
+
 					statement = connection.prepareStatement(sqlStmt);
 					this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());
 					this.optimalLike("%" + suchworte[j], 2 * suchworte[j].length());
 					this.optimalLike(suchworte[j] + "%", 2 * suchworte[j].length());
 					this.optimalLike(suchworte[j], 3 * suchworte[j].length());
-					
+
 				}
 			}
 		} catch (SQLException e)
@@ -71,10 +69,38 @@ public class MySQLSuchDAO
 		}
 		Collections.sort(suchergebnisListe);
 	}
-	
+
+	private void schlagwortFind()
+	{
+		try
+		{
+			String sqlStmt = null;
+			for (int j = 0; j < suchworte.length; j++)
+			{
+				sqlStmt = "SELECT medienid FROM beinhaltet WHERE tagid IN (SELECT tagid FROM schlagworte WHERE inhalt LIKE ?";
+
+				statement = connection.prepareStatement(sqlStmt);
+				this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());
+				this.optimalLike("%" + suchworte[j], 2 * suchworte[j].length());
+				this.optimalLike(suchworte[j] + "%", 2 * suchworte[j].length());
+				this.optimalLike(suchworte[j], 3 * suchworte[j].length());
+
+			}
+		} 
+		catch (SQLException e)
+		{
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
+		}
+	}
+
 	public int[] getSuchListe()
 	{
 		this.find();
+		if (this.suchTyp.equals("medium"))
+			this.schlagwortFind();
 		int[] suchListe = new int[suchergebnisListe.size()];
 		for (int i = 0; i < suchergebnisListe.size(); i++)
 		{
@@ -82,13 +108,15 @@ public class MySQLSuchDAO
 		}
 		return suchListe;
 	}
-	
+
 	public ArrayList<Suchergebnis> getSuchergebnis()
 	{
 		this.find();
+		if (this.suchTyp.equals("medium"))
+			this.schlagwortFind();
 		return suchergebnisListe;
 	}
-	
+
 	private void optimalLike(String dasSuchwort, int bewertung) throws SQLException
 	{
 		Suchergebnis neuesElement = null;

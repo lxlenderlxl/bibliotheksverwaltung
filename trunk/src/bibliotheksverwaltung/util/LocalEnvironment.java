@@ -17,8 +17,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.GregorianCalendar;
 
-import com.mysql.jdbc.PreparedStatement;
-
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Konfiguration;
 

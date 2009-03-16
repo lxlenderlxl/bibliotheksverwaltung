@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 
 public class MySQLAnwenderDAO implements AnwenderDAO

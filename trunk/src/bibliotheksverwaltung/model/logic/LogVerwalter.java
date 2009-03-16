@@ -3,7 +3,6 @@ package bibliotheksverwaltung.model.logic;
 import java.util.GregorianCalendar;
 import java.sql.Date;
 import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
-import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.util.LocalEnvironment;
 

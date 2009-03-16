@@ -3,8 +3,6 @@
  */
 package bibliotheksverwaltung.model.domain;
 
-import java.text.DecimalFormat;
-
 public class Suchergebnis implements Comparable<Suchergebnis>
 {
 	private int id = 0;
