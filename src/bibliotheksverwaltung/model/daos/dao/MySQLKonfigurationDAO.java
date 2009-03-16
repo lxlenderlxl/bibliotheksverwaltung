@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLKonfigurationDAO implements KonfigurationDAO
 {

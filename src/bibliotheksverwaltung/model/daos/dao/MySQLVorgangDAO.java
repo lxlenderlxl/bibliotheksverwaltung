@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Vorgang;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 public class MySQLVorgangDAO implements VorgangDAO
 {

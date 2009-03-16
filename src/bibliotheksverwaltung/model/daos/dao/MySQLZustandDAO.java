@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 /**
  * @author Sven Blaurock 03.03.2009 00:27:23

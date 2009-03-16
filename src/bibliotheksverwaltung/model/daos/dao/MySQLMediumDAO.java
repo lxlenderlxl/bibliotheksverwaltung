@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.LocalEnvironment;
 
 
 public class MySQLMediumDAO implements MediumDAO
