@@ -100,7 +100,7 @@ public class DaoTestMain
 
 		SuchVerwalter verwalter = new SuchVerwalter();
 		ArrayList<Medium> liste = new ArrayList<Medium>();
-		liste = verwalter.sucheMedium("michael >1995");
+		liste = verwalter.sucheMedium("hochzeit <1995");
 		zstZwischen = System.currentTimeMillis();
 		System.out.println("Ihre Suche ergab " + liste.size() + " Treffer\n\n");
 		for (int i = 0; i < liste.size(); i++)
