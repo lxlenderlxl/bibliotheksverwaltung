@@ -51,10 +51,11 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
         reportButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
-        searchField = new javax.swing.JTextField();
+        suchPanel = new javax.swing.JPanel();
+        searchInitButton = new javax.swing.JButton();
         outputPane = new javax.swing.JScrollPane();
         outputArea = new javax.swing.JTextArea();
-        searchInitButton = new javax.swing.JButton();
+        searchField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,41 +108,55 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
                 .addContainerGap())
         );
 
-        searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        searchField.setForeground(new java.awt.Color(204, 204, 204));
-        searchField.setText("Suchworte eingeben...");
-        searchField.addFocusListener(this);
+        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchInitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_48.png"))); // NOI18N
 
         outputArea.setColumns(20);
         outputArea.setRows(5);
         outputPane.setViewportView(outputArea);
 
-        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        searchInitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_48.png"))); // NOI18N
+        searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        searchField.setForeground(new java.awt.Color(204, 204, 204));
+        searchField.setText("Suchworte eingeben...");
+        searchField.addFocusListener(this);
+
+        javax.swing.GroupLayout suchPanelLayout = new javax.swing.GroupLayout(suchPanel);
+        suchPanel.setLayout(suchPanelLayout);
+        suchPanelLayout.setHorizontalGroup(
+            suchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(suchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(outputPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                    .addGroup(suchPanelLayout.createSequentialGroup()
+                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchInitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        suchPanelLayout.setVerticalGroup(
+            suchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(suchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(suchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchInitButton, 0, 0, Short.MAX_VALUE)
+                    .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(outputPane, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(outputPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchInitButton)))
-                .addContainerGap())
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(suchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchInitButton, 0, 0, Short.MAX_VALUE)
-                    .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(outputPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(suchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
@@ -223,6 +238,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton searchInitButton;
+    private javax.swing.JPanel suchPanel;
     // End of variables declaration//GEN-END:variables
 
 }
