@@ -90,7 +90,7 @@ public class DaoTestMain
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
 		//verwalter.buchZurueckgeben(new Exemplar(7));
-		//verwalter.buchVerlaengern(new Exemplar(7));*/
+		//verwalter.buchVerlaengern(new Exemplar(7));
 		
 		long zstVorher = 0;
 		long zstZwischen = 0;
@@ -115,6 +115,7 @@ public class DaoTestMain
 		
 		zstNachher = System.currentTimeMillis();
 		System.out.println("Insgesamt benötigte Zeit: " + ((zstNachher - zstVorher)) + " ms, davon " + ((zstZwischen - zstVorher)) + " ms für Datenbank");
-	}
+	*/
+		}
 
 }
