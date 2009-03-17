@@ -100,7 +100,7 @@ public class DaoTestMain
 
 		SuchVerwalter verwalter = new SuchVerwalter();
 		ArrayList<Medium> liste = new ArrayList<Medium>();
-		liste = verwalter.sucheMedium("michael litauen lettland garleff");
+		liste = verwalter.sucheMedium("michael >1995");
 		zstZwischen = System.currentTimeMillis();
 		System.out.println("Ihre Suche ergab " + liste.size() + " Treffer\n\n");
 		for (int i = 0; i < liste.size(); i++)
@@ -109,6 +109,7 @@ public class DaoTestMain
 			System.out.println("MEDIENID  : " + liste.get(i).getId());
 			System.out.println("Titel     : " + dasMedium.getTitel());
 			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
+			System.out.println("E-Jahr    : " + dasMedium.getErscheinungsJahr());
 			System.out.println("---------------------------------------------");
 		}
 		

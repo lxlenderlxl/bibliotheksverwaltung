@@ -70,6 +70,58 @@ public class MySQLSuchDAO
 		Collections.sort(suchergebnisListe);
 	}
 
+	private void findMedium()
+	{
+		String sqlStmt = null;
+		try
+		{
+			for (int i = 0; i < suchKategorien.length; i++)
+			{
+				for (int j = 0; j < suchworte.length; j++)
+				{
+					if (suchKategorien[i].equals("erscheinungsjahr") && suchworte[j].contains("<") && j != 0)
+					{
+						String dasSuchJahr = suchworte[j].substring(1);
+						sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
+						+ " WHERE " + suchKategorien[i] + " < ?";
+						statement = connection.prepareStatement(sqlStmt);
+						statement.setString(1, dasSuchJahr);
+						this.processQuery(3 * suchworte[j].length());
+					}
+					else if (suchKategorien[i].equals("erscheinungsjahr") && suchworte[j].contains(">") && j != 0)
+					{
+						String dasSuchJahr = suchworte[j].substring(1);
+						sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
+						+ " WHERE " + suchKategorien[i] + " > ?";
+						statement = connection.prepareStatement(sqlStmt);
+						statement.setString(1, dasSuchJahr);
+						this.processQuery(3 * suchworte[j].length());
+						System.out.println(statement.toString());
+					}
+					else
+					{
+						sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
+						+ " WHERE " + suchKategorien[i] + " LIKE ?";
+
+						statement = connection.prepareStatement(sqlStmt);
+						this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());
+						this.optimalLike("%" + suchworte[j], 2 * suchworte[j].length());
+						this.optimalLike(suchworte[j] + "%", 2 * suchworte[j].length());
+						this.optimalLike(suchworte[j], 3 * suchworte[j].length());
+					}
+				}
+			}
+		} catch (SQLException e)
+		{
+			System.out.println(e + " bei " + statement.toString());
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
+		}
+		Collections.sort(suchergebnisListe);
+	}
+
 	private void schlagwortFind()
 	{
 		try
@@ -98,9 +150,15 @@ public class MySQLSuchDAO
 
 	public int[] getSuchListe()
 	{
-		this.find();
 		if (this.suchTyp.equals("medium"))
+		{
+			this.findMedium();
 			this.schlagwortFind();
+		}
+		else
+		{
+			this.find();
+		}
 		int[] suchListe = new int[suchergebnisListe.size()];
 		for (int i = 0; i < suchergebnisListe.size(); i++)
 		{
@@ -119,8 +177,13 @@ public class MySQLSuchDAO
 
 	private void optimalLike(String dasSuchwort, int bewertung) throws SQLException
 	{
-		Suchergebnis neuesElement = null;
 		statement.setString(1, dasSuchwort);
+		this.processQuery(bewertung);
+	}
+	
+	private void processQuery(int bewertung) throws SQLException
+	{
+		Suchergebnis neuesElement = null;
 		ResultSet rs = statement.executeQuery();
 		while (rs.next())
 		{
