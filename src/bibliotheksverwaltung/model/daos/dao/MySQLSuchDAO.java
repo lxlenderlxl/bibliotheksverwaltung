@@ -57,11 +57,11 @@ public class MySQLSuchDAO
 					this.optimalLike("%" + suchworte[j], 2 * suchworte[j].length());
 					this.optimalLike(suchworte[j] + "%", 2 * suchworte[j].length());
 					this.optimalLike(suchworte[j], 3 * suchworte[j].length());
-
 				}
 			}
 		} catch (SQLException e)
 		{
+			System.out.println(e + " bei " + statement.toString());
 			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
@@ -77,18 +77,18 @@ public class MySQLSuchDAO
 			String sqlStmt = null;
 			for (int j = 0; j < suchworte.length; j++)
 			{
-				sqlStmt = "SELECT medienid FROM beinhaltet WHERE tagid IN (SELECT tagid FROM schlagworte WHERE inhalt LIKE ?";
+				sqlStmt = "SELECT medienid FROM beinhaltet WHERE tagid IN (SELECT tagid FROM schlagworte WHERE inhalt LIKE ?)";
 
 				statement = connection.prepareStatement(sqlStmt);
 				this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());
 				this.optimalLike("%" + suchworte[j], 2 * suchworte[j].length());
 				this.optimalLike(suchworte[j] + "%", 2 * suchworte[j].length());
 				this.optimalLike(suchworte[j], 3 * suchworte[j].length());
-
 			}
 		} 
 		catch (SQLException e)
 		{
+			System.out.println(e + " bei " + statement.toString());
 			LocalEnvironment.log(e.getMessage(), this);
 		} finally
 		{
