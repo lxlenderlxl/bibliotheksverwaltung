@@ -1,43 +1,52 @@
 package bibliotheksverwaltung.model.logic;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLSuchDAO;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.UpdateInfo;
 
 /**
  * 
  */
 
-public class SuchVerwalter {
+public class SuchVerwalter extends Observable {
 
 	private MySQLSuchDAO suche = new MySQLSuchDAO();
+	private UpdateInfo updateInfo = new UpdateInfo();
+	private ArrayList<Medium> mediumErgebnisse = new ArrayList<Medium>();
+	private ArrayList<Ausleiher> ausleiherErgebnisse = new ArrayList<Ausleiher>();
 
 	public SuchVerwalter() {
 	}
 	
-	public ArrayList<Medium> sucheMedium(String suchString) {
-		ArrayList<Medium> ergebnisse = new ArrayList<Medium>();
+	public void sucheMedium(String suchString) {
+		updateInfo.setzeÄnderung("Mediumsuche");
+		mediumErgebnisse.clear();
 		suche = new MySQLSuchDAO("medium", this.prepareSuchworte(suchString), LocalEnvironment.mediumKategorien);
 		int[] suchListe = suche.getSuchListe();
 		for (int i = 0; i < suchListe.length; i++)
 		{
-			ergebnisse.add(new Medium(suchListe[i]));
+			mediumErgebnisse.add(new Medium(suchListe[i]));
 		}
-		return ergebnisse;
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 	
-	public ArrayList<Ausleiher> sucheAusleiher(String suchString) {
-		ArrayList<Ausleiher> ergebnisse = new ArrayList<Ausleiher>();
+	public void sucheAusleiher(String suchString) {
+		updateInfo.setzeÄnderung("Ausleihersuche");
+		ausleiherErgebnisse.clear();
 		suche = new MySQLSuchDAO("ausleiher", this.prepareSuchworte(suchString), LocalEnvironment.ausleiherKategorien);
 		int[] suchListe = suche.getSuchListe();
 		for (int i = 0; i < suchListe.length; i++)
 		{
-			ergebnisse.add(new Ausleiher(suchListe[i]));
+			ausleiherErgebnisse.add(new Ausleiher(suchListe[i]));
 		}
-		return ergebnisse;
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 	
 	private String[] prepareSuchworte(String derSuchString)
