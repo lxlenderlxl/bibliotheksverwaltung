@@ -25,7 +25,9 @@ public class BuchAnsicht extends ImagePanel {
     /** Creates new form BuchAnsicht */
     public BuchAnsicht(Medium dasMedium) {
         super("Book.png");
+        this.medium = dasMedium;
         initComponents();
+        jLabel1.setText(medium.getTitel());
     }
 
     /** This method is called from within the constructor to
@@ -70,7 +72,7 @@ public class BuchAnsicht extends ImagePanel {
     public static void main(String args[]) {
         JFrame jframe = new JFrame();
         jframe.setSize(200,265);
-        jframe.add(new BuchAnsicht());
+        jframe.add(new BuchAnsicht(new Medium(190)));
         jframe.setVisible(true);
     }
 
