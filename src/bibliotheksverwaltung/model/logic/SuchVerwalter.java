@@ -17,38 +17,38 @@ public class SuchVerwalter extends Observable {
 
 	private MySQLSuchDAO suche = new MySQLSuchDAO();
 	private UpdateInfo updateInfo = new UpdateInfo();
-	private ArrayList<Medium> mediumErgebnisse = new ArrayList<Medium>();
-	private ArrayList<Ausleiher> ausleiherErgebnisse = new ArrayList<Ausleiher>();
+	private ArrayList<Object> ergebnisse = new ArrayList<Object>();
 
 	public SuchVerwalter() {
+		super();
 	}
-	
+
 	public void sucheMedium(String suchString) {
 		updateInfo.setzeÄnderung("Mediumsuche");
-		mediumErgebnisse.clear();
+		ergebnisse.clear();
 		suche = new MySQLSuchDAO("medium", this.prepareSuchworte(suchString), LocalEnvironment.mediumKategorien);
 		int[] suchListe = suche.getSuchListe();
 		for (int i = 0; i < suchListe.length; i++)
 		{
-			mediumErgebnisse.add(new Medium(suchListe[i]));
+			ergebnisse.add(new Medium(suchListe[i]));
 		}
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-	
+
 	public void sucheAusleiher(String suchString) {
 		updateInfo.setzeÄnderung("Ausleihersuche");
-		ausleiherErgebnisse.clear();
+		ergebnisse.clear();
 		suche = new MySQLSuchDAO("ausleiher", this.prepareSuchworte(suchString), LocalEnvironment.ausleiherKategorien);
 		int[] suchListe = suche.getSuchListe();
 		for (int i = 0; i < suchListe.length; i++)
 		{
-			ausleiherErgebnisse.add(new Ausleiher(suchListe[i]));
+			ergebnisse.add(new Ausleiher(suchListe[i]));
 		}
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-	
+
 	private String[] prepareSuchworte(String derSuchString)
 	{
 		String[] suchString = derSuchString.split(" ");
@@ -59,5 +59,15 @@ public class SuchVerwalter extends Observable {
 			suchworte[i] = suchString[i - 1];
 		}
 		return suchworte;
+	}
+
+	public UpdateInfo holeUpdateInfo()
+	{
+		return updateInfo;
+	}
+	
+	public ArrayList<Object> getErgebnisse()
+	{
+		return this.ergebnisse;
 	}
 }

@@ -25,7 +25,15 @@ public class MySQLSuchDAO
 	private Konfiguration priKey = null;
 	private String suchTyp = null;
 
-
+	//TODO Suche unbeding eingrenzen und optimieren --> Stufenweise die suchergebnisliste füllen (nachpriorität) bis ein bestimmtes maß an medien gefunden wurden
+	/*
+	 * Z.B. wird zuerst der ganze String gesucht, ob dieser exakt vorkommt ist dies 
+	 * nicht der fall so wird der String aufgesplittet und nach exaktem vorkommen der gesplitteten Strings in einem DB-Eintrag gesucht (FULLTEXT-INDIZES)
+	 * und dabei priorisiert (nach häufigkeit des vorkommens) weiterhin werden die suchworte mit Platzhalter nach belieben bestückt und wieder in die suchListe aufgenommen und prorisiert
+	 * schlagworte bei medien nicht vergessen
+	 * Begrenzung über eine Konfiguration realisieren
+	 * Suchstring auf operatoren prüfen < > = evtl + -
+	 */
 	public MySQLSuchDAO()
 	{
 	}
