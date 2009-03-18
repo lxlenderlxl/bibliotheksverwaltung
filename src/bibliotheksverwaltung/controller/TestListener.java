@@ -30,7 +30,7 @@ public class TestListener implements ActionListener {
 		{
 			v1.holeUpdateInfo().setzeUpdateSperre(true);
 			v1.sucheMedium(feld.getText());
-			v1.holeUpdateInfo().setzeÄnderungOk(true);   
+			v1.holeUpdateInfo().setzeAenderungOk(true);   
 			v1.holeUpdateInfo().setzeUpdateSperre(false);
 		}
 	}
