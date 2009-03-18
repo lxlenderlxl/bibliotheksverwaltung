@@ -34,17 +34,18 @@ public class OutputArea extends JTextArea implements Observer
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
+				//ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
 				for (int i = 0; i < v1.getErgebnisse().size(); i++)
 				{
 					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
-					ausgabe += "ID: " + ergebnis.getId() + "\n";
+					this.add(new BuchAnsicht(ergebnis));
+					/*ausgabe += "ID: " + ergebnis.getId() + "\n";
 					ausgabe += "Titel: " + ergebnis.getTitel() + "\n";
 					ausgabe += "Autor: " + ergebnis.getAutorNachname() + ", "+ ergebnis.getAutorVorname() + "\n";
 					ausgabe += "E-Jahr: " + ergebnis.getErscheinungsJahr() + "\n";
-					ausgabe += "----------------------------------------------------------------\n";
+					ausgabe += "----------------------------------------------------------------\n";*/
 				}
-				this.setText(ausgabe);
+				//this.setText(ausgabe);
 			}
 			else
 			{
