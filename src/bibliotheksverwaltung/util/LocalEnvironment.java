@@ -155,6 +155,7 @@ public class LocalEnvironment
 				String[] verbindungsdaten = getConnectionData();
 				System.out.println(verbindungsdaten[0] + " " + verbindungsdaten[1]);
 				dieVerbindung = DriverManager.getConnection(verbindungsdaten[0], verbindungsdaten[1], "");
+				System.out.println("Verbindung aufgebaut");
 			}
 		}
 		catch (ClassNotFoundException e)
