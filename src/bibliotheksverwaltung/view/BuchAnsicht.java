@@ -11,14 +11,20 @@
 
 package bibliotheksverwaltung.view;
 
+import bibliotheksverwaltung.model.domain.Medium;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Max
  */
-public class BuchAnsicht extends javax.swing.JPanel {
+public class BuchAnsicht extends ImagePanel {
+
+    private Medium medium;
 
     /** Creates new form BuchAnsicht */
-    public BuchAnsicht() {
+    public BuchAnsicht(Medium dasMedium) {
+        super("Book.png");
         initComponents();
     }
 
@@ -33,30 +39,40 @@ public class BuchAnsicht extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 153, 0));
-        setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        setPreferredSize(new java.awt.Dimension(200, 265));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("TEST BUCH");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Buchtitel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel1)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(66, 66, 66))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        JFrame jframe = new JFrame();
+        jframe.setSize(200,265);
+        jframe.add(new BuchAnsicht());
+        jframe.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
