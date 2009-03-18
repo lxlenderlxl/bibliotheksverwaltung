@@ -12,17 +12,22 @@
 package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.logic.*;
 import java.awt.event.FocusListener;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author Max
  */
-public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener {
+public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 
-    private BibliotheksVerwalter v1 = new BibliotheksVerwalter();
+    private SuchVerwalter v1 = new SuchVerwalter();
 
     /** Creates new form BibliotheksGUI */
     public BibliotheksGUI() {
@@ -32,7 +37,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
             LocalEnvironment.log(e.getMessage(), this);
         }
         initComponents();
-        searchInitButton.addActionListener(new bibliotheksverwaltung.controller.TestController(searchField));
+        searchInitButton.addActionListener(new TestListener(v1, searchField));
     }
 
     /** This method is called from within the constructor to
@@ -54,8 +59,11 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
         suchPanel = new javax.swing.JPanel();
         searchInitButton = new javax.swing.JButton();
         outputPane = new javax.swing.JScrollPane();
-        outputArea = new javax.swing.JTextArea();
+        //outputArea = new javax.swing.JTextArea();
         searchField = new javax.swing.JTextField();
+        outputArea = new OutputArea(v1);
+        
+        //v1.addObserver(outputArea);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,7 +76,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
 
         addButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/add_48.png"))); // NOI18N
-        addButton.setText("HinzufÃ¼gen");
+        addButton.setText("Hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
         reportButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -118,7 +126,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
         searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         searchField.setForeground(new java.awt.Color(204, 204, 204));
         searchField.setText("Suchworte eingeben...");
-        searchField.addFocusListener(this);
 
         javax.swing.GroupLayout suchPanelLayout = new javax.swing.GroupLayout(suchPanel);
         suchPanel.setLayout(suchPanelLayout);
@@ -240,5 +247,15 @@ public class BibliotheksGUI extends javax.swing.JFrame implements FocusListener 
     private javax.swing.JButton searchInitButton;
     private javax.swing.JPanel suchPanel;
     // End of variables declaration//GEN-END:variables
+
+		/* (non-Javadoc)
+		 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+		 */
+		@Override
+		public void update(Observable o, Object arg)
+		{
+			// TODO Auto-generated method stub
+			
+		}
 
 }
