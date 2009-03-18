@@ -121,17 +121,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 
         outputArea.setBackground(new java.awt.Color(255, 153, 153));
 
-        javax.swing.GroupLayout outputAreaLayout = new javax.swing.GroupLayout(outputArea);
-        outputArea.setLayout(outputAreaLayout);
-        outputAreaLayout.setHorizontalGroup(
-            outputAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
-        );
-        outputAreaLayout.setVerticalGroup(
-            outputAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout suchPanelLayout = new javax.swing.GroupLayout(suchPanel);
         suchPanel.setLayout(suchPanelLayout);
         suchPanelLayout.setHorizontalGroup(
