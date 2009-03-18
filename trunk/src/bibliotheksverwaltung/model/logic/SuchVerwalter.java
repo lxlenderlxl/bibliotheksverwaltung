@@ -24,7 +24,7 @@ public class SuchVerwalter extends Observable {
 	}
 
 	public void sucheMedium(String suchString) {
-		updateInfo.setzeÄnderung("Mediumsuche");
+		updateInfo.setzeAenderung("Mediumsuche");
 		ergebnisse.clear();
 		suche = new MySQLSuchDAO("medium", this.prepareSuchworte(suchString), LocalEnvironment.mediumKategorien);
 		int[] suchListe = suche.getSuchListe();
@@ -37,7 +37,7 @@ public class SuchVerwalter extends Observable {
 	}
 
 	public void sucheAusleiher(String suchString) {
-		updateInfo.setzeÄnderung("Ausleihersuche");
+		updateInfo.setzeAenderung("Ausleihersuche");
 		ergebnisse.clear();
 		suche = new MySQLSuchDAO("ausleiher", this.prepareSuchworte(suchString), LocalEnvironment.ausleiherKategorien);
 		int[] suchListe = suche.getSuchListe();

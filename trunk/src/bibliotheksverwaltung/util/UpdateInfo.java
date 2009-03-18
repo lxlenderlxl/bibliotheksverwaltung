@@ -6,13 +6,13 @@ package bibliotheksverwaltung.util;
 public class UpdateInfo
 {
 	private boolean updateSperre;
-	private String wasGeändert;
-	private boolean änderungOk;
+	private String wasGeaendert;
+	private boolean aenderungOk;
 	public UpdateInfo()
 	{
 		updateSperre = false;
-		wasGeändert = "";
-		änderungOk = true;
+		wasGeaendert = "";
+		aenderungOk = true;
 	}
 	public boolean holeUpdateSperre()
 	{
@@ -22,20 +22,20 @@ public class UpdateInfo
 	{
 		updateSperre = sperre;
 	}
-	public String holeÄnderung()
+	public String holeAenderung()
 	{
-		return wasGeändert;
+		return wasGeaendert;
 	}
-	public void setzeÄnderung(String name)
+	public void setzeAenderung(String name)
 	{
-		wasGeändert = name;
+		wasGeaendert = name;
 	}
-	public boolean holeÄnderungOk()
+	public boolean holeAenderungOk()
 	{
-		return änderungOk;
+		return aenderungOk;
 	}
-	public void setzeÄnderungOk(boolean wert)
+	public void setzeAenderungOk(boolean wert)
 	{
-		änderungOk = wert;
+		aenderungOk = wert;
 	}
 }

@@ -30,9 +30,9 @@ public class OutputArea extends JTextArea implements Observer
 	{
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
-		if (updateInfo.holeÄnderung().equals("Mediumsuche"))
+		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
-			if (updateInfo.holeÄnderungOk())
+			if (updateInfo.holeAenderungOk())
 			{
 				ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
 				for (int i = 0; i < v1.getErgebnisse().size(); i++)
