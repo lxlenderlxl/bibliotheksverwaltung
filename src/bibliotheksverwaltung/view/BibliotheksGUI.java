@@ -14,6 +14,8 @@ package bibliotheksverwaltung.view;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.logic.*;
+
+import java.awt.FlowLayout;
 import java.awt.event.FocusListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -38,6 +40,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         }
         initComponents();
         searchInitButton.addActionListener(new TestListener(v1, searchField));
+        outputArea.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         outputArea.setSize(1000, 800);
     }
 

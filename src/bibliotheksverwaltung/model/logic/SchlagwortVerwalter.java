@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.util.Observable;
+
 import bibliotheksverwaltung.model.daos.dao.MySQLBeinhaltetDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
 import bibliotheksverwaltung.model.domain.Medium;
@@ -72,6 +74,16 @@ public class SchlagwortVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
+	@Override
+	public void update(Observable o, Object arg)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

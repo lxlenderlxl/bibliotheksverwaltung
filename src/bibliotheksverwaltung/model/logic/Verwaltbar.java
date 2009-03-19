@@ -1,6 +1,8 @@
 package bibliotheksverwaltung.model.logic;
 
-public interface Verwaltbar {
+import java.util.Observer;
+
+public interface Verwaltbar extends Observer{
 
 	public void update(Object objekt);
 

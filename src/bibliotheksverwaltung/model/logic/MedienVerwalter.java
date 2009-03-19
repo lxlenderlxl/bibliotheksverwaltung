@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.util.Observable;
+
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -83,6 +85,16 @@ public class MedienVerwalter implements Verwaltbar {
 
 	public int getAnzahlExemplare(Medium medium) {
 		return mediumDAO.getAnzahlExemplare(medium.getId());
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
+	@Override
+	public void update(Observable o, Object arg)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

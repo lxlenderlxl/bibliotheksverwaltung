@@ -11,7 +11,12 @@
 
 package bibliotheksverwaltung.view;
 
+import java.awt.Dimension;
+
+import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.MedienVerwalter;
+
 import javax.swing.JFrame;
 
 /**
@@ -21,6 +26,7 @@ import javax.swing.JFrame;
 public class BuchAnsicht extends ImagePanel {
 
     private Medium medium;
+    private MedienVerwalter verwalter = new MedienVerwalter();
 
     /** Creates new form BuchAnsicht */
     public BuchAnsicht(Medium dasMedium) {
@@ -28,6 +34,7 @@ public class BuchAnsicht extends ImagePanel {
         this.medium = dasMedium;
         initComponents();
         jLabel1.setText(medium.getTitel());
+        this.addMouseListener(new BuchAnsichtMouseListener(verwalter));
     }
 
     /** This method is called from within the constructor to
@@ -39,13 +46,13 @@ public class BuchAnsicht extends ImagePanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1 = new WrappedLabel("Buchtitel");
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setPreferredSize(new java.awt.Dimension(200, 265));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buchtitel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -77,7 +84,7 @@ public class BuchAnsicht extends ImagePanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private WrappedLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
 }
