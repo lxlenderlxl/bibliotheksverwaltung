@@ -29,7 +29,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 
-    private SuchVerwalter v1 = new SuchVerwalter();
+	private SuchVerwalter v1 = new SuchVerwalter();
+	private MedienVerwalter v2= new MedienVerwalter();
 
     /** Creates new form BibliotheksGUI */
     public BibliotheksGUI() {
@@ -64,7 +65,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         searchInitButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         //outputArea = new javax.swing.JPanel();
-        outputArea = new OutputArea(v1);
+        outputArea = new OutputArea(v1, v2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

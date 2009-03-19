@@ -14,15 +14,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 
 public class OutputArea extends JPanel implements Observer
 {
 	private SuchVerwalter v1 = null;
-	public OutputArea(SuchVerwalter v1)
+	private MedienVerwalter v2 = null;
+	
+	public OutputArea(SuchVerwalter v1, MedienVerwalter v2)
 	{
 		this.v1 = v1;
+		this.v2 = v2;
 		v1.addObserver(this);
 	}
 

@@ -5,10 +5,12 @@ import java.util.Observable;
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.UpdateInfo;
 
 public class MedienVerwalter implements Verwaltbar {
 
 	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
+	private UpdateInfo updateInfo = new UpdateInfo();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -86,15 +88,10 @@ public class MedienVerwalter implements Verwaltbar {
 	public int getAnzahlExemplare(Medium medium) {
 		return mediumDAO.getAnzahlExemplare(medium.getId());
 	}
-
-	/* (non-Javadoc)
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 */
-	@Override
-	public void update(Observable o, Object arg)
+	
+	public UpdateInfo holeUpdateInfo()
 	{
-		// TODO Auto-generated method stub
-		
+		return updateInfo;
 	}
 
 }
