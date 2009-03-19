@@ -3,7 +3,9 @@
  */
 package bibliotheksverwaltung.view;
 
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -44,6 +46,7 @@ public class OutputArea extends JPanel implements Observer
 					System.out.println("Medium vor Anzeige als buchansicht");
 					BuchAnsicht buch = new BuchAnsicht(ergebnis);
 					this.add(buch);
+					this.validate();
 					System.out.println("Medium nach Anzeige");
 					/*ausgabe += "ID: " + ergebnis.getId() + "\n";
 					ausgabe += "Titel: " + ergebnis.getTitel() + "\n";

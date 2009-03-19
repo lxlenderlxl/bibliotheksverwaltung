@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.util.Observable;
+
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -77,6 +79,16 @@ public class ExemplarVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
+	@Override
+	public void update(Observable o, Object arg)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }
