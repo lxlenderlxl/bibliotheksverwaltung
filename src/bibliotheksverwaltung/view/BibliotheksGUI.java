@@ -38,6 +38,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         }
         initComponents();
         searchInitButton.addActionListener(new TestListener(v1, searchField));
+        outputArea.setSize(1000, 800);
     }
 
     /** This method is called from within the constructor to
@@ -59,7 +60,8 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         suchPanel = new javax.swing.JPanel();
         searchInitButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
-        outputArea = new javax.swing.JPanel();
+        //outputArea = new javax.swing.JPanel();
+        outputArea = new OutputArea(v1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

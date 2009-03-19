@@ -3,17 +3,19 @@
  */
 package bibliotheksverwaltung.view;
 
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 
-public class OutputArea extends JTextArea implements Observer
+public class OutputArea extends JPanel implements Observer
 {
 	private SuchVerwalter v1 = null;
 	public OutputArea(SuchVerwalter v1)
@@ -30,6 +32,7 @@ public class OutputArea extends JTextArea implements Observer
 	{
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
+		this.removeAll();
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
@@ -38,7 +41,10 @@ public class OutputArea extends JTextArea implements Observer
 				for (int i = 0; i < v1.getErgebnisse().size(); i++)
 				{
 					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
-					this.add(new BuchAnsicht(ergebnis));
+					System.out.println("Medium vor Anzeige als buchansicht");
+					BuchAnsicht buch = new BuchAnsicht(ergebnis);
+					this.add(buch);
+					System.out.println("Medium nach Anzeige");
 					/*ausgabe += "ID: " + ergebnis.getId() + "\n";
 					ausgabe += "Titel: " + ergebnis.getTitel() + "\n";
 					ausgabe += "Autor: " + ergebnis.getAutorNachname() + ", "+ ergebnis.getAutorVorname() + "\n";
