@@ -75,15 +75,4 @@ public class SchlagwortVerwalter implements Verwaltbar {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
-
-	/* (non-Javadoc)
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 */
-	@Override
-	public void update(Observable o, Object arg)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
 }
