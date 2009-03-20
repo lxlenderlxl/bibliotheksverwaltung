@@ -63,7 +63,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         searchBook = new javax.swing.JButton();
         searchPerson = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
-        outputArea = new javax.swing.JPanel();
+        outputPanel = new javax.swing.JScrollPane();
 
         setPreferredSize(new java.awt.Dimension(593, 600));
 
@@ -74,7 +74,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         clearButton.setPreferredSize(new java.awt.Dimension(41, 41));
         clearButton.addActionListener(this);
 
-        searchBook.setFont(new java.awt.Font("Arial", 1, 14));
+        searchBook.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         searchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/Book 4.png"))); // NOI18N
         searchBook.setMaximumSize(new java.awt.Dimension(41, 41));
         searchBook.setMinimumSize(new java.awt.Dimension(41, 41));
@@ -83,25 +83,25 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         searchPerson.setFont(new java.awt.Font("Arial", 1, 14));
         searchPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_48.png"))); // NOI18N
 
-        searchField.setFont(new java.awt.Font("Arial", 1, 18));
+        searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         searchField.setForeground(new java.awt.Color(204, 204, 204));
         searchField.setText("Suchworte eingeben...");
         searchField.addFocusListener(this);
 
-        outputArea.setMaximumSize(new java.awt.Dimension(573, 533));
-        outputArea.setMinimumSize(new java.awt.Dimension(573, 533));
-        outputArea.setOpaque(false);
-
-        outputArea.setMaximumSize(this.getSize());
+        outputPanel.setBorder(null);
+        outputPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        outputPanel.setMaximumSize(new java.awt.Dimension(573, 533));
+        outputPanel.setMinimumSize(new java.awt.Dimension(573, 533));
+        outputPanel.setPreferredSize(new java.awt.Dimension(573, 533));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(outputArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -122,7 +122,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
                     .addComponent(searchBook, 0, 0, Short.MAX_VALUE)
                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(outputArea, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(outputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }
@@ -164,13 +164,13 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
 		searchField.setForeground(new java.awt.Color(204, 204, 204));
 		searchField.setText("Suchworte eingeben...");
-		outputArea.removeAll();
-		outputArea.repaint();
+		outputPanel.removeAll();
+		outputPanel.repaint();
 	}//GEN-LAST:event_clearButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearButton;
-    private javax.swing.JPanel outputArea;
+    private javax.swing.JScrollPane outputPanel;
     private javax.swing.JButton searchBook;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton searchPerson;
