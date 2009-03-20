@@ -7,10 +7,15 @@ import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
 
-public class MedienVerwalter implements Verwaltbar {
+public class MedienVerwalter extends Observable implements Verwaltbar {
 
 	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
 	private UpdateInfo updateInfo = new UpdateInfo();
+	
+	public MedienVerwalter()
+	{
+		super();	
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -18,6 +23,7 @@ public class MedienVerwalter implements Verwaltbar {
 	@Override
 	public void add(Object objekt)
 	{
+		updateInfo.setzeAenderung("MediumHinzu");
 		try {
 			Medium medium = (Medium) objekt;
 			mediumDAO.add(
@@ -31,6 +37,8 @@ public class MedienVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 	/* (non-Javadoc)
@@ -39,6 +47,7 @@ public class MedienVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
+		updateInfo.setzeAenderung("MediumDelete");
 		try {
 			Medium medium = (Medium) objekt;
 			mediumDAO.update(
@@ -53,6 +62,8 @@ public class MedienVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 	/* (non-Javadoc)
@@ -61,6 +72,7 @@ public class MedienVerwalter implements Verwaltbar {
 	@Override
 	public void update(Object objekt)
 	{
+		updateInfo.setzeAenderung("MediumUpdate");
 		try {
 			Medium medium = (Medium) objekt;
 			mediumDAO.update(
@@ -75,6 +87,8 @@ public class MedienVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 	/**

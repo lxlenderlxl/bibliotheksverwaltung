@@ -42,7 +42,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         initComponents();
         searchInitButton.addActionListener(new TestListener(v1, searchField));
         outputArea.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        outputArea.setSize(1000, 800);
     }
 
     /** This method is called from within the constructor to

@@ -23,9 +23,13 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		System.out.println("DU HAST MICH GEDRÜCKT");
-		
+		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
+		{
+			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
+			//verwalter.
+			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+		}		
 	}
 
 	/* (non-Javadoc)

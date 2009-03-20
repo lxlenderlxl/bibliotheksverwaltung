@@ -17,7 +17,7 @@ public class WrappedLabel extends JTextArea
 		this.setWrapStyleWord(true);
 		this.setFont(label.getFont());
 		this.setOpaque(false);
-		//this.setBorder(null);
+		this.setBorder(null);
 		this.setSize(200, 200);
 	}
 }
