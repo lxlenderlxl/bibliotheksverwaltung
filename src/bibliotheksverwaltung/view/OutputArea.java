@@ -39,6 +39,7 @@ public class OutputArea extends JPanel implements Observer
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
 		this.removeAll();
+		System.out.println(v1.getErgebnisse().size());
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
@@ -47,21 +48,9 @@ public class OutputArea extends JPanel implements Observer
 				for (int i = 0; i < v1.getErgebnisse().size(); i++)
 				{
 					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
-					System.out.println("Medium vor Anzeige als buchansicht");
 					BuchAnsicht buch = new BuchAnsicht(ergebnis);
 					this.add(buch);
-					System.out.println("Medium nach Anzeige");
-					/*ausgabe += "ID: " + ergebnis.getId() + "\n";
-					ausgabe += "Titel: " + ergebnis.getTitel() + "\n";
-					ausgabe += "Autor: " + ergebnis.getAutorNachname() + ", "+ ergebnis.getAutorVorname() + "\n";
-					ausgabe += "E-Jahr: " + ergebnis.getErscheinungsJahr() + "\n";
-					ausgabe += "----------------------------------------------------------------\n";*/
 				}
-				//this.setText(ausgabe);
-			}
-			else
-			{
-
 			}
 			this.revalidate();
 		}
