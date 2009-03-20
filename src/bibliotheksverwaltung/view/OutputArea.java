@@ -50,7 +50,6 @@ public class OutputArea extends JPanel implements Observer
 					System.out.println("Medium vor Anzeige als buchansicht");
 					BuchAnsicht buch = new BuchAnsicht(ergebnis);
 					this.add(buch);
-					this.validate();
 					System.out.println("Medium nach Anzeige");
 					/*ausgabe += "ID: " + ergebnis.getId() + "\n";
 					ausgabe += "Titel: " + ergebnis.getTitel() + "\n";
@@ -64,6 +63,7 @@ public class OutputArea extends JPanel implements Observer
 			{
 
 			}
+			this.revalidate();
 		}
 	}
 
