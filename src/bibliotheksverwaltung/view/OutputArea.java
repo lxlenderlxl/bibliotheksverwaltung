@@ -43,7 +43,7 @@ public class OutputArea extends JPanel implements Observer
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
 		this.removeAll();
-		this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 1) / 3)));
+		this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
