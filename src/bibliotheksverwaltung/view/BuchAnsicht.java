@@ -33,8 +33,9 @@ public class BuchAnsicht extends ImagePanel {
 		super("Book.png");
 		this.medium = dasMedium;
 		initComponents();
-		this.addMouseListener(new BuchAnsichtMouseListener(verwalter));
-		titleField.setText(medium.getMediumText());
+		this.addMouseListener(new BuchAnsichtMouseListener(verwalter, dasMedium));
+		titleField.setText(medium.getTitel());
+		infoField.setText(dasMedium.getMediumText());
 		this.setzeStatus();
 	}
 
