@@ -10,6 +10,7 @@
  */
 package bibliotheksverwaltung.view;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 
@@ -32,6 +33,8 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	public SuchPanel() {
 		initComponents();
     resultArea = new OutputArea(v1,v2);
+    resultArea.setLayout(new FlowLayout());
+    resultArea.setMaximumSize(outputArea.getMaximumSize());
     resultArea.setSize(outputArea.getSize());
     outputArea.add(resultArea);
     searchBook.addActionListener(new SearchBookListener(v1, searchField));
