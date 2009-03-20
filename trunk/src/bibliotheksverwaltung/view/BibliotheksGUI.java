@@ -13,6 +13,7 @@ package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.controller.TestListener;
+import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 
 import java.awt.FlowLayout;
@@ -185,23 +186,25 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         mainPanel.removeAll();
         suchPanel suchPanel2 = new suchPanel();
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(getContentPane());
-        suchPanel2.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(suchPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
-        );
+        suchPanel2.setSize(mainPanel.getSize());
+        mainPanel.add(suchPanel2);
+        this.repaint();
+        this.pack();
         System.out.println(suchPanel2.getHeight());
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        mainPanel.removeAll();
-        //mainPanel.add(new suchPanel());
-        repaint();
-        System.out.println("moo");
+       	mainPanel.removeAll();
+       	System.out.println(mainPanel.countComponents());
+       	for (int i = 0; i < 10; i++)
+				{
+					
+				}
+       	BuchAnsicht buch = new BuchAnsicht(new Medium(44));
+       	//buch.setSize(mainPanel.getSize());
+        mainPanel.add(buch);
+        this.repaint();
+        this.pack();
     }//GEN-LAST:event_addButtonActionPerformed
 
 
