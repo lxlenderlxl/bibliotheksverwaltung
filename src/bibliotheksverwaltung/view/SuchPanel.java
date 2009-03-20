@@ -46,6 +46,8 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	private void init2nd()
 	{
     resultArea = new OutputArea(v1,v2);
+    resultArea.setBorder(null);
+    outputPanel.setBorder(null);
     resultArea.setLayout(new FlowLayout());
     outputPanel.setViewportView(resultArea);
     resultArea.setPreferredSize((new Dimension((int)outputPanel.getSize().getWidth() - 10, (int)outputPanel.getSize().getWidth())));
