@@ -158,6 +158,12 @@
         </Container>
         <Container class="javax.swing.JPanel" name="mainPanel">
           <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[597, 600]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[597, 600]"/>
+            </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
