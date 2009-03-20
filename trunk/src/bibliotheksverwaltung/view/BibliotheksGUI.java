@@ -38,11 +38,11 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     /** Creates new form BibliotheksGUI */
     public BibliotheksGUI() {
-        /*try {
+        try {
             javax.swing.UIManager.setLookAndFeel(new com.nilo.plaf.nimrod.NimRODLookAndFeel());
         } catch (UnsupportedLookAndFeelException e) {
             LocalEnvironment.log(e.getMessage(), this);
-        }*/
+        }
         initComponents();
     }
 
@@ -71,7 +71,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
         menuPanel.setOpaque(false);
 
-        searchButton.setFont(new java.awt.Font("Arial", 1, 14));
+        searchButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/search_48.png"))); // NOI18N
         searchButton.setText("Suchen");
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -83,7 +83,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.addActionListener(this);
 
-        reportButton.setFont(new java.awt.Font("Arial", 1, 14));
+        reportButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/pie_chart_48.png"))); // NOI18N
         reportButton.setText("Berichte");
         reportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -104,12 +104,12 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
                     .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                     .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                     .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(62, 62, 62)
                 .addComponent(searchButton)
                 .addGap(18, 18, 18)
                 .addComponent(addButton)
@@ -117,7 +117,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
                 .addComponent(reportButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
                 .addComponent(configButton)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
 
         mainPanel.setMaximumSize(new java.awt.Dimension(597, 600));
@@ -190,7 +190,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
        	mainPanel.removeAll();
-       	//TODO HINZUFÜGEN PANEL EINBINDEN
+       	//TODO HINZUFï¿½GEN PANEL EINBINDEN
         this.repaint();
         this.pack();
     }//GEN-LAST:event_addButtonActionPerformed
