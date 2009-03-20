@@ -63,6 +63,7 @@ public class BuchAnsicht extends ImagePanel {
         statusLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red_small.png"))); // NOI18N
         statusLabel.setText("nicht verfügbar");
+        statusLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
