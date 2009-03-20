@@ -204,8 +204,6 @@ public class MySQLMediumDAO implements MediumDAO
 			rs.last();
 			anzahl = new int[rs.getRow()];
 			rs.beforeFirst();
-			System.out.println(anzahl);
-			System.out.println(statement.toString());
 			while(rs.next())
 			{
 				anzahl[index] = rs.getInt(1);

@@ -119,12 +119,10 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 	public void erzeugeExemplare(int dieId)
 	{
 		int[] exemplarids = new MySQLMediumDAO().getExemplare(dieId);
-		System.out.println(exemplarids.length);
 		updateInfo.setzeAenderung("ExemplareErzeugt");
 		for (int i = 0; i < exemplarids.length; i++)
 		{
-			System.out.println(exemplarids[i]);
-			//exemplare.add(new Exemplar(exemplarids[i]));
+			exemplare.add(new Exemplar(exemplarids[i]));
 		}
 		setChanged();
 		notifyObservers(updateInfo);
