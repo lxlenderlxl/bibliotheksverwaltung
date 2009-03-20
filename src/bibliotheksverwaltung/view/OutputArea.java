@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
@@ -29,8 +30,7 @@ public class OutputArea extends JPanel implements Observer
 		super();
 		this.v1 = v1;
 		this.v2 = v2;
-		v1.addObserver(this);
-		
+		v1.addObserver(this);		
 	}
 
 	/* (non-Javadoc)
@@ -52,11 +52,11 @@ public class OutputArea extends JPanel implements Observer
 				{
 					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
 					BuchAnsicht buch = new BuchAnsicht(ergebnis);
+					buch.addMouseListener(new BuchAnsichtMouseListener(v2));
 					this.add(buch);
 				}
 			}
 			this.doLayout();
-			System.out.println("Layout durchgeführt!!");
 			this.revalidate();
 		}
 	}

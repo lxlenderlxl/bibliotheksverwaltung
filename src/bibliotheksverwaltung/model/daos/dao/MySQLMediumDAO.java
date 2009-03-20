@@ -11,7 +11,7 @@ public class MySQLMediumDAO implements MediumDAO
 {
 	private Connection connection = LocalEnvironment.getConnection();
 	private PreparedStatement statement = null;
-	
+
 	public MySQLMediumDAO()
 	{		
 	}
@@ -54,7 +54,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"SELECT * FROM medium WHERE aktiv = ?");
+			"SELECT * FROM medium WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -81,7 +81,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"SELECT * FROM medium WHERE medienid = ?");
+			"SELECT * FROM medium WHERE medienid = ?");
 			LocalEnvironment.statementChecker(statement, 1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -109,7 +109,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE medienid = ?");
+			"UPDATE medium SET titel = ?, autorvorname = ?, autornachname = ?, verlag = ?, erscheinungsjahr = ?, isbn = ?, aktiv = ? WHERE medienid = ?");
 			LocalEnvironment.statementChecker(statement, 1, derTitel);
 			LocalEnvironment.statementChecker(statement, 2, derAutorVorname);
 			LocalEnvironment.statementChecker(statement, 3, derAutorNachname);
@@ -138,9 +138,9 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"SELECT count(*) FROM exemplare WHERE medienid = ?");
+			"SELECT count(*) FROM exemplar WHERE medienid = ?");
 			statement.setInt(1, dieId);
-			
+
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -155,4 +155,63 @@ public class MySQLMediumDAO implements MediumDAO
 		}
 		return anzahl;
 	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.MediumDAO#getAnzahlAusleihbareExemplare(int)
+	 */
+	@Override
+	public int getExemplareAusgeliehen(int dieId)
+	{
+		int anzahl = 0;
+		try
+		{
+			statement = connection.prepareStatement(
+			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid = ?");
+			statement.setInt(1, dieId);
+			statement.setNull(2, java.sql.Types.NULL);
+			System.out.println(statement.toString());
+
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				anzahl = rs.getInt(1);
+			}
+		} catch (SQLException e)
+		{
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
+		}
+		return anzahl;
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.daos.dao.MediumDAO#getExemplare(int)
+	 */
+	@Override
+	public int[] getExemplare(int dieId)
+	{
+		int[] anzahl = null;
+		try
+		{
+			statement = connection.prepareStatement(
+			"SELECT exemplarid FROM exemplar WHERE medienid = ?");
+			statement.setInt(1, dieId);
+
+			ResultSet rs = statement.executeQuery();
+			anzahl = new int[rs.getMetaData().getColumnCount()];
+			for (int i = 0; i < anzahl.length; i++)
+			{
+				anzahl[i] = rs.getInt(1);
+			}
+			} catch (SQLException e)
+			{
+				LocalEnvironment.log(e.getMessage(), this);
+			} finally
+			{
+				LocalEnvironment.closeStmt(statement);
+			}
+			return anzahl;
+		}
 }

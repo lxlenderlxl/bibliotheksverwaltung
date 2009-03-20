@@ -12,6 +12,7 @@ public class Medium
 	private int erscheinungsJahr = 0;
 	private String isbn = "";
 	private boolean aktiv = true;
+	private int[] exemplarIds = null;
 
 	public Medium(int dieId)
 	{
@@ -127,6 +128,17 @@ public class Medium
 	public void setAktiv(boolean aktiv)
 	{
 		this.aktiv = aktiv;
+	}
+	
+	public int[] getExemplare()
+	{
+		exemplarIds = new MySQLMediumDAO().getExemplare(this.id);
+		return exemplarIds;
+	}
+	
+	public String getMediumText()
+	{
+		return "\n" + this.titel + "\n\nAutor:\n" + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn;
 	}
 
 }

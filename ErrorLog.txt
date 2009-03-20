@@ -46,3 +46,24 @@ Tue Mar 17 14:27:03 CET 2009	You have an error in your SQL syntax; check the man
 Thu Mar 19 11:09:06 CET 2009	Communications link failure
 
 Last packet sent to the server was 0 ms ago.
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:45:48 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:23 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
