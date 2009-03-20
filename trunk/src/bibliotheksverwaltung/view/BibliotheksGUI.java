@@ -36,11 +36,11 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     /** Creates new form BibliotheksGUI */
     public BibliotheksGUI() {
-        try {
-            javax.swing.UIManager.setLookAndFeel(new com.nilo.plaf.nimrod.NimRODLookAndFeel());
-        } catch (UnsupportedLookAndFeelException e) {
-            LocalEnvironment.log(e.getMessage(), this);
-        }
+//        try {
+//            javax.swing.UIManager.setLookAndFeel(new com.nilo.plaf.nimrod.NimRODLookAndFeel());
+//        } catch (UnsupportedLookAndFeelException e) {
+//            LocalEnvironment.log(e.getMessage(), this);
+//        }
         initComponents();
     }
 
@@ -186,7 +186,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
        	System.out.println(mainPanel.countComponents());
        	for (int i = 0; i < 10; i++)
 				{
-					
+
 				}
        	BuchAnsicht buch = new BuchAnsicht(new Medium(44));
        	//buch.setSize(mainPanel.getSize());
