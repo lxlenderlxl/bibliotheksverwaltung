@@ -104,7 +104,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener {
 
     private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
         searchField.setText("");
-        searchField.setForeground(new java.awt.Color(255, 255, 255));
+        searchField.setForeground(new java.awt.Color(0, 0, 0));
     }//GEN-LAST:event_searchFieldFocusGained
 
     private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
