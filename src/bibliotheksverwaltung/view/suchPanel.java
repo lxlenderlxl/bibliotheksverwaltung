@@ -36,21 +36,23 @@ public class suchPanel extends javax.swing.JPanel implements FocusListener {
         searchField = new javax.swing.JTextField();
         outputArea = new javax.swing.JPanel();
 
-        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14));
         searchInitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_48.png"))); // NOI18N
 
-        searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        searchField.setFont(new java.awt.Font("Arial", 1, 18));
         searchField.setForeground(new java.awt.Color(204, 204, 204));
         searchField.setText("Suchworte eingeben...");
         searchField.addFocusListener(this);
 
-        outputArea.setBackground(new java.awt.Color(255, 153, 153));
+        outputArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
+        outputArea.setOpaque(false);
+
+        outputArea.setMaximumSize(this.getSize());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -63,7 +65,6 @@ public class suchPanel extends javax.swing.JPanel implements FocusListener {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 313, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
