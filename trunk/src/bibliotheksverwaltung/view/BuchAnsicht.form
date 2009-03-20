@@ -70,7 +70,6 @@
           <Image iconType="3" name="/bibliotheksverwaltung/view/images/circle_red.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="nicht verf&#xfc;gbar"/>
-        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
   </SubComponents>

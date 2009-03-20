@@ -60,7 +60,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         reportButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
-        suchPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bibliotheksverwaltung");
@@ -68,13 +67,15 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
         containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        searchButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        menuPanel.setOpaque(false);
+
+        searchButton.setFont(new java.awt.Font("Arial", 1, 14));
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/search_48.png"))); // NOI18N
         searchButton.setText("Suchen");
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         searchButton.addActionListener(this);
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        addButton.setFont(new java.awt.Font("Arial", 1, 14));
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/add_48.png"))); // NOI18N
         addButton.setText("Hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -117,32 +118,17 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout suchPanelLayout = new javax.swing.GroupLayout(suchPanel);
-        suchPanel.setLayout(suchPanelLayout);
-        suchPanelLayout.setHorizontalGroup(
-            suchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        suchPanelLayout.setVerticalGroup(
-            suchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        mainPanel.setOpaque(false);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(suchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
+            .addGap(0, 593, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(suchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(378, Short.MAX_VALUE))
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
@@ -229,7 +215,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton reportButton;
     private javax.swing.JButton searchButton;
-    private javax.swing.JPanel suchPanel;
     // End of variables declaration//GEN-END:variables
 
 		/* (non-Javadoc)
