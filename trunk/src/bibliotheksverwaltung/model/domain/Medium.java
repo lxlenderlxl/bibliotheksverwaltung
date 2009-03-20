@@ -38,7 +38,7 @@ public class Medium
 		isbn = dieISBN;
 		this.aktiv = aktiv;
 	}
-	
+
 	public Medium(String derTitel, String derVorname, String derNachname, String derVerlag, int dasJahr, String dieISBN)
 	{
 		titel = derTitel;
@@ -129,16 +129,16 @@ public class Medium
 	{
 		this.aktiv = aktiv;
 	}
-	
+
 	public int[] getExemplare()
 	{
 		exemplarIds = new MySQLMediumDAO().getExemplare(this.id);
 		return exemplarIds;
 	}
-	
+
 	public String getMediumText()
 	{
-		return "\nAutor:\n" + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn;
+		return "Autor:\n" + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn;
 	}
 
 }
