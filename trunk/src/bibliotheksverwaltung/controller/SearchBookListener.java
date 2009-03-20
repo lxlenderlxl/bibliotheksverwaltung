@@ -15,12 +15,12 @@ import bibliotheksverwaltung.model.logic.SuchVerwalter;
  *
  * @author Max
  */
-public class TestListener implements ActionListener {
+public class SearchBookListener implements ActionListener {
 
 	private SuchVerwalter v1 = null;
 	private JTextField feld = null;
 
-	public TestListener(SuchVerwalter v1, JTextField suchFeld) {
+	public SearchBookListener(SuchVerwalter v1, JTextField suchFeld) {
 		this.v1 = v1;
 		this.feld = suchFeld;
 	}

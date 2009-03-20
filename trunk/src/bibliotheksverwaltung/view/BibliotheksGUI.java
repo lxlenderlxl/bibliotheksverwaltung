@@ -12,7 +12,7 @@
 package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.controller.TestListener;
+import bibliotheksverwaltung.controller.SearchBookListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 
