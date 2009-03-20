@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.view;
 
@@ -22,7 +22,7 @@ public class OutputArea extends JPanel implements Observer
 {
 	private SuchVerwalter v1 = null;
 	private MedienVerwalter v2 = null;
-	
+
 	public OutputArea(SuchVerwalter v1, MedienVerwalter v2)
 	{
 		this.v1 = v1;
@@ -62,7 +62,7 @@ public class OutputArea extends JPanel implements Observer
 			}
 			else
 			{
-				
+
 			}
 		}
 	}
