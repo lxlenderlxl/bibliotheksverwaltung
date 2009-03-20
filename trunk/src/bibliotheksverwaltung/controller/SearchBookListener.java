@@ -30,7 +30,6 @@ public class SearchBookListener implements ActionListener {
 		{
 			v1.holeUpdateInfo().setzeUpdateSperre(true);
 			v1.sucheMedium(feld.getText());
-			System.out.println(feld.getText());
 			v1.holeUpdateInfo().setzeAenderungOk(true);   
 			v1.holeUpdateInfo().setzeUpdateSperre(false);
 		}

@@ -1,8 +1,10 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
+import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
@@ -10,6 +12,7 @@ import bibliotheksverwaltung.util.UpdateInfo;
 public class MedienVerwalter extends Observable implements Verwaltbar {
 
 	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
+	private ArrayList<Exemplar> exemplare = new ArrayList<Exemplar>();
 	private UpdateInfo updateInfo = new UpdateInfo();
 	
 	public MedienVerwalter()
@@ -98,6 +101,11 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 	public boolean hasExemplare(int id) {
 		 return (mediumDAO.getAnzahlExemplare(id) > 0);
 	}
+	
+	public boolean hasAusleihbareExemplare(int id)
+	{
+		return (mediumDAO.getExemplareAusgeliehen(id) == 0);
+	}
 
 	public int getAnzahlExemplare(Medium medium) {
 		return mediumDAO.getAnzahlExemplare(medium.getId());
@@ -106,6 +114,20 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 	public UpdateInfo holeUpdateInfo()
 	{
 		return updateInfo;
+	}
+	
+	public void erzeugeExemplare(int dieId)
+	{
+		int[] exemplarids = new MySQLMediumDAO().getExemplare(dieId);
+		for (int i = 0; i < exemplarids.length; i++)
+		{
+			exemplare.add(new Exemplar(exemplarids[i]));
+		}
+	}
+	
+	public ArrayList<Exemplar> getExemplare()
+	{
+		return exemplare;
 	}
 
 }

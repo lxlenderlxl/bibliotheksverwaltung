@@ -169,7 +169,8 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
 		searchField.setForeground(new java.awt.Color(204, 204, 204));
 		searchField.setText("Suchworte eingeben...");
-		outputPanel.removeAll();
+		resultArea.removeAll();
+		outputPanel.getVerticalScrollBar().hide();
 		outputPanel.repaint();
 	}//GEN-LAST:event_clearButtonActionPerformed
 

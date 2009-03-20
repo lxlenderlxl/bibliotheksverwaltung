@@ -23,13 +23,10 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
-		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
 			//verwalter.
 			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
-		}		
 	}
 
 	/* (non-Javadoc)
