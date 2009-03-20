@@ -45,19 +45,21 @@ public class BuchAnsicht extends ImagePanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        detailField = new javax.swing.JTextField();
+        jTextArea1 = new javax.swing.JTextArea();
         statusLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 0, 0));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setPreferredSize(new java.awt.Dimension(200, 266));
 
-        detailField.setEditable(false);
-        detailField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        detailField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        detailField.setText("TESTTEXT");
-        detailField.setBorder(null);
-        detailField.setOpaque(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setEditable(false);
+        jTextArea1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setBorder(null);
+        jTextArea1.setOpaque(false);
 
         statusLabel.setFont(new java.awt.Font("Arial", 0, 12));
         statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red.png"))); // NOI18N
@@ -67,18 +69,21 @@ public class BuchAnsicht extends ImagePanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(statusLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(detailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(24, Short.MAX_VALUE)
+                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(detailField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -94,7 +99,7 @@ public class BuchAnsicht extends ImagePanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField detailField;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
 
