@@ -10,6 +10,7 @@
  */
 package bibliotheksverwaltung.view;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
@@ -32,21 +33,23 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	/** Creates new form suchPanel */
 	public SuchPanel() {
 		initComponents();
-    resultArea = new OutputArea(v1,v2);
-    resultArea.setLayout(new FlowLayout());
-    resultArea.setMaximumSize(outputArea.getMaximumSize());
-    resultArea.setSize(outputArea.getSize());
-    outputArea.add(resultArea);
-    searchBook.addActionListener(new SearchBookListener(v1, searchField));
+		this.init2nd();    
 	}
 
 	public SuchPanel(boolean personButtonAnzeigen, boolean buchButtonAnzeigen) {
 		initComponents();
     searchPerson.setVisible(personButtonAnzeigen);
     searchBook.setVisible(buchButtonAnzeigen);
+    this.init2nd();
+	}
+	
+	private void init2nd()
+	{
     resultArea = new OutputArea(v1,v2);
-    resultArea.setSize(outputArea.getSize());
-    outputArea.add(resultArea);
+    resultArea.setLayout(new FlowLayout());
+    outputPanel.setViewportView(resultArea);
+    resultArea.setPreferredSize((new Dimension((int)outputPanel.getSize().getWidth() - 10, (int)outputPanel.getSize().getWidth())));
+    //Listener
     searchBook.addActionListener(new SearchBookListener(v1, searchField));
 	}
 
