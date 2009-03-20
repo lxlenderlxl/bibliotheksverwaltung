@@ -64,7 +64,6 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         searchPerson = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         outputArea = new javax.swing.JPanel();
-        outputPane = new javax.swing.JScrollPane();
 
         setPreferredSize(new java.awt.Dimension(593, 600));
 
@@ -92,13 +91,6 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         outputArea.setMaximumSize(new java.awt.Dimension(573, 533));
         outputArea.setMinimumSize(new java.awt.Dimension(573, 533));
         outputArea.setOpaque(false);
-
-        outputPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        outputPane.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        outputPane.setMaximumSize(new java.awt.Dimension(597, 600));
-        outputPane.setMinimumSize(new java.awt.Dimension(597, 600));
-        outputPane.setPreferredSize(new java.awt.Dimension(597, 600));
-        outputArea.add(outputPane);
 
         outputArea.setMaximumSize(this.getSize());
 
@@ -179,7 +171,6 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearButton;
     private javax.swing.JPanel outputArea;
-    private javax.swing.JScrollPane outputPane;
     private javax.swing.JButton searchBook;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton searchPerson;
