@@ -63,6 +63,8 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         suchPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bibliotheksverwaltung");
+        setResizable(false);
 
         containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -185,7 +187,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         mainPanel.removeAll();
-        suchPanel suchPanel2 = new suchPanel();
+        SuchPanel suchPanel2 = new SuchPanel();
         suchPanel2.setSize(mainPanel.getSize());
         mainPanel.add(suchPanel2);
         this.repaint();

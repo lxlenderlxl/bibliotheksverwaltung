@@ -16,10 +16,10 @@ import java.awt.event.FocusListener;
  *
  * @author Max
  */
-public class suchPanel extends javax.swing.JPanel implements FocusListener {
+public class SuchPanel extends javax.swing.JPanel implements FocusListener {
 
     /** Creates new form suchPanel */
-    public suchPanel() {
+    public SuchPanel() {
         initComponents();
     }
 
@@ -36,10 +36,12 @@ public class suchPanel extends javax.swing.JPanel implements FocusListener {
         searchField = new javax.swing.JTextField();
         outputArea = new javax.swing.JPanel();
 
-        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14));
+        setPreferredSize(new java.awt.Dimension(593, 600));
+
+        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         searchInitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_48.png"))); // NOI18N
 
-        searchField.setFont(new java.awt.Font("Arial", 1, 18));
+        searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         searchField.setForeground(new java.awt.Color(204, 204, 204));
         searchField.setText("Suchworte eingeben...");
         searchField.addFocusListener(this);
@@ -56,9 +58,9 @@ public class suchPanel extends javax.swing.JPanel implements FocusListener {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(outputArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                    .addComponent(outputArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchInitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -69,9 +71,9 @@ public class suchPanel extends javax.swing.JPanel implements FocusListener {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(searchInitButton, 0, 0, Short.MAX_VALUE)
-                    .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(outputArea, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                    .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(outputArea, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }
@@ -80,13 +82,13 @@ public class suchPanel extends javax.swing.JPanel implements FocusListener {
 
     public void focusGained(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == searchField) {
-            suchPanel.this.searchFieldFocusGained(evt);
+            SuchPanel.this.searchFieldFocusGained(evt);
         }
     }
 
     public void focusLost(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == searchField) {
-            suchPanel.this.searchFieldFocusLost(evt);
+            SuchPanel.this.searchFieldFocusLost(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 
