@@ -48,9 +48,8 @@ public class BuchAnsicht extends ImagePanel {
         jTextArea1 = new javax.swing.JTextArea();
         statusLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 0, 0));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        setPreferredSize(new java.awt.Dimension(200, 266));
+        setMaximumSize(new java.awt.Dimension(186, 247));
+        setPreferredSize(new java.awt.Dimension(186, 247));
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
@@ -61,30 +60,30 @@ public class BuchAnsicht extends ImagePanel {
         jTextArea1.setBorder(null);
         jTextArea1.setOpaque(false);
 
-        statusLabel.setFont(new java.awt.Font("Arial", 0, 12));
-        statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red.png"))); // NOI18N
+        statusLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red_small.png"))); // NOI18N
         statusLabel.setText("nicht verfügbar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(24, Short.MAX_VALUE)
-                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
