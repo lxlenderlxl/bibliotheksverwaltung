@@ -53,23 +53,23 @@ public class BuchAnsicht extends ImagePanel {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         //jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Buchtitel");
+        jLabel1.setText("Ein sehr langer Buchtitel kann aus sehr vielen Zeichen bestehen");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(66, 66, 66))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
