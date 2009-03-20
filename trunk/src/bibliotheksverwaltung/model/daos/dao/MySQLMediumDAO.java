@@ -193,6 +193,7 @@ public class MySQLMediumDAO implements MediumDAO
 	public int[] getExemplare(int dieId)
 	{
 		int[] anzahl = null;
+		int index=0;
 		try
 		{
 			statement = connection.prepareStatement(
@@ -200,10 +201,15 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.setInt(1, dieId);
 
 			ResultSet rs = statement.executeQuery();
-			anzahl = new int[rs.getMetaData().getColumnCount()];
-			for (int i = 0; i < anzahl.length; i++)
+			rs.last();
+			anzahl = new int[rs.getRow()];
+			rs.beforeFirst();
+			System.out.println(anzahl);
+			System.out.println(statement.toString());
+			while(rs.next())
 			{
-				anzahl[i] = rs.getInt(1);
+				anzahl[index] = rs.getInt(1);
+				index++;
 			}
 			} catch (SQLException e)
 			{

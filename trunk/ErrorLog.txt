@@ -67,3 +67,33 @@ Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exi
 Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
 Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
 Fri Mar 20 20:46:58 CET 2009	Table 'bibliotheksverwaltung.exemplare' doesn't exist	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:03:21 CET 2009	Illegal operation on empty result set.	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:05:31 CET 2009	Illegal operation on empty result set.	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:06:46 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:07:08 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:09:08 CET 2009	Illegal operation on empty result set.	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:09:34 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:10:17 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:11:38 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:00 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:00 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:10 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:10 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:11 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:11 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:12 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:12 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:13 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:13 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:13 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:13 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:13 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:13 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:24 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:12:24 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:13:29 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:13:29 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:16:39 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:16:39 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:16:43 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
+Fri Mar 20 22:16:43 CET 2009	Before start of result set	 in class bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO
