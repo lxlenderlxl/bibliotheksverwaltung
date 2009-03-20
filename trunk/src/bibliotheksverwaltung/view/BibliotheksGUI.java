@@ -16,6 +16,7 @@ import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.logic.*;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -27,7 +28,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Max
  */
-public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
+public class BibliotheksGUI extends javax.swing.JFrame implements Observer, ActionListener {
 
 	private SuchVerwalter v1 = new SuchVerwalter();
 	private MedienVerwalter v2= new MedienVerwalter();
@@ -58,21 +59,23 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         reportButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
-        suchPanel = new suchPanel();
+        suchPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        searchButton.setFont(new java.awt.Font("Arial", 1, 14));
+        searchButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/search_48.png"))); // NOI18N
         searchButton.setText("Suchen");
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        searchButton.addActionListener(this);
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 14));
+        addButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/add_48.png"))); // NOI18N
         addButton.setText("Hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        addButton.addActionListener(this);
 
         reportButton.setFont(new java.awt.Font("Arial", 1, 14));
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/pie_chart_48.png"))); // NOI18N
@@ -166,7 +169,40 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         );
 
         pack();
+    }
+
+    // Code for dispatching events from components to event handlers.
+
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource() == searchButton) {
+            BibliotheksGUI.this.searchButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == addButton) {
+            BibliotheksGUI.this.addButtonActionPerformed(evt);
+        }
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        mainPanel.removeAll();
+        suchPanel suchPanel2 = new suchPanel();
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(getContentPane());
+        suchPanel2.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(suchPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(312, Short.MAX_VALUE))
+        );
+        System.out.println(suchPanel2.getHeight());
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        mainPanel.removeAll();
+        //mainPanel.add(new suchPanel());
+        repaint();
+        System.out.println("moo");
+    }//GEN-LAST:event_addButtonActionPerformed
 
 
     /**
