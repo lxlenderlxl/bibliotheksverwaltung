@@ -16,7 +16,9 @@ import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.util.Observable;
@@ -176,7 +178,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         mainPanel.removeAll();
-        SuchPanel suchPanel2 = new SuchPanel();
+        SuchPanel suchPanel2 = new SuchPanel(true,true);
         suchPanel2.setSize(mainPanel.getSize());
         mainPanel.add(suchPanel2);
         this.repaint();
@@ -186,14 +188,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
        	mainPanel.removeAll();
-       	System.out.println(mainPanel.countComponents());
-       	for (int i = 0; i < 10; i++)
-				{
-
-				}
-       	BuchAnsicht buch = new BuchAnsicht(new Medium(44));
-       	//buch.setSize(mainPanel.getSize());
-        mainPanel.add(buch);
+       	//TODO HINZUFÜGEN PANEL EINBINDEN
         this.repaint();
         this.pack();
     }//GEN-LAST:event_addButtonActionPerformed
