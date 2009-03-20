@@ -120,6 +120,8 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
                 .addContainerGap())
         );
 
+        mainPanel.setMaximumSize(new java.awt.Dimension(597, 600));
+        mainPanel.setMinimumSize(new java.awt.Dimension(597, 600));
         mainPanel.setOpaque(false);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
