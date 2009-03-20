@@ -32,6 +32,7 @@ public class OutputArea extends JPanel implements Observer
 		this.v1 = v1;
 		this.v2 = v2;
 		v1.addObserver(this);
+		v2.addObserver(this);
 	}
 
 	/* (non-Javadoc)
@@ -43,11 +44,12 @@ public class OutputArea extends JPanel implements Observer
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
 		this.removeAll();
-		this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
+		System.out.println("VorÄnderung");
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
+				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
 				//ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
 				for (int i = 0; i < v1.getErgebnisse().size(); i++)
 				{
@@ -57,22 +59,19 @@ public class OutputArea extends JPanel implements Observer
 					this.add(buch);
 				}
 			}
-			else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
-			{
-				if (updateInfo.holeAenderungOk())
-				{
-					//ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
-					for (int i = 0; i < v2.getExemplare().size(); i++)
-					{
-						Exemplar ergebnis = (Exemplar) v1.getErgebnisse().get(i);
-						BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel();
-						this.add(buchAnsicht);
-					}
-				}
-			}
-			this.doLayout();
-			this.revalidate();
 		}
+		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.setPreferredSize(new Dimension(563, 533));
+				BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel();
+				System.out.println(buchAnsicht.getHeight());
+				this.add(buchAnsicht);
+			}
+		}
+		this.doLayout();
+		this.revalidate();
 	}
 
 }

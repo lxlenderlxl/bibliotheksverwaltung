@@ -11,6 +11,10 @@
 
 package bibliotheksverwaltung.view;
 
+import javax.swing.JFrame;
+
+import bibliotheksverwaltung.model.domain.Medium;
+
 /**
  *
  * @author Max
@@ -154,6 +158,12 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+  	public static void main(String args[]) {
+  		JFrame jframe = new JFrame();
+  		jframe.setSize(200,265);
+  		jframe.add(new BuchEinzelansichtPanel());
+  		jframe.setVisible(true);
+  	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aktionenPanel;

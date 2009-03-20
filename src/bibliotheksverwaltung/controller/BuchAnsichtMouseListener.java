@@ -26,10 +26,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			verwalter.erzeugeExemplare(medium.getId());
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
-			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+			
 	}
 
 	/* (non-Javadoc)
@@ -38,8 +35,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -68,8 +64,11 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		verwalter.holeUpdateInfo().setzeUpdateSperre(true);
+		verwalter.erzeugeExemplare(medium.getId());
+		System.out.println("OK");
+		verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+		verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 	}
 
 }
