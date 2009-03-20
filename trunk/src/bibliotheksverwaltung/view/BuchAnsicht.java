@@ -33,7 +33,6 @@ public class BuchAnsicht extends ImagePanel {
         super("Book.png");
         this.medium = dasMedium;
         initComponents();
-        jLabel1.setText(medium.getTitel());
         this.addMouseListener(new BuchAnsichtMouseListener(verwalter));
     }
 
@@ -46,30 +45,38 @@ public class BuchAnsicht extends ImagePanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new WrappedLabel("Buchtitel");
+        detailField = new javax.swing.JTextField();
+        statusLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setPreferredSize(new java.awt.Dimension(200, 265));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        //jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ein sehr langer Buchtitel kann aus sehr vielen Zeichen bestehen");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        detailField.setEditable(false);
+        detailField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        detailField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        detailField.setText("TESTTEXT");
+        detailField.setBorder(null);
+
+        statusLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red.png"))); // NOI18N
+        statusLabel.setText("nicht verfügbar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .addComponent(detailField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addComponent(detailField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -84,7 +91,8 @@ public class BuchAnsicht extends ImagePanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private WrappedLabel jLabel1;
+    private javax.swing.JTextField detailField;
+    private javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
 
 }
