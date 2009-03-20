@@ -30,7 +30,7 @@ public class OutputArea extends JPanel implements Observer
 		super();
 		this.v1 = v1;
 		this.v2 = v2;
-		v1.addObserver(this);		
+		v1.addObserver(this);
 	}
 
 	/* (non-Javadoc)
@@ -42,7 +42,7 @@ public class OutputArea extends JPanel implements Observer
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
 		this.removeAll();
-		this.setPreferredSize(new Dimension(563, 252 * ((v1.getErgebnisse().size() + 1) / 2)));
+		this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 1) / 3)));
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
