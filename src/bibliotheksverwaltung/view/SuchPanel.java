@@ -32,14 +32,21 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        searchInitButton = new javax.swing.JButton();
+        searchBook = new javax.swing.JButton();
+        searchPerson = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         outputArea = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(593, 600));
 
-        searchInitButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        searchInitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_48.png"))); // NOI18N
+        searchBook.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/Book 4.png"))); // NOI18N
+        searchBook.setMaximumSize(new java.awt.Dimension(41, 41));
+        searchBook.setMinimumSize(new java.awt.Dimension(41, 41));
+        searchBook.setPreferredSize(new java.awt.Dimension(41, 41));
+
+        searchPerson.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_48.png"))); // NOI18N
 
         searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         searchField.setForeground(new java.awt.Color(204, 204, 204));
@@ -60,20 +67,23 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(outputArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchInitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(searchBook, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchInitButton, 0, 0, Short.MAX_VALUE)
-                    .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchPerson, 0, 0, Short.MAX_VALUE)
+                    .addComponent(searchBook, 0, 0, Short.MAX_VALUE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(outputArea, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                .addComponent(outputArea, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }
@@ -106,7 +116,8 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel outputArea;
+    private javax.swing.JButton searchBook;
     private javax.swing.JTextField searchField;
-    private javax.swing.JButton searchInitButton;
+    private javax.swing.JButton searchPerson;
     // End of variables declaration//GEN-END:variables
 }
