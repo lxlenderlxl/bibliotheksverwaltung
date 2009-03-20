@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
@@ -52,8 +53,21 @@ public class OutputArea extends JPanel implements Observer
 				{
 					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
 					BuchAnsicht buch = new BuchAnsicht(ergebnis);
-					buch.addMouseListener(new BuchAnsichtMouseListener(v2));
+					buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
 					this.add(buch);
+				}
+			}
+			else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
+			{
+				if (updateInfo.holeAenderungOk())
+				{
+					//ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
+					for (int i = 0; i < v2.getExemplare().size(); i++)
+					{
+						Exemplar ergebnis = (Exemplar) v1.getErgebnisse().get(i);
+						BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel();
+						this.add(buchAnsicht);
+					}
 				}
 			}
 			this.doLayout();

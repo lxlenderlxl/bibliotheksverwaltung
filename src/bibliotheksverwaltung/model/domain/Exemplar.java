@@ -38,8 +38,8 @@ public class Exemplar
 	/**
 	 *
 	 */
-	public Exemplar(int id) {
-		Exemplar exemplar = new MySQLExemplarDAO().get(id);
+	public Exemplar(int dieId) {
+		Exemplar exemplar = new MySQLExemplarDAO().get(dieId);
 		this.id = exemplar.id;
 		this.zustandsId = exemplar.zustandsId;
 		this.ausleiherID = exemplar.ausleiherID;

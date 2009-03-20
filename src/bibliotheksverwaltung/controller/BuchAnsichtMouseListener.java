@@ -6,15 +6,18 @@ package bibliotheksverwaltung.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 public class BuchAnsichtMouseListener implements MouseListener
 {
 	private MedienVerwalter verwalter = null;
+	private Medium medium = null;
 	
-	public BuchAnsichtMouseListener(MedienVerwalter derVerwalter)
+	public BuchAnsichtMouseListener(MedienVerwalter derVerwalter, Medium dasMedium)
 	{
 		this.verwalter = derVerwalter;
+		this.medium = dasMedium;
 	}
 
 	/* (non-Javadoc)
@@ -24,7 +27,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	public void mouseClicked(MouseEvent e)
 	{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			//verwalter.
+			verwalter.erzeugeExemplare(medium.getId());
 			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 	}
