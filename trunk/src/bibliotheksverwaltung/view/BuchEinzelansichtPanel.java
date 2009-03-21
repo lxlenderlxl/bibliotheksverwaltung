@@ -42,6 +42,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 		initComponents();
 		this.medienVerwalter = derVerwalter;
 		this.medium = medienVerwalter.getMedium();
+		this.buchansichtPanel.add(new BuchAnsicht(this.medium));
 		this.erzeugeExemplarAnsichten();
 	}
 	
@@ -51,7 +52,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 		{			
 			//TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
 			exemplarePanel.setLayout(new GridLayout(i+1,1));
-			AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(this.medium.getExemplare().get(i));
+			AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medium.getExemplare().get(i));
 			exemplarePanel.add(panel);
 		}
 		this.validate();

@@ -13,10 +13,12 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JFrame;
 
+import bibliotheksverwaltung.controller.BuchAusleihenListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.domain.Zustand;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 /**
@@ -28,10 +30,13 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 	private Exemplar exemplar = null;
 	private Zustand zustand = null;
 	private Ausleiher ausleiher = null;
+	private MedienVerwalter medienVerwalter = null;
+	
 //TODO Wenn Buch ausgeliehen, muss auch ein Button für verlängern vorhanden sein (z.Zt. nur Zurücknehmen und Ausleihen
 	/** Creates new form AusleiheEinzelansichtPanel */
-	public AusleiheEinzelansichtPanel(Exemplar dasExemplar) {
+	public AusleiheEinzelansichtPanel(MedienVerwalter derMedienVerwalter, Exemplar dasExemplar) {
 		this.exemplar = dasExemplar;
+		this.medienVerwalter = derMedienVerwalter;
 		initComponents();
 		exemplarLabel.setText(String.valueOf(this.exemplar.getId()));
 		zustand = new Zustand(exemplar.getZustand());
@@ -43,6 +48,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jLabel2.setText("");
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("Ausleihen");
+			jButton1.addActionListener(new BuchAusleihenListener(medienVerwalter, exemplar));
 			jLabel3.setText("");
 			jLabel4.setText("");
 		}
@@ -131,7 +137,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 	public static void main(String args[]) {
 		JFrame jframe = new JFrame();
 		jframe.setSize(200,265);
-		jframe.add(new AusleiheEinzelansichtPanel(new Exemplar(2)));
+		jframe.add(new AusleiheEinzelansichtPanel(new MedienVerwalter(), new Exemplar(2)));
 		jframe.setVisible(true);
 		jframe.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	}

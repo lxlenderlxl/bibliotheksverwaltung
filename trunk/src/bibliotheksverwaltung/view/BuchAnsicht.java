@@ -12,10 +12,13 @@
 package bibliotheksverwaltung.view;
 
 import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
+import bibliotheksverwaltung.util.UpdateInfo;
 
 import javax.swing.JFrame;
 
@@ -23,7 +26,7 @@ import javax.swing.JFrame;
  *
  * @author Max
  */
-public class BuchAnsicht extends ImagePanel {
+public class BuchAnsicht extends ImagePanel implements Observer {
 
 	private Medium medium;
 	private MedienVerwalter verwalter = new MedienVerwalter();
@@ -136,5 +139,23 @@ public class BuchAnsicht extends ImagePanel {
     private javax.swing.JLabel statusLabel;
     private javax.swing.JTextArea titleField;
     // End of variables declaration//GEN-END:variables
+
+		/* (non-Javadoc)
+		 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+		 */
+		@Override
+		public void update(Observable o, Object arg)
+		{
+			UpdateInfo updateInfo = (UpdateInfo) arg;
+			this.removeAll();
+			if (updateInfo.holeAenderung().equals("DatenBearbeiten"))
+			{
+				if (updateInfo.holeAenderungOk())
+				{
+					this.titleField.setEditable(true);
+					this.infoField.setEditable(true);
+				}
+			}			
+		}
 
 }
