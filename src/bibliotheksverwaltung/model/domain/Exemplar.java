@@ -162,6 +162,15 @@ public class Exemplar
 	{
 		this.aktiv = aktiv;
 	}
+	
+	public boolean isAusleihBar()
+	{
+		boolean ausleihbar = false;
+		if (this.ausleiherID == 0)
+			ausleihbar = true;
+		
+		return ausleihbar;
+	}
 
 
 }

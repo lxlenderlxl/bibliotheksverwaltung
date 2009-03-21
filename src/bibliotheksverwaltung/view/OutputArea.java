@@ -44,13 +44,11 @@ public class OutputArea extends JPanel implements Observer
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
 		this.removeAll();
-		System.out.println("VorÄnderung");
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
 				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
-				//ausgabe += "Ihre Suche ergab " + v1.getErgebnisse().size() + " Treffer\n\n";
 				for (int i = 0; i < v1.getErgebnisse().size(); i++)
 				{
 					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
@@ -65,8 +63,7 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.setPreferredSize(new Dimension(563, 533));
-				BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel();
-				System.out.println(buchAnsicht.getHeight());
+				BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel(this.v2);
 				this.add(buchAnsicht);
 			}
 		}
