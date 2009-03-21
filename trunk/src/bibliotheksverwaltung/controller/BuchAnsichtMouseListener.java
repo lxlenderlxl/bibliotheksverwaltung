@@ -13,7 +13,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 {
 	private MedienVerwalter verwalter = null;
 	private Medium medium = null;
-	
+
 	public BuchAnsichtMouseListener(MedienVerwalter derVerwalter, Medium dasMedium)
 	{
 		this.verwalter = derVerwalter;
@@ -26,7 +26,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-			
+
 	}
 
 	/* (non-Javadoc)
@@ -45,7 +45,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	public void mouseExited(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -55,7 +55,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	public void mousePressed(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -65,8 +65,8 @@ public class BuchAnsichtMouseListener implements MouseListener
 	public void mouseReleased(MouseEvent e)
 	{
 		verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-		verwalter.erzeugeExemplare(medium.getId());
-		System.out.println("OK");
+		verwalter.setMedium(this.medium);
+		verwalter.erzeugeExemplare(this.medium);
 		verwalter.holeUpdateInfo().setzeAenderungOk(true);   
 		verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 	}

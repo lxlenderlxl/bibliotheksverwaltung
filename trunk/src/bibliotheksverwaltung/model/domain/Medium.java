@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.domain;
 
+import java.util.ArrayList;
+
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
 
 public class Medium
@@ -12,7 +14,7 @@ public class Medium
 	private int erscheinungsJahr = 0;
 	private String isbn = "";
 	private boolean aktiv = true;
-	private int[] exemplarIds = null;
+	private ArrayList<Exemplar> exemplare = new ArrayList<Exemplar>();
 
 	public Medium(int dieId)
 	{
@@ -130,10 +132,18 @@ public class Medium
 		this.aktiv = aktiv;
 	}
 
-	public int[] getExemplare()
+	public void erzeugeExemplare()
 	{
-		exemplarIds = new MySQLMediumDAO().getExemplare(this.id);
-		return exemplarIds;
+		int[] exemplarIds = new MySQLMediumDAO().getExemplare(this.id);
+		for (int i = 0; i < exemplarIds.length; i++)
+		{
+			exemplare.add(new Exemplar(exemplarIds[i]));
+		}
+	}
+	
+	public ArrayList<Exemplar> getExemplare()
+	{
+		return exemplare;
 	}
 
 	public String getMediumText()

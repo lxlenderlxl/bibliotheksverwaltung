@@ -12,12 +12,34 @@ import bibliotheksverwaltung.util.UpdateInfo;
 public class MedienVerwalter extends Observable implements Verwaltbar {
 
 	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
-	private ArrayList<Exemplar> exemplare = new ArrayList<Exemplar>();
+	private Medium medium = null;
 	private UpdateInfo updateInfo = new UpdateInfo();
 	
 	public MedienVerwalter()
 	{
 		super();	
+	}
+	
+	public MedienVerwalter(Medium dasMedium)
+	{
+		super();
+		this.medium = dasMedium;
+	}
+
+	/**
+	 * @return the medium
+	 */
+	public Medium getMedium()
+	{
+		return medium;
+	}
+
+	/**
+	 * @param medium the medium to set
+	 */
+	public void setMedium(Medium medium)
+	{
+		this.medium = medium;
 	}
 
 	/* (non-Javadoc)
@@ -116,21 +138,17 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		return updateInfo;
 	}
 	
-	public void erzeugeExemplare(int dieId)
+	public void erzeugeExemplare(Medium dasMedium)
 	{
-		int[] exemplarids = new MySQLMediumDAO().getExemplare(dieId);
+		dasMedium.erzeugeExemplare();
 		updateInfo.setzeAenderung("ExemplareErzeugt");
-		for (int i = 0; i < exemplarids.length; i++)
-		{
-			exemplare.add(new Exemplar(exemplarids[i]));
-		}
 		setChanged();
 		notifyObservers(updateInfo);
 	}
 	
-	public ArrayList<Exemplar> getExemplare()
+	public ArrayList<Exemplar> getExemplare(Medium dasMedium)
 	{
-		return exemplare;
+		return dasMedium.getExemplare();
 	}
 
 }
