@@ -28,7 +28,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 	private Exemplar exemplar = null;
 	private Zustand zustand = null;
 	private Ausleiher ausleiher = null;
-
+//TODO Wenn Buch ausgeliehen, muss auch ein Button für verlängern vorhanden sein (z.Zt. nur Zurücknehmen und Ausleihen
 	/** Creates new form AusleiheEinzelansichtPanel */
 	public AusleiheEinzelansichtPanel(Exemplar dasExemplar) {
 		this.exemplar = dasExemplar;

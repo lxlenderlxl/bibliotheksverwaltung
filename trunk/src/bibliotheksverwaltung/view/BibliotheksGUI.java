@@ -37,6 +37,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 	private MedienVerwalter v2= new MedienVerwalter();
 
     /** Creates new form BibliotheksGUI */
+	//TODO Message Panel
     public BibliotheksGUI() {
         try {
             javax.swing.UIManager.setLookAndFeel(new com.nilo.plaf.nimrod.NimRODLookAndFeel());
