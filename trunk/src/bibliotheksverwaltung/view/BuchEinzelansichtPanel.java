@@ -34,6 +34,8 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 
 	private MedienVerwalter medienVerwalter = null;
 	private Medium medium = null;
+	
+	//TODO Scrollpane unter dem exemplarpanel, da sonst nur begrenzte anzahl an exemplaren geben kann
 
 	/** Creates new form BuchEinzelansichtPanel */
 	public BuchEinzelansichtPanel(MedienVerwalter derVerwalter) {
@@ -47,6 +49,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 	{
 		for (int i = 0; i < this.medium.getExemplare().size(); i++)
 		{			
+			//TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
 			exemplarePanel.setLayout(new GridLayout(i+1,1));
 			AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(this.medium.getExemplare().get(i));
 			exemplarePanel.add(panel);
