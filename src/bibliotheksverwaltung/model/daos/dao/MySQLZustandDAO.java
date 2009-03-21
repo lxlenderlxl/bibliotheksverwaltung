@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import com.mysql.jdbc.Blob;
 
 import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -64,7 +65,7 @@ public class MySQLZustandDAO implements ZustandDAO
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				einZustand = new Zustand(rs.getInt(1), rs.getString(2));
+				einZustand = new Zustand(rs.getInt(1), rs.getString(2), rs.getBlob(3));
 			}
 		} catch (SQLException e)
 		{
@@ -118,7 +119,7 @@ public class MySQLZustandDAO implements ZustandDAO
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				liste.add(new Zustand(rs.getInt(1), rs.getString(2)));
+				liste.add(new Zustand(rs.getInt(1), rs.getString(2), rs.getBlob(3)));
 			}
 		} catch (SQLException e)
 		{

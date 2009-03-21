@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 /**
@@ -25,25 +26,34 @@ import bibliotheksverwaltung.model.logic.MedienVerwalter;
 public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 	
 	private Exemplar exemplar = null;
+	private Zustand zustand = null;
+	private Ausleiher ausleiher = null;
 
 	/** Creates new form AusleiheEinzelansichtPanel */
 	public AusleiheEinzelansichtPanel(Exemplar dasExemplar) {
 		this.exemplar = dasExemplar;
 		initComponents();
 		exemplarLabel.setText(String.valueOf(this.exemplar.getId()));
+		zustand = new Zustand(exemplar.getZustand());
+		exemplarLabel.setIcon(zustand.getBild());
+		exemplarLabel.setToolTipText(zustand.getBeschreibung());
+		
 		if (this.exemplar.isAusleihBar())
-		{
-			exemplarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_green_small.png")));
+		{			
 			jLabel2.setText("");
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("Ausleihen");
+			jLabel3.setText("");
+			jLabel4.setText("");
 		}
 		else
 		{
-			exemplarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red_small.png")));
-			jLabel2.setText(new Ausleiher(this.exemplar.getAusleiher()).getName());
+			ausleiher = new Ausleiher(this.exemplar.getAusleiher());
+			jLabel2.setText(ausleiher.getName());
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_left_green_24.png")));
 			jButton1.setText("Zurücknehmen");
+			jLabel3.setText(String.valueOf(exemplar.getFormattedDate()));
+			jLabel4.setText(String.valueOf(exemplar.getVerlaengerung()));
 		}
 	}
 

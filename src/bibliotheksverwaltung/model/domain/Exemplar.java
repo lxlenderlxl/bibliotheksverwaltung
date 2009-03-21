@@ -128,6 +128,13 @@ public class Exemplar
 		return rueckgabeDatum;
 	}
 	/**
+	 * @return the rueckgabeDatum
+	 */
+	public String getFormattedDate()
+	{
+		return rueckgabeDatum.toLocaleString();
+	}
+	/**
 	 * @param rueckgabeDatum the rueckgabeDatum to set
 	 */
 	public void setRueckgabeDatum(Date rueckgabeDatum)
