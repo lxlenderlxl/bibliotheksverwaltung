@@ -22,6 +22,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
 
+import bibliotheksverwaltung.controller.ExemplarHinzuListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
@@ -44,6 +45,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 		this.medium = medienVerwalter.getMedium();
 		this.buchansichtPanel.add(new BuchAnsicht(this.medium));
 		this.erzeugeExemplarAnsichten();
+		this.addButton.addActionListener(new ExemplarHinzuListener(medienVerwalter));
 	}
 	
 	private void erzeugeExemplarAnsichten()

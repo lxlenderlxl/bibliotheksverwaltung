@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 
 import bibliotheksverwaltung.controller.SearchBookListener;
+import bibliotheksverwaltung.controller.SearchPersonListener;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
 
@@ -45,14 +46,15 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	
 	private void init2nd()
 	{
-    resultArea = new OutputArea(v1,v2);
-    resultArea.setBorder(null);
-    outputPanel.setBorder(null);
-    resultArea.setLayout(new FlowLayout());
-    outputPanel.setViewportView(resultArea);
-    resultArea.setPreferredSize((new Dimension((int)outputPanel.getSize().getWidth() - 10, (int)outputPanel.getSize().getWidth())));
+		this.resultArea = new OutputArea(v1,v2);
+    this.resultArea.setBorder(null);
+    this.outputPanel.setBorder(null);
+    this.resultArea.setLayout(new FlowLayout());
+    this.outputPanel.setViewportView(resultArea);
+    this.resultArea.setPreferredSize((new Dimension((int)outputPanel.getSize().getWidth() - 10, (int)outputPanel.getSize().getWidth())));
     //Listener
-    searchBook.addActionListener(new SearchBookListener(v1, searchField));
+    this.searchBook.addActionListener(new SearchBookListener(v1, searchField));
+    this.searchPerson.addActionListener(new SearchPersonListener(v1, searchField));
 	}
 
 	/** This method is called from within the constructor to

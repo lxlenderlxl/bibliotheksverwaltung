@@ -13,6 +13,7 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 
 	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
 	private Medium medium = null;
+	private ExemplarVerwalter exemplarVerwalter = new ExemplarVerwalter();
 	private UpdateInfo updateInfo = new UpdateInfo();
 	
 	public MedienVerwalter()
@@ -140,6 +141,7 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 	
 	public void erzeugeExemplare(Medium dasMedium)
 	{
+		System.out.println("MedienVerw. ErzeugeExemplare");
 		dasMedium.erzeugeExemplare();
 		updateInfo.setzeAenderung("ExemplareErzeugt");
 		setChanged();
@@ -156,6 +158,22 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		updateInfo.setzeAenderung(aenderung);
 		setChanged();
 		notifyObservers(updateInfo);
+	}
+	
+	/**
+	 * @return the exemplarVerwalter
+	 */
+	public ExemplarVerwalter getExemplarVerwalter()
+	{
+		return exemplarVerwalter;
+	}
+
+	/**
+	 * @param exemplarVerwalter the exemplarVerwalter to set
+	 */
+	public void setExemplarVerwalter(ExemplarVerwalter exemplarVerwalter)
+	{
+		this.exemplarVerwalter = exemplarVerwalter;
 	}
 
 }
