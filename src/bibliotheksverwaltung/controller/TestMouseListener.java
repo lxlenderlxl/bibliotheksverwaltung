@@ -9,23 +9,21 @@ import java.awt.event.MouseListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
-public class BuchAnsichtMouseListener implements MouseListener
+public class TestMouseListener implements MouseListener
 {
 	private MedienVerwalter verwalter = null;
-
-	public BuchAnsichtMouseListener(MedienVerwalter derVerwalter, Medium dasMedium)
+	
+	public TestMouseListener(MedienVerwalter derVerwalter)
 	{
 		this.verwalter = derVerwalter;
-		verwalter.setMedium(dasMedium);
 	}
-
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -34,7 +32,8 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-
+		// TODO Auto-generated method stub
+		
 	}
 
 	/* (non-Javadoc)
@@ -43,6 +42,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -52,6 +52,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -61,15 +62,8 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
-		{
-			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			System.out.println("Test Mouselistener");
-			//verwalter.setMedium(new Medium(5));
-			verwalter.erzeugeExemplare();
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
-			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
-		}	
+		
+		
 	}
 
 }

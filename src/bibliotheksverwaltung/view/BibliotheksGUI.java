@@ -13,6 +13,7 @@ package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.controller.SearchBookListener;
+import bibliotheksverwaltung.controller.TestMouseListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 

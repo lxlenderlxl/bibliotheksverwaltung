@@ -139,11 +139,11 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		return updateInfo;
 	}
 	
-	public void erzeugeExemplare(Medium dasMedium)
+	public void erzeugeExemplare()
 	{
 		System.out.println("MedienVerw. ErzeugeExemplare");
-		dasMedium.erzeugeExemplare();
 		updateInfo.setzeAenderung("ExemplareErzeugt");
+		this.medium.erzeugeExemplare();		
 		setChanged();
 		notifyObservers(updateInfo);
 	}
@@ -151,13 +151,6 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 	public ArrayList<Exemplar> getExemplare(Medium dasMedium)
 	{
 		return dasMedium.getExemplare();
-	}
-	
-	public void autoNotify(String aenderung)
-	{
-		updateInfo.setzeAenderung(aenderung);
-		setChanged();
-		notifyObservers(updateInfo);
 	}
 	
 	/**
