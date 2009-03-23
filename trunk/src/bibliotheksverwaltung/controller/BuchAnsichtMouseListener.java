@@ -12,12 +12,11 @@ import bibliotheksverwaltung.model.logic.MedienVerwalter;
 public class BuchAnsichtMouseListener implements MouseListener
 {
 	private MedienVerwalter verwalter = null;
-	private Medium medium = null;
 
 	public BuchAnsichtMouseListener(MedienVerwalter derVerwalter, Medium dasMedium)
 	{
 		this.verwalter = derVerwalter;
-		this.medium = dasMedium;
+		verwalter.setMedium(dasMedium);
 	}
 
 	/* (non-Javadoc)
@@ -26,7 +25,11 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-
+		verwalter.holeUpdateInfo().setzeUpdateSperre(true);
+		System.out.println("Mouselistener");
+		verwalter.erzeugeExemplare(this.verwalter.getMedium());
+		verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+		verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 	}
 
 	/* (non-Javadoc)
@@ -64,11 +67,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-		verwalter.setMedium(this.medium);
-		verwalter.erzeugeExemplare(this.medium);
-		verwalter.holeUpdateInfo().setzeAenderungOk(true);   
-		verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+		
 	}
 
 }

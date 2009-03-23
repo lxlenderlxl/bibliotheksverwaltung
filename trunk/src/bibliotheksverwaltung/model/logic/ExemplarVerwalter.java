@@ -5,11 +5,13 @@ import java.util.Observable;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.UpdateInfo;
 
 
-public class ExemplarVerwalter implements Verwaltbar {
+public class ExemplarVerwalter extends Observable implements Verwaltbar {
 
 	private MySQLExemplarDAO exemplarDAO = new MySQLExemplarDAO();
+	private UpdateInfo updateInfo = new UpdateInfo();
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
@@ -17,9 +19,11 @@ public class ExemplarVerwalter implements Verwaltbar {
 	@Override
 	public void add(Object objekt)
 	{
+		updateInfo.setzeAenderung("ExemplarHinzu");
 		try
 		{
 			Exemplar exemplar = (Exemplar) objekt;
+			System.out.println(exemplar.getAusleiher());
 			exemplarDAO.add(
 					exemplar.getZustand(),
 					exemplar.getAusleiher(),
@@ -32,6 +36,8 @@ public class ExemplarVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 	/* (non-Javadoc)
@@ -40,6 +46,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 	@Override
 	public void delete(Object objekt)
 	{
+		updateInfo.setzeAenderung("ExemplarGeloescht");
 		try
 		{
 			Exemplar exemplar = (Exemplar) objekt;
@@ -55,7 +62,8 @@ public class ExemplarVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
-
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 	/* (non-Javadoc)
@@ -64,6 +72,7 @@ public class ExemplarVerwalter implements Verwaltbar {
 	@Override
 	public void update(Object objekt)
 	{
+		updateInfo.setzeAenderung("ExemplarUpdate");
 		try
 		{
 			Exemplar exemplar = (Exemplar) objekt;
@@ -79,6 +88,8 @@ public class ExemplarVerwalter implements Verwaltbar {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 }

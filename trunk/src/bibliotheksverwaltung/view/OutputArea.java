@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
@@ -33,6 +35,7 @@ public class OutputArea extends JPanel implements Observer
 		this.v2 = v2;
 		v1.addObserver(this);
 		v2.addObserver(this);
+		v2.getExemplarVerwalter().addObserver(this);
 	}
 
 	/* (non-Javadoc)
@@ -67,7 +70,31 @@ public class OutputArea extends JPanel implements Observer
 				this.add(buchAnsicht);
 			}
 		}
-		this.doLayout();
+		else if (updateInfo.holeAenderung().equals("Ausleihersuche"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
+				for (int i = 0; i < v1.getErgebnisse().size(); i++)
+				{
+					Ausleiher ergebnis = (Ausleiher) v1.getErgebnisse().get(i);
+//					BuchAnsicht buch = new BuchAnsicht(ergebnis);
+//					buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
+//					this.add(buch);
+					this.add(new JButton(ergebnis.getNachName()));
+				}
+			}
+		}
+		else if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.setPreferredSize(new Dimension(563, 533));
+				BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel(this.v2);
+				this.add(buchAnsicht);
+			}
+		}
+		this.repaint();
 		this.revalidate();
 	}
 

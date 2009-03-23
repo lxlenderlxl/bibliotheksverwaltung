@@ -43,7 +43,7 @@ public class LocalEnvironment
 	/**
 	 * Beschreibt die vorhandenen Spalten der Tabelle Ausleiher in der Datenbank
 	 */
-	public static final String[] ausleiherKategorien = new String[]{"titel", "autorvorname","autornachname","verlag", "erscheinungsjahr", "isbn"};
+	public static final String[] ausleiherKategorien = new String[]{"vorname", "nachname","strasse","hausnummer", "plz", "stadt"};
 
 	/**
 	 * Liefert die Konfiguration der maximalen Ausleihdauer

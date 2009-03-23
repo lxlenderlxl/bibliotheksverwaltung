@@ -169,8 +169,7 @@ public class MySQLMediumDAO implements MediumDAO
 			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid = ?");
 			statement.setInt(1, dieId);
 			statement.setNull(2, java.sql.Types.NULL);
-			System.out.println(statement.toString());
-
+			
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
