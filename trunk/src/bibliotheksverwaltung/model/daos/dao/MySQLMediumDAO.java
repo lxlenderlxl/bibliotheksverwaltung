@@ -169,7 +169,7 @@ public class MySQLMediumDAO implements MediumDAO
 			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid = ?");
 			statement.setInt(1, dieId);
 			statement.setNull(2, java.sql.Types.NULL);
-			
+
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
@@ -208,13 +208,13 @@ public class MySQLMediumDAO implements MediumDAO
 				anzahl[index] = rs.getInt(1);
 				index++;
 			}
-			} catch (SQLException e)
-			{
-				LocalEnvironment.log(e.getMessage(), this);
-			} finally
-			{
-				LocalEnvironment.closeStmt(statement);
-			}
-			return anzahl;
+		} catch (SQLException e)
+		{
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
 		}
+		return anzahl;
+	}
 }

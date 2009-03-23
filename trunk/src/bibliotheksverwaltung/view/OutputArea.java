@@ -11,11 +11,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.controller.TestMouseListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
@@ -52,12 +54,21 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
-				for (int i = 0; i < v1.getErgebnisse().size(); i++)
+				if (v1.getErgebnisse().size() == 0)
 				{
-					Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
-					BuchAnsicht buch = new BuchAnsicht(ergebnis);
-					buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
-					this.add(buch);
+					this.add(new JLabel("Ihre Mediensuche lieferte leider keine Übereinstimmungen"));
+				}
+				else
+				{
+					for (int i = 0; i < v1.getErgebnisse().size(); i++)
+					{
+						Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
+						BuchAnsicht buch = new BuchAnsicht(ergebnis);
+						this.add(buch);
+						this.v2.setMedium(ergebnis);
+						//buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
+						buch.addMouseListener(new TestMouseListener(v2));
+					}
 				}
 			}
 		}
@@ -66,8 +77,9 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.setPreferredSize(new Dimension(563, 533));
-				BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel(this.v2);
-				this.add(buchAnsicht);
+				System.out.println("Update der OutputArea");
+				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(this.v2);
+				this.add(buchEinzel);
 			}
 		}
 		else if (updateInfo.holeAenderung().equals("Ausleihersuche"))
@@ -75,13 +87,20 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
-				for (int i = 0; i < v1.getErgebnisse().size(); i++)
+				if (v1.getErgebnisse().size() == 0)
 				{
-					Ausleiher ergebnis = (Ausleiher) v1.getErgebnisse().get(i);
-//					BuchAnsicht buch = new BuchAnsicht(ergebnis);
-//					buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
-//					this.add(buch);
-					this.add(new JButton(ergebnis.getNachName()));
+					this.add(new JLabel("Ihre Ausleihersuche lieferte leider keine Übereinstimmungen"));
+				}
+				else
+				{
+					for (int i = 0; i < v1.getErgebnisse().size(); i++)
+					{
+						Ausleiher ergebnis = (Ausleiher) v1.getErgebnisse().get(i);
+						//					BuchAnsicht buch = new BuchAnsicht(ergebnis);
+						//					buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
+						//					this.add(buch);
+						this.add(new JButton(ergebnis.getNachName()));
+					}
 				}
 			}
 		}
