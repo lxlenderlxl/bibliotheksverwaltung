@@ -81,7 +81,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         clearButton.setPreferredSize(new java.awt.Dimension(41, 41));
         clearButton.addActionListener(this);
 
-        searchBook.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchBook.setFont(new java.awt.Font("Arial", 1, 14));
         searchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/Book 4.png"))); // NOI18N
         searchBook.setMaximumSize(new java.awt.Dimension(41, 41));
         searchBook.setMinimumSize(new java.awt.Dimension(41, 41));
