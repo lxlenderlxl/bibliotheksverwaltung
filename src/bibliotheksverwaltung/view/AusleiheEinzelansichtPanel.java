@@ -81,6 +81,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(563, 24));
         setMinimumSize(new java.awt.Dimension(563, 24));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(563, 24));
 
         exemplarLabel.setFont(new java.awt.Font("Arial", 0, 14));

@@ -82,7 +82,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         exemplarPane = new javax.swing.JScrollPane();
         exemplarePanel = new javax.swing.JPanel();
 
-        setPreferredSize(new java.awt.Dimension(597, 533));
+        setPreferredSize(new java.awt.Dimension(573, 533));
 
         buchansichtPanel.setOpaque(false);
 
@@ -90,11 +90,11 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         buchansichtPanel.setLayout(buchansichtPanelLayout);
         buchansichtPanelLayout.setHorizontalGroup(
             buchansichtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         buchansichtPanelLayout.setVerticalGroup(
             buchansichtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
 
         aktionenPanel.setOpaque(false);
@@ -117,7 +117,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         historyButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         historyButton.setIconTextGap(10);
 
-        printButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        printButton.setFont(new java.awt.Font("Arial", 0, 14));
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/printer_48.png"))); // NOI18N
         printButton.setText("Daten drucken");
         printButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -130,10 +130,10 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
             .addGroup(aktionenPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(aktionenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(historyButton, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .addComponent(historyButton, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
                 .addContainerGap())
         );
         aktionenPanelLayout.setVerticalGroup(
@@ -152,9 +152,10 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 
         exemplarPane.setBorder(null);
         exemplarPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        exemplarPane.setPreferredSize(new java.awt.Dimension(597, 269));
+        exemplarPane.setPreferredSize(new java.awt.Dimension(573, 258));
 
         exemplarePanel.setOpaque(false);
+        exemplarePanel.setPreferredSize(new java.awt.Dimension(573, 258));
         exemplarePanel.setLayout(new java.awt.GridLayout(1, 0));
         exemplarPane.setViewportView(exemplarePanel);
 
@@ -162,23 +163,24 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buchansichtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(exemplarPane, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2))
+            .addComponent(exemplarPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(buchansichtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addComponent(buchansichtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exemplarPane, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(exemplarPane, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
