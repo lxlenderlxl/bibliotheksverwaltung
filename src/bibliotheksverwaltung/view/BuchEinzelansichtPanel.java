@@ -44,25 +44,26 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     public BuchEinzelansichtPanel(MedienVerwalter derVerwalter) {
         initComponents();
         this.medienVerwalter = derVerwalter;
+        this.medienVerwalter.erzeugeExemplare();
         this.buchansichtPanel.add(new BuchAnsicht(this.medienVerwalter.getMedium()));
         this.erzeugeExemplarAnsichten();
         this.addButton.addActionListener(new ExemplarHinzuListener(medienVerwalter));
+        medienVerwalter.addObserver(this);
         medienVerwalter.getExemplarVerwalter().addObserver(this);
+
     }
 
     private void erzeugeExemplarAnsichten() {
     	exemplarePanel.setLayout(new FlowLayout());
     	exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), 26));
           	for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
-            //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
-            
+            //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...            
             exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), (int)exemplarePanel.getPreferredSize().getHeight() + 26));
-            System.out.println(exemplarePanel.getPreferredSize());
             AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medienVerwalter.getMedium().getExemplare().get(i));
             exemplarePanel.add(panel);
         }
-        this.validate();
-        this.repaint();
+//        this.validate();
+//        this.repaint();
     }
 
     /** This method is called from within the constructor to
@@ -212,11 +213,11 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     @Override
     public void update(Observable o, Object arg) {
     	UpdateInfo updateInfo = (UpdateInfo) arg;
-  		this.exemplarePanel.removeAll();
   		if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
   		{
   			if (updateInfo.holeAenderungOk())
   			{
+  				this.exemplarePanel.removeAll();
   				this.medienVerwalter.erzeugeExemplare();
   			}
   		}
@@ -224,8 +225,19 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   		{
   			if (updateInfo.holeAenderungOk())
   			{
+  				this.exemplarePanel.removeAll();
   				this.medienVerwalter.erzeugeExemplare();
   			}
   		}
+  		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.erzeugeExemplarAnsichten();
+  			}
+  		}
+  		this.repaint();
+  		this.revalidate();
     }
 }

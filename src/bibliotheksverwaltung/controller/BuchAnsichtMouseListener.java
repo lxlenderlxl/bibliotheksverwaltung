@@ -64,8 +64,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			//verwalter.setMedium(new Medium(5));
-			verwalter.erzeugeExemplare();
+			verwalter.autoNotify("BuchEinzelAnsicht");
 			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}	

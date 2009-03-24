@@ -138,7 +138,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-			"SELECT count(*) FROM exemplar WHERE medienid = ?");
+			"SELECT count(*) FROM exemplar WHERE medienid = ? AND aktiv = 1");
 			statement.setInt(1, dieId);
 
 			ResultSet rs = statement.executeQuery();
@@ -166,7 +166,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid = ?");
+			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid = ? AND aktiv = 1");
 			statement.setInt(1, dieId);
 			statement.setNull(2, java.sql.Types.NULL);
 
@@ -196,7 +196,7 @@ public class MySQLMediumDAO implements MediumDAO
 		try
 		{
 			statement = connection.prepareStatement(
-			"SELECT exemplarid FROM exemplar WHERE medienid = ?");
+			"SELECT exemplarid FROM exemplar WHERE medienid = ? AND aktiv = 1");
 			statement.setInt(1, dieId);
 
 			ResultSet rs = statement.executeQuery();

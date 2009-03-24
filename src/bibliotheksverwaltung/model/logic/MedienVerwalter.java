@@ -147,6 +147,13 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		notifyObservers(updateInfo);
 	}
 	
+	public void autoNotify(String message)
+	{
+		updateInfo.setzeAenderung(message);
+		setChanged();
+		notifyObservers(updateInfo);
+	}
+	
 	public ArrayList<Exemplar> getExemplare(Medium dasMedium)
 	{
 		return dasMedium.getExemplare();
