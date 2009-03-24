@@ -2,6 +2,7 @@ package bibliotheksverwaltung.model.logic;
 
 import java.sql.Date;
 import java.util.GregorianCalendar;
+import java.util.Observable;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
@@ -11,41 +12,45 @@ import bibliotheksverwaltung.model.domain.Vorgang;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
 
-public class BibliotheksVerwalter {
+public class BibliotheksVerwalter extends Observable {
 
-	private MedienVerwalter medienVerwalter = null;
-	private SuchVerwalter suchVerwalter = null;
-	private AusleiherVerwalter ausleiherVerwalter = null;
-	private LogVerwalter logVerwalter = null;
+	private MedienVerwalter medienVerwalter = new MedienVerwalter();
+	private SuchVerwalter suchVerwalter = new SuchVerwalter();
+	private AusleiherVerwalter ausleiherVerwalter = new AusleiherVerwalter();
+	private LogVerwalter logVerwalter = new LogVerwalter();
+	
 	/**
 	 *
 	 */
 	public BibliotheksVerwalter() {
-	
+		super();
 	}
 
-	public void buchAusleihen(Exemplar exemplar, Ausleiher ausleiher) {
-		if (exemplar.getAusleiher() != 0)
-			Message.raise("Das Buch \"" + new Medium(exemplar.getMedium()).getTitel() + "\" ist bereits an \"" + new Ausleiher(exemplar.getAusleiher()).getName() + "\" ausgeliehen.", Message.ROT);
+	public void buchAusleihen() {
+		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
+		
+		if (dasExemplar.getAusleiher() != 0)
+			Message.raise("Das Buch \"" + new Medium(dasExemplar.getMedium()).getTitel() + "\" ist bereits an \"" + new Ausleiher(dasExemplar.getAusleiher()).getName() + "\" ausgeliehen.", Message.ROT);
 		else {
-			exemplar.setAusleiher(ausleiher.getId());
-			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
-			new ExemplarVerwalter().update(exemplar);
-			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_AUSGELIEHEN, exemplar.getAusleiher(), exemplar.getId()));
-			Message.raise("Das Buch \"" + new Medium(exemplar.getMedium()).getTitel() + "\" wurde erfolgreich an \"" + new Ausleiher(exemplar.getAusleiher()).getName() + "\" ausgeliehen", Message.GRUEN);
+			dasExemplar.setAusleiher(this.ausleiherVerwalter.getAusleiher().getId());
+			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
+			this.medienVerwalter.getExemplarVerwalter().update(dasExemplar);
+			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_AUSGELIEHEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
+			Message.raise("Das Buch \"" + new Medium(dasExemplar.getMedium()).getTitel() + "\" wurde erfolgreich an \"" + new Ausleiher(dasExemplar.getAusleiher()).getName() + "\" ausgeliehen", Message.GRUEN);
 		}
 	}
 
-	public void buchVerlaengern(Exemplar exemplar) {
+	public void buchVerlaengern() {
+		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
 		// Ist die Anzahl maximalen Verlängerungen laut der Konfiguration überschritten?
-		if (exemplar.getVerlaengerung() < Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert())) {
-			exemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
-			exemplar.setVerlaengerung(exemplar.getVerlaengerung() + 1);
-			new ExemplarVerwalter().update(exemplar);
+		if (dasExemplar.getVerlaengerung() < Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert())) {
+			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
+			dasExemplar.setVerlaengerung(dasExemplar.getVerlaengerung() + 1);
+			this.medienVerwalter.getExemplarVerwalter().update(dasExemplar);
 
-			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, exemplar.getAusleiher(), exemplar.getId()));
+			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, dasExemplar.getAusleiher(), dasExemplar.getId()));
 
-			if (exemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()) - 1)
+			if (dasExemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()) - 1)
 				Message.raise("Ausleihung wurde verlängert.\n" +
 						"Achtung: Letzte Mögliche Verlängerung.", Message.GELB);
 			else
@@ -56,34 +61,36 @@ public class BibliotheksVerwalter {
 					"Maximale Anzahl an Verlängerungen erreicht.", Message.ROT);
 	}
 
-	public void buchZurueckgeben(Exemplar exemplar) {
-		if (exemplar.getAusleiher() == 0)
+	public void buchZurueckgeben() {
+		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
+		if (dasExemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits zurück gegeben.", Message.ROT);
 		else {
-			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, exemplar.getAusleiher(), exemplar.getId()));
-			exemplar.setAusleiher(0);
-			exemplar.setRueckgabeDatum(null);
-			exemplar.setVerlaengerung(0);
-			new ExemplarVerwalter().update(exemplar);
+			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
+			dasExemplar.setAusleiher(0);
+			dasExemplar.setRueckgabeDatum(null);
+			dasExemplar.setVerlaengerung(0);
+			this.medienVerwalter.getExemplarVerwalter().update(dasExemplar);
 		}
 	}
 
-	public void buchBearbeiten (Exemplar exemplar) {
-		new ExemplarVerwalter().update(exemplar);
-		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_BEARBEITET, 0, exemplar.getId()));
+	public void buchBearbeiten () {
+		this.medienVerwalter.getExemplarVerwalter().update(medienVerwalter.getExemplarVerwalter().getExemplar());
+		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_BEARBEITET, 0, medienVerwalter.getExemplarVerwalter().getExemplar().getId()));
 	}
 
-	public void buchHinzufuegen(Exemplar exemplar) {
-		new ExemplarVerwalter().add(exemplar);
-		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_HINZUGEFUEGT, 0, exemplar.getId()));
+	public void buchHinzufuegen() {
+		this.medienVerwalter.getExemplarVerwalter().add(this.medienVerwalter.getExemplarVerwalter().getExemplar());
+		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_HINZUGEFUEGT, 0, this.medienVerwalter.getExemplarVerwalter().getExemplar().getId()));
 	}
 
-	public void buchEntfernen(Exemplar exemplar) {
-		if (exemplar.getAusleiher() != 0) {
-			new ExemplarVerwalter().delete(exemplar);
-			Log log = new Log(Vorgang.EXEMPLAR_ENTFERNT, 0, exemplar.getId());
-			if (!new MedienVerwalter().hasExemplare(exemplar.getMedium())) {
-				mediumEntfernen(exemplar.getMedium());
+	public void buchEntfernen() {
+		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
+		if (this.medienVerwalter.getExemplarVerwalter().getExemplar().getAusleiher() != 0) {
+			this.medienVerwalter.getExemplarVerwalter().delete(dasExemplar);
+			Log log = new Log(Vorgang.EXEMPLAR_ENTFERNT, 0, dasExemplar.getId());
+			if (!new MedienVerwalter().hasExemplare(dasExemplar.getMedium())) {
+				mediumEntfernen();
 				log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
 			}
 			LogVerwalter.add(log);
@@ -92,15 +99,15 @@ public class BibliotheksVerwalter {
 			Message.raise("Das Buch kann nicht entfernt werden, da es zurzeit ausgeliehen ist.", Message.ROT);
 	}
 
-	public void mediumHinzufuegen(Medium medium) {
-		new MedienVerwalter().add(medium);
+	public void mediumHinzufuegen() {
+		new MedienVerwalter().add(this.medienVerwalter.getMedium());
 	}
 
-	public void mediumEntfernen(int mediumID) {
-		if (!new MedienVerwalter().hasExemplare(mediumID))
-			new MedienVerwalter().delete(new Medium(mediumID));
+	public void mediumEntfernen() {
+		if (!new MedienVerwalter().hasExemplare(this.medienVerwalter.getMedium().getId()))
+			new MedienVerwalter().delete(new Medium(this.medienVerwalter.getMedium().getId()));
 		else
-			LocalEnvironment.log("Medium " + mediumID + " konnte nicht gelöscht werden, " +
+			LocalEnvironment.log("Medium " + this.medienVerwalter.getMedium().getId() + " konnte nicht gelöscht werden, " +
 					"da noch Exemplare vorhanden sind.", this);
 	}
 

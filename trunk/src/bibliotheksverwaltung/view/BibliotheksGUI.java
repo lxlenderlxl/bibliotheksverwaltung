@@ -34,8 +34,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class BibliotheksGUI extends javax.swing.JFrame implements Observer, ActionListener {
 
-	private SuchVerwalter v1 = new SuchVerwalter();
-	private MedienVerwalter v2= new MedienVerwalter();
+	private BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 
     /** Creates new form BibliotheksGUI */
 	//TODO Message Panel
@@ -46,6 +45,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
             LocalEnvironment.log(e.getMessage(), this);
         }
         initComponents();
+        verwalter.addObserver(this);
     }
 
     /** This method is called from within the constructor to
@@ -187,7 +187,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         mainPanel.add(suchPanel2);
         this.repaint();
         this.pack();
-        System.out.println(suchPanel2.getHeight());
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
