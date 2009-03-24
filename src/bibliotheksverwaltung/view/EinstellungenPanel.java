@@ -46,17 +46,17 @@ public class EinstellungenPanel extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
 
-        ausleihdauerLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ausleihdauerLabel.setFont(new java.awt.Font("Arial", 1, 14));
         ausleihdauerLabel.setText("maximale Ausleihdauer");
 
-        verlaengerungenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        verlaengerungenLabel.setFont(new java.awt.Font("Arial", 1, 14));
         verlaengerungenLabel.setText("Anzahl der Verlängerungen");
 
-        ausleihdauerField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ausleihdauerField.setFont(new java.awt.Font("Arial", 1, 18));
         ausleihdauerField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         ausleihdauerField.setText("28");
 
-        verlaengerungenField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        verlaengerungenField.setFont(new java.awt.Font("Arial", 1, 18));
         verlaengerungenField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         verlaengerungenField.setText("2");
 
@@ -85,7 +85,6 @@ public class EinstellungenPanel extends javax.swing.JPanel {
 
         nameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nameField.setForeground(new java.awt.Color(204, 204, 204));
-        nameField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         nameField.setText("Name");
         nameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -98,7 +97,6 @@ public class EinstellungenPanel extends javax.swing.JPanel {
 
         passwordField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         passwordField.setForeground(new java.awt.Color(204, 204, 204));
-        passwordField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         passwordField.setText("Passwort");
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -146,7 +144,7 @@ public class EinstellungenPanel extends javax.swing.JPanel {
 
         benutzerPane.setViewportView(benutzerPanel);
 
-        cancelButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 14));
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_48.png"))); // NOI18N
         cancelButton.setText("Abbrechen");
         cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -165,14 +163,12 @@ public class EinstellungenPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(benutzerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                    .addComponent(benutzerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cancelButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                        .addComponent(saveButton)
-                        .addContainerGap())))
+                        .addComponent(saveButton)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
