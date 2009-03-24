@@ -31,41 +31,132 @@ public class EinstellungenPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jSlider2 = new javax.swing.JSlider();
-        jSlider3 = new javax.swing.JSlider();
+        ausleihdauerLabel = new javax.swing.JLabel();
+        verlaengerungenLabel = new javax.swing.JLabel();
+        ausleihdauerField = new javax.swing.JTextField();
+        verlaengerungenField = new javax.swing.JTextField();
+        ausleihdauerSlider = new javax.swing.JSlider();
+        verlaengerungenSlider = new javax.swing.JSlider();
+        benutzerPane = new javax.swing.JScrollPane();
+        benutzerPanel = new javax.swing.JPanel();
+        nameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        benutzerSeparator = new javax.swing.JSeparator();
+        cancelButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("maximale Ausleihdauer");
+        ausleihdauerLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ausleihdauerLabel.setText("maximale Ausleihdauer");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Anzahl der Verlängerungen");
+        verlaengerungenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        verlaengerungenLabel.setText("Anzahl der Verlängerungen");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField1.setText("2");
+        ausleihdauerField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ausleihdauerField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        ausleihdauerField.setText("28");
 
-        jTextField2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField2.setText("28");
+        verlaengerungenField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        verlaengerungenField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        verlaengerungenField.setText("2");
 
-        jSlider2.setMaximum(90);
-        jSlider2.setMinimum(1);
-        jSlider2.setMinorTickSpacing(7);
-        jSlider2.setPaintLabels(true);
-        jSlider2.setPaintTicks(true);
-        jSlider2.setSnapToTicks(true);
-        jSlider2.setValue(28);
+        ausleihdauerSlider.setMaximum(90);
+        ausleihdauerSlider.setMinimum(1);
+        ausleihdauerSlider.setMinorTickSpacing(7);
+        ausleihdauerSlider.setPaintLabels(true);
+        ausleihdauerSlider.setPaintTicks(true);
+        ausleihdauerSlider.setSnapToTicks(true);
+        ausleihdauerSlider.setValue(28);
 
-        jSlider3.setMaximum(5);
-        jSlider3.setMinorTickSpacing(1);
-        jSlider3.setPaintLabels(true);
-        jSlider3.setPaintTicks(true);
-        jSlider3.setSnapToTicks(true);
-        jSlider3.setValue(2);
+        verlaengerungenSlider.setMaximum(5);
+        verlaengerungenSlider.setMinorTickSpacing(1);
+        verlaengerungenSlider.setPaintLabels(true);
+        verlaengerungenSlider.setPaintTicks(true);
+        verlaengerungenSlider.setSnapToTicks(true);
+        verlaengerungenSlider.setValue(2);
+
+        benutzerPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Benutzer verwalten ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 0))); // NOI18N
+        benutzerPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        benutzerPane.setOpaque(false);
+        benutzerPane.setPreferredSize(new java.awt.Dimension(552, 258));
+
+        benutzerPanel.setOpaque(false);
+        benutzerPanel.setPreferredSize(new java.awt.Dimension(552, 258));
+
+        nameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nameField.setForeground(new java.awt.Color(204, 204, 204));
+        nameField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        nameField.setText("Name");
+        nameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nameFieldFocusLost(evt);
+            }
+        });
+
+        passwordField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        passwordField.setForeground(new java.awt.Color(204, 204, 204));
+        passwordField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        passwordField.setText("Passwort");
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusLost(evt);
+            }
+        });
+
+        addButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_add_24.png"))); // NOI18N
+        addButton.setText("Benutzer hinzufügen");
+        addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        addButton.setIconTextGap(10);
+        addButton.setPreferredSize(new java.awt.Dimension(183, 28));
+
+        javax.swing.GroupLayout benutzerPanelLayout = new javax.swing.GroupLayout(benutzerPanel);
+        benutzerPanel.setLayout(benutzerPanelLayout);
+        benutzerPanelLayout.setHorizontalGroup(
+            benutzerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(benutzerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(benutzerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(benutzerSeparator, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, benutzerPanelLayout.createSequentialGroup()
+                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        benutzerPanelLayout.setVerticalGroup(
+            benutzerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(benutzerPanelLayout.createSequentialGroup()
+                .addGroup(benutzerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(benutzerSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(213, Short.MAX_VALUE))
+        );
+
+        benutzerPane.setViewportView(benutzerPanel);
+
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_48.png"))); // NOI18N
+        cancelButton.setText("Abbrechen");
+        cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        cancelButton.setIconTextGap(10);
+
+        saveButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/accepted_48.png"))); // NOI18N
+        saveButton.setText("Änderungen speichern");
+        saveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        saveButton.setIconTextGap(10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,20 +164,31 @@ public class EinstellungenPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(benutzerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                        .addComponent(saveButton)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(verlaengerungenLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verlaengerungenField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(jSlider3, 0, 0, Short.MAX_VALUE))
+                        .addComponent(verlaengerungenSlider, 0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(ausleihdauerLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ausleihdauerField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                        .addComponent(ausleihdauerSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(126, 126, 126))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,29 +197,71 @@ public class EinstellungenPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(ausleihdauerField)
+                            .addComponent(ausleihdauerSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ausleihdauerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(39, 39, 39)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(359, Short.MAX_VALUE))
+                        .addComponent(verlaengerungenField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verlaengerungenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verlaengerungenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(benutzerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(saveButton))
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFieldFocusGained
+        if (ausleihdauerField.getText().equals("Name")) {
+			ausleihdauerField.setText("");
+			ausleihdauerField.setForeground(new java.awt.Color(0, 0, 0));
+		}
+}//GEN-LAST:event_nameFieldFocusGained
+
+    private void nameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFieldFocusLost
+        if (ausleihdauerField.getText().isEmpty()) {
+			ausleihdauerField.setForeground(new java.awt.Color(204, 204, 204));
+			ausleihdauerField.setText("Name");
+		}
+}//GEN-LAST:event_nameFieldFocusLost
+
+    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
+        if (passwordField.getText().equals("Passwort")) {
+			passwordField.setText("");
+			passwordField.setForeground(new java.awt.Color(0, 0, 0));
+		}
+}//GEN-LAST:event_passwordFieldFocusGained
+
+    private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
+        if (passwordField.getText().isEmpty()) {
+			passwordField.setForeground(new java.awt.Color(204, 204, 204));
+			passwordField.setText("Passwort");
+		}
+}//GEN-LAST:event_passwordFieldFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JSlider jSlider3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton addButton;
+    private javax.swing.JTextField ausleihdauerField;
+    private javax.swing.JLabel ausleihdauerLabel;
+    private javax.swing.JSlider ausleihdauerSlider;
+    private javax.swing.JScrollPane benutzerPane;
+    private javax.swing.JPanel benutzerPanel;
+    private javax.swing.JSeparator benutzerSeparator;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JTextField passwordField;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JTextField verlaengerungenField;
+    private javax.swing.JLabel verlaengerungenLabel;
+    private javax.swing.JSlider verlaengerungenSlider;
     // End of variables declaration//GEN-END:variables
 
 }
