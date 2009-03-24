@@ -3,6 +3,7 @@
  */
 package bibliotheksverwaltung.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.FlowLayout;
