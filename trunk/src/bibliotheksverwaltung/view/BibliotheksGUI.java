@@ -26,6 +26,7 @@ import bibliotheksverwaltung.model.logic.*;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.util.Observable;
@@ -227,9 +228,13 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 				if (updateInfo.holeAenderungOk())
 				{
 					mainPanel.removeAll();
-	        HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
-	        hinzuPanel.setSize(mainPanel.getSize());
-	        mainPanel.add(hinzuPanel);
+					mainPanel.setLayout(new FlowLayout());
+	        PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
+	        BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel();
+	        persoPanel.setSize(mainPanel.getSize());
+	        buchPanel.setSize(mainPanel.getSize());
+	        mainPanel.add(persoPanel);
+	        mainPanel.add(buchPanel);
 				}
 			}
 			else if (updateInfo.holeAenderung().equals("Report"))
