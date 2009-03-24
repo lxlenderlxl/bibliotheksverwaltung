@@ -24,7 +24,6 @@ public class ExemplarVerwalter extends Observable implements Verwaltbar {
 		try
 		{
 			Exemplar exemplar = (Exemplar) objekt;
-			System.out.println(exemplar.getAusleiher());
 			exemplarDAO.add(
 					exemplar.getZustand(),
 					exemplar.getAusleiher(),
@@ -39,6 +38,22 @@ public class ExemplarVerwalter extends Observable implements Verwaltbar {
 		}
 		setChanged();
 		notifyObservers(updateInfo);
+	}
+
+	/**
+	 * @return the exemplar
+	 */
+	public Exemplar getExemplar()
+	{
+		return exemplar;
+	}
+
+	/**
+	 * @param exemplar the exemplar to set
+	 */
+	public void setExemplar(Exemplar exemplar)
+	{
+		this.exemplar = exemplar;
 	}
 
 	/* (non-Javadoc)

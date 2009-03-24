@@ -9,6 +9,33 @@ import bibliotheksverwaltung.util.LocalEnvironment;
 public class AusleiherVerwalter implements Verwaltbar
 {
 	private MySQLAusleiherDAO ausleiherDAO = new MySQLAusleiherDAO();
+	private Ausleiher ausleiher = null;
+	
+	/**
+	 * @return the ausleiher
+	 */
+	public Ausleiher getAusleiher()
+	{
+		return ausleiher;
+	}
+
+	/**
+	 * @param ausleiher the ausleiher to set
+	 */
+	public void setAusleiher(Ausleiher ausleiher)
+	{
+		this.ausleiher = ausleiher;
+	}
+
+	public AusleiherVerwalter()
+	{
+
+	}
+	
+	public AusleiherVerwalter(Ausleiher derAusleiher)
+	{
+		this.ausleiher = derAusleiher;
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
