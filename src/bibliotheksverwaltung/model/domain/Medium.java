@@ -135,6 +135,7 @@ public class Medium
 	public void erzeugeExemplare()
 	{
 		int[] exemplarIds = new MySQLMediumDAO().getExemplare(this.id);
+		exemplare.clear();
 		for (int i = 0; i < exemplarIds.length; i++)
 		{
 			exemplare.add(new Exemplar(exemplarIds[i]));

@@ -19,12 +19,16 @@ import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.border.Border;
 
+import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.controller.ExemplarHinzuListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
+import bibliotheksverwaltung.util.UpdateInfo;
+
 import java.awt.Dimension;
 
 /**
@@ -43,13 +47,19 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         this.buchansichtPanel.add(new BuchAnsicht(this.medienVerwalter.getMedium()));
         this.erzeugeExemplarAnsichten();
         this.addButton.addActionListener(new ExemplarHinzuListener(medienVerwalter));
+        medienVerwalter.getExemplarVerwalter().addObserver(this);
     }
 
     private void erzeugeExemplarAnsichten() {
-        for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
+    	exemplarePanel.setPreferredSize(new Dimension(315,0));  
+    	System.out.println(exemplarePanel.getPreferredSize());
+    	for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
             //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
-            exemplarePanel.setLayout(new GridLayout(i + 1, 1));
-            exemplarePanel.setPreferredSize(new Dimension(exemplarePanel.getWidth(), exemplarePanel.getHeight() + 25));
+            exemplarePanel.setLayout(new FlowLayout());
+            System.out.println(exemplarePanel.getPreferredSize());
+            
+            exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), (int)exemplarePanel.getPreferredSize().getHeight() + 25));
+            System.out.println(exemplarePanel.getPreferredSize());
             AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medienVerwalter.getMedium().getExemplare().get(i));
             exemplarePanel.add(panel);
         }
@@ -209,6 +219,14 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 
     @Override
     public void update(Observable o, Object arg) {
-        // TODO Auto-generated method stub
+    	UpdateInfo updateInfo = (UpdateInfo) arg;
+  		this.exemplarePanel.removeAll();
+  		if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.medienVerwalter.erzeugeExemplare();
+  			}
+  		}
     }
 }

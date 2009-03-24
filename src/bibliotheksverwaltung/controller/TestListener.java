@@ -64,46 +64,7 @@ public class TestListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		Document doc = new Document();
-		try
-		{
-			String pdfName = String.valueOf(System.currentTimeMillis());
-		// Create temp file.
-      File temp = File.createTempFile(pdfName, ".pdf");
-  
-      // Delete temp file when program exits.
-      temp.deleteOnExit();
-  
-//      // Write to temp file
-//      BufferedWriter out = new BufferedWriter(new FileWriter(temp));
-//      out.write("aString");
-//      out.close();
-      
-			PdfWriter.getInstance(doc, new FileOutputStream(pdfName));
-			doc.open();
-			doc.add(new Paragraph("Hello World"));
-			doc.close();
-			System.out.println("Bericht wurde geschrieben");
-			Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + pdfName);
-			p.waitFor();
-
-		} catch (FileNotFoundException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (DocumentException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InterruptedException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 
 	}
 
