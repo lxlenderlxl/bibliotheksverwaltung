@@ -64,7 +64,6 @@ public class BuchAnsichtMouseListener implements MouseListener
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			System.out.println("Test Mouselistener");
 			//verwalter.setMedium(new Medium(5));
 			verwalter.erzeugeExemplare();
 			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
