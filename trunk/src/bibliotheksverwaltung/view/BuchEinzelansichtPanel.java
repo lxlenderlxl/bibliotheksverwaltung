@@ -85,7 +85,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         exemplarPane = new javax.swing.JScrollPane();
         exemplarePanel = new javax.swing.JPanel();
 
-        setPreferredSize(new java.awt.Dimension(597, 600));
+        setPreferredSize(new java.awt.Dimension(597, 533));
 
         buchansichtPanel.setOpaque(false);
 
@@ -108,19 +108,19 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
 
-        editButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        editButton.setFont(new java.awt.Font("Arial", 0, 14));
         editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/pencil_48.png"))); // NOI18N
         editButton.setText("Daten bearbeiten");
         editButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         editButton.setIconTextGap(10);
 
-        historyButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        historyButton.setFont(new java.awt.Font("Arial", 0, 14));
         historyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/clock_48.png"))); // NOI18N
         historyButton.setText("Historie anzeigen");
         historyButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         historyButton.setIconTextGap(10);
 
-        printButton.setFont(new java.awt.Font("Arial", 0, 14));
+        printButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/printer_48.png"))); // NOI18N
         printButton.setText("Daten drucken");
         printButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -155,13 +155,10 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 
         exemplarPane.setBorder(null);
         exemplarPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        exemplarPane.setMaximumSize(new java.awt.Dimension(573, 315));
-        exemplarPane.setMinimumSize(new java.awt.Dimension(573, 315));
-        exemplarPane.setPreferredSize(new java.awt.Dimension(573, 315));
+        exemplarPane.setPreferredSize(new java.awt.Dimension(597, 269));
 
         exemplarePanel.setOpaque(false);
-        exemplarePanel.setPreferredSize(new java.awt.Dimension(563, 700));
-        exemplarePanel.setLayout(new java.awt.GridLayout());
+        exemplarePanel.setLayout(new java.awt.GridLayout(1, 0));
         exemplarPane.setViewportView(exemplarePanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -170,14 +167,10 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(exemplarPane, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buchansichtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(buchansichtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(exemplarPane, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,8 +181,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
                         .addComponent(buchansichtPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(aktionenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exemplarPane, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(exemplarPane, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
