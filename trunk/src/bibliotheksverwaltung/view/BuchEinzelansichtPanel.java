@@ -51,13 +51,10 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     }
 
     private void erzeugeExemplarAnsichten() {
-    	exemplarePanel.setPreferredSize(new Dimension(315,0));  
     	System.out.println(exemplarePanel.getPreferredSize());
     	for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
             //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
             exemplarePanel.setLayout(new FlowLayout());
-            System.out.println(exemplarePanel.getPreferredSize());
-            
             exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), (int)exemplarePanel.getPreferredSize().getHeight() + 25));
             System.out.println(exemplarePanel.getPreferredSize());
             AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medienVerwalter.getMedium().getExemplare().get(i));
