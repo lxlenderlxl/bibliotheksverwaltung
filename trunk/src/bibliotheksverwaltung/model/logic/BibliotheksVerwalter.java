@@ -101,7 +101,7 @@ public class BibliotheksVerwalter extends Observable {
 		if (dasExemplar.getAusleiher() != 0)
 			Message.raise("Das Buch \"" + new Medium(dasExemplar.getMedium()).getTitel() + "\" ist bereits an \"" + new Ausleiher(dasExemplar.getAusleiher()).getName() + "\" ausgeliehen.", Message.ROT);
 		else {
-			updateInfo.setzeAenderung("BuchAusleihen");
+			updateInfo.setzeAenderung("ExemplarAusleihen");
 			dasExemplar.setAusleiher(this.ausleiherVerwalter.getAusleiher().getId());
 			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
 			this.medienVerwalter.getExemplarVerwalter().update();
@@ -117,7 +117,7 @@ public class BibliotheksVerwalter extends Observable {
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
 		// Ist die Anzahl maximalen Verlängerungen laut der Konfiguration überschritten?
 		if (dasExemplar.getVerlaengerung() < Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert())) {
-			updateInfo.setzeAenderung("BuchVerlaengern");
+			updateInfo.setzeAenderung("ExemplarVerlaengern");
 			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
 			dasExemplar.setVerlaengerung(dasExemplar.getVerlaengerung() + 1);
 			this.medienVerwalter.getExemplarVerwalter().update();
@@ -142,7 +142,7 @@ public class BibliotheksVerwalter extends Observable {
 		if (dasExemplar.getAusleiher() == 0)
 			Message.raise("Dieses Exemplar ist bereits zurück gegeben.", Message.ROT);
 		else {
-			updateInfo.setzeAenderung("BuchZurueck");
+			updateInfo.setzeAenderung("ExemplarZurueck");
 			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
 			dasExemplar.setAusleiher(0);
 			dasExemplar.setRueckgabeDatum(null);
