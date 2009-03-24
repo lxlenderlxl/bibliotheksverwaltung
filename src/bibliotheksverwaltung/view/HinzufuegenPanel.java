@@ -33,15 +33,14 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuSeparator = new javax.swing.JSeparator();
         buchPanel = new javax.swing.JPanel();
-        vornameField1 = new javax.swing.JTextField();
-        nachnameField1 = new javax.swing.JTextField();
-        strasseField1 = new javax.swing.JTextField();
-        hausnummerField1 = new javax.swing.JTextField();
-        plzField1 = new javax.swing.JTextField();
-        stadtField1 = new javax.swing.JTextField();
-        addButton1 = new javax.swing.JButton();
+        titelField = new javax.swing.JTextField();
+        autorVornameField = new javax.swing.JTextField();
+        autorNachnameField = new javax.swing.JTextField();
+        verlagField = new javax.swing.JTextField();
+        jahrField = new javax.swing.JTextField();
+        addBookButton = new javax.swing.JButton();
+        isbnField = new javax.swing.JTextField();
         personenPanel = new javax.swing.JPanel();
         vornameField = new javax.swing.JTextField();
         nachnameField = new javax.swing.JTextField();
@@ -50,123 +49,126 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
         plzField = new javax.swing.JTextField();
         stadtField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
+        feldSeparator = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(593, 600));
 
-        vornameField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        vornameField1.setForeground(new java.awt.Color(204, 204, 204));
-        vornameField1.setText("Vorname");
-        vornameField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        titelField.setFont(new java.awt.Font("Arial", 1, 18));
+        titelField.setForeground(new java.awt.Color(204, 204, 204));
+        titelField.setText("Buchtitel");
+        titelField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                vornameField1FocusGained(evt);
+                titelFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                vornameField1FocusLost(evt);
+                titelFieldFocusLost(evt);
             }
         });
 
-        nachnameField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nachnameField1.setForeground(new java.awt.Color(204, 204, 204));
-        nachnameField1.setText("Nachname");
-        nachnameField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        autorVornameField.setFont(new java.awt.Font("Arial", 1, 18));
+        autorVornameField.setForeground(new java.awt.Color(204, 204, 204));
+        autorVornameField.setText("Autor-Vorname");
+        autorVornameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                nachnameField1FocusGained(evt);
+                autorVornameFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                nachnameField1FocusLost(evt);
+                autorVornameFieldFocusLost(evt);
             }
         });
 
-        strasseField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        strasseField1.setForeground(new java.awt.Color(204, 204, 204));
-        strasseField1.setText("Straße");
-        strasseField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        autorNachnameField.setFont(new java.awt.Font("Arial", 1, 18));
+        autorNachnameField.setForeground(new java.awt.Color(204, 204, 204));
+        autorNachnameField.setText("Autor-Nachname");
+        autorNachnameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                strasseField1FocusGained(evt);
+                autorNachnameFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                strasseField1FocusLost(evt);
+                autorNachnameFieldFocusLost(evt);
             }
         });
 
-        hausnummerField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        hausnummerField1.setForeground(new java.awt.Color(204, 204, 204));
-        hausnummerField1.setText("Nummer");
-        hausnummerField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        verlagField.setFont(new java.awt.Font("Arial", 1, 18));
+        verlagField.setForeground(new java.awt.Color(204, 204, 204));
+        verlagField.setText("Verlag");
+        verlagField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                hausnummerField1FocusGained(evt);
+                verlagFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                hausnummerField1FocusLost(evt);
+                verlagFieldFocusLost(evt);
             }
         });
 
-        plzField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        plzField1.setForeground(new java.awt.Color(204, 204, 204));
-        plzField1.setText("PLZ");
-        plzField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        jahrField.setFont(new java.awt.Font("Arial", 1, 18));
+        jahrField.setForeground(new java.awt.Color(204, 204, 204));
+        jahrField.setText("Jahr");
+        jahrField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                plzField1FocusGained(evt);
+                jahrFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                plzField1FocusLost(evt);
+                jahrFieldFocusLost(evt);
             }
         });
 
-        stadtField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        stadtField1.setForeground(new java.awt.Color(204, 204, 204));
-        stadtField1.setText("Stadt");
-        stadtField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        addBookButton.setFont(new java.awt.Font("Arial", 1, 18));
+        addBookButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/book_48.png"))); // NOI18N
+        addBookButton.setText("<html>Buch<br />hinzufügen");
+        addBookButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        addBookButton.setIconTextGap(10);
+
+        isbnField.setFont(new java.awt.Font("Arial", 1, 18));
+        isbnField.setForeground(new java.awt.Color(204, 204, 204));
+        isbnField.setText("ISBN");
+        isbnField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                stadtField1FocusGained(evt);
+                isbnFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                stadtField1FocusLost(evt);
+                isbnFieldFocusLost(evt);
             }
         });
-
-        addButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        addButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_add_48.png"))); // NOI18N
-        addButton1.setText("<html>Person<br />hinzufügen");
-        addButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        addButton1.setIconTextGap(10);
 
         javax.swing.GroupLayout buchPanelLayout = new javax.swing.GroupLayout(buchPanel);
         buchPanel.setLayout(buchPanelLayout);
         buchPanelLayout.setHorizontalGroup(
             buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buchPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buchPanelLayout.createSequentialGroup()
                 .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buchPanelLayout.createSequentialGroup()
-                        .addComponent(vornameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(autorVornameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(autorNachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                    .addComponent(titelField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buchPanelLayout.createSequentialGroup()
+                        .addComponent(verlagField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nachnameField1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
-                    .addGroup(buchPanelLayout.createSequentialGroup()
-                        .addComponent(plzField1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(stadtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(buchPanelLayout.createSequentialGroup()
-                        .addComponent(strasseField1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hausnummerField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addComponent(addButton1))
+                        .addComponent(jahrField, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(isbnField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addBookButton)
+                .addContainerGap())
         );
         buchPanelLayout.setVerticalGroup(
             buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buchPanelLayout.createSequentialGroup()
-                .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vornameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nachnameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(strasseField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hausnummerField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(plzField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stadtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addComponent(addButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(buchPanelLayout.createSequentialGroup()
+                        .addComponent(titelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(autorNachnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(autorVornameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(buchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(verlagField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jahrField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(isbnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         vornameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -193,7 +195,7 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        strasseField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        strasseField.setFont(new java.awt.Font("Arial", 1, 18));
         strasseField.setForeground(new java.awt.Color(204, 204, 204));
         strasseField.setText("Straße");
         strasseField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -205,7 +207,7 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        hausnummerField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        hausnummerField.setFont(new java.awt.Font("Arial", 1, 18));
         hausnummerField.setForeground(new java.awt.Color(204, 204, 204));
         hausnummerField.setText("Nummer");
         hausnummerField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -217,7 +219,7 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        plzField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        plzField.setFont(new java.awt.Font("Arial", 1, 18));
         plzField.setForeground(new java.awt.Color(204, 204, 204));
         plzField.setText("PLZ");
         plzField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -229,7 +231,7 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        stadtField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        stadtField.setFont(new java.awt.Font("Arial", 1, 18));
         stadtField.setForeground(new java.awt.Color(204, 204, 204));
         stadtField.setText("Stadt");
         stadtField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -241,10 +243,9 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        addButton.setFont(new java.awt.Font("Arial", 1, 18));
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_add_48.png"))); // NOI18N
         addButton.setText("<html>Person<br />hinzufügen");
-        addButton.setActionCommand("<html>Person<br />hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
 
@@ -257,15 +258,15 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
                     .addGroup(personenPanelLayout.createSequentialGroup()
                         .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
+                        .addComponent(nachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                     .addGroup(personenPanelLayout.createSequentialGroup()
-                        .addComponent(plzField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addComponent(plzField, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(personenPanelLayout.createSequentialGroup()
                         .addComponent(strasseField, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hausnummerField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
+                        .addComponent(hausnummerField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(addButton)
                 .addContainerGap())
@@ -273,21 +274,22 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
         personenPanelLayout.setVerticalGroup(
             personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(personenPanelLayout.createSequentialGroup()
-                .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(personenPanelLayout.createSequentialGroup()
-                        .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nachnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(strasseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hausnummerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(plzField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nachnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(strasseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hausnummerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(personenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(plzField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personenPanelLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -297,26 +299,22 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(543, 543, 543))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(menuSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                        .addGap(496, 496, 496))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(personenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(515, 515, 515))))
+                    .addComponent(feldSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(buchPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(personenPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(menuSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(feldSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(personenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -368,53 +366,53 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
         focusLost(stadtField, "Stadt");
 }//GEN-LAST:event_stadtFieldFocusLost
 
-    private void vornameField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vornameField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vornameField1FocusGained
+    private void autorVornameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_autorVornameFieldFocusGained
+        focusGained(autorVornameField, "Autor-Vorname");
+}//GEN-LAST:event_autorVornameFieldFocusGained
 
-    private void vornameField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vornameField1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vornameField1FocusLost
+    private void autorVornameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_autorVornameFieldFocusLost
+        focusLost(autorVornameField, "Autor-Vorname");
+}//GEN-LAST:event_autorVornameFieldFocusLost
 
-    private void nachnameField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nachnameField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nachnameField1FocusGained
+    private void autorNachnameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_autorNachnameFieldFocusGained
+        focusGained(autorNachnameField, "Autor-Nachname");
+}//GEN-LAST:event_autorNachnameFieldFocusGained
 
-    private void nachnameField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nachnameField1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nachnameField1FocusLost
+    private void autorNachnameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_autorNachnameFieldFocusLost
+        focusLost(autorNachnameField, "Autor-Nachname");
+}//GEN-LAST:event_autorNachnameFieldFocusLost
 
-    private void strasseField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_strasseField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_strasseField1FocusGained
+    private void titelFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_titelFieldFocusGained
+        focusGained(titelField, "Buchtitel");
+}//GEN-LAST:event_titelFieldFocusGained
 
-    private void strasseField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_strasseField1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_strasseField1FocusLost
+    private void titelFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_titelFieldFocusLost
+        focusLost(titelField, "Buchtitel");
+}//GEN-LAST:event_titelFieldFocusLost
 
-    private void hausnummerField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hausnummerField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hausnummerField1FocusGained
+    private void jahrFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jahrFieldFocusGained
+        focusGained(jahrField, "Jahr");
+}//GEN-LAST:event_jahrFieldFocusGained
 
-    private void hausnummerField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hausnummerField1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hausnummerField1FocusLost
+    private void jahrFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jahrFieldFocusLost
+        focusLost(jahrField, "Jahr");
+}//GEN-LAST:event_jahrFieldFocusLost
 
-    private void plzField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_plzField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_plzField1FocusGained
+    private void verlagFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verlagFieldFocusGained
+        focusGained(verlagField, "Verlag");
+}//GEN-LAST:event_verlagFieldFocusGained
 
-    private void plzField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_plzField1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_plzField1FocusLost
+    private void verlagFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verlagFieldFocusLost
+        focusLost(verlagField, "Verlag");
+}//GEN-LAST:event_verlagFieldFocusLost
 
-    private void stadtField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stadtField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stadtField1FocusGained
+    private void isbnFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_isbnFieldFocusGained
+        focusGained(isbnField, "ISBN");
+}//GEN-LAST:event_isbnFieldFocusGained
 
-    private void stadtField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stadtField1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stadtField1FocusLost
+    private void isbnFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_isbnFieldFocusLost
+        focusLost(isbnField, "ISBN");
+}//GEN-LAST:event_isbnFieldFocusLost
 
     private void focusGained(JTextField field, String match) {
         if (field.getText().equals(match)) {
@@ -428,27 +426,29 @@ public class HinzufuegenPanel extends javax.swing.JPanel {
             field.setForeground(new java.awt.Color(204, 204, 204));
             field.setText(content);
         }
+        if (field.getText().equals(content))
+            field.setForeground(new java.awt.Color(255, 0, 0));
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBookButton;
     private javax.swing.JButton addButton;
-    private javax.swing.JButton addButton1;
+    private javax.swing.JTextField autorNachnameField;
+    private javax.swing.JTextField autorVornameField;
     private javax.swing.JPanel buchPanel;
+    private javax.swing.JSeparator feldSeparator;
     private javax.swing.JTextField hausnummerField;
-    private javax.swing.JTextField hausnummerField1;
-    private javax.swing.JSeparator menuSeparator;
+    private javax.swing.JTextField isbnField;
+    private javax.swing.JTextField jahrField;
     private javax.swing.JTextField nachnameField;
-    private javax.swing.JTextField nachnameField1;
     private javax.swing.JPanel personenPanel;
     private javax.swing.JTextField plzField;
-    private javax.swing.JTextField plzField1;
     private javax.swing.JTextField stadtField;
-    private javax.swing.JTextField stadtField1;
     private javax.swing.JTextField strasseField;
-    private javax.swing.JTextField strasseField1;
+    private javax.swing.JTextField titelField;
+    private javax.swing.JTextField verlagField;
     private javax.swing.JTextField vornameField;
-    private javax.swing.JTextField vornameField1;
     // End of variables declaration//GEN-END:variables
 
 }
