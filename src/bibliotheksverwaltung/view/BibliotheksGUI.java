@@ -32,7 +32,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Max
  */
-public class BibliotheksGUI extends javax.swing.JFrame implements Observer, ActionListener {
+public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 
 	private BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 
@@ -77,20 +77,18 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/search_48.png"))); // NOI18N
         searchButton.setText("Suchen");
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        searchButton.addActionListener(this);
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 14));
+        addButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/add_48.png"))); // NOI18N
         addButton.setText("Hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        addButton.addActionListener(this);
 
         reportButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/pie_chart_48.png"))); // NOI18N
         reportButton.setText("Berichte");
         reportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        configButton.setFont(new java.awt.Font("Arial", 1, 14));
+        configButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         configButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/spanner_48.png"))); // NOI18N
         configButton.setText("Einstellungen");
         configButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -142,7 +140,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -167,34 +165,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         );
 
         pack();
-    }
-
-    // Code for dispatching events from components to event handlers.
-
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == searchButton) {
-            BibliotheksGUI.this.searchButtonActionPerformed(evt);
-        }
-        else if (evt.getSource() == addButton) {
-            BibliotheksGUI.this.addButtonActionPerformed(evt);
-        }
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        mainPanel.removeAll();
-        SuchPanel suchPanel2 = new SuchPanel(true,true);
-        suchPanel2.setSize(mainPanel.getSize());
-        mainPanel.add(suchPanel2);
-        this.repaint();
-        this.pack();
-    }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-       	mainPanel.removeAll();
-       	//TODO HINZUF�GEN PANEL EINBINDEN
-        this.repaint();
-        this.pack();
-    }//GEN-LAST:event_addButtonActionPerformed
 
 
     /**
