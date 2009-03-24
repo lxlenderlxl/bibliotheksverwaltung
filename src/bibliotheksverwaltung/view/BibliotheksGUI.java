@@ -13,6 +13,7 @@ package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
+import bibliotheksverwaltung.controller.AddActionListener;
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.controller.SearchActionListener;
 import bibliotheksverwaltung.controller.SearchBookListener;
@@ -53,6 +54,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         initComponents();
         verwalter.addObserver(this);
         searchButton.addActionListener(new SearchActionListener(this.verwalter));
+        addButton.addActionListener(new AddActionListener(this.verwalter));
     }
 
     /** This method is called from within the constructor to
@@ -209,9 +211,19 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 				if (updateInfo.holeAenderungOk())
 				{
 					mainPanel.removeAll();
-	        SuchPanel suchPanel2 = new SuchPanel(this.verwalter, true,true);
-	        suchPanel2.setSize(mainPanel.getSize());
-	        mainPanel.add(suchPanel2);
+	        SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
+	        suchPanel.setSize(mainPanel.getSize());
+	        mainPanel.add(suchPanel);
+				}
+			}
+			else if (updateInfo.holeAenderung().equals("Hinzufuegen"))
+			{
+				if (updateInfo.holeAenderungOk())
+				{
+					mainPanel.removeAll();
+	        HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
+	        hinzuPanel.setSize(mainPanel.getSize());
+	        mainPanel.add(hinzuPanel);
 				}
 			}
 			this.mainPanel.repaint();
