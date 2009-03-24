@@ -87,10 +87,10 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         searchBook.setMinimumSize(new java.awt.Dimension(41, 41));
         searchBook.setPreferredSize(new java.awt.Dimension(41, 41));
 
-        searchPerson.setFont(new java.awt.Font("Arial", 1, 14));
-        searchPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_48.png"))); // NOI18N
+        searchPerson.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_32.png"))); // NOI18N
 
-        searchField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        searchField.setFont(new java.awt.Font("Arial", 1, 18));
         searchField.setForeground(new java.awt.Color(204, 204, 204));
         searchField.setText("Suchworte eingeben...");
         searchField.addFocusListener(this);
