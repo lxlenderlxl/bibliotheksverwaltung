@@ -75,6 +75,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         addButton = new javax.swing.JButton();
         reportButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
+        warenkorbPanel = new javax.swing.JPanel();
         mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,17 +86,17 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 
         menuPanel.setOpaque(false);
 
-        searchButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchButton.setFont(new java.awt.Font("Arial", 1, 14));
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/search_48.png"))); // NOI18N
         searchButton.setText("Suchen");
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        addButton.setFont(new java.awt.Font("Arial", 1, 14));
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/add_48.png"))); // NOI18N
         addButton.setText("HinzufÃ¼gen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        reportButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        reportButton.setFont(new java.awt.Font("Arial", 1, 14));
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/pie_chart_48.png"))); // NOI18N
         reportButton.setText("Berichte");
         reportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -104,6 +105,21 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         configButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/spanner_48.png"))); // NOI18N
         configButton.setText("Einstellungen");
         configButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+
+        warenkorbPanel.setMaximumSize(new java.awt.Dimension(181, 250));
+        warenkorbPanel.setMinimumSize(new java.awt.Dimension(181, 250));
+        warenkorbPanel.setPreferredSize(new java.awt.Dimension(181, 250));
+
+        javax.swing.GroupLayout warenkorbPanelLayout = new javax.swing.GroupLayout(warenkorbPanel);
+        warenkorbPanel.setLayout(warenkorbPanelLayout);
+        warenkorbPanelLayout.setHorizontalGroup(
+            warenkorbPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 181, Short.MAX_VALUE)
+        );
+        warenkorbPanelLayout.setVerticalGroup(
+            warenkorbPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -120,7 +136,10 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
                             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +150,9 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
                 .addComponent(addButton)
                 .addGap(18, 18, 18)
                 .addComponent(reportButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(configButton)
                 .addGap(22, 22, 22))
         );
@@ -203,6 +224,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton reportButton;
     private javax.swing.JButton searchButton;
+    private javax.swing.JPanel warenkorbPanel;
     // End of variables declaration//GEN-END:variables
 
 		/* (non-Javadoc)
@@ -245,7 +267,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 //					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
 //					hinzuPanel.setSize(mainPanel.getSize());
 //					mainPanel.add(hinzuPanel);
-					System.out.println("Report Knopf gedrückt");
+					System.out.println("Report Knopf gedrï¿½ckt");
 				}
 			}
 			this.mainPanel.repaint();
