@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.controller;
 
@@ -14,11 +14,6 @@ import java.io.IOException;
 
 import javax.swing.JFileChooser;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfWriter;
-
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
@@ -30,7 +25,7 @@ public class TestListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -40,7 +35,7 @@ public class TestListener implements MouseListener
 	public void mouseEntered(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +45,7 @@ public class TestListener implements MouseListener
 	public void mouseExited(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -60,7 +55,7 @@ public class TestListener implements MouseListener
 	public void mousePressed(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -109,7 +104,7 @@ public class TestListener implements MouseListener
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 	}
 
 }
