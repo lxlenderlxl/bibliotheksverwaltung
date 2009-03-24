@@ -5,8 +5,11 @@ package bibliotheksverwaltung.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
@@ -69,7 +72,18 @@ public class TestListener implements MouseListener
 		Document doc = new Document();
 		try
 		{
-			String pdfName = String.valueOf(System.currentTimeMillis()) + ".pdf";
+			String pdfName = String.valueOf(System.currentTimeMillis());
+		// Create temp file.
+      File temp = File.createTempFile(pdfName, ".pdf");
+  
+      // Delete temp file when program exits.
+      temp.deleteOnExit();
+  
+//      // Write to temp file
+//      BufferedWriter out = new BufferedWriter(new FileWriter(temp));
+//      out.write("aString");
+//      out.close();
+      
 			PdfWriter.getInstance(doc, new FileOutputStream(pdfName));
 			doc.open();
 			doc.add(new Paragraph("Hello World"));
