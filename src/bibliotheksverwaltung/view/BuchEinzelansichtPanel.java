@@ -25,6 +25,7 @@ import javax.swing.border.Border;
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.controller.ExemplarHinzuListener;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
@@ -37,29 +38,29 @@ import java.awt.Dimension;
  */
 public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observer {
 
-    private MedienVerwalter medienVerwalter = null;
+    private BibliotheksVerwalter verwalter = null;
 
     //TODO Scrollpane unter dem exemplarpanel, da sonst nur begrenzte anzahl an exemplaren geben kann
     /** Creates new form BuchEinzelansichtPanel */
-    public BuchEinzelansichtPanel(MedienVerwalter derVerwalter) {
+    public BuchEinzelansichtPanel(BibliotheksVerwalter derVerwalter) {
         initComponents();
-        this.medienVerwalter = derVerwalter;
-        this.medienVerwalter.erzeugeExemplare();
-        this.buchansichtPanel.add(new BuchAnsicht(this.medienVerwalter.getMedium()));
+        this.verwalter = derVerwalter;
+        this.verwalter.getMedienVerwalter().erzeugeExemplare();
+        this.buchansichtPanel.add(new BuchAnsicht(this.verwalter.getMedienVerwalter().getMedium()));
         this.erzeugeExemplarAnsichten();
-        this.addButton.addActionListener(new ExemplarHinzuListener(medienVerwalter));
-        medienVerwalter.addObserver(this);
-        medienVerwalter.getExemplarVerwalter().addObserver(this);
+        this.addButton.addActionListener(new ExemplarHinzuListener(verwalter));
+        this.verwalter.getMedienVerwalter().addObserver(this);
+        this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);
 
     }
 
     private void erzeugeExemplarAnsichten() {
     	exemplarePanel.setLayout(new FlowLayout());
     	exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), 26));
-          	for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
+          	for (int i = 0; i < this.verwalter.getMedienVerwalter().getMedium().getExemplare().size(); i++) {
             //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...            
             exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), (int)exemplarePanel.getPreferredSize().getHeight() + 26));
-            AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medienVerwalter.getMedium().getExemplare().get(i));
+            AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(this.verwalter, this.verwalter.getMedienVerwalter().getMedium().getExemplare().get(i));
             exemplarePanel.add(panel);
         }
 //        this.validate();
@@ -191,7 +192,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         jframe.setSize(200, 265);
         Medium einMedium = new Medium(5);
         einMedium.erzeugeExemplare();
-        jframe.add(new BuchEinzelansichtPanel(new MedienVerwalter(einMedium)));
+        jframe.add(new BuchEinzelansichtPanel(new BibliotheksVerwalter()));
         jframe.setVisible(true);
         jframe.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
@@ -218,7 +219,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   			if (updateInfo.holeAenderungOk())
   			{
   				this.exemplarePanel.removeAll();
-  				this.medienVerwalter.erzeugeExemplare();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
   			}
   		}
   		else if (updateInfo.holeAenderung().equals("ExemplarGeloescht"))
@@ -226,7 +227,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   			if (updateInfo.holeAenderungOk())
   			{
   				this.exemplarePanel.removeAll();
-  				this.medienVerwalter.erzeugeExemplare();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
   			}
   		}
   		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))

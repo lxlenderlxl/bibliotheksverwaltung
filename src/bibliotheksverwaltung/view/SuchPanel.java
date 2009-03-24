@@ -17,6 +17,7 @@ import java.awt.event.FocusListener;
 
 import bibliotheksverwaltung.controller.SearchBookListener;
 import bibliotheksverwaltung.controller.SearchPersonListener;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
 
@@ -26,19 +27,20 @@ import bibliotheksverwaltung.model.logic.SuchVerwalter;
  */
 public class SuchPanel extends javax.swing.JPanel implements FocusListener, ActionListener {
 
-	private SuchVerwalter v1 = new SuchVerwalter();
-  private MedienVerwalter v2 = new MedienVerwalter();
+	private BibliotheksVerwalter verwalter = null;
   private OutputArea resultArea = null;
 
 	
 	/** Creates new form suchPanel */
 	public SuchPanel() {
 		initComponents();
+		this.verwalter = new BibliotheksVerwalter();
 		this.init2nd();    
 	}
 
-	public SuchPanel(boolean personButtonAnzeigen, boolean buchButtonAnzeigen) {
+	public SuchPanel(BibliotheksVerwalter derVerwalter, boolean personButtonAnzeigen, boolean buchButtonAnzeigen) {
 		initComponents();
+		this.verwalter = derVerwalter;
     searchPerson.setVisible(personButtonAnzeigen);
     searchBook.setVisible(buchButtonAnzeigen);
     this.init2nd();
@@ -46,15 +48,15 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 	
 	private void init2nd()
 	{
-		this.resultArea = new OutputArea(v1,v2);
+		this.resultArea = new OutputArea(verwalter);
     this.resultArea.setBorder(null);
     this.outputPanel.setBorder(null);
     this.resultArea.setLayout(new FlowLayout());
     this.outputPanel.setViewportView(resultArea);
     this.resultArea.setPreferredSize((new Dimension((int)outputPanel.getSize().getWidth() - 10, (int)outputPanel.getSize().getWidth())));
     //Listener
-    this.searchBook.addActionListener(new SearchBookListener(v1, searchField));
-    this.searchPerson.addActionListener(new SearchPersonListener(v1, searchField));
+    this.searchBook.addActionListener(new SearchBookListener(verwalter, searchField));
+    this.searchPerson.addActionListener(new SearchPersonListener(verwalter, searchField));
 	}
 
 	/** This method is called from within the constructor to
