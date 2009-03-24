@@ -256,7 +256,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
   				hinzuPanel.setLayout(new GridLayout(2,1));
   				hinzuPanel.setSize(mainPanel.getPreferredSize());
   				PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
-  				BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel();
+  				BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel(this.verwalter, false);
   				hinzuPanel.add(persoPanel);
   				hinzuPanel.add(buchPanel);
   				SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
