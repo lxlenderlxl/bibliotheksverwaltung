@@ -15,6 +15,7 @@ import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
 import bibliotheksverwaltung.controller.AddActionListener;
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.controller.ReportActionListener;
 import bibliotheksverwaltung.controller.SearchActionListener;
 import bibliotheksverwaltung.controller.SearchBookListener;
 import bibliotheksverwaltung.controller.TestListener;
@@ -55,6 +56,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         verwalter.addObserver(this);
         searchButton.addActionListener(new SearchActionListener(this.verwalter));
         addButton.addActionListener(new AddActionListener(this.verwalter));
+        reportButton.addActionListener(new ReportActionListener(this.verwalter));
     }
 
     /** This method is called from within the constructor to
@@ -228,6 +230,17 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 	        HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
 	        hinzuPanel.setSize(mainPanel.getSize());
 	        mainPanel.add(hinzuPanel);
+				}
+			}
+			else if (updateInfo.holeAenderung().equals("Report"))
+			{
+				if (updateInfo.holeAenderungOk())
+				{
+					mainPanel.removeAll();
+//					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
+//					hinzuPanel.setSize(mainPanel.getSize());
+//					mainPanel.add(hinzuPanel);
+					System.out.println("Report Knopf gedrückt");
 				}
 			}
 			this.mainPanel.repaint();
