@@ -2,8 +2,14 @@
 
 <Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[563, 24]"/>
+    </Property>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[563, 24]"/>
+    </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[580, 50]"/>
+      <Dimension value="[563, 24]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -22,16 +28,16 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="exemplarLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="exemplarLabel" min="-2" pref="78" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="99" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="146" max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" pref="79" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" pref="79" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton1" pref="145" max="32767" attributes="0"/>
+              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -40,9 +46,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="103" groupAlignment="3" attributes="0">
               <Component id="exemplarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
           </Group>
           <Component id="jButton2" alignment="0" min="-2" max="-2" attributes="0"/>

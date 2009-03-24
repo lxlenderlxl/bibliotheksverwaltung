@@ -3,3 +3,4 @@ Sun Mar 22 01:27:03 CET 2009	Unknown column 'titel' in 'where clause'	 in class 
 Mon Mar 23 23:42:44 CET 2009	Communications link failure
 
 Last packet sent to the server was 0 ms ago.
+Tue Mar 24 11:32:04 CET 2009	Column Index out of range, 3 > 2. 	 in class bibliotheksverwaltung.model.daos.dao.MySQLZustandDAO
