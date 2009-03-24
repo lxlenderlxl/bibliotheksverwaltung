@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.controller.DatenBearbeitenActionListener;
 import bibliotheksverwaltung.controller.ExemplarHinzuListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
@@ -49,6 +50,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         this.buchansichtPanel.add(new BuchAnsicht(this.verwalter.getMedienVerwalter().getMedium()));
         this.erzeugeExemplarAnsichten();
         this.addButton.addActionListener(new ExemplarHinzuListener(verwalter));
+        this.editButton.addActionListener(new DatenBearbeitenActionListener(verwalter));
         this.verwalter.addObserver(this);
         this.verwalter.getMedienVerwalter().addObserver(this);
         this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);
@@ -258,6 +260,16 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   			{
   				this.exemplarePanel.removeAll();
   				this.erzeugeExemplarAnsichten();
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("DatenBearbeiten"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel();
+  				hinzuPanel.setSize(this.exemplarePanel.getSize());
+  				this.exemplarePanel.add(hinzuPanel);
   			}
   		}
   		this.repaint();

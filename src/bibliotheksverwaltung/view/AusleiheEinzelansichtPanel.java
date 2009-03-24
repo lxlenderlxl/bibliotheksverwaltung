@@ -50,7 +50,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 		{			
 			jLabel2.setText("");
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
-			jButton1.setText("Ausleihen");
+			jButton1.setText("");
 			jButton1.addActionListener(new BuchAusleihenListener(this.verwalter, exemplar));			
 			jLabel3.setText("");
 			jLabel4.setText("");
@@ -60,7 +60,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			ausleiher = new Ausleiher(this.exemplar.getAusleiher());
 			jLabel2.setText(ausleiher.getName());
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_left_green_24.png")));
-			jButton1.setText("Zur�cknehmen");
+			jButton1.setText("");
 			jButton1.addActionListener(new BuchZurueckListener(this.verwalter, exemplar));			
 			jLabel3.setText(String.valueOf(this.exemplar.getFormattedDate()));
 			jLabel4.setText(String.valueOf(this.exemplar.getVerlaengerung()));
