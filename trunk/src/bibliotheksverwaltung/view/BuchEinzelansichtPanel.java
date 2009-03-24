@@ -268,7 +268,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   			{
   				this.exemplarePanel.removeAll();
   				this.exemplarePanel.setPreferredSize(new Dimension(573,258));
-  				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel();
+  				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
   				hinzuPanel.setSize(this.exemplarePanel.getSize());
   				this.exemplarePanel.add(hinzuPanel);
   			}
