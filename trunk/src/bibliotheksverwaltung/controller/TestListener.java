@@ -5,18 +5,22 @@ package bibliotheksverwaltung.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
+
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
 
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
-public class TestMouseListener implements MouseListener
+public class TestListener implements MouseListener
 {
-	private MedienVerwalter verwalter = null;
-	
-	public TestMouseListener(MedienVerwalter derVerwalter)
-	{
-		this.verwalter = derVerwalter;
-	}
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
@@ -62,14 +66,34 @@ public class TestMouseListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
+		Document doc = new Document();
+		try
 		{
-			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			System.out.println("Test Mouselistener");
-			//verwalter.setMedium(new Medium(5));
-			verwalter.erzeugeExemplare();
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
-			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+			String pdfName = String.valueOf(System.currentTimeMillis()) + ".pdf";
+			PdfWriter.getInstance(doc, new FileOutputStream(pdfName));
+			doc.open();
+			doc.add(new Paragraph("Hello World"));
+			doc.close();
+			System.out.println("Bericht wurde geschrieben");
+			Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + pdfName);
+			p.waitFor();
+
+		} catch (FileNotFoundException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (DocumentException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InterruptedException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 	}

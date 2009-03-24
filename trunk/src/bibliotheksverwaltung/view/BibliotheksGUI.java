@@ -13,7 +13,7 @@ package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.controller.SearchBookListener;
-import bibliotheksverwaltung.controller.TestMouseListener;
+import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 
@@ -46,6 +46,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
             LocalEnvironment.log(e.getMessage(), this);
         }
         initComponents();
+        configButton.addMouseListener(new TestListener());
     }
 
     /** This method is called from within the constructor to
