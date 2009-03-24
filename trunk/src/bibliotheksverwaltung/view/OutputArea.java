@@ -38,7 +38,6 @@ public class OutputArea extends JPanel implements Observer
 		this.v2 = v2;
 		v1.addObserver(this);
 		v2.addObserver(this);
-		v2.getExemplarVerwalter().addObserver(this);
 	}
 
 	/* (non-Javadoc)
@@ -49,11 +48,11 @@ public class OutputArea extends JPanel implements Observer
 	{
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		String ausgabe = "";
-		this.removeAll();
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
+				this.removeAll();
 				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
 				if (v1.getErgebnisse().size() == 0)
 				{
@@ -72,10 +71,11 @@ public class OutputArea extends JPanel implements Observer
 				}
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
+		else if (updateInfo.holeAenderung().equals("BuchEinzelAnsicht"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
+				this.removeAll();
 				this.setPreferredSize(new Dimension(563, 533));
 				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(this.v2);
 				this.add(buchEinzel);
@@ -85,6 +85,7 @@ public class OutputArea extends JPanel implements Observer
 		{
 			if (updateInfo.holeAenderungOk())
 			{
+				this.removeAll();
 				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
 				if (v1.getErgebnisse().size() == 0)
 				{
@@ -95,21 +96,9 @@ public class OutputArea extends JPanel implements Observer
 					for (int i = 0; i < v1.getErgebnisse().size(); i++)
 					{
 						Ausleiher ergebnis = (Ausleiher) v1.getErgebnisse().get(i);
-						//					BuchAnsicht buch = new BuchAnsicht(ergebnis);
-						//					buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
-						//					this.add(buch);
 						this.add(new JButton(ergebnis.getNachName()));
 					}
 				}
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.setPreferredSize(new Dimension(563, 533));
-				BuchEinzelansichtPanel buchAnsicht = new BuchEinzelansichtPanel(this.v2);
-				this.add(buchAnsicht);
 			}
 		}
 		this.repaint();

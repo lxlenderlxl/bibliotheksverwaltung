@@ -11,6 +11,7 @@ import bibliotheksverwaltung.util.UpdateInfo;
 public class ExemplarVerwalter extends Observable implements Verwaltbar {
 
 	private MySQLExemplarDAO exemplarDAO = new MySQLExemplarDAO();
+	private Exemplar exemplar = null;
 	private UpdateInfo updateInfo = new UpdateInfo();
 
 	/* (non-Javadoc)

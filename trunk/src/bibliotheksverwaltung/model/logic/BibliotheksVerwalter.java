@@ -13,6 +13,10 @@ import bibliotheksverwaltung.util.Message;
 
 public class BibliotheksVerwalter {
 
+	private MedienVerwalter medienVerwalter = null;
+	private SuchVerwalter suchVerwalter = null;
+	private AusleiherVerwalter ausleiherVerwalter = null;
+	private LogVerwalter logVerwalter = null;
 	/**
 	 *
 	 */

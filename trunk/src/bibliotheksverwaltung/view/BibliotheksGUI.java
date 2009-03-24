@@ -46,7 +46,6 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
             LocalEnvironment.log(e.getMessage(), this);
         }
         initComponents();
-        configButton.addMouseListener(new TestListener());
     }
 
     /** This method is called from within the constructor to
