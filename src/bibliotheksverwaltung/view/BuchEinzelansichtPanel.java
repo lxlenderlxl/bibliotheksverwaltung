@@ -231,6 +231,30 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   				this.verwalter.getMedienVerwalter().erzeugeExemplare();
   			}
   		}
+  		else if (updateInfo.holeAenderung().equals("ExemplarAusleihen"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("ExemplarZurueck"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("ExemplarVerlaengern"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+  			}
+  		}
   		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
   		{
   			if (updateInfo.holeAenderungOk())
