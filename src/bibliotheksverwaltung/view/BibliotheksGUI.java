@@ -26,6 +26,7 @@ import bibliotheksverwaltung.model.logic.*;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
@@ -34,6 +35,7 @@ import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -55,9 +57,9 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         }
         initComponents();
         verwalter.addObserver(this);
-        searchButton.addActionListener(new SearchActionListener(this.verwalter));
-        addButton.addActionListener(new AddActionListener(this.verwalter));
-        reportButton.addActionListener(new ReportActionListener(this.verwalter));
+    		searchButton.addActionListener(new SearchActionListener(this.verwalter));
+    		addButton.addActionListener(new AddActionListener(this.verwalter));
+    		reportButton.addActionListener(new ReportActionListener(this.verwalter));
     }
 
     /** This method is called from within the constructor to
@@ -227,51 +229,55 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel warenkorbPanel;
     // End of variables declaration//GEN-END:variables
 
-		/* (non-Javadoc)
-		 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-		 */
-		@Override
-		public void update(Observable o, Object arg)
-		{
-			UpdateInfo updateInfo = (UpdateInfo) arg;
-			String ausgabe = "";
-			if (updateInfo.holeAenderung().equals("Suche"))
-			{
-				if (updateInfo.holeAenderungOk())
-				{
-					mainPanel.removeAll();
-	        SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
-	        suchPanel.setSize(mainPanel.getSize());
-	        mainPanel.add(suchPanel);
-				}
-			}
-			else if (updateInfo.holeAenderung().equals("Hinzufuegen"))
-			{
-				if (updateInfo.holeAenderungOk())
-				{
-					mainPanel.removeAll();
-					mainPanel.setLayout(new FlowLayout());
-	        PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
-	        BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel();
-	        persoPanel.setSize(mainPanel.getSize());
-	        buchPanel.setSize(mainPanel.getSize());
-	        mainPanel.add(persoPanel);
-	        mainPanel.add(buchPanel);
-				}
-			}
-			else if (updateInfo.holeAenderung().equals("Report"))
-			{
-				if (updateInfo.holeAenderungOk())
-				{
-					mainPanel.removeAll();
-//					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
-//					hinzuPanel.setSize(mainPanel.getSize());
-//					mainPanel.add(hinzuPanel);
-					System.out.println("Report Knopf gedrï¿½ckt");
-				}
-			}
-			this.mainPanel.repaint();
-			this.mainPanel.revalidate();
-		}
+    /* (non-Javadoc)
+  	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+  	 */
+  	@Override
+  	public void update(Observable o, Object arg)
+  	{
+  		UpdateInfo updateInfo = (UpdateInfo) arg;
+  		String ausgabe = "";
+  		if (updateInfo.holeAenderung().equals("Suche"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				mainPanel.removeAll();
+  				SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
+  				suchPanel.setSize(mainPanel.getSize());
+  				mainPanel.add(suchPanel);
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("Hinzufuegen"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				//					mainPanel.removeAll();
+  				JPanel hinzuPanel = new JPanel();
+  				hinzuPanel.setLayout(new GridLayout(2,1));
+  				hinzuPanel.setSize(mainPanel.getPreferredSize());
+  				PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
+  				BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel();
+  				hinzuPanel.add(persoPanel);
+  				hinzuPanel.add(buchPanel);
+  				SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
+  				suchPanel.setSize(mainPanel.getSize());
+  				suchPanel.getResultArea().add(hinzuPanel);
+  				mainPanel.add(suchPanel);
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("Report"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				mainPanel.removeAll();
+  				//					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
+  				//					hinzuPanel.setSize(mainPanel.getSize());
+  				//					mainPanel.add(hinzuPanel);
+  				System.out.println("Report Knopf gedrückt");
+  			}
+  		}
+  		this.mainPanel.repaint();
+  		this.mainPanel.revalidate();
+  	}
 
 }
