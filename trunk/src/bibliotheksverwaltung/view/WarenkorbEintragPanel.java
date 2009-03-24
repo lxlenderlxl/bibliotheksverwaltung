@@ -32,37 +32,38 @@ public class WarenkorbEintragPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         exemplarLabel = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
 
         exemplarLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         exemplarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/book_24.png"))); // NOI18N
         exemplarLabel.setText("ExemplarID");
+        exemplarLabel.setPreferredSize(new java.awt.Dimension(136, 24));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
+        deleteButton.setBorder(null);
+        deleteButton.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(exemplarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(exemplarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2))
+                .addComponent(deleteButton))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jButton2)
-                .addComponent(exemplarLabel))
+                .addComponent(deleteButton)
+                .addComponent(exemplarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel exemplarLabel;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -36,12 +36,15 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         vornameField = new javax.swing.JTextField();
         nachnameField = new javax.swing.JTextField();
         strasseField = new javax.swing.JTextField();
-        plzField = new javax.swing.JTextField();
         hausnummerField = new javax.swing.JTextField();
+        plzField = new javax.swing.JTextField();
         stadtField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(348, 185));
+        setMaximumSize(new java.awt.Dimension(558, 122));
+        setMinimumSize(new java.awt.Dimension(558, 122));
+        setPreferredSize(new java.awt.Dimension(558, 122));
 
         vornameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         vornameField.setForeground(new java.awt.Color(204, 204, 204));
@@ -79,18 +82,6 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        plzField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        plzField.setForeground(new java.awt.Color(204, 204, 204));
-        plzField.setText("PLZ");
-        plzField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                plzFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                plzFieldFocusLost(evt);
-            }
-        });
-
         hausnummerField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         hausnummerField.setForeground(new java.awt.Color(204, 204, 204));
         hausnummerField.setText("Nummer");
@@ -100,6 +91,18 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 hausnummerFieldFocusLost(evt);
+            }
+        });
+
+        plzField.setFont(new java.awt.Font("Arial", 1, 18));
+        plzField.setForeground(new java.awt.Color(204, 204, 204));
+        plzField.setText("PLZ");
+        plzField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                plzFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                plzFieldFocusLost(evt);
             }
         });
 
@@ -117,49 +120,61 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
 
         addButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_add_48.png"))); // NOI18N
-        addButton.setText("Person hinzufügen");
-        addButton.setActionCommand("Person hinzufügen");
+        addButton.setText("<html>Person<br/>hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
+
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
+        cancelButton.setText("Abbrechen");
+        cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        cancelButton.setIconTextGap(10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                    .addComponent(addButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(plzField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(stadtField, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(strasseField, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                        .addComponent(stadtField, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(strasseField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(hausnummerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addButton))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nachnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(strasseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hausnummerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(plzField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addButton)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nachnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(strasseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hausnummerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(plzField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(cancelButton))
+                    .addComponent(addButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -229,6 +244,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField hausnummerField;
     private javax.swing.JTextField nachnameField;
     private javax.swing.JTextField plzField;
