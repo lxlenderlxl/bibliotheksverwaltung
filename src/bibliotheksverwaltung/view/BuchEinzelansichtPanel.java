@@ -51,11 +51,12 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     }
 
     private void erzeugeExemplarAnsichten() {
-    	System.out.println(exemplarePanel.getPreferredSize());
-    	for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
+    	exemplarePanel.setLayout(new FlowLayout());
+    	exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), 26));
+          	for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++) {
             //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
-            exemplarePanel.setLayout(new FlowLayout());
-            exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), (int)exemplarePanel.getPreferredSize().getHeight() + 25));
+            
+            exemplarePanel.setPreferredSize(new Dimension((int)exemplarePanel.getPreferredSize().getWidth(), (int)exemplarePanel.getPreferredSize().getHeight() + 26));
             System.out.println(exemplarePanel.getPreferredSize());
             AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medienVerwalter.getMedium().getExemplare().get(i));
             exemplarePanel.add(panel);
@@ -213,6 +214,13 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     	UpdateInfo updateInfo = (UpdateInfo) arg;
   		this.exemplarePanel.removeAll();
   		if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.medienVerwalter.erzeugeExemplare();
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("ExemplarGeloescht"))
   		{
   			if (updateInfo.holeAenderungOk())
   			{
