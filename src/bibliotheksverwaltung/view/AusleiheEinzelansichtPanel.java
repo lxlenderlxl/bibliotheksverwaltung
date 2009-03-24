@@ -14,6 +14,7 @@ package bibliotheksverwaltung.view;
 import javax.swing.JFrame;
 
 import bibliotheksverwaltung.controller.BuchAusleihenListener;
+import bibliotheksverwaltung.controller.BuchLoeschenListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
@@ -49,6 +50,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("Ausleihen");
 			jButton1.addActionListener(new BuchAusleihenListener(medienVerwalter, exemplar));
+			jButton2.addActionListener(new BuchLoeschenListener(this.medienVerwalter, this.exemplar));
 			jLabel3.setText("");
 			jLabel4.setText("");
 		}
@@ -60,6 +62,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jButton1.setText("Zur�cknehmen");
 			jLabel3.setText(String.valueOf(exemplar.getFormattedDate()));
 			jLabel4.setText(String.valueOf(exemplar.getVerlaengerung()));
+			jButton2.addActionListener(new BuchLoeschenListener(this.medienVerwalter, this.exemplar));
 		}
 	}
 
