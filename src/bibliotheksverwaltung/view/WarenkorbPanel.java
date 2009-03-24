@@ -31,54 +31,38 @@ public class WarenkorbPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        exemplarLabel = new javax.swing.JLabel();
+        ausleiherButton = new javax.swing.JButton();
+        eintragePanel = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchkiste", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         setPreferredSize(new java.awt.Dimension(181, 250));
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
-        jButton1.setText("Ausleiher wählen");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
-
-        exemplarLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        exemplarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/book_24.png"))); // NOI18N
-        exemplarLabel.setText("ExemplarID");
+        ausleiherButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        ausleiherButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
+        ausleiherButton.setText("Ausleiher wählen");
+        ausleiherButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        ausleiherButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(exemplarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2))
+            .addComponent(ausleiherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(eintragePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(ausleiherButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(exemplarLabel))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addComponent(eintragePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel exemplarLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton ausleiherButton;
+    private javax.swing.JPanel eintragePanel;
     // End of variables declaration//GEN-END:variables
 
 }
