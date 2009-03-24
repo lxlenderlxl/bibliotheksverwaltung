@@ -31,6 +31,22 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
   private OutputArea resultArea = null;
 
 	
+	/**
+	 * @return the resultArea
+	 */
+	public OutputArea getResultArea()
+	{
+		return resultArea;
+	}
+
+	/**
+	 * @param resultArea the resultArea to set
+	 */
+	public void setResultArea(OutputArea resultArea)
+	{
+		this.resultArea = resultArea;
+	}
+
 	/** Creates new form suchPanel */
 	public SuchPanel() {
 		initComponents();

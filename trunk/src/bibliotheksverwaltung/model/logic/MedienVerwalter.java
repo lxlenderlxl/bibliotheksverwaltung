@@ -9,7 +9,7 @@ import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
 
-public class MedienVerwalter extends Observable implements Verwaltbar {
+public class MedienVerwalter extends Observable {
 
 	private MySQLMediumDAO mediumDAO = new MySQLMediumDAO();
 	private Medium medium = null;
@@ -43,15 +43,10 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		this.medium = medium;
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
-	 */
-	@Override
-	public void add(Object objekt)
+	public void add()
 	{
 		updateInfo.setzeAenderung("MediumHinzu");
 		try {
-			Medium medium = (Medium) objekt;
 			mediumDAO.add(
 					medium.getTitel(),
 					medium.getAutorVorname(),
@@ -67,15 +62,10 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		notifyObservers(updateInfo);
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
-	 */
-	@Override
-	public void delete(Object objekt)
+	public void delete()
 	{
 		updateInfo.setzeAenderung("MediumDelete");
 		try {
-			Medium medium = (Medium) objekt;
 			mediumDAO.update(
 					medium.getId(),
 					medium.getTitel(),
@@ -92,15 +82,10 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 		notifyObservers(updateInfo);
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
-	 */
-	@Override
-	public void update(Object objekt)
+	public void update()
 	{
 		updateInfo.setzeAenderung("MediumUpdate");
 		try {
-			Medium medium = (Medium) objekt;
 			mediumDAO.update(
 					medium.getId(),
 					medium.getTitel(),

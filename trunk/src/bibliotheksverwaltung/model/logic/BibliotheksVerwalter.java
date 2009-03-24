@@ -153,9 +153,9 @@ public class BibliotheksVerwalter extends Observable {
 		}
 	}
 
-	public void buchBearbeiten () {
-		updateInfo.setzeAenderung("BuchBearbeiten");
-		this.medienVerwalter.getExemplarVerwalter().update();
+	public void mediumBearbeiten () {
+		updateInfo.setzeAenderung("MediumBearbeiten");
+		this.medienVerwalter.update();
 		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_BEARBEITET, 0, medienVerwalter.getExemplarVerwalter().getExemplar().getId()));
 		setChanged();
 		notifyObservers(updateInfo);
@@ -190,7 +190,7 @@ public class BibliotheksVerwalter extends Observable {
 
 	public void mediumHinzufuegen() {
 		updateInfo.setzeAenderung("mediumHinzu");
-		new MedienVerwalter().add(this.medienVerwalter.getMedium());
+		new MedienVerwalter().add();
 		setChanged();
 		notifyObservers(updateInfo);
 	}
@@ -199,7 +199,7 @@ public class BibliotheksVerwalter extends Observable {
 		
 		if (!new MedienVerwalter().hasExemplare(this.medienVerwalter.getMedium().getId())) {
 			updateInfo.setzeAenderung("MediumDelete");
-			new MedienVerwalter().delete(new Medium(this.medienVerwalter.getMedium().getId()));
+			new MedienVerwalter().delete();
 			setChanged();
 			notifyObservers(updateInfo);
 		}
