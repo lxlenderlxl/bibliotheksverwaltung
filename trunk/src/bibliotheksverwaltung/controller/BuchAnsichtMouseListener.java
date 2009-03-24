@@ -7,16 +7,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 public class BuchAnsichtMouseListener implements MouseListener
 {
-	private MedienVerwalter verwalter = null;
+	private BibliotheksVerwalter verwalter = null;
 
-	public BuchAnsichtMouseListener(MedienVerwalter derVerwalter, Medium dasMedium)
+	public BuchAnsichtMouseListener(BibliotheksVerwalter derVerwalter, Medium dasMedium)
 	{
 		this.verwalter = derVerwalter;
-		verwalter.setMedium(dasMedium);
+		this.verwalter.getMedienVerwalter().setMedium(dasMedium);
 	}
 
 	/* (non-Javadoc)
@@ -61,12 +62,12 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
+		if (!verwalter.getMedienVerwalter().holeUpdateInfo().holeUpdateSperre())
 		{
-			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			verwalter.autoNotify("BuchEinzelAnsicht");
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
-			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+			verwalter.getMedienVerwalter().holeUpdateInfo().setzeUpdateSperre(true);
+			verwalter.getMedienVerwalter().autoNotify("BuchEinzelAnsicht");
+			verwalter.getMedienVerwalter().holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.getMedienVerwalter().holeUpdateInfo().setzeUpdateSperre(false);
 		}	
 	}
 

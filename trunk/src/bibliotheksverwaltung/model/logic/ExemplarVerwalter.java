@@ -8,22 +8,18 @@ import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
 
 
-public class ExemplarVerwalter extends Observable implements Verwaltbar {
+public class ExemplarVerwalter extends Observable {
 
 	private MySQLExemplarDAO exemplarDAO = new MySQLExemplarDAO();
 	private Exemplar exemplar = null;
 	private UpdateInfo updateInfo = new UpdateInfo();
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
-	 */
-	@Override
-	public void add(Object objekt)
+
+	public void add()
 	{
 		updateInfo.setzeAenderung("ExemplarHinzu");
 		try
 		{
-			Exemplar exemplar = (Exemplar) objekt;
 			exemplarDAO.add(
 					exemplar.getZustand(),
 					exemplar.getAusleiher(),
@@ -56,16 +52,11 @@ public class ExemplarVerwalter extends Observable implements Verwaltbar {
 		this.exemplar = exemplar;
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
-	 */
-	@Override
-	public void delete(Object objekt)
+	public void delete()
 	{
 		updateInfo.setzeAenderung("ExemplarGeloescht");
 		try
 		{
-			Exemplar exemplar = (Exemplar) objekt;
 			exemplarDAO.update(
 					exemplar.getId(),
 					exemplar.getZustand(),
@@ -82,16 +73,11 @@ public class ExemplarVerwalter extends Observable implements Verwaltbar {
 		notifyObservers(updateInfo);
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
-	 */
-	@Override
-	public void update(Object objekt)
+	public void update()
 	{
 		updateInfo.setzeAenderung("ExemplarUpdate");
 		try
 		{
-			Exemplar exemplar = (Exemplar) objekt;
 			exemplarDAO.update(
 					exemplar.getId(),
 					exemplar.getZustand(),

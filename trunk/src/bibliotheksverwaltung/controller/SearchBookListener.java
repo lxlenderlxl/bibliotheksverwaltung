@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
 
 /**
@@ -17,21 +18,21 @@ import bibliotheksverwaltung.model.logic.SuchVerwalter;
  */
 public class SearchBookListener implements ActionListener {
 
-	private SuchVerwalter v1 = null;
+	private BibliotheksVerwalter verwalter = null;
 	private JTextField feld = null;
 
-	public SearchBookListener(SuchVerwalter v1, JTextField suchFeld) {
-		this.v1 = v1;
+	public SearchBookListener(BibliotheksVerwalter derVerwalter, JTextField suchFeld) {
+		this.verwalter = derVerwalter;
 		this.feld = suchFeld;
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent event) {
-		if (!v1.holeUpdateInfo().holeUpdateSperre())
+		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
-			v1.holeUpdateInfo().setzeUpdateSperre(true);
-			v1.sucheMedium(feld.getText());
-			v1.holeUpdateInfo().setzeAenderungOk(true);   
-			v1.holeUpdateInfo().setzeUpdateSperre(false);
+			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
+			verwalter.getSuchVerwalter().sucheMedium(feld.getText());
+			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
 	}
 }

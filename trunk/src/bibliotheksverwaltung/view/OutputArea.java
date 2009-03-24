@@ -22,22 +22,23 @@ import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.model.logic.SuchVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 
 public class OutputArea extends JPanel implements Observer
 {
-	private SuchVerwalter v1 = null;
-	private MedienVerwalter v2 = null;
+	private BibliotheksVerwalter verwalter = null;
 
-	public OutputArea(SuchVerwalter v1, MedienVerwalter v2)
+	public OutputArea(BibliotheksVerwalter derVerwalter)
 	{
 		super();
-		this.v1 = v1;
-		this.v2 = v2;
-		v1.addObserver(this);
-		v2.addObserver(this);
+		this.verwalter = derVerwalter;
+		//v1 --> Suchverwwalter
+		verwalter.getSuchVerwalter().addObserver(this);
+		//v2 --> Medienverwalter
+		verwalter.getMedienVerwalter().addObserver(this);
 	}
 
 	/* (non-Javadoc)
@@ -53,19 +54,19 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
-				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
-				if (v1.getErgebnisse().size() == 0)
+				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
+				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
 					this.add(new JLabel("Ihre Mediensuche lieferte leider keine Übereinstimmungen"));
 				}
 				else
 				{
-					for (int i = 0; i < v1.getErgebnisse().size(); i++)
+					for (int i = 0; i < this.verwalter.getSuchVerwalter().getErgebnisse().size(); i++)
 					{
-						Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
+						Medium ergebnis = (Medium) this.verwalter.getSuchVerwalter().getErgebnisse().get(i);
 						BuchAnsicht buch = new BuchAnsicht(ergebnis);
 						this.add(buch);
-						buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
+						buch.addMouseListener(new BuchAnsichtMouseListener(verwalter, ergebnis));
 						//buch.addMouseListener(new TestMouseListener(v2));
 					}
 				}
@@ -77,7 +78,7 @@ public class OutputArea extends JPanel implements Observer
 			{
 				this.removeAll();
 				this.setPreferredSize(new Dimension(563, 533));
-				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(this.v2);
+				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(verwalter);
 				this.add(buchEinzel);
 			}
 		}
@@ -86,16 +87,16 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
-				this.setPreferredSize(new Dimension(563, 245 * ((v1.getErgebnisse().size() + 2) / 3)));
-				if (v1.getErgebnisse().size() == 0)
+				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
+				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
 					this.add(new JLabel("Ihre Ausleihersuche lieferte leider keine Übereinstimmungen"));
 				}
 				else
 				{
-					for (int i = 0; i < v1.getErgebnisse().size(); i++)
+					for (int i = 0; i < this.verwalter.getSuchVerwalter().getErgebnisse().size(); i++)
 					{
-						Ausleiher ergebnis = (Ausleiher) v1.getErgebnisse().get(i);
+						Ausleiher ergebnis = (Ausleiher) this.verwalter.getSuchVerwalter().getErgebnisse().get(i);
 						this.add(new JButton(ergebnis.getNachName()));
 					}
 				}

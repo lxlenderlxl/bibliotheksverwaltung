@@ -58,7 +58,7 @@ public class MySQLSuchDAO
 				for (int j = 0; j < suchworte.length; j++)
 				{
 					sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
-					+ " WHERE " + suchKategorien[i] + " LIKE ?";
+					+ " WHERE " + suchKategorien[i] + " LIKE ? AND AKTIV = 1";
 
 					statement = connection.prepareStatement(sqlStmt);
 					this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());
@@ -91,7 +91,7 @@ public class MySQLSuchDAO
 					{
 						String dasSuchJahr = suchworte[j].substring(1);
 						sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
-						+ " WHERE " + suchKategorien[i] + " < ?";
+						+ " WHERE " + suchKategorien[i] + " < ? AND AKTIV = 1";
 						statement = connection.prepareStatement(sqlStmt);
 						statement.setString(1, dasSuchJahr);
 						this.processQuery(3 * suchworte[j].length());
@@ -109,7 +109,7 @@ public class MySQLSuchDAO
 					else
 					{
 						sqlStmt = "SELECT " + this.priKey.getWert() + " FROM " + this.tabelle.getWert()
-						+ " WHERE " + suchKategorien[i] + " LIKE ?";
+						+ " WHERE " + suchKategorien[i] + " LIKE ? AND AKTIV = 1";
 
 						statement = connection.prepareStatement(sqlStmt);
 						this.optimalLike("%" + suchworte[j] + "%", 1 * suchworte[j].length());

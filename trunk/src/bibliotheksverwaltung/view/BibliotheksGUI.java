@@ -12,8 +12,12 @@
 package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.UpdateInfo;
+import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.controller.SearchActionListener;
 import bibliotheksverwaltung.controller.SearchBookListener;
 import bibliotheksverwaltung.controller.TestListener;
+import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 
@@ -25,6 +29,8 @@ import java.awt.event.FocusListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -46,6 +52,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         }
         initComponents();
         verwalter.addObserver(this);
+        searchButton.addActionListener(new SearchActionListener(this.verwalter));
     }
 
     /** This method is called from within the constructor to
@@ -195,8 +202,20 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 		@Override
 		public void update(Observable o, Object arg)
 		{
-			// TODO Auto-generated method stub
-
+			UpdateInfo updateInfo = (UpdateInfo) arg;
+			String ausgabe = "";
+			if (updateInfo.holeAenderung().equals("Suche"))
+			{
+				if (updateInfo.holeAenderungOk())
+				{
+					mainPanel.removeAll();
+	        SuchPanel suchPanel2 = new SuchPanel(this.verwalter, true,true);
+	        suchPanel2.setSize(mainPanel.getSize());
+	        mainPanel.add(suchPanel2);
+				}
+			}
+			this.mainPanel.repaint();
+			this.mainPanel.revalidate();
 		}
 
 }

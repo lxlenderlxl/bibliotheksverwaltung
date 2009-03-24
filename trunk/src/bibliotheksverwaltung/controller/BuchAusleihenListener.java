@@ -12,11 +12,11 @@ import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 public class BuchAusleihenListener implements ActionListener
 {
-	private Exemplar exemplar = null;
+	private BibliotheksVerwalter verwalter = null;
 	
-	public BuchAusleihenListener(MedienVerwalter derVerwalter, Exemplar dasExemplar)
+	public BuchAusleihenListener(BibliotheksVerwalter derVerwalter)
 	{
-		this.exemplar = dasExemplar;
+		this.verwalter = derVerwalter;
 	}
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)

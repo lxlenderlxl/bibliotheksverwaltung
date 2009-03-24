@@ -31,26 +31,26 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 	private Exemplar exemplar = null;
 	private Zustand zustand = null;
 	private Ausleiher ausleiher = null;
-	private MedienVerwalter medienVerwalter = null;
+	private BibliotheksVerwalter verwalter = null;
 	
 //TODO Wenn Buch ausgeliehen, muss auch ein Button f�r verl�ngern vorhanden sein (z.Zt. nur Zur�cknehmen und Ausleihen
 	/** Creates new form AusleiheEinzelansichtPanel */
-	public AusleiheEinzelansichtPanel(MedienVerwalter derMedienVerwalter, Exemplar dasExemplar) {
+	public AusleiheEinzelansichtPanel(BibliotheksVerwalter derVerwalter, Exemplar dasExemplar) {
 		this.exemplar = dasExemplar;
-		this.medienVerwalter = derMedienVerwalter;
+		this.verwalter = derVerwalter;
 		initComponents();
-		exemplarLabel.setText(String.valueOf(this.exemplar.getId()));
-		zustand = new Zustand(exemplar.getZustand());
+		exemplarLabel.setText(String.valueOf(dasExemplar.getId()));
+		zustand = new Zustand(this.exemplar.getZustand());
 		exemplarLabel.setIcon(zustand.getBild());
 		exemplarLabel.setToolTipText(zustand.getBeschreibung());
+		jButton2.addActionListener(new BuchLoeschenListener(this.verwalter, this.exemplar));
 		
 		if (this.exemplar.isAusleihBar())
 		{			
 			jLabel2.setText("");
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("Ausleihen");
-			jButton1.addActionListener(new BuchAusleihenListener(medienVerwalter, exemplar));
-			jButton2.addActionListener(new BuchLoeschenListener(this.medienVerwalter, this.exemplar));
+			jButton1.addActionListener(new BuchAusleihenListener(this.verwalter));			
 			jLabel3.setText("");
 			jLabel4.setText("");
 		}
@@ -60,9 +60,8 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jLabel2.setText(ausleiher.getName());
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_left_green_24.png")));
 			jButton1.setText("Zur�cknehmen");
-			jLabel3.setText(String.valueOf(exemplar.getFormattedDate()));
-			jLabel4.setText(String.valueOf(exemplar.getVerlaengerung()));
-			jButton2.addActionListener(new BuchLoeschenListener(this.medienVerwalter, this.exemplar));
+			jLabel3.setText(String.valueOf(this.exemplar.getFormattedDate()));
+			jLabel4.setText(String.valueOf(this.exemplar.getVerlaengerung()));
 		}
 	}
 
@@ -147,7 +146,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 	public static void main(String args[]) {
 		JFrame jframe = new JFrame();
 		jframe.setSize(200,265);
-		jframe.add(new AusleiheEinzelansichtPanel(new MedienVerwalter(), new Exemplar(2)));
+		jframe.add(new AusleiheEinzelansichtPanel(new BibliotheksVerwalter(), new Exemplar(2)));
 		jframe.setVisible(true);
 		jframe.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	}
