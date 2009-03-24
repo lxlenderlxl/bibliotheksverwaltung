@@ -15,7 +15,6 @@ import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 
-import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
@@ -36,7 +35,6 @@ public class BuchAnsicht extends ImagePanel implements Observer {
 		super("Book.png");
 		this.medium = dasMedium;
 		initComponents();
-		this.addMouseListener(new BuchAnsichtMouseListener(verwalter, dasMedium));
 		titleField.setText(medium.getTitel());
 		infoField.setText(dasMedium.getMediumText());
 		this.setzeStatus();

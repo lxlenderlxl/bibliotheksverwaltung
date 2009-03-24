@@ -141,7 +141,6 @@ public class MedienVerwalter extends Observable implements Verwaltbar {
 	
 	public void erzeugeExemplare()
 	{
-		System.out.println("MedienVerw. ErzeugeExemplare");
 		updateInfo.setzeAenderung("ExemplareErzeugt");
 		this.medium.erzeugeExemplare();		
 		setChanged();

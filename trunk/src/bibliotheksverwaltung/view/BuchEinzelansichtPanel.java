@@ -34,7 +34,6 @@ import bibliotheksverwaltung.model.logic.MedienVerwalter;
 public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observer {
 
 	private MedienVerwalter medienVerwalter = null;
-	private Medium medium = null;
 	
 	//TODO Scrollpane unter dem exemplarpanel, da sonst nur begrenzte anzahl an exemplaren geben kann
 
@@ -42,19 +41,18 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 	public BuchEinzelansichtPanel(MedienVerwalter derVerwalter) {
 		initComponents();
 		this.medienVerwalter = derVerwalter;
-		this.medium = medienVerwalter.getMedium();
-		this.buchansichtPanel.add(new BuchAnsicht(this.medium));
+		this.buchansichtPanel.add(new BuchAnsicht(this.medienVerwalter.getMedium()));
 		this.erzeugeExemplarAnsichten();
 		this.addButton.addActionListener(new ExemplarHinzuListener(medienVerwalter));
 	}
 	
 	private void erzeugeExemplarAnsichten()
 	{
-		for (int i = 0; i < this.medium.getExemplare().size(); i++)
+		for (int i = 0; i < this.medienVerwalter.getMedium().getExemplare().size(); i++)
 		{			
 			//TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...
 			exemplarePanel.setLayout(new GridLayout(i+1,1));
-			AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medium.getExemplare().get(i));
+			AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(medienVerwalter, this.medienVerwalter.getMedium().getExemplare().get(i));
 			exemplarePanel.add(panel);
 		}
 		this.validate();

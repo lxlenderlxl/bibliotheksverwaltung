@@ -65,9 +65,8 @@ public class OutputArea extends JPanel implements Observer
 						Medium ergebnis = (Medium) v1.getErgebnisse().get(i);
 						BuchAnsicht buch = new BuchAnsicht(ergebnis);
 						this.add(buch);
-						this.v2.setMedium(ergebnis);
-						//buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
-						buch.addMouseListener(new TestMouseListener(v2));
+						buch.addMouseListener(new BuchAnsichtMouseListener(v2, ergebnis));
+						//buch.addMouseListener(new TestMouseListener(v2));
 					}
 				}
 			}
@@ -77,7 +76,6 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.setPreferredSize(new Dimension(563, 533));
-				System.out.println("Update der OutputArea");
 				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(this.v2);
 				this.add(buchEinzel);
 			}

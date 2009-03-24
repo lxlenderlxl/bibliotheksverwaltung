@@ -62,7 +62,15 @@ public class TestMouseListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		
+		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
+		{
+			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
+			System.out.println("Test Mouselistener");
+			//verwalter.setMedium(new Medium(5));
+			verwalter.erzeugeExemplare();
+			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+		}
 		
 	}
 
