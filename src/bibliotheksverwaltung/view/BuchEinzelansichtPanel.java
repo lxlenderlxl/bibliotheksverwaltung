@@ -112,13 +112,13 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         editButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         editButton.setIconTextGap(10);
 
-        historyButton.setFont(new java.awt.Font("Arial", 0, 14));
+        historyButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         historyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/clock_48.png"))); // NOI18N
         historyButton.setText("Historie anzeigen");
         historyButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         historyButton.setIconTextGap(10);
 
-        printButton.setFont(new java.awt.Font("Arial", 0, 14));
+        printButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/printer_48.png"))); // NOI18N
         printButton.setText("Daten drucken");
         printButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
