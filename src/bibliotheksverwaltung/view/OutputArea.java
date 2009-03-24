@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
-import bibliotheksverwaltung.controller.TestMouseListener;
+import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
