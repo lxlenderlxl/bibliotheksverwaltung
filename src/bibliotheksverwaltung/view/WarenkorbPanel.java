@@ -42,6 +42,7 @@ public class WarenkorbPanel extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
         jButton1.setText("Ausleiher wählen");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
         jButton2.setBorder(null);
