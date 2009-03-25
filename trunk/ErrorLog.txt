@@ -4,3 +4,7 @@ Mon Mar 23 23:42:44 CET 2009	Communications link failure
 
 Last packet sent to the server was 0 ms ago.
 Tue Mar 24 11:32:04 CET 2009	Column Index out of range, 3 > 2. 	 in class bibliotheksverwaltung.model.daos.dao.MySQLZustandDAO
+Wed Mar 25 19:10:31 CET 2009	Value '0000-00-00' can not be represented as java.sql.Date	 in class bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO
+Wed Mar 25 19:11:15 CET 2009	Value '0000-00-00' can not be represented as java.sql.Date	 in class bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO
+Wed Mar 25 19:12:39 CET 2009	Value '0000-00-00' can not be represented as java.sql.Date	 in class bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO
+Wed Mar 25 19:13:36 CET 2009	Value '0000-00-00' can not be represented as java.sql.Date	 in class bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO
