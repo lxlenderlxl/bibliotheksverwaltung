@@ -84,7 +84,6 @@ public class MedienVerwalter extends Observable {
 
 	public void update()
 	{
-		updateInfo.setzeAenderung("MediumUpdate");
 		try {
 			mediumDAO.update(
 					medium.getId(),
@@ -98,8 +97,6 @@ public class MedienVerwalter extends Observable {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
-		setChanged();
-		notifyObservers(updateInfo);
 	}
 
 	/**

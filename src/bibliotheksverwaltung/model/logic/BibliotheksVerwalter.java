@@ -124,7 +124,7 @@ public class BibliotheksVerwalter extends Observable {
 
 			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, dasExemplar.getAusleiher(), dasExemplar.getId()));
 
-			if (dasExemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()) - 1)
+			if (dasExemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()))
 				Message.raise("Ausleihung wurde verlängert.\n" +
 						"Achtung: Letzte Mögliche Verlängerung.", Message.GELB);
 			else
@@ -156,7 +156,6 @@ public class BibliotheksVerwalter extends Observable {
 	public void mediumBearbeiten () {
 		updateInfo.setzeAenderung("MediumBearbeiten");
 		this.medienVerwalter.update();
-		LogVerwalter.add(new Log(Vorgang.EXEMPLAR_BEARBEITET, 0, medienVerwalter.getExemplarVerwalter().getExemplar().getId()));
 		setChanged();
 		notifyObservers(updateInfo);
 	}

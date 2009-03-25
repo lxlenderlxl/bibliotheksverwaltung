@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 
 import bibliotheksverwaltung.controller.BuchAusleihenListener;
 import bibliotheksverwaltung.controller.BuchLoeschenListener;
+import bibliotheksverwaltung.controller.BuchVerlaengernListener;
 import bibliotheksverwaltung.controller.BuchZurueckListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
@@ -45,15 +46,19 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 		exemplarLabel.setIcon(zustand.getBild());
 		exemplarLabel.setToolTipText(zustand.getBeschreibung());
 		jButton2.addActionListener(new BuchLoeschenListener(this.verwalter, this.exemplar));
+		jButton4.setVisible(false);
 		
 		if (this.exemplar.isAusleihBar())
 		{			
 			jLabel2.setText("");
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("");
+			jButton1.setToolTipText("Exemplar ausleihen");
 			jButton1.addActionListener(new BuchAusleihenListener(this.verwalter, exemplar));			
 			jLabel3.setText("");
 			jLabel4.setText("");
+			
+			jButton3.setVisible(false);
 		}
 		else
 		{
@@ -61,9 +66,12 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jLabel2.setText(ausleiher.getName());
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_left_green_24.png")));
 			jButton1.setText("");
+			jButton1.setToolTipText("Exemplar zuruecknehmen");
 			jButton1.addActionListener(new BuchZurueckListener(this.verwalter, exemplar));			
 			jLabel3.setText(String.valueOf(this.exemplar.getFormattedDate()));
 			jLabel4.setText(String.valueOf(this.exemplar.getVerlaengerung()));
+			jButton3.setVisible(true);
+			jButton3.addActionListener(new BuchVerlaengernListener(this.verwalter, exemplar));
 		}
 	}
 

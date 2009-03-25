@@ -28,7 +28,7 @@ public class DatenBearbeitenActionListener implements ActionListener
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			verwalter.autoNotify("DatenBearbeitet");
+			verwalter.autoNotify("DatenBearbeiten");
 			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
