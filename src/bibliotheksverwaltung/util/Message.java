@@ -3,6 +3,10 @@
  */
 package bibliotheksverwaltung.util;
 
+import java.util.Observable;
+
+import bibliotheksverwaltung.view.BibliotheksGUI;
+
 /**
  * @author Sven Blaurock 04.03.2009 13:28:52
  *
@@ -13,12 +17,19 @@ public class Message {
 	public static final int GELB = 2;
 	public static final int ROT = 3;
 
+	private static BibliotheksGUI gui;
+
 	/**
 	 *
 	 */
 	public static void raise(String message, int level) {
-		//TODO Fehlernachricht an Fehlermethode in GUI weiterreichen
-		System.out.println("Message: " + message + " - Level: " + level);
+		if (gui != null)
+			gui.showInfoBox(level, message);
+	}
+
+	public static void setGUI(BibliotheksGUI dieGui) {
+		if (gui == null)
+			gui = dieGui;
 	}
 
 }
