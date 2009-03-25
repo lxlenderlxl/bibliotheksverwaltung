@@ -214,8 +214,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     @Override
     public void update(Observable o, Object arg) {
     	UpdateInfo updateInfo = (UpdateInfo) arg;
-    	System.out.println(updateInfo.holeAenderung());
-  		if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
+    	if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
   		{
   			if (updateInfo.holeAenderungOk())
   			{

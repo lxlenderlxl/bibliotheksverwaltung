@@ -170,8 +170,6 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.setInt(1, dieId);
 			statement.setNull(2, java.sql.Types.NULL);
 			
-			System.out.println(statement.toString());
-
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{

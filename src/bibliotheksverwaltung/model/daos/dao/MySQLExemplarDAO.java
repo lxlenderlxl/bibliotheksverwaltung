@@ -61,7 +61,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"SELECT * FROM exemplar WHERE aktiv = ?");
+			"SELECT * FROM exemplar WHERE aktiv = ?");
 			statement.setBoolean(1, aktiv);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -87,7 +87,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"SELECT * FROM exemplar WHERE exemplarid = ?");
+			"SELECT * FROM exemplar WHERE exemplarid = ?");
 			statement.setInt(1, dieId);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
@@ -113,7 +113,7 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		try
 		{
 			statement = connection.prepareStatement(
-					"UPDATE exemplar SET zustandsid = ?, ausleiherID = ?, medienid = ?, rueckgabedatum = ?, verlaengerung = ?, aktiv = ? WHERE exemplarid = ?");
+			"UPDATE exemplar SET zustandsid = ?, ausleiherID = ?, medienid = ?, rueckgabedatum = ?, verlaengerung = ?, aktiv = ? WHERE exemplarid = ?");
 			LocalEnvironment.statementChecker(statement, 1, zustandsid);
 			LocalEnvironment.statementChecker(statement, 2, ausleiherID);
 			LocalEnvironment.statementChecker(statement, 3, medienid);
@@ -129,5 +129,28 @@ public class MySQLExemplarDAO implements ExemplarDAO
 		{
 			LocalEnvironment.closeStmt(statement);
 		}
+	}
+
+	public ArrayList<Exemplar> getExemplareByAusleiher(int ausleiherId)
+	{
+		ArrayList<Exemplar> liste = new ArrayList<Exemplar>();
+		try
+		{
+			statement = connection.prepareStatement(
+			"SELECT * FROM exemplar WHERE ausleiherid = ?");
+			LocalEnvironment.statementChecker(statement, 1, ausleiherId);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				liste.add(new Exemplar(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getDate(5), rs.getInt(6), rs.getBoolean(7)));
+			}
+		} catch (SQLException e)
+		{
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
+		}
+		return liste;
 	}
 }

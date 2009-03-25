@@ -1,16 +1,26 @@
 package bibliotheksverwaltung.model.logic;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Observable;
 
-import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
-import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.util.LocalEnvironment;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
-public class AusleiherVerwalter implements Verwaltbar
+import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
+import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.Message;
+import bibliotheksverwaltung.util.UpdateInfo;
+
+public class AusleiherVerwalter extends Observable
 {
 	private MySQLAusleiherDAO ausleiherDAO = new MySQLAusleiherDAO();
 	private Ausleiher ausleiher = null;
-	
+	private UpdateInfo updateInfo = new UpdateInfo();
+	private ArrayList<Exemplar> ausgelieheneExemplare = new ArrayList<Exemplar>();
+
 	/**
 	 * @return the ausleiher
 	 */
@@ -31,21 +41,16 @@ public class AusleiherVerwalter implements Verwaltbar
 	{
 
 	}
-	
+
 	public AusleiherVerwalter(Ausleiher derAusleiher)
 	{
 		this.ausleiher = derAusleiher;
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#add(java.lang.Object)
-	 */
-	@Override
-	public void add(Object objekt)
+	public void add()
 	{
 		try
 		{
-			Ausleiher ausleiher = (Ausleiher) objekt;
 			ausleiherDAO.add(
 					ausleiher.getVorName(),
 					ausleiher.getNachName(),
@@ -61,15 +66,10 @@ public class AusleiherVerwalter implements Verwaltbar
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
-	 */
-	@Override
-	public void delete(Object objekt)
+	public void delete()
 	{
 		try
 		{
-			Ausleiher ausleiher = (Ausleiher) objekt;
 			ausleiherDAO.update(
 					ausleiher.getId(),
 					ausleiher.getVorName(),
@@ -84,9 +84,6 @@ public class AusleiherVerwalter implements Verwaltbar
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#delete(java.lang.Object)
-	 */
 	public void unDelete(Object objekt)
 	{
 		try
@@ -100,15 +97,10 @@ public class AusleiherVerwalter implements Verwaltbar
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see bibliotheksverwaltung.model.logic.Verwaltbar#update()
-	 */
-	@Override
-	public void update(Object objekt)
+	public void update()
 	{
 		try
 		{
-			Ausleiher ausleiher = (Ausleiher) objekt;
 			ausleiherDAO.update(
 					ausleiher.getId(),
 					ausleiher.getVorName(),
@@ -122,5 +114,49 @@ public class AusleiherVerwalter implements Verwaltbar
 			LocalEnvironment.log(e.getMessage(), this);
 		}
 
+	}
+	
+	public void erzeugeAusgelieheneExemplare()
+	{
+		this.ausgelieheneExemplare = new MySQLExemplarDAO().getExemplareByAusleiher(this.ausleiher.getId());
+	}
+	
+	public ArrayList<Exemplar> getAusgelieheneExemplare()
+	{
+		return this.ausgelieheneExemplare;
+	}
+	
+	public int getAnzahlAusgeliehenerExemplare()
+	{
+		return ausgelieheneExemplare.size();
+	}
+	
+	public int getAusleihStatus()
+	{
+		int rueck = 0;
+		if (this.ausgelieheneExemplare.size() == 0)
+			rueck = Message.GRUEN;
+		else {
+			for (int i = 0; i < this.ausgelieheneExemplare.size(); i++)
+			{
+				if ((this.ausgelieheneExemplare.get(i).getRueckgabeDatum().compareTo(new Date(System.currentTimeMillis()))) > 0)
+					rueck = Message.GELB;
+				else
+					rueck = Message.ROT;
+			}
+		}
+		return rueck;
+	}
+	
+	public void autoNotify(String message)
+	{
+		updateInfo.setzeAenderung(message);
+		setChanged();
+		notifyObservers(updateInfo);
+	}
+	
+	public UpdateInfo holeUpdateInfo()
+	{
+		return updateInfo;
 	}
 }

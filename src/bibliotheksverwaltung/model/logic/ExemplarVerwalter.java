@@ -84,5 +84,10 @@ public class ExemplarVerwalter extends Observable {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
+	
+	public UpdateInfo holeUpdateInfo()
+	{
+		return updateInfo;
+	}
 
 }
