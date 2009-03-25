@@ -85,6 +85,7 @@ public class BibliotheksVerwalter extends Observable {
 	private SuchVerwalter suchVerwalter = new SuchVerwalter();
 	private AusleiherVerwalter ausleiherVerwalter = new AusleiherVerwalter();
 	private LogVerwalter logVerwalter = new LogVerwalter();
+	private WarenKorbVerwalter warenKorbVerwalter = new WarenKorbVerwalter();
 	
 	private UpdateInfo updateInfo = new UpdateInfo();
 	
@@ -106,7 +107,7 @@ public class BibliotheksVerwalter extends Observable {
 			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
 			this.medienVerwalter.getExemplarVerwalter().update();
 			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_AUSGELIEHEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
-			Message.raise("Das Buch \"" + new Medium(dasExemplar.getMedium()).getTitel() + "\" wurde erfolgreich an \"" + new Ausleiher(dasExemplar.getAusleiher()).getName() + "\" ausgeliehen", Message.GRUEN);
+			Message.raise("Das Buch wurde erfolgreich ausgeliehen", Message.GRUEN);
 			setChanged();
 			notifyObservers(updateInfo);
 		}

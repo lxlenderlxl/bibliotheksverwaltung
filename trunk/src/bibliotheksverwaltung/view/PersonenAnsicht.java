@@ -10,6 +10,9 @@
  */
 package bibliotheksverwaltung.view;
 
+import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 import java.util.Observable;
 import java.util.Observer;
@@ -21,11 +24,25 @@ import javax.swing.JFrame;
  */
 public class PersonenAnsicht extends ImagePanel implements Observer {
 
+	private Ausleiher ausleiher = null;
+	private BibliotheksVerwalter verwalter = null;
     /** Creates new form PersonenAnsicht */
-    public PersonenAnsicht() {
+    public PersonenAnsicht(BibliotheksVerwalter derVerwalter) {
         super("Person.png");
         initComponents();
+        this.verwalter = derVerwalter;
+        this.ausleiher = this.verwalter.getAusleiherVerwalter().getAusleiher();
+        initComponents();
+    		this.setzeInformation();
+    		verwalter.addObserver(this);
+    		//this.setzeStatus();
     }
+    
+    private void setzeInformation()
+  	{
+  		nameField.setText(this.ausleiher.getJoinedName());
+  		infoField.setText(this.ausleiher.getJoinedAdress());
+  	}
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -85,7 +102,7 @@ public class PersonenAnsicht extends ImagePanel implements Observer {
     public static void main(String args[]) {
         JFrame jframe = new JFrame();
         jframe.setSize(200, 265);
-        jframe.add(new PersonenAnsicht());
+        //jframe.add(new PersonenAnsicht());
         jframe.setVisible(true);
     }
 

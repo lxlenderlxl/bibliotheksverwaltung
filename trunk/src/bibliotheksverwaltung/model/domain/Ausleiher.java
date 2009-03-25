@@ -173,5 +173,15 @@ public class Ausleiher
 	{
 		this.aktiv = aktiv;
 	}
+	
+	public String getJoinedName()
+	{
+		return this.vorName + " " + this.nachName;
+	}
+	
+	public String getJoinedAdress()
+	{
+		return this.strasse + " " + this.hausnummer + "\n" + this.plz + " " + this.stadt;
+	}
 
 }
