@@ -64,7 +64,8 @@ public class OutputArea extends JPanel implements Observer
 					for (int i = 0; i < this.verwalter.getSuchVerwalter().getErgebnisse().size(); i++)
 					{
 						Medium ergebnis = (Medium) this.verwalter.getSuchVerwalter().getErgebnisse().get(i);
-						BuchAnsicht buch = new BuchAnsicht(ergebnis);
+						this.verwalter.getMedienVerwalter().setMedium(ergebnis);
+						BuchAnsicht buch = new BuchAnsicht(this.verwalter);
 						this.add(buch);
 						buch.addMouseListener(new BuchAnsichtMouseListener(verwalter, ergebnis));
 						//buch.addMouseListener(new TestMouseListener(v2));

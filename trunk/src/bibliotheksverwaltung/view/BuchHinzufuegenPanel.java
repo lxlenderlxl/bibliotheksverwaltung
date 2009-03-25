@@ -13,6 +13,8 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JTextField;
 
+import bibliotheksverwaltung.controller.DatenBearbeitenAbbrechenListener;
+import bibliotheksverwaltung.controller.DatenBearbeitenActionListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
 /**
@@ -27,6 +29,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
 	public BuchHinzufuegenPanel(BibliotheksVerwalter derVerwalter, boolean mediumAuflisten) {
 		initComponents();
 		this.verwalter = derVerwalter;
+		this.cancelButton.addActionListener(new DatenBearbeitenAbbrechenListener(this.verwalter));
 		if (mediumAuflisten)
 		{
 			this.titelField.setText(this.verwalter.getMedienVerwalter().getMedium().getTitel());
@@ -35,7 +38,9 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
 			this.verlagField.setText(this.verwalter.getMedienVerwalter().getMedium().getVerlag());
 			this.jahrField.setText(String.valueOf(this.verwalter.getMedienVerwalter().getMedium().getErscheinungsJahr()));
 			this.isbnField.setText(this.verwalter.getMedienVerwalter().getMedium().getIsbn());
-			//this.tagsField.setText(this.verwalter.getMedienVerwalter().getMedium().gett);			
+			//this.tagsField.setText(this.verwalter.getMedienVerwalter().getMedium().gett);
+			this.addButton.setText("<html>Änderungen<br />speichern</html>");
+			this.addButton.addActionListener(new DatenBearbeitenActionListener(this.verwalter));
 		}
 	}
 

@@ -17,7 +17,6 @@ public class ExemplarVerwalter extends Observable {
 
 	public void add()
 	{
-		updateInfo.setzeAenderung("ExemplarHinzu");
 		try
 		{
 			exemplarDAO.add(
@@ -32,8 +31,6 @@ public class ExemplarVerwalter extends Observable {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
-		setChanged();
-		notifyObservers(updateInfo);
 	}
 
 	/**
@@ -54,7 +51,6 @@ public class ExemplarVerwalter extends Observable {
 
 	public void delete()
 	{
-		updateInfo.setzeAenderung("ExemplarGeloescht");
 		try
 		{
 			exemplarDAO.update(
@@ -69,13 +65,10 @@ public class ExemplarVerwalter extends Observable {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
-		setChanged();
-		notifyObservers(updateInfo);
 	}
 
 	public void update()
 	{
-		updateInfo.setzeAenderung("ExemplarUpdate");
 		try
 		{
 			exemplarDAO.update(
@@ -90,8 +83,6 @@ public class ExemplarVerwalter extends Observable {
 		} catch (java.lang.ClassCastException e) {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
-		setChanged();
-		notifyObservers(updateInfo);
 	}
 
 }
