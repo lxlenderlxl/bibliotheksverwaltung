@@ -95,6 +95,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Vorname"/>
+        <Property name="toolTipText" type="java.lang.String" value="Der Vorname der Person"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vornameFieldFocusGained"/>
@@ -110,6 +111,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nachname"/>
+        <Property name="toolTipText" type="java.lang.String" value="Der Nachname der Person"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nachnameFieldFocusGained"/>
@@ -125,6 +127,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Stra&#xdf;e"/>
+        <Property name="toolTipText" type="java.lang.String" value="Die Stra&#xdf;e, in der die Person wohnt"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="strasseFieldFocusGained"/>
@@ -140,6 +143,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nummer"/>
+        <Property name="toolTipText" type="java.lang.String" value="Die Nummer des Hauses, in der die Person wohnt"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="hausnummerFieldFocusGained"/>
@@ -155,6 +159,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="PLZ"/>
+        <Property name="toolTipText" type="java.lang.String" value="Die Postleitzahl"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="plzFieldFocusGained"/>
@@ -170,6 +175,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Stadt"/>
+        <Property name="toolTipText" type="java.lang.String" value="Die Stadt, in der die Person wohnt"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stadtFieldFocusGained"/>
