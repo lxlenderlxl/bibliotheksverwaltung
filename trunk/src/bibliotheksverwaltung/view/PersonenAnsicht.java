@@ -36,18 +36,49 @@ public class PersonenAnsicht extends ImagePanel implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nameField = new javax.swing.JTextArea();
+        infoField = new javax.swing.JTextArea();
+
         setMaximumSize(new java.awt.Dimension(182, 240));
         setPreferredSize(new java.awt.Dimension(182, 240));
+
+        nameField.setColumns(20);
+        nameField.setEditable(false);
+        nameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nameField.setLineWrap(true);
+        nameField.setRows(5);
+        nameField.setWrapStyleWord(true);
+        nameField.setBorder(null);
+        nameField.setOpaque(false);
+
+        infoField.setColumns(20);
+        infoField.setEditable(false);
+        infoField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        infoField.setLineWrap(true);
+        infoField.setRows(5);
+        infoField.setWrapStyleWord(true);
+        infoField.setBorder(null);
+        infoField.setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 182, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(infoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoField, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -73,5 +104,7 @@ public class PersonenAnsicht extends ImagePanel implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea infoField;
+    private javax.swing.JTextArea nameField;
     // End of variables declaration//GEN-END:variables
 }
