@@ -3,8 +3,6 @@
  */
 package bibliotheksverwaltung.util;
 
-import java.util.Observable;
-
 import bibliotheksverwaltung.view.BibliotheksGUI;
 
 /**

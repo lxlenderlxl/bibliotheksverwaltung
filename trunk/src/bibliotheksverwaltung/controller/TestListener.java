@@ -5,17 +5,6 @@ package bibliotheksverwaltung.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import javax.swing.JFileChooser;
-
-import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 public class TestListener implements MouseListener
 {
@@ -64,7 +53,7 @@ public class TestListener implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		
+
 
 	}
 

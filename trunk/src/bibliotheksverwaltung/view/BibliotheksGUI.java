@@ -15,36 +15,25 @@ import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.util.UpdateInfo;
 import bibliotheksverwaltung.controller.AddActionListener;
-import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.controller.ReportActionListener;
 import bibliotheksverwaltung.controller.SearchActionListener;
-import bibliotheksverwaltung.controller.SearchBookListener;
-import bibliotheksverwaltung.controller.TestListener;
-import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.*;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author Max
  */
+@SuppressWarnings("serial")
 public class BibliotheksGUI extends javax.swing.JFrame implements Observer, ActionListener {
 
     private BibliotheksVerwalter verwalter = new BibliotheksVerwalter();

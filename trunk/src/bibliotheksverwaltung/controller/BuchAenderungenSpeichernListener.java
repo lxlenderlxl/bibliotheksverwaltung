@@ -1,13 +1,11 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.view.BuchHinzufuegenPanel;
@@ -33,7 +31,7 @@ public class BuchAenderungenSpeichernListener implements ActionListener
 			boolean eingabeOK = true;
 			this.verwalter.holeUpdateInfo().setzeUpdateSperre(true);
 			try {
-				this.verwalter.getMedienVerwalter().getMedium().setAutorNachname(this.hinzuPanel.getNachnameField().getText()); 
+				this.verwalter.getMedienVerwalter().getMedium().setAutorNachname(this.hinzuPanel.getNachnameField().getText());
 			} catch (Exception ex)
 			{
 				Message.raise("Bitte prüfen Sie den Autor-Nachnamen", Message.ROT);
@@ -68,7 +66,7 @@ public class BuchAenderungenSpeichernListener implements ActionListener
 				eingabeOK = false;
 			}
 			try {
-				this.verwalter.getMedienVerwalter().getMedium().setVerlag(this.hinzuPanel.getVerlagField().getText());	
+				this.verwalter.getMedienVerwalter().getMedium().setVerlag(this.hinzuPanel.getVerlagField().getText());
 			} catch (Exception ex)
 			{
 				Message.raise("Bitte prüfen Sie den Verlag", Message.ROT);
@@ -77,7 +75,7 @@ public class BuchAenderungenSpeichernListener implements ActionListener
 
 			if (eingabeOK) {
 				this.verwalter.mediumBearbeiten();
-				this.verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+				this.verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			}
 			this.verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 

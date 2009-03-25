@@ -1,12 +1,11 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
 public class DatenBearbeitenAbbrechenListener implements ActionListener
@@ -27,7 +26,7 @@ public class DatenBearbeitenAbbrechenListener implements ActionListener
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
 			verwalter.autoNotify("Abbrechen");
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
 	}
