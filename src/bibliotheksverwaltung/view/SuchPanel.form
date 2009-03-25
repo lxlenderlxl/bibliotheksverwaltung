@@ -23,15 +23,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="outputPanel" alignment="0" pref="573" max="32767" attributes="0"/>
+                  <Component id="outputPanel" alignment="0" pref="579" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="clearButton" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="searchField" pref="399" max="32767" attributes="1"/>
+                      <Component id="searchField" pref="370" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="searchBook" min="-2" pref="57" max="-2" attributes="0"/>
+                      <Component id="searchBook" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="searchPerson" min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="searchPerson" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="printButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -43,10 +46,11 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="clearButton" min="0" pref="0" max="32767" attributes="1"/>
                   <Component id="searchPerson" min="0" pref="0" max="32767" attributes="1"/>
+                  <Component id="clearButton" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
                   <Component id="searchBook" min="0" pref="0" max="32767" attributes="1"/>
                   <Component id="searchField" min="-2" pref="39" max="-2" attributes="1"/>
+                  <Component id="printButton" min="0" pref="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="outputPanel" min="-2" pref="533" max="-2" attributes="0"/>
@@ -86,6 +90,9 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/bibliotheksverwaltung/view/images/Book 4.png"/>
         </Property>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[2, 5, 2, 5]"/>
+        </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[41, 41]"/>
         </Property>
@@ -104,6 +111,22 @@
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/bibliotheksverwaltung/view/images/user_32.png"/>
+        </Property>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[2, 5, 2, 5]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="printButton">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/bibliotheksverwaltung/view/images/printer_32.png"/>
+        </Property>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[2, 5, 2, 5]"/>
         </Property>
       </Properties>
     </Component>
