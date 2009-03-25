@@ -160,15 +160,17 @@ public class MySQLMediumDAO implements MediumDAO
 	 * @see bibliotheksverwaltung.model.daos.dao.MediumDAO#getAnzahlAusleihbareExemplare(int)
 	 */
 	@Override
-	public int getExemplareAusgeliehen(int dieId)
+	public int getAnzahlVerfuegbareExemplare(int dieId)
 	{
 		int anzahl = 0;
 		try
 		{
 			statement = connection.prepareStatement(
-			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid = ? AND aktiv = 1");
+			"SELECT count(*) FROM exemplar WHERE medienid = ? AND ausleiherid IS ? AND aktiv = 1");
 			statement.setInt(1, dieId);
 			statement.setNull(2, java.sql.Types.NULL);
+			
+			System.out.println(statement.toString());
 
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())

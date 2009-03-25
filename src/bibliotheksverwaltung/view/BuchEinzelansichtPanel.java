@@ -47,7 +47,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         initComponents();
         this.verwalter = derVerwalter;
         this.verwalter.getMedienVerwalter().erzeugeExemplare();
-        this.buchansichtPanel.add(new BuchAnsicht(this.verwalter.getMedienVerwalter().getMedium()));
+        this.buchansichtPanel.add(new BuchAnsicht(this.verwalter));
         this.erzeugeExemplarAnsichten();
         this.addButton.addActionListener(new ExemplarHinzuListener(verwalter));
         this.editButton.addActionListener(new DatenBearbeitenActionListener(verwalter));
@@ -214,6 +214,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
     @Override
     public void update(Observable o, Object arg) {
     	UpdateInfo updateInfo = (UpdateInfo) arg;
+    	System.out.println(updateInfo.holeAenderung());
   		if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
   		{
   			if (updateInfo.holeAenderungOk())
@@ -247,6 +248,14 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   			}
   		}
   		else if (updateInfo.holeAenderung().equals("ExemplarVerlaengern"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("Abbrechen"))
   		{
   			if (updateInfo.holeAenderungOk())
   			{

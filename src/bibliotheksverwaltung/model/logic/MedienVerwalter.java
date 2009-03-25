@@ -112,7 +112,7 @@ public class MedienVerwalter extends Observable {
 	
 	public boolean hasAusleihbareExemplare(int id)
 	{
-		return (mediumDAO.getExemplareAusgeliehen(id) == 0);
+		return (mediumDAO.getAnzahlVerfuegbareExemplare(id) > 0);
 	}
 
 	public int getAnzahlExemplare(Medium medium) {
