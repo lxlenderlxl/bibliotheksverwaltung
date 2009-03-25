@@ -137,13 +137,16 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         infoBoxPanel.setPreferredSize(new java.awt.Dimension(181, 87));
 
         infoBoxArea.setEditable(false);
-        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12));
+        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         infoBoxArea.setLineWrap(true);
         infoBoxArea.setRows(3);
         infoBoxArea.setText("Das gewünschte Buch wurde erfolgreich zur Liste hinzugefügt.");
         infoBoxArea.setWrapStyleWord(true);
         infoBoxArea.setBorder(null);
+        infoBoxArea.setMaximumSize(new java.awt.Dimension(157, 61));
+        infoBoxArea.setMinimumSize(new java.awt.Dimension(157, 61));
         infoBoxArea.setOpaque(false);
+        infoBoxArea.setPreferredSize(new java.awt.Dimension(157, 61));
 
         javax.swing.GroupLayout infoBoxPanelLayout = new javax.swing.GroupLayout(infoBoxPanel);
         infoBoxPanel.setLayout(infoBoxPanelLayout);

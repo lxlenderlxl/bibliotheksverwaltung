@@ -49,6 +49,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         vornameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         vornameField.setForeground(new java.awt.Color(204, 204, 204));
         vornameField.setText("Vorname");
+        vornameField.setToolTipText("Der Vorname der Person");
         vornameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 vornameFieldFocusGained(evt);
@@ -61,6 +62,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         nachnameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nachnameField.setForeground(new java.awt.Color(204, 204, 204));
         nachnameField.setText("Nachname");
+        nachnameField.setToolTipText("Der Nachname der Person");
         nachnameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nachnameFieldFocusGained(evt);
@@ -73,6 +75,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         strasseField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         strasseField.setForeground(new java.awt.Color(204, 204, 204));
         strasseField.setText("Straße");
+        strasseField.setToolTipText("Die Straße, in der die Person wohnt");
         strasseField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 strasseFieldFocusGained(evt);
@@ -85,6 +88,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         hausnummerField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         hausnummerField.setForeground(new java.awt.Color(204, 204, 204));
         hausnummerField.setText("Nummer");
+        hausnummerField.setToolTipText("Die Nummer des Hauses, in der die Person wohnt");
         hausnummerField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 hausnummerFieldFocusGained(evt);
@@ -94,9 +98,10 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        plzField.setFont(new java.awt.Font("Arial", 1, 18));
+        plzField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         plzField.setForeground(new java.awt.Color(204, 204, 204));
         plzField.setText("PLZ");
+        plzField.setToolTipText("Die Postleitzahl");
         plzField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 plzFieldFocusGained(evt);
@@ -109,6 +114,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         stadtField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         stadtField.setForeground(new java.awt.Color(204, 204, 204));
         stadtField.setText("Stadt");
+        stadtField.setToolTipText("Die Stadt, in der die Person wohnt");
         stadtField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 stadtFieldFocusGained(evt);
@@ -118,13 +124,13 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        addButton.setFont(new java.awt.Font("Arial", 1, 18));
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_add_48.png"))); // NOI18N
         addButton.setText("<html>Person<br/>hinzufügen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
 
-        cancelButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 18));
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
         cancelButton.setText("Abbrechen");
         cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);

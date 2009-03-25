@@ -101,6 +101,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buchtitel"/>
+        <Property name="toolTipText" type="java.lang.String" value="Der Titel des Buches"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="titelFieldFocusGained"/>
@@ -116,6 +117,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Autor-Vorname"/>
+        <Property name="toolTipText" type="java.lang.String" value="Der Vorname des Buchautors"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="vornameFieldFocusGained"/>
@@ -131,6 +133,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Autor-Nachname"/>
+        <Property name="toolTipText" type="java.lang.String" value="Der Nachname des Buchautors"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nachnameFieldFocusGained"/>
@@ -146,6 +149,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Verlag"/>
+        <Property name="toolTipText" type="java.lang.String" value="Der herausgebende Verlag des Buches"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="verlagFieldFocusGained"/>
@@ -161,6 +165,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Jahr"/>
+        <Property name="toolTipText" type="java.lang.String" value="Das Erscheinungsjahr des Buches"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jahrFieldFocusGained"/>
@@ -176,6 +181,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ISBN"/>
+        <Property name="toolTipText" type="java.lang.String" value="Die Internationale Standardbuchnummer des Buches"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="isbnFieldFocusGained"/>
@@ -191,6 +197,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tags"/>
+        <Property name="toolTipText" type="java.lang.String" value="Schlagw&#xf6;rter, die auf das Buch zutreffen"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tagsFieldFocusGained"/>
