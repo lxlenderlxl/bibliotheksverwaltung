@@ -98,7 +98,10 @@ public class OutputArea extends JPanel implements Observer
 					for (int i = 0; i < this.verwalter.getSuchVerwalter().getErgebnisse().size(); i++)
 					{
 						Ausleiher ergebnis = (Ausleiher) this.verwalter.getSuchVerwalter().getErgebnisse().get(i);
-						this.add(new JButton(ergebnis.getNachName()));
+						this.verwalter.getAusleiherVerwalter().setAusleiher(ergebnis);
+						PersonenAnsicht person = new PersonenAnsicht(this.verwalter);
+						this.add(person);
+						//buch.addMouseListener(new BuchAnsichtMouseListener(verwalter, ergebnis));
 					}
 				}
 			}

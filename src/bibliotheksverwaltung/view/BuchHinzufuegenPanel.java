@@ -45,6 +45,118 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
 		}
 	}
 
+	/**
+	 * @return the isbnField
+	 */
+	public javax.swing.JTextField getIsbnField()
+	{
+		return isbnField;
+	}
+
+	/**
+	 * @param isbnField the isbnField to set
+	 */
+	public void setIsbnField(javax.swing.JTextField isbnField)
+	{
+		this.isbnField = isbnField;
+	}
+
+	/**
+	 * @return the jahrField
+	 */
+	public javax.swing.JTextField getJahrField()
+	{
+		return jahrField;
+	}
+
+	/**
+	 * @param jahrField the jahrField to set
+	 */
+	public void setJahrField(javax.swing.JTextField jahrField)
+	{
+		this.jahrField = jahrField;
+	}
+
+	/**
+	 * @return the nachnameField
+	 */
+	public javax.swing.JTextField getNachnameField()
+	{
+		return nachnameField;
+	}
+
+	/**
+	 * @param nachnameField the nachnameField to set
+	 */
+	public void setNachnameField(javax.swing.JTextField nachnameField)
+	{
+		this.nachnameField = nachnameField;
+	}
+
+	/**
+	 * @return the tagsField
+	 */
+	public javax.swing.JTextField getTagsField()
+	{
+		return tagsField;
+	}
+
+	/**
+	 * @param tagsField the tagsField to set
+	 */
+	public void setTagsField(javax.swing.JTextField tagsField)
+	{
+		this.tagsField = tagsField;
+	}
+
+	/**
+	 * @return the titelField
+	 */
+	public javax.swing.JTextField getTitelField()
+	{
+		return titelField;
+	}
+
+	/**
+	 * @param titelField the titelField to set
+	 */
+	public void setTitelField(javax.swing.JTextField titelField)
+	{
+		this.titelField = titelField;
+	}
+
+	/**
+	 * @return the verlagField
+	 */
+	public javax.swing.JTextField getVerlagField()
+	{
+		return verlagField;
+	}
+
+	/**
+	 * @param verlagField the verlagField to set
+	 */
+	public void setVerlagField(javax.swing.JTextField verlagField)
+	{
+		this.verlagField = verlagField;
+	}
+
+	/**
+	 * @return the vornameField
+	 */
+	public javax.swing.JTextField getVornameField()
+	{
+		return vornameField;
+	}
+
+	/**
+	 * @param vornameField the vornameField to set
+	 */
+	public void setVornameField(javax.swing.JTextField vornameField)
+	{
+		this.vornameField = vornameField;
+	}
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is

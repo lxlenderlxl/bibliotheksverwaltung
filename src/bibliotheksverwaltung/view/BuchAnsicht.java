@@ -27,7 +27,7 @@ import javax.swing.JFrame;
  */
 public class BuchAnsicht extends ImagePanel implements Observer {
 
-	private Medium medium;
+	private Medium medium = null;
 	private BibliotheksVerwalter verwalter = null;
 
 	/** Creates new form BuchAnsicht */
@@ -36,8 +36,7 @@ public class BuchAnsicht extends ImagePanel implements Observer {
 		this.verwalter = derVerwalter;
 		this.medium = this.verwalter.getMedienVerwalter().getMedium();
 		initComponents();
-		titleField.setText(medium.getTitel());
-		infoField.setText(medium.getMediumText());
+		this.setzeInformation();
 		verwalter.addObserver(this);
 		this.setzeStatus();
 	}
@@ -54,6 +53,12 @@ public class BuchAnsicht extends ImagePanel implements Observer {
 			statusLabel.setText("Verfuegbar");
 			statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_green_small.png")));
 		}
+	}
+	
+	private void setzeInformation()
+	{
+		titleField.setText(medium.getTitel());
+		infoField.setText(medium.getMediumText());
 	}
 
 	/** This method is called from within the constructor to
@@ -180,6 +185,15 @@ public class BuchAnsicht extends ImagePanel implements Observer {
 		{
 			if (updateInfo.holeAenderungOk())
 			{
+				this.setzeStatus();
+			}
+		}
+		else if (updateInfo.holeAenderung().equals("MediumBearbeiten"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.medium = this.verwalter.getMedienVerwalter().getMedium();
+				this.setzeInformation();
 				this.setzeStatus();
 			}
 		}
