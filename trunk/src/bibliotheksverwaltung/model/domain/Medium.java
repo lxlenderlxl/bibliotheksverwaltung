@@ -149,7 +149,7 @@ public class Medium
 
 	public String getMediumText()
 	{
-		return "Autor:\n" + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn + "\nErsch.Jahr: " + this.erscheinungsJahr;
+		return "Autor: " + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn + "\nErsch.Jahr: " + this.erscheinungsJahr;
 	}
 
 }
