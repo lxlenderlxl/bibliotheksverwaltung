@@ -104,7 +104,6 @@ public class MySQLSuchDAO
 						statement = connection.prepareStatement(sqlStmt);
 						statement.setString(1, dasSuchJahr);
 						this.processQuery(3 * suchworte[j].length());
-						System.out.println(statement.toString());
 					}
 					else
 					{
