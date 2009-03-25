@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.controller;
 
@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 public class BuchAnsichtMouseListener implements MouseListener
 {
@@ -45,7 +44,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +53,7 @@ public class BuchAnsichtMouseListener implements MouseListener
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -68,9 +67,9 @@ public class BuchAnsichtMouseListener implements MouseListener
 			verwalter.getMedienVerwalter().holeUpdateInfo().setzeUpdateSperre(true);
 			verwalter.getMedienVerwalter().setMedium(this.medium);
 			verwalter.getMedienVerwalter().autoNotify("BuchEinzelAnsicht");
-			verwalter.getMedienVerwalter().holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.getMedienVerwalter().holeUpdateInfo().setzeAenderungOk(true);
 			verwalter.getMedienVerwalter().holeUpdateInfo().setzeUpdateSperre(false);
-		}	
+		}
 	}
 
 }

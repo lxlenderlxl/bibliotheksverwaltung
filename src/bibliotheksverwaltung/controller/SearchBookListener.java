@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package bibliotheksverwaltung.controller;
 
 import java.awt.event.ActionListener;
@@ -30,7 +25,7 @@ public class SearchBookListener implements ActionListener {
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
 			verwalter.getSuchVerwalter().sucheMedium(feld.getText());
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
 	}

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.controller;
 
@@ -9,13 +9,12 @@ import java.awt.event.ActionListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 public class BuchAusleihenListener implements ActionListener
 {
 	private BibliotheksVerwalter verwalter = null;
 	private Exemplar exemplar = null;
-	
+
 	public BuchAusleihenListener(BibliotheksVerwalter derVerwalter, Exemplar dasExemplar)
 	{
 		this.verwalter = derVerwalter;
@@ -34,7 +33,7 @@ public class BuchAusleihenListener implements ActionListener
 			verwalter.getMedienVerwalter().getExemplarVerwalter().setExemplar(exemplar);
 			verwalter.getAusleiherVerwalter().setAusleiher(new Ausleiher(2));
 			verwalter.buchAusleihen();
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
 	}

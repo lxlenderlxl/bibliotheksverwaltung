@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 
 import bibliotheksverwaltung.controller.SearchBookListener;
+import bibliotheksverwaltung.controller.SearchKeyListener;
 import bibliotheksverwaltung.controller.SearchPersonListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
@@ -23,6 +24,7 @@ import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
  *
  * @author Max
  */
+@SuppressWarnings("serial")
 public class SuchPanel extends javax.swing.JPanel implements FocusListener, ActionListener {
 
     private BibliotheksVerwalter verwalter = null;
@@ -67,8 +69,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         //Listener
         this.searchBook.addActionListener(new SearchBookListener(verwalter, searchField));
         this.searchPerson.addActionListener(new SearchPersonListener(verwalter, searchField));
-
-        //TODO KeyListener an searchField binden
+        this.searchField.addKeyListener(new SearchKeyListener(verwalter, searchField));
     }
 
     /** This method is called from within the constructor to
