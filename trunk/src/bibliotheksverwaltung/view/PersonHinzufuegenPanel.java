@@ -22,6 +22,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
     /** Creates new form PersonHinzufuegenPanel */
     public PersonHinzufuegenPanel() {
         initComponents();
+        this.addButton.setEnabled(true);
     }
 
     /** This method is called from within the constructor to

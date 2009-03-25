@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
+import bibliotheksverwaltung.controller.PersonAnsichtMouseListener;
 import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
@@ -39,6 +40,7 @@ public class OutputArea extends JPanel implements Observer
 		verwalter.getSuchVerwalter().addObserver(this);
 		//v2 --> Medienverwalter
 		verwalter.getMedienVerwalter().addObserver(this);
+		verwalter.getAusleiherVerwalter().addObserver(this);
 	}
 
 	/* (non-Javadoc)
@@ -101,9 +103,19 @@ public class OutputArea extends JPanel implements Observer
 						this.verwalter.getAusleiherVerwalter().setAusleiher(ergebnis);
 						PersonenAnsicht person = new PersonenAnsicht(this.verwalter);
 						this.add(person);
-						//buch.addMouseListener(new BuchAnsichtMouseListener(verwalter, ergebnis));
+						person.addMouseListener(new PersonAnsichtMouseListener(verwalter, ergebnis));
 					}
 				}
+			}
+		}
+		else if (updateInfo.holeAenderung().equals("PersonenEinzelAnsicht"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.removeAll();
+				this.setPreferredSize(new Dimension(563, 533));
+				PersonEinzelAnsicht personenEinzel = new PersonEinzelAnsicht(verwalter);
+				this.add(personenEinzel);
 			}
 		}
 		this.repaint();

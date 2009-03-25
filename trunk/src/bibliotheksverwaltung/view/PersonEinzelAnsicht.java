@@ -11,11 +11,16 @@
 
 package bibliotheksverwaltung.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BorderFactory;
+
+import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 
@@ -31,20 +36,26 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 	public PersonEinzelAnsicht(BibliotheksVerwalter derVerwalter) {
 		initComponents();
 		this.verwalter = derVerwalter;
+		this.personenansichtPanel.add(new PersonenAnsicht(this.verwalter));		
+		erzeugeAusleihAnsichten();
+		this.verwalter.addObserver(this);
+    this.verwalter.getMedienVerwalter().addObserver(this);
+    this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);
 	}
-	
+
 	private void erzeugeAusleihAnsichten() {
-  	this.personenansichtPanel.setLayout(new FlowLayout());
-  	personenansichtPanel.setPreferredSize(new Dimension((int)personenansichtPanel.getPreferredSize().getWidth(), 26));
-        	for (int i = 0; i < this.verwalter.getMedienVerwalter().getMedium().getExemplare().size(); i++) {
-          //TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...            
-        		personenansichtPanel.setPreferredSize(new Dimension((int)personenansichtPanel.getPreferredSize().getWidth(), (int)personenansichtPanel.getPreferredSize().getHeight() + 26));
-          AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(this.verwalter, this.verwalter.getMedienVerwalter().getMedium().getExemplare().get(i));
-          personenansichtPanel.add(panel);
-      }
-//      this.validate();
-//      this.repaint();
-  }
+		this.ausleihPanel.setLayout(new FlowLayout());
+		ausleihPanel.setPreferredSize(new Dimension((int)ausleihPanel.getPreferredSize().getWidth(), 26));
+		ArrayList<Exemplar> gelieheneExemplare = this.verwalter.getAusleiherVerwalter().getAusgelieheneExemplare();
+		for (int i = 0; i < gelieheneExemplare.size(); i++) {
+			//TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...            
+			ausleihPanel.setPreferredSize(new Dimension((int)ausleihPanel.getPreferredSize().getWidth(), (int)ausleihPanel.getPreferredSize().getHeight() + 26));
+			AusleiheEinzelansichtPanel panel = new AusleiheEinzelansichtPanel(this.verwalter, gelieheneExemplare.get(i));
+			ausleihPanel.add(panel);
+		}
+		//      this.validate();
+		//      this.repaint();
+	}
 
 	/** This method is called from within the constructor to
 	 * initialize the form.
@@ -183,23 +194,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("ExemplarGeloescht"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.personenansichtPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("ExemplarAusleihen"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.personenansichtPanel.removeAll();
+				this.ausleihPanel.removeAll();
 				this.verwalter.getMedienVerwalter().erzeugeExemplare();
 			}
 		}
@@ -207,7 +202,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
+				this.ausleihPanel.removeAll();
 				this.verwalter.getMedienVerwalter().erzeugeExemplare();
 			}
 		}
@@ -215,7 +210,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
+				this.ausleihPanel.removeAll();
 				this.verwalter.getMedienVerwalter().erzeugeExemplare();
 			}
 		}
@@ -223,15 +218,15 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
+				this.ausleihPanel.removeAll();
 				this.verwalter.getMedienVerwalter().erzeugeExemplare();
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("MediumBearbeiten"))
+		else if (updateInfo.holeAenderung().equals("PersonBearbeiten"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
+				this.ausleihPanel.removeAll();
 				this.verwalter.getMedienVerwalter().erzeugeExemplare();
 			}
 		}
@@ -239,7 +234,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
+				this.ausleihPanel.removeAll();
 				this.erzeugeAusleihAnsichten();
 			}
 		}
@@ -247,19 +242,19 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
-				this.personenansichtPanel.setPreferredSize(new Dimension(573,258));
+				this.ausleihPanel.removeAll();
+				this.ausleihPanel.setPreferredSize(new Dimension(573,258));
 				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
-				hinzuPanel.setSize(this.personenansichtPanel.getSize());
-				this.personenansichtPanel.add(hinzuPanel);
+				hinzuPanel.setSize(this.ausleihPanel.getSize());
+				this.ausleihPanel.add(hinzuPanel);
 			}
 		}
 		else if (updateInfo.holeAenderung().equals("HistorieAnzeigen"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.personenansichtPanel.removeAll();
-				this.personenansichtPanel.setPreferredSize(new Dimension(573,258));
+				this.ausleihPanel.removeAll();
+				this.ausleihPanel.setPreferredSize(new Dimension(573,258));
 				//  				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
 				//  				hinzuPanel.setSize(this.exemplarePanel.getSize());
 				//  				this.exemplarePanel.add(hinzuPanel);
