@@ -263,6 +263,14 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   				this.verwalter.getMedienVerwalter().erzeugeExemplare();
   			}
   		}
+  		else if (updateInfo.holeAenderung().equals("MediumBearbeiten"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+  			}
+  		}
   		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
   		{
   			if (updateInfo.holeAenderungOk())
@@ -280,6 +288,17 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
   				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
   				hinzuPanel.setSize(this.exemplarePanel.getSize());
   				this.exemplarePanel.add(hinzuPanel);
+  			}
+  		}
+  		else if (updateInfo.holeAenderung().equals("HistorieAnzeigen"))
+  		{
+  			if (updateInfo.holeAenderungOk())
+  			{
+  				this.exemplarePanel.removeAll();
+  				this.exemplarePanel.setPreferredSize(new Dimension(573,258));
+//  				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
+//  				hinzuPanel.setSize(this.exemplarePanel.getSize());
+//  				this.exemplarePanel.add(hinzuPanel);
   			}
   		}
   		this.repaint();

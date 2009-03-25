@@ -7,14 +7,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
+import bibliotheksverwaltung.view.BuchHinzufuegenPanel;
 
 public class BuchAenderungenSpeichernListener implements ActionListener
 {
 	private BibliotheksVerwalter verwalter = null;
+	private BuchHinzufuegenPanel hinzuPanel = null;
 
-	public BuchAenderungenSpeichernListener(BibliotheksVerwalter derVerwalter) {
+	public BuchAenderungenSpeichernListener(BibliotheksVerwalter derVerwalter, BuchHinzufuegenPanel dasHinzuPanel) {
 		this.verwalter = derVerwalter;
+		this.hinzuPanel = dasHinzuPanel;
 	}
 
 	/* (non-Javadoc)
@@ -25,10 +29,10 @@ public class BuchAenderungenSpeichernListener implements ActionListener
 	{
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
-			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			verwalter.mediumBearbeiten();
-			verwalter.holeUpdateInfo().setzeAenderungOk(true);   
-			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
+			this.verwalter.holeUpdateInfo().setzeUpdateSperre(true);
+			this.verwalter.mediumBearbeiten();
+			this.verwalter.holeUpdateInfo().setzeAenderungOk(true);   
+			this.verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
 	}
 }

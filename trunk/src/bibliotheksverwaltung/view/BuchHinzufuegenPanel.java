@@ -13,6 +13,7 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JTextField;
 
+import bibliotheksverwaltung.controller.BuchAenderungenSpeichernListener;
 import bibliotheksverwaltung.controller.DatenBearbeitenAbbrechenListener;
 import bibliotheksverwaltung.controller.DatenBearbeitenActionListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
@@ -40,7 +41,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
 			this.isbnField.setText(this.verwalter.getMedienVerwalter().getMedium().getIsbn());
 			//this.tagsField.setText(this.verwalter.getMedienVerwalter().getMedium().gett);
 			this.addButton.setText("<html>Änderungen<br />speichern</html>");
-			this.addButton.addActionListener(new DatenBearbeitenActionListener(this.verwalter));
+			this.addButton.addActionListener(new BuchAenderungenSpeichernListener(this.verwalter, this));
 		}
 	}
 
