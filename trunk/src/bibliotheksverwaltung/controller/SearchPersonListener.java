@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.SuchVerwalter;
 
 /**
  *
