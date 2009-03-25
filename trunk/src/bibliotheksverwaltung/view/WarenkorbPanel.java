@@ -35,9 +35,11 @@ public class WarenkorbPanel extends javax.swing.JPanel {
         eintragePanel = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchkiste", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
-        setPreferredSize(new java.awt.Dimension(181, 250));
+        setMaximumSize(new java.awt.Dimension(181, 219));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(181, 219));
 
-        ausleiherButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        ausleiherButton.setFont(new java.awt.Font("Arial", 1, 12));
         ausleiherButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
         ausleiherButton.setText("Ausleiher wählen");
         ausleiherButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -55,7 +57,7 @@ public class WarenkorbPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(ausleiherButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eintragePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addComponent(eintragePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

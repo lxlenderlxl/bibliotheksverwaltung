@@ -8,10 +8,10 @@
  *
  * Created on 17.03.2009, 15:56:45
  */
-
 package bibliotheksverwaltung.view;
 
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.util.UpdateInfo;
 import bibliotheksverwaltung.controller.AddActionListener;
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
@@ -45,10 +45,9 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
 
-	private BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
+    private BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 
     /** Creates new form BibliotheksGUI */
-	//TODO Message Panel
     public BibliotheksGUI() {
         try {
             javax.swing.UIManager.setLookAndFeel(new com.nilo.plaf.nimrod.NimRODLookAndFeel());
@@ -56,10 +55,13 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
             LocalEnvironment.log(e.getMessage(), this);
         }
         initComponents();
+        Message.setGUI(this);
+        setSize(new Dimension(800,600)); // warum auch immer, es geht nur mit
+        infoBoxPanel.setVisible(false);
         verwalter.addObserver(this);
-    		searchButton.addActionListener(new SearchActionListener(this.verwalter));
-    		addButton.addActionListener(new AddActionListener(this.verwalter));
-    		reportButton.addActionListener(new ReportActionListener(this.verwalter));
+        searchButton.addActionListener(new SearchActionListener(this.verwalter));
+        addButton.addActionListener(new AddActionListener(this.verwalter));
+        reportButton.addActionListener(new ReportActionListener(this.verwalter));
     }
 
     /** This method is called from within the constructor to
@@ -78,12 +80,16 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         reportButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         warenkorbPanel = new javax.swing.JPanel();
+        infoBoxPanel = new javax.swing.JPanel();
+        infoBoxArea = new javax.swing.JTextArea();
         mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bibliotheksverwaltung");
         setResizable(false);
 
+        containerPanel.setMaximumSize(new java.awt.Dimension(800, 600));
+        containerPanel.setMinimumSize(new java.awt.Dimension(800, 600));
         containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
         menuPanel.setOpaque(false);
@@ -103,14 +109,14 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         reportButton.setText("Berichte");
         reportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        configButton.setFont(new java.awt.Font("Arial", 1, 14));
+        configButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         configButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/spanner_48.png"))); // NOI18N
         configButton.setText("Einstellungen");
         configButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        warenkorbPanel.setMaximumSize(new java.awt.Dimension(181, 250));
-        warenkorbPanel.setMinimumSize(new java.awt.Dimension(181, 250));
-        warenkorbPanel.setPreferredSize(new java.awt.Dimension(181, 250));
+        warenkorbPanel.setMaximumSize(new java.awt.Dimension(181, 219));
+        warenkorbPanel.setMinimumSize(new java.awt.Dimension(181, 219));
+        warenkorbPanel.setPreferredSize(new java.awt.Dimension(181, 219));
 
         javax.swing.GroupLayout warenkorbPanelLayout = new javax.swing.GroupLayout(warenkorbPanel);
         warenkorbPanel.setLayout(warenkorbPanelLayout);
@@ -120,7 +126,38 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         );
         warenkorbPanelLayout.setVerticalGroup(
             warenkorbPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 219, Short.MAX_VALUE)
+        );
+
+        infoBoxPanel.setBackground(new java.awt.Color(252, 98, 98));
+        infoBoxPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        infoBoxPanel.setMaximumSize(new java.awt.Dimension(181, 87));
+        infoBoxPanel.setMinimumSize(new java.awt.Dimension(181, 87));
+        infoBoxPanel.setPreferredSize(new java.awt.Dimension(181, 87));
+
+        infoBoxArea.setEditable(false);
+        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        infoBoxArea.setLineWrap(true);
+        infoBoxArea.setRows(3);
+        infoBoxArea.setText("Das gewünschte Buch wurde erfolgreich zur Liste hinzugefügt.");
+        infoBoxArea.setWrapStyleWord(true);
+        infoBoxArea.setOpaque(false);
+
+        javax.swing.GroupLayout infoBoxPanelLayout = new javax.swing.GroupLayout(infoBoxPanel);
+        infoBoxPanel.setLayout(infoBoxPanelLayout);
+        infoBoxPanelLayout.setHorizontalGroup(
+            infoBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoBoxPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoBoxArea, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        infoBoxPanelLayout.setVerticalGroup(
+            infoBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoBoxPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoBoxArea, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
@@ -130,38 +167,35 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addComponent(configButton, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                        .addGap(6, 6, 6))
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(infoBoxPanel, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(configButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+            .addGroup(menuPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(searchButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(reportButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(configButton)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(infoBoxPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(configButton))
         );
 
         mainPanel.setMaximumSize(new java.awt.Dimension(597, 600));
         mainPanel.setMinimumSize(new java.awt.Dimension(597, 600));
         mainPanel.setOpaque(false);
+        mainPanel.setPreferredSize(new java.awt.Dimension(597, 600));
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -186,32 +220,32 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(containerPanelLayout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new BibliotheksGUI().setVisible(true);
             }
@@ -222,6 +256,8 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton addButton;
     private javax.swing.JButton configButton;
     private javax.swing.JPanel containerPanel;
+    private javax.swing.JTextArea infoBoxArea;
+    private javax.swing.JPanel infoBoxPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton reportButton;
@@ -229,55 +265,65 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel warenkorbPanel;
     // End of variables declaration//GEN-END:variables
 
-    /* (non-Javadoc)
-  	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-  	 */
-  	@Override
-  	public void update(Observable o, Object arg)
-  	{
-  		UpdateInfo updateInfo = (UpdateInfo) arg;
-  		String ausgabe = "";
-  		if (updateInfo.holeAenderung().equals("Suche"))
-  		{
-  			if (updateInfo.holeAenderungOk())
-  			{
-  				mainPanel.removeAll();
-  				SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
-  				suchPanel.setSize(mainPanel.getSize());
-  				mainPanel.add(suchPanel);
-  			}
-  		}
-  		else if (updateInfo.holeAenderung().equals("Hinzufuegen"))
-  		{
-  			if (updateInfo.holeAenderungOk())
-  			{
-  				//					mainPanel.removeAll();
-  				JPanel hinzuPanel = new JPanel();
-  				hinzuPanel.setLayout(new GridLayout(2,1));
-  				hinzuPanel.setSize(mainPanel.getPreferredSize());
-  				PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
-  				BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel(this.verwalter, false);
-  				hinzuPanel.add(persoPanel);
-  				hinzuPanel.add(buchPanel);
-  				SuchPanel suchPanel = new SuchPanel(this.verwalter, true,true);
-  				suchPanel.setSize(mainPanel.getSize());
-  				suchPanel.getResultArea().add(hinzuPanel);
-  				mainPanel.add(suchPanel);
-  			}
-  		}
-  		else if (updateInfo.holeAenderung().equals("Report"))
-  		{
-  			if (updateInfo.holeAenderungOk())
-  			{
-  				mainPanel.removeAll();
-  				//					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
-  				//					hinzuPanel.setSize(mainPanel.getSize());
-  				//					mainPanel.add(hinzuPanel);
-  				System.out.println("Report Knopf gedr�ckt");
-  			}
-  		}
-  		this.mainPanel.repaint();
-  		this.mainPanel.revalidate();
-  	}
+    public void showInfoBox(int level, String text) {
+        // Level: 0: Ausblenden, 1: Grün, 2: Gelb, 3: Rot
+        switch (level) {
+            case 1:
+                infoBoxPanel.setBackground(new java.awt.Color(173, 250, 102));
+                infoBoxPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 0), 2, true));
+                break;
+            case 2:
+                infoBoxPanel.setBackground(new java.awt.Color(255, 255, 102));
+                infoBoxPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
+                break;
+            case 3:
+                infoBoxPanel.setBackground(new java.awt.Color(252, 98, 98));
+                infoBoxPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        }
+        infoBoxArea.setText(text);
+        infoBoxPanel.setVisible(level > 0);
+    }
 
+
+    /* (non-Javadoc)
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        UpdateInfo updateInfo = (UpdateInfo) arg;
+        String ausgabe = "";
+        if (updateInfo.holeAenderung().equals("Suche")) {
+            if (updateInfo.holeAenderungOk()) {
+                mainPanel.removeAll();
+                SuchPanel suchPanel = new SuchPanel(this.verwalter, true, true);
+                suchPanel.setSize(mainPanel.getSize());
+                mainPanel.add(suchPanel);
+            }
+        } else if (updateInfo.holeAenderung().equals("Hinzufuegen")) {
+            if (updateInfo.holeAenderungOk()) {
+                //					mainPanel.removeAll();
+                JPanel hinzuPanel = new JPanel();
+                hinzuPanel.setLayout(new GridLayout(2, 1));
+                hinzuPanel.setSize(mainPanel.getPreferredSize());
+                PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
+                BuchHinzufuegenPanel buchPanel = new BuchHinzufuegenPanel(this.verwalter, false);
+                hinzuPanel.add(persoPanel);
+                hinzuPanel.add(buchPanel);
+                SuchPanel suchPanel = new SuchPanel(this.verwalter, true, true);
+                suchPanel.setSize(mainPanel.getSize());
+                suchPanel.getResultArea().add(hinzuPanel);
+                mainPanel.add(suchPanel);
+            }
+        } else if (updateInfo.holeAenderung().equals("Report")) {
+            if (updateInfo.holeAenderungOk()) {
+                mainPanel.removeAll();
+                //					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
+                //					hinzuPanel.setSize(mainPanel.getSize());
+                //					mainPanel.add(hinzuPanel);
+                System.out.println("Report Knopf gedr�ckt");
+            }
+        }
+        this.mainPanel.repaint();
+        this.mainPanel.revalidate();
+    }
 }
