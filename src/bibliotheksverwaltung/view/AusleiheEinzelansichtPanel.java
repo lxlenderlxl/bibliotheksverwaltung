@@ -52,7 +52,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jLabel2.setText("");
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("");
-			jButton1.setToolTipText("Exemplar ausleihen");
+			jButton1.setToolTipText("Exemplar zur Buchkiste hinzufuegen");
 			jButton1.addActionListener(new BuchAusleihenListener(this.verwalter, exemplar));			
 			jLabel3.setText("");
 			jLabel4.setText("");

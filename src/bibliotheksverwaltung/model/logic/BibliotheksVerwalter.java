@@ -87,6 +87,22 @@ public class BibliotheksVerwalter extends Observable {
 	private LogVerwalter logVerwalter = new LogVerwalter();
 	private WarenKorbVerwalter warenKorbVerwalter = new WarenKorbVerwalter();
 	
+	/**
+	 * @return the warenKorbVerwalter
+	 */
+	public WarenKorbVerwalter getWarenKorbVerwalter()
+	{
+		return warenKorbVerwalter;
+	}
+
+	/**
+	 * @param warenKorbVerwalter the warenKorbVerwalter to set
+	 */
+	public void setWarenKorbVerwalter(WarenKorbVerwalter warenKorbVerwalter)
+	{
+		this.warenKorbVerwalter = warenKorbVerwalter;
+	}
+
 	private UpdateInfo updateInfo = new UpdateInfo();
 	
 	/**

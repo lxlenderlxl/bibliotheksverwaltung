@@ -49,6 +49,9 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         Message.setGUI(this);
         setSize(new Dimension(800,600)); // warum auch immer, es geht nur mit
         infoBoxPanel.setVisible(false);
+        WarenkorbPanel warenkorb = new WarenkorbPanel(this.verwalter);
+        warenkorb.setSize(this.warenkorbPanel.getPreferredSize());
+        warenkorbPanel.add(warenkorb);
         verwalter.addObserver(this);
         searchButton.addActionListener(new SearchActionListener(this.verwalter));
         addButton.addActionListener(new AddActionListener(this.verwalter));
@@ -337,8 +340,9 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
             }
         } else if (updateInfo.holeAenderung().equals("Hinzufuegen")) {
             if (updateInfo.holeAenderungOk()) {
-                //					mainPanel.removeAll();
+                mainPanel.removeAll();
                 JPanel hinzuPanel = new JPanel();
+
                 hinzuPanel.setLayout(new GridLayout(2, 1));
                 hinzuPanel.setSize(mainPanel.getPreferredSize());
                 PersonHinzufuegenPanel persoPanel = new PersonHinzufuegenPanel();
