@@ -364,10 +364,9 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         } else if (updateInfo.holeAenderung().equals("Report")) {
             if (updateInfo.holeAenderungOk()) {
                 mainPanel.removeAll();
-                //					HinzufuegenPanel hinzuPanel = new HinzufuegenPanel();
-                //					hinzuPanel.setSize(mainPanel.getSize());
-                //					mainPanel.add(hinzuPanel);
-                System.out.println("Report Knopf gedr�ckt");
+                ReportPanel reportPanel = new ReportPanel();
+                reportPanel.setSize(mainPanel.getSize());
+                mainPanel.add(reportPanel);
             }
         }
         this.mainPanel.repaint();
