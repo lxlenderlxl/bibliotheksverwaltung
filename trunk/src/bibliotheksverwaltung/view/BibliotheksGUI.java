@@ -87,6 +87,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bibliotheksverwaltung");
         setResizable(false);
+        setUndecorated(true);
 
         containerPanel.setMaximumSize(new java.awt.Dimension(800, 600));
         containerPanel.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -109,7 +110,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         reportButton.setText("Berichte");
         reportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        configButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        configButton.setFont(new java.awt.Font("Arial", 1, 14));
         configButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/spanner_48.png"))); // NOI18N
         configButton.setText("Einstellungen");
         configButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -136,11 +137,12 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         infoBoxPanel.setPreferredSize(new java.awt.Dimension(181, 87));
 
         infoBoxArea.setEditable(false);
-        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12));
         infoBoxArea.setLineWrap(true);
         infoBoxArea.setRows(3);
         infoBoxArea.setText("Das gewünschte Buch wurde erfolgreich zur Liste hinzugefügt.");
         infoBoxArea.setWrapStyleWord(true);
+        infoBoxArea.setBorder(null);
         infoBoxArea.setOpaque(false);
 
         javax.swing.GroupLayout infoBoxPanelLayout = new javax.swing.GroupLayout(infoBoxPanel);
@@ -149,7 +151,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
             infoBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(infoBoxArea, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(infoBoxArea, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addContainerGap())
         );
         infoBoxPanelLayout.setVerticalGroup(
@@ -167,12 +169,12 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoBoxPanel, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(infoBoxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(configButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                     .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                     .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                    .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(configButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(warenkorbPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
@@ -186,10 +188,11 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
                 .addComponent(reportButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(warenkorbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(infoBoxPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(configButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(configButton)
+                .addGap(7, 7, 7))
         );
 
         mainPanel.setMaximumSize(new java.awt.Dimension(597, 600));
@@ -213,15 +216,18 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer {
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(4, 4, 4))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(containerPanelLayout.createSequentialGroup()
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

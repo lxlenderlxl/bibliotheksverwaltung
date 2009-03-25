@@ -92,7 +92,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 
         setPreferredSize(new java.awt.Dimension(593, 600));
 
-        clearButton.setFont(new java.awt.Font("Arial", 1, 14));
+        clearButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_32.png"))); // NOI18N
         clearButton.setMaximumSize(new java.awt.Dimension(41, 41));
         clearButton.setMinimumSize(new java.awt.Dimension(41, 41));
@@ -105,7 +105,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         searchBook.setMinimumSize(new java.awt.Dimension(41, 41));
         searchBook.setPreferredSize(new java.awt.Dimension(41, 41));
 
-        searchPerson.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        searchPerson.setFont(new java.awt.Font("Arial", 1, 14));
         searchPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_32.png"))); // NOI18N
 
         searchField.setFont(new java.awt.Font("Arial", 1, 18));
@@ -124,7 +124,6 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(outputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -135,11 +134,11 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
                         .addComponent(searchBook, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(clearButton, 0, 0, Short.MAX_VALUE)
