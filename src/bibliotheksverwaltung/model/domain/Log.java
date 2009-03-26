@@ -10,7 +10,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
  * Exemplar-ID, ein logDatum und ein Kommentar
  * 
  */
-public class Log {
+public class Log implements Schreibbar {
 	/**
 	 * ID
 	 */
@@ -197,6 +197,15 @@ public class Log {
 	 */
 	public void setKommentar(String kommentar) {
 		this.kommentar = kommentar;
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.domain.Schreibbar#getBeschreibung()
+	 */
+	@Override
+	public String getBeschreibung()
+	{
+		return "<td>" + this.id + "</td><td>" + (this.vorgangsID == 0 ? "" : new Vorgang(this.vorgangsID).getInhalt()) + "</td><td>" + (this.ausleiherID == 0 ? "" : new Ausleiher(this.ausleiherID).getJoinedName()) + "</td><td>" + this.anwender + "</td>"+  "</td><td>" + (this.exemplarID == 0 ? "" : new Medium(new Exemplar(this.exemplarID).getMedium()).getTitel()) + "</td>" + "</td><td>" + this.exemplarID + "</td>"+ "</td>";
 	}
 
 }

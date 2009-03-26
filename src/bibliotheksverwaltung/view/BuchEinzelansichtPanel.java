@@ -292,6 +292,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 				this.exemplarePanel.removeAll();
 				this.exemplarePanel.setPreferredSize(new Dimension(573,26));
 				ArrayList<Log> logs = this.verwalter.getHistorienVerwalter().getLogs();
+				this.verwalter.getDruckVerwalter().fuegeObjekteHinzu(logs);
 				for (int i = 0; i < logs.size(); i++)
 				{
 					this.exemplarePanel.setPreferredSize(new Dimension(573, i*26));

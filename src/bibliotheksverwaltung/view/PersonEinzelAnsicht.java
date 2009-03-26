@@ -17,9 +17,12 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import bibliotheksverwaltung.controller.BuchHistorieActionListener;
 import bibliotheksverwaltung.controller.PersonDatenBearbeitenActionListener;
+import bibliotheksverwaltung.controller.PersonHistorieActionListener;
 import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 
@@ -38,9 +41,10 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		this.personenansichtPanel.add(new PersonenAnsicht(this.verwalter));		
 		erzeugeAusleihAnsichten();
 		this.editButton.addActionListener(new PersonDatenBearbeitenActionListener(verwalter));
+		this.historyButton.addActionListener(new PersonHistorieActionListener(this.verwalter));
 		this.verwalter.addObserver(this);
-    this.verwalter.getAusleiherVerwalter().addObserver(this);
-    this.printButton.addMouseListener(new TestListener(this.verwalter.getAusleiherVerwalter().getAusleiher()));
+		this.verwalter.getAusleiherVerwalter().addObserver(this);
+		this.verwalter.getHistorienVerwalter().addObserver(this);
 	}
 
 	private void erzeugeAusleihAnsichten() {
@@ -235,6 +239,21 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 			{
 				this.ausleihPanel.removeAll();
 				this.verwalter.getAusleiherVerwalter().erzeugeAusgelieheneExemplare();
+			}
+		}
+		else if (updateInfo.holeAenderung().equals("HistorieErzeugt"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.ausleihPanel.removeAll();
+				this.ausleihPanel.setPreferredSize(new Dimension(573,26));
+				ArrayList<Log> logs = this.verwalter.getHistorienVerwalter().getLogs();
+				this.verwalter.getDruckVerwalter().fuegeObjekteHinzu(logs);
+				for (int i = 0; i < logs.size(); i++)
+				{
+					this.ausleihPanel.setPreferredSize(new Dimension(573, i*26));
+					this.ausleihPanel.add(new LogAnsichtPanel(logs.get(i)));
+				}
 			}
 		}
 		this.repaint();

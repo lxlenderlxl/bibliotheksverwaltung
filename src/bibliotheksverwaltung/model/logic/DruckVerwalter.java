@@ -116,14 +116,7 @@ public class DruckVerwalter
 	 */
 	private void openDocument()
 	{
-		try
-		{
-			new ProcessBuilder( "cmd", "/c", temp.getAbsolutePath()).start();
-		}
-		catch (Exception exp)
-		{
-			LocalEnvironment.log("Konnte Datei nicht öffnen " + temp.getAbsolutePath(), this);
-		}
+		LocalEnvironment.openDocument(temp.getAbsolutePath());
 	}
 
 	/**
