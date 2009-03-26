@@ -21,17 +21,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="statistikPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="1">
-                      <Component id="mahnButton" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="statPrintButton" min="-2" max="-2" attributes="1"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="mahnBriefeButton" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="mahnListeButton" pref="263" max="32767" attributes="1"/>
                   </Group>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,8 +42,8 @@
               <Component id="statistikPanel" min="-2" pref="281" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="mahnButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="statPrintButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mahnBriefeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mahnListeButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="167" max="32767" attributes="0"/>
           </Group>
@@ -275,29 +275,35 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="mahnButton">
+    <Component class="javax.swing.JButton" name="mahnBriefeButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/bibliotheksverwaltung/view/images/mail_write_48.png"/>
+          <Image iconType="3" name="/bibliotheksverwaltung/view/images/mail_48.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mahnbriefe erstellen"/>
         <Property name="horizontalAlignment" type="int" value="10"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mahnBriefeButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="statPrintButton">
+    <Component class="javax.swing.JButton" name="mahnListeButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/bibliotheksverwaltung/view/images/paper_content_chart_48.png"/>
+          <Image iconType="3" name="/bibliotheksverwaltung/view/images/table_green_48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Statistik drucken"/>
+        <Property name="text" type="java.lang.String" value="Mahnliste erstellen"/>
         <Property name="horizontalAlignment" type="int" value="10"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mahnListeButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
