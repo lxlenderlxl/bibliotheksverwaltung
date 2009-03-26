@@ -233,4 +233,16 @@ public class LocalEnvironment
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return dateFormat.format(System.currentTimeMillis()); 
 	}
+	
+	public static void openDocument(String absolutePath)
+	{
+		try
+		{
+			new ProcessBuilder( "cmd", "/c", absolutePath).start();
+		}
+		catch (Exception exp)
+		{
+			LocalEnvironment.log("Konnte Datei nicht öffnen " + absolutePath);
+		}
+	}
 }

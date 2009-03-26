@@ -92,7 +92,7 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 		this.ausleiherButton.setText("Ausleiher W�hlen");
 		this.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchkiste", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0)));
 		ausleiherButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
-
+		this.ausleiherButton.addActionListener(new AusleiherWahlenActionListener(this.verwalter));
 		//		this.ausleiherButton.addActionListener(new AusleiherWahlenActionListener());
 	}
 
@@ -130,7 +130,7 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 		{
 			if (updateInfo.holeAenderungOk())
 			{
-				this.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchkiste f�r " + this.verwalter.getAusleiherVerwalter().getAusleiher().getJoinedName(), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0)));
+				this.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchkiste fuer " + this.verwalter.getAusleiherVerwalter().getAusleiher().getJoinedName(), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0)));
 				this.ausleiherButton.setText("Ausleihen");
 				this.verwalter.getWarenKorbVerwalter().setAusleiher(this.verwalter.getAusleiherVerwalter().getAusleiher());
 				this.ausleiherButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
