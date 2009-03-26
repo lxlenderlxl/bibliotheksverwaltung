@@ -75,6 +75,55 @@ public class MySQLLogDAO implements LogDAO
 
 		return liste;
 	}
+	
+	public ArrayList<Log> getByMedium(int dieMedienId)
+	{
+		ArrayList<Log> liste = new ArrayList<Log>();;
+		try
+		{
+			statement = connection.prepareStatement(
+			"SELECT * FROM log WHERE exemplarid IN (SELECT exemplarid FROM exemplar WHERE medienid = ?)");
+			LocalEnvironment.statementChecker(statement, 1, dieMedienId);
+			System.out.println(statement.toString());
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				liste.add(new Log(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7)));
+			}
+		} catch (SQLException e)
+		{
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
+		}
+
+		return liste;
+	}
+	
+	public ArrayList<Log> getByAusleiher(int dieAusleiherId)
+	{
+		ArrayList<Log> liste = new ArrayList<Log>();;
+		try
+		{
+			statement = connection.prepareStatement(
+			"SELECT * FROM log WHERE ausleiherid = ?");
+			LocalEnvironment.statementChecker(statement, 1, dieAusleiherId);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				liste.add(new Log(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7)));
+			}
+		} catch (SQLException e)
+		{
+			LocalEnvironment.log(e.getMessage(), this);
+		} finally
+		{
+			LocalEnvironment.closeStmt(statement);
+		}
+
+		return liste;
+	}
 
 	/* (non-Javadoc)
 	 * @see bibliotheksverwaltung.model.daos.dao.LogDAO#get(int)
