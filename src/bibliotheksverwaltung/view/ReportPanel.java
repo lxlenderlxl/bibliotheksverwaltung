@@ -24,7 +24,6 @@ public class ReportPanel extends javax.swing.JPanel {
     }
 
     private void fuelleFelder() {
-    	//TODO ist das zul�ssig? (mysqldao direkt aufzurufen)
     	Statistik statistik = new MySQLStatistikDAO().getStatistik();
 
     	buecherField.setText("" + statistik.getEingetrageneBuecher());
