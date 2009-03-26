@@ -65,27 +65,46 @@ public class BibliotheksVerwalter extends Observable {
 		this.ausleiherVerwalter = ausleiherVerwalter;
 	}
 
-	/**
-	 * @return the logVerwalter
-	 */
-	public LogVerwalter getLogVerwalter()
-	{
-		return logVerwalter;
-	}
-
-	/**
-	 * @param logVerwalter the logVerwalter to set
-	 */
-	public void setLogVerwalter(LogVerwalter logVerwalter)
-	{
-		this.logVerwalter = logVerwalter;
-	}
-
 	private SuchVerwalter suchVerwalter = new SuchVerwalter();
 	private AusleiherVerwalter ausleiherVerwalter = new AusleiherVerwalter();
-	private LogVerwalter logVerwalter = new LogVerwalter();
+	//private LogVerwalter logVerwalter = new LogVerwalter();
+	private HistorienVerwalter historienVerwalter = new HistorienVerwalter();
+	/**
+	 * @return the historienVerwalter
+	 */
+	public HistorienVerwalter getHistorienVerwalter()
+	{
+		return historienVerwalter;
+	}
+
+	/**
+	 * @param historienVerwalter the historienVerwalter to set
+	 */
+	public void setHistorienVerwalter(HistorienVerwalter historienVerwalter)
+	{
+		this.historienVerwalter = historienVerwalter;
+	}
+
 	private WarenKorbVerwalter warenKorbVerwalter = new WarenKorbVerwalter();
 	
+	private DruckVerwalter druckVerwalter = new DruckVerwalter();
+	
+	/**
+	 * @return the druckVerwalter
+	 */
+	public DruckVerwalter getDruckVerwalter()
+	{
+		return druckVerwalter;
+	}
+
+	/**
+	 * @param druckVerwalter the druckVerwalter to set
+	 */
+	public void setDruckVerwalter(DruckVerwalter druckVerwalter)
+	{
+		this.druckVerwalter = druckVerwalter;
+	}
+
 	/**
 	 * @return the warenKorbVerwalter
 	 */

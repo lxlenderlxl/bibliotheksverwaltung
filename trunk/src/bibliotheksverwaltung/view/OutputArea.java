@@ -20,7 +20,7 @@ import bibliotheksverwaltung.util.UpdateInfo;
 public class OutputArea extends JPanel implements Observer
 {
 	private BibliotheksVerwalter verwalter = null;
-
+	
 	public OutputArea(BibliotheksVerwalter derVerwalter)
 	{
 		super();
@@ -42,6 +42,7 @@ public class OutputArea extends JPanel implements Observer
 		String ausgabe = "";
 		if (updateInfo.holeAenderung().equals("Mediumsuche"))
 		{
+			this.verwalter.getDruckVerwalter().clearAll();
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
@@ -56,6 +57,7 @@ public class OutputArea extends JPanel implements Observer
 					{
 						Medium ergebnis = (Medium) this.verwalter.getSuchVerwalter().getErgebnisse().get(i);
 						this.verwalter.getMedienVerwalter().setMedium(ergebnis);
+						this.verwalter.getDruckVerwalter().fuegeObjektHinzu(ergebnis);
 						BuchAnsicht buch = new BuchAnsicht(this.verwalter);
 						this.add(buch);
 						buch.addMouseListener(new BuchAnsichtMouseListener(verwalter, ergebnis));
@@ -76,6 +78,7 @@ public class OutputArea extends JPanel implements Observer
 		}
 		else if (updateInfo.holeAenderung().equals("Ausleihersuche"))
 		{
+			this.verwalter.getDruckVerwalter().clearAll();
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
@@ -90,6 +93,7 @@ public class OutputArea extends JPanel implements Observer
 					{
 						Ausleiher ergebnis = (Ausleiher) this.verwalter.getSuchVerwalter().getErgebnisse().get(i);
 						this.verwalter.getAusleiherVerwalter().setAusleiher(ergebnis);
+						this.verwalter.getDruckVerwalter().fuegeObjektHinzu(ergebnis);
 						PersonenAnsicht person = new PersonenAnsicht(this.verwalter);
 						this.add(person);
 						person.addMouseListener(new PersonAnsichtMouseListener(verwalter, ergebnis));

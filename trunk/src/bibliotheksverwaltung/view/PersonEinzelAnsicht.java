@@ -44,9 +44,11 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 	}
 
 	private void erzeugeAusleihAnsichten() {
+		this.verwalter.getDruckVerwalter().clearAll();
 		this.ausleihPanel.setLayout(new FlowLayout());
 		ausleihPanel.setPreferredSize(new Dimension((int)ausleihPanel.getPreferredSize().getWidth(), 26));
 		ArrayList<Exemplar> gelieheneExemplare = this.verwalter.getAusleiherVerwalter().getAusgelieheneExemplare();
+		this.verwalter.getDruckVerwalter().fuegeObjekteHinzu(gelieheneExemplare);
 		for (int i = 0; i < gelieheneExemplare.size(); i++) {
 			//TODO GridBagLayout entfernen, von Hand gesetzt, da sonst keine Exemplaransichten...            
 			ausleihPanel.setPreferredSize(new Dimension((int)ausleihPanel.getPreferredSize().getWidth(), (int)ausleihPanel.getPreferredSize().getHeight() + 26));
@@ -192,6 +194,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		UpdateInfo updateInfo = (UpdateInfo) arg;
 		if (updateInfo.holeAenderung().equals("PersonDatenBearbeiten"))
 		{
+			this.verwalter.getDruckVerwalter().clearAll();
 			if (updateInfo.holeAenderungOk())
 			{
 				this.ausleihPanel.removeAll();
@@ -219,6 +222,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		}
 		else if (updateInfo.holeAenderung().equals("ExemplarZurueck"))
 		{
+			this.verwalter.getDruckVerwalter().clearAll();
 			if (updateInfo.holeAenderungOk())
 			{
 				this.ausleihPanel.removeAll();
