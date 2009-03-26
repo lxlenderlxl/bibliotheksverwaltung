@@ -75,7 +75,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         configButton = new javax.swing.JButton();
         infoBoxPanel = new javax.swing.JPanel();
         infoBoxArea = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        closeInfoBox = new javax.swing.JButton();
         warenkorbPanel = new javax.swing.JPanel();
         mainPanel = new javax.swing.JPanel();
 
@@ -94,9 +94,9 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         searchButton.setText("Suchen");
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 14));
+        addButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/add_48.png"))); // NOI18N
-        addButton.setText("Hinzufügen");
+        addButton.setText("Hinzufuegen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
         reportButton.setFont(new java.awt.Font("Arial", 1, 14));
@@ -104,7 +104,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         reportButton.setText("Berichte");
         reportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        configButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        configButton.setFont(new java.awt.Font("Arial", 1, 14));
         configButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/spanner_48.png"))); // NOI18N
         configButton.setText("Einstellungen");
         configButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -116,7 +116,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         infoBoxPanel.setPreferredSize(new java.awt.Dimension(181, 87));
 
         infoBoxArea.setEditable(false);
-        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        infoBoxArea.setFont(new java.awt.Font("Arial", 1, 12));
         infoBoxArea.setLineWrap(true);
         infoBoxArea.setRows(3);
         infoBoxArea.setText("Das gewünschte Buch wurde erfolgreich zur Liste hinzugefügt.");
@@ -127,16 +127,16 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
         infoBoxArea.setOpaque(false);
         infoBoxArea.setPreferredSize(new java.awt.Dimension(157, 61));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_16.png"))); // NOI18N
-        jButton1.setToolTipText("Informationsfenster schließen");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButton1.setMaximumSize(new java.awt.Dimension(16, 16));
-        jButton1.setMinimumSize(new java.awt.Dimension(16, 16));
-        jButton1.setPreferredSize(new java.awt.Dimension(16, 16));
-        jButton1.addActionListener(this);
+        closeInfoBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_16.png"))); // NOI18N
+        closeInfoBox.setToolTipText("Informationsfenster schließen");
+        closeInfoBox.setBorder(null);
+        closeInfoBox.setBorderPainted(false);
+        closeInfoBox.setContentAreaFilled(false);
+        closeInfoBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        closeInfoBox.setMaximumSize(new java.awt.Dimension(16, 16));
+        closeInfoBox.setMinimumSize(new java.awt.Dimension(16, 16));
+        closeInfoBox.setPreferredSize(new java.awt.Dimension(16, 16));
+        closeInfoBox.addActionListener(this);
 
         javax.swing.GroupLayout infoBoxPanelLayout = new javax.swing.GroupLayout(infoBoxPanel);
         infoBoxPanel.setLayout(infoBoxPanelLayout);
@@ -146,14 +146,14 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
                 .addContainerGap()
                 .addComponent(infoBoxArea, javax.swing.GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(closeInfoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         infoBoxPanelLayout.setVerticalGroup(
             infoBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoBoxPanelLayout.createSequentialGroup()
                 .addGroup(infoBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeInfoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(infoBoxPanelLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(infoBoxArea, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)))
@@ -182,18 +182,13 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(configButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(searchButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(reportButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(infoBoxPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(warenkorbPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                    .addComponent(configButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(infoBoxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(warenkorbPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,14 +262,14 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == jButton1) {
-            BibliotheksGUI.this.jButton1ActionPerformed(evt);
+        if (evt.getSource() == closeInfoBox) {
+            BibliotheksGUI.this.closeInfoBoxActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void closeInfoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeInfoBoxActionPerformed
         showInfoBox(0, "");
-    }//GEN-LAST:event_jButton1ActionPerformed
+}//GEN-LAST:event_closeInfoBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,11 +285,11 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton closeInfoBox;
     private javax.swing.JButton configButton;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JTextArea infoBoxArea;
     private javax.swing.JPanel infoBoxPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton reportButton;

@@ -179,7 +179,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(558, 164));
         setPreferredSize(new java.awt.Dimension(558, 164));
 
-        titelField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        titelField.setFont(new java.awt.Font("Arial", 1, 18));
         titelField.setForeground(new java.awt.Color(204, 204, 204));
         titelField.setText("Buchtitel");
         titelField.setToolTipText("Der Titel des Buches");
@@ -192,7 +192,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        vornameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        vornameField.setFont(new java.awt.Font("Arial", 1, 18));
         vornameField.setForeground(new java.awt.Color(204, 204, 204));
         vornameField.setText("Autor-Vorname");
         vornameField.setToolTipText("Der Vorname des Buchautors");
@@ -205,7 +205,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        nachnameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nachnameField.setFont(new java.awt.Font("Arial", 1, 18));
         nachnameField.setForeground(new java.awt.Color(204, 204, 204));
         nachnameField.setText("Autor-Nachname");
         nachnameField.setToolTipText("Der Nachname des Buchautors");
@@ -218,7 +218,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        verlagField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        verlagField.setFont(new java.awt.Font("Arial", 1, 18));
         verlagField.setForeground(new java.awt.Color(204, 204, 204));
         verlagField.setText("Verlag");
         verlagField.setToolTipText("Der herausgebende Verlag des Buches");
@@ -231,7 +231,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        jahrField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jahrField.setFont(new java.awt.Font("Arial", 1, 18));
         jahrField.setForeground(new java.awt.Color(204, 204, 204));
         jahrField.setText("Jahr");
         jahrField.setToolTipText("Das Erscheinungsjahr des Buches");
@@ -244,7 +244,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        isbnField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        isbnField.setFont(new java.awt.Font("Arial", 1, 18));
         isbnField.setForeground(new java.awt.Color(204, 204, 204));
         isbnField.setText("ISBN");
         isbnField.setToolTipText("Die Internationale Standardbuchnummer des Buches");
@@ -257,7 +257,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        tagsField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tagsField.setFont(new java.awt.Font("Arial", 1, 18));
         tagsField.setForeground(new java.awt.Color(204, 204, 204));
         tagsField.setText("Tags");
         tagsField.setToolTipText("Schlagwörter, die auf das Buch zutreffen");
@@ -270,13 +270,13 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        addButton.setFont(new java.awt.Font("Arial", 1, 18));
+        addButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/book_48.png"))); // NOI18N
-        addButton.setText("<html>Buch<br /> hinzufügen");
+        addButton.setText("<html>Buch<br /> hinzufuegen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
 
-        cancelButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 18));
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
         cancelButton.setText("Abbrechen");
         cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -294,19 +294,19 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
                         .addComponent(tagsField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(isbnField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                            .addComponent(isbnField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(verlagField, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                                .addComponent(verlagField, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jahrField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(vornameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
+                                .addComponent(nachnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
+                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

@@ -141,7 +141,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="eingetragene B&#xfc;cher"/>
+            <Property name="text" type="java.lang.String" value="eingetragene Buecher"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="buecherField">
@@ -192,7 +192,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="verliehene B&#xfc;cher"/>
+            <Property name="text" type="java.lang.String" value="verliehene Buecher"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="leihenField">
@@ -242,7 +242,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Buchzust&#xe4;nde">
+                <TitledBorder title="Buchzustaende">
                   <Font PropertyName="font" name="Arial" size="12" style="0"/>
                   <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
                 </TitledBorder>

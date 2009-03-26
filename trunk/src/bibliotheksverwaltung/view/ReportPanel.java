@@ -23,7 +23,7 @@ public class ReportPanel extends javax.swing.JPanel {
     }
 
     private void fuelleFelder() {
-    	//TODO ist das zul�ssig? (mysqldao direkt aufzurufen)
+    	//TODO ist das zul�ssig? (mysqldao direkt aufzurufen)
     	Statistik statistik = new MySQLStatistikDAO().getStatistik();
 
     	buecherField.setText("" + statistik.getEingetrageneBuecher());
@@ -64,49 +64,49 @@ public class ReportPanel extends javax.swing.JPanel {
 
         statistikPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Statistik ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        buecherLabel.setFont(new java.awt.Font("Arial", 1, 14));
-        buecherLabel.setText("eingetragene Bücher");
+        buecherLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        buecherLabel.setText("eingetragene Buecher");
 
         buecherField.setEditable(false);
-        buecherField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buecherField.setFont(new java.awt.Font("Arial", 1, 18));
         buecherField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        exemplareLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        exemplareLabel.setFont(new java.awt.Font("Arial", 1, 14));
         exemplareLabel.setText("eingetragene Exemplare");
 
         exemplareField.setEditable(false);
-        exemplareField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        exemplareField.setFont(new java.awt.Font("Arial", 1, 18));
         exemplareField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        personenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        personenLabel.setFont(new java.awt.Font("Arial", 1, 14));
         personenLabel.setText("eingetragene Personen");
 
         personenField.setEditable(false);
-        personenField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        personenField.setFont(new java.awt.Font("Arial", 1, 18));
         personenField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         leihenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        leihenLabel.setText("verliehene Bücher");
+        leihenLabel.setText("verliehene Buecher");
 
         leihenField.setEditable(false);
-        leihenField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        leihenField.setFont(new java.awt.Font("Arial", 1, 18));
         leihenField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         ausleiherLabel.setFont(new java.awt.Font("Arial", 1, 14));
         ausleiherLabel.setText("leihende Personen");
 
         ausleiherField.setEditable(false);
-        ausleiherField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ausleiherField.setFont(new java.awt.Font("Arial", 1, 18));
         ausleiherField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        ausleihenGesamtLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ausleihenGesamtLabel.setFont(new java.awt.Font("Arial", 1, 14));
         ausleihenGesamtLabel.setText("bisherige Ausleihen");
 
         ausleihenGesamtField.setEditable(false);
-        ausleihenGesamtField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ausleihenGesamtField.setFont(new java.awt.Font("Arial", 1, 18));
         ausleihenGesamtField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        buchzustaendePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchzustände", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        buchzustaendePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchzustaende", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         buchzustaendePanel.setMaximumSize(new java.awt.Dimension(186, 186));
         buchzustaendePanel.setMinimumSize(new java.awt.Dimension(186, 186));
         buchzustaendePanel.setOpaque(false);
@@ -182,12 +182,12 @@ public class ReportPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        mahnButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        mahnButton.setFont(new java.awt.Font("Arial", 1, 18));
         mahnButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/mail_write_48.png"))); // NOI18N
         mahnButton.setText("Mahnbriefe erstellen");
         mahnButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 
-        statPrintButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        statPrintButton.setFont(new java.awt.Font("Arial", 1, 18));
         statPrintButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/paper_content_chart_48.png"))); // NOI18N
         statPrintButton.setText("Statistik drucken");
         statPrintButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);

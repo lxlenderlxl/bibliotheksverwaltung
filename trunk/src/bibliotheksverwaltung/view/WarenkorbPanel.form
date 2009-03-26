@@ -56,7 +56,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/bibliotheksverwaltung/view/images/user_24.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ausleiher w&#xe4;hlen"/>
+        <Property name="text" type="java.lang.String" value="Ausleiher waehlen"/>
         <Property name="horizontalAlignment" type="int" value="10"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[2, 2, 2, 2]"/>

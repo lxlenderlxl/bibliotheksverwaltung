@@ -59,7 +59,7 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 
         ausleiherButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         ausleiherButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
-        ausleiherButton.setText("Ausleiher wählen");
+        ausleiherButton.setText("Ausleiher waehlen");
         ausleiherButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         ausleiherButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
 

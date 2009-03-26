@@ -85,23 +85,14 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="configButton" alignment="0" pref="181" max="32767" attributes="1"/>
-                                  <Component id="searchButton" alignment="0" pref="181" max="32767" attributes="1"/>
-                                  <Component id="addButton" alignment="0" pref="181" max="32767" attributes="1"/>
-                                  <Component id="reportButton" alignment="0" pref="181" max="32767" attributes="1"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="infoBoxPanel" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="warenkorbPanel" alignment="1" max="32767" attributes="1"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="configButton" alignment="0" pref="181" max="32767" attributes="1"/>
+                          <Component id="searchButton" alignment="0" pref="181" max="32767" attributes="1"/>
+                          <Component id="addButton" alignment="0" pref="181" max="32767" attributes="1"/>
+                          <Component id="reportButton" alignment="0" pref="181" max="32767" attributes="1"/>
+                          <Component id="infoBoxPanel" alignment="0" max="32767" attributes="1"/>
+                          <Component id="warenkorbPanel" alignment="1" max="32767" attributes="1"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -146,7 +137,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/bibliotheksverwaltung/view/images/add_48.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Hinzuf&#xfc;gen"/>
+                <Property name="text" type="java.lang.String" value="Hinzufuegen"/>
                 <Property name="horizontalAlignment" type="int" value="10"/>
               </Properties>
             </Component>
@@ -204,7 +195,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="infoBoxArea" pref="147" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="closeInfoBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -213,7 +204,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="closeInfoBox" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="11" pref="11" max="11" attributes="0"/>
                                   <Component id="infoBoxArea" pref="61" max="32767" attributes="0"/>
@@ -250,7 +241,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="closeInfoBox">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/bibliotheksverwaltung/view/images/cancel_16.png"/>
@@ -275,7 +266,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeInfoBoxActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

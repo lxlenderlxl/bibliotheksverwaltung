@@ -32,20 +32,20 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="plzField" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="stadtField" pref="256" max="32767" attributes="0"/>
+                      <Component id="stadtField" pref="248" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="vornameField" min="-2" pref="162" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="nachnameField" pref="179" max="32767" attributes="0"/>
+                      <Component id="nachnameField" pref="171" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="1">
-                      <Component id="strasseField" pref="259" max="32767" attributes="1"/>
+                      <Component id="strasseField" pref="251" max="32767" attributes="1"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="hausnummerField" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="cancelButton" max="32767" attributes="1"/>
                   <Component id="addButton" alignment="0" min="-2" max="-2" attributes="1"/>
@@ -126,8 +126,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Stra&#xdf;e"/>
-        <Property name="toolTipText" type="java.lang.String" value="Die Stra&#xdf;e, in der die Person wohnt"/>
+        <Property name="text" type="java.lang.String" value="Strasse"/>
+        <Property name="toolTipText" type="java.lang.String" value="Die Strasse, in der die Person wohnt"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="strasseFieldFocusGained"/>
@@ -190,7 +190,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/bibliotheksverwaltung/view/images/user_add_48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;Person&lt;br/&gt;hinzuf&#xfc;gen"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Person&lt;br/&gt;hinzufuegen"/>
         <Property name="horizontalAlignment" type="int" value="10"/>
         <Property name="iconTextGap" type="int" value="10"/>
       </Properties>
