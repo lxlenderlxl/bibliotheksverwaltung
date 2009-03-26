@@ -1,11 +1,17 @@
 package bibliotheksverwaltung.model.logic;
-
+/**
+ * @author Max Beier, Sven Blaurock, Sven Terzyk
+ */
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.util.LocalEnvironment;
-
+/**
+ * Diese Klasse Realisiert ein Verwalter fuer Anwender.
+ */
 public class AnwenderVerwalter implements Verwaltbar {
-
+	/**
+	 * Greift auf den AnwenderDao.
+	 */
 	private MySQLAnwenderDAO anwenderDAO = new MySQLAnwenderDAO();
 
 	/* (non-Javadoc)
