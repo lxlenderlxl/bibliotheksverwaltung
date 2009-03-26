@@ -13,8 +13,6 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JTextField;
 
-import bibliotheksverwaltung.controller.BuchAenderungenSpeichernListener;
-import bibliotheksverwaltung.controller.BuchDatenBearbeitenAbbrechenListener;
 import bibliotheksverwaltung.controller.PersonAenderungenSpeichernListener;
 import bibliotheksverwaltung.controller.PersonDatenBearbeitenAbbrechenListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;

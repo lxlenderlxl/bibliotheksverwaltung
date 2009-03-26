@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 
 import bibliotheksverwaltung.controller.BuchAenderungenSpeichernListener;
 import bibliotheksverwaltung.controller.BuchDatenBearbeitenAbbrechenListener;
-import bibliotheksverwaltung.controller.BuchDatenBearbeitenActionListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
 /**

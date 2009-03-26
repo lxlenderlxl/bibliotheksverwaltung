@@ -10,28 +10,18 @@
  */
 package bibliotheksverwaltung.view;
 
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.border.Border;
 
-import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.controller.BuchDatenBearbeitenActionListener;
 import bibliotheksverwaltung.controller.ExemplarHinzuListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.ExemplarVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
-
-import java.awt.Dimension;
 
 /**
  *

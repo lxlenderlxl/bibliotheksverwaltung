@@ -11,16 +11,12 @@
 
 package bibliotheksverwaltung.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BorderFactory;
-
-import bibliotheksverwaltung.controller.BuchDatenBearbeitenActionListener;
 import bibliotheksverwaltung.controller.PersonDatenBearbeitenActionListener;
 import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Exemplar;

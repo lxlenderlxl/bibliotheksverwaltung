@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -23,19 +23,32 @@
  
 /**
  * Esta clase implementa los JTabbedPane.
- * Practicamente todo el esfuerzo se centra en pintar la pestaña.
+ * Practicamente todo el esfuerzo se centra en pintar la pestaï¿½a.
  * @author Nilo J. Gonzalez
  */ 
 
 package com.nilo.plaf.nimrod;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.util.Arrays;
 
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.UIManager;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
   private Color selectColor;
@@ -48,7 +61,7 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
   
   private MiML miml;
   /**
-   * En este poligono se guarda la forma de la pestaña. Es muy importante. 
+   * En este poligono se guarda la forma de la pestaï¿½a. Es muy importante. 
    */
   private Polygon shape;
 
@@ -206,10 +219,10 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
       g2D.setColor( tabPane.getBackgroundAt( tabIndex));
     }
     
-    // Encima, pintamos la pestaña con el color que sea
+    // Encima, pintamos la pestaï¿½a con el color que sea
     g2D.fill( shape);
     
-    // Encima, pintamos la pestaña con el color que le corresponde por profundidad
+    // Encima, pintamos la pestaï¿½a con el color que le corresponde por profundidad
     if ( runCount > 1 ) {
       g2D.setColor( hazAlfa( getRunForTab( tabPane.getTabCount(), tabIndex)-1));
       g2D.fill( shape);
@@ -221,11 +234,11 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
       g2D.fill( shape);
     }
     
-    // Y despues, le damos un sombreado que hace que parezca curbada (¿A que duele ver algunas faltas de ortografia?)
+    // Y despues, le damos un sombreado que hace que parezca curbada (ï¿½A que duele ver algunas faltas de ortografia?)
     g2D.setPaint( gradientShadow);
     g2D.fill( shape);
     
-    // Y al final le pintamos un bordecito para definir mejor la pestaña
+    // Y al final le pintamos un bordecito para definir mejor la pestaï¿½a
     g2D.setColor( NimRODUtils.getSombra());
     g2D.draw( shape);
     
@@ -233,7 +246,7 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
   }
 
    /**
-    * Este metodo devuelve un tamaño mas grande de lo necesario, haciendoer hueco para
+    * Este metodo devuelve un tamaï¿½o mas grande de lo necesario, haciendoer hueco para
     * la decoracion.
     */
   protected int calculateTabWidth( int tabPlacement, int tabIndex, FontMetrics metrics) {
@@ -241,7 +254,7 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
   }
 
    /**
-    * Este metodo devuelve un tamaño mas grande de lo necesario, haciendo el hueco para
+    * Este metodo devuelve un tamaï¿½o mas grande de lo necesario, haciendo el hueco para
     * la decoracion.
     */
   protected int calculateTabHeight( int tabPlacement, int tabIndex, int fontHeight) {
@@ -261,7 +274,7 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
   }
 
    /**
-    * Este metodo dibuja una señal amarilla en la solapa que tiene el foco
+    * Este metodo dibuja una seï¿½al amarilla en la solapa que tiene el foco
     */
   protected void paintFocusIndicator( Graphics g, int tabPlacement,
                                       Rectangle[] rects, int tabIndex,
@@ -308,7 +321,7 @@ public class NimRODTabbedPaneUI extends BasicTabbedPaneUI {
       rollover = tabForCoordinate( tabPane, e.getX(), e.getY());
       
       // Esto es para limitar el numero de veces que se redibuja el panel
-      // Un boton se puede pintar muchas veces porque es pequeño y gasta poco, pero esto es un panel que puede tener cienes y cienes de controles,
+      // Un boton se puede pintar muchas veces porque es pequeï¿½o y gasta poco, pero esto es un panel que puede tener cienes y cienes de controles,
       // asi que cada vez que se repinta gasta lo suyo 
       if ( (rollover == -1) && (antRollover == rollover) ) {
         return;

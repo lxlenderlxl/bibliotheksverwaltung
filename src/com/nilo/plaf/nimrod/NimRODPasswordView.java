@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez 
@@ -31,10 +31,18 @@
  
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 
-import javax.swing.*;
-import javax.swing.text.*;
+import javax.swing.JPasswordField;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Element;
+import javax.swing.text.PasswordView;
+import javax.swing.text.Position;
 
 
 public class NimRODPasswordView extends PasswordView {

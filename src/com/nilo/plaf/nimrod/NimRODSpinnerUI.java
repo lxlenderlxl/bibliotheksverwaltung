@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -23,12 +23,20 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.Border;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicSpinnerUI;
 
 public class NimRODSpinnerUI extends BasicSpinnerUI {
   protected boolean oldOpaque;
@@ -114,7 +122,7 @@ public class NimRODSpinnerUI extends BasicSpinnerUI {
     }
     
     // Esto esta aqui gracias a Christopher J. Huey, que no solo hizo pruebas y mas pruebas, hasta un nivel al que ni yo
-    // ni nadie habia llegado, ¡¡si no que encima el tio va y manda parches!! La verdad es que no se como agradecer 
+    // ni nadie habia llegado, ï¿½ï¿½si no que encima el tio va y manda parches!! La verdad es que no se como agradecer 
     // estas cosas...
     // This is a fix from Christopher J. Huey 
     public boolean isFocusTraversable() {

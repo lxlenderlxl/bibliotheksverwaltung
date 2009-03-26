@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -25,14 +25,35 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 
-import javax.swing.*;
+import javax.swing.ButtonModel;
+import javax.swing.CellRendererPane;
+import javax.swing.ComboBoxEditor;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalComboBoxButton;
+import javax.swing.plaf.metal.MetalComboBoxEditor;
+import javax.swing.plaf.metal.MetalComboBoxUI;
 
 /**
  * 
@@ -138,7 +159,7 @@ public class NimRODComboBoxUI extends MetalComboBoxUI {
      * un boton o un cuadro de texto. No se puede hacer en el constructor porque cuando se construye el 
      * objeto aun no se sabe si es editable (se muestra un simple boton con bordes de boton) o no 
      * editable (todo es un boton, con bordes de textfield). Si es editable, pues borde de boton y a
-     * correr, y si no, borde de editor y se ajustan algunas cosillas. Pero sobre todo, si es pequeño
+     * correr, y si no, borde de editor y se ajustan algunas cosillas. Pero sobre todo, si es pequeï¿½o
      * se pone un borde que ocupa menos espacio. Es principalmente para que se pinten bien dentro de las
      * tablas
      * 
@@ -314,7 +335,7 @@ public class NimRODComboBoxUI extends MetalComboBoxUI {
 
         comboIcon.paintIcon( this, g, iconLeft, iconTop );
 
-        // Se añade esto para pintar un limite al boton de despliegue
+        // Se aï¿½ade esto para pintar un limite al boton de despliegue
         if ( !iconOnly ) {
           g.setColor( NimRODUtils.getSombra());
           g.drawLine( iconLeft-5,6, iconLeft-5,getHeight()-6);

@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -29,9 +29,13 @@
  
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
-import javax.swing.*;
+import javax.swing.ButtonModel;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicMenuUI;
 

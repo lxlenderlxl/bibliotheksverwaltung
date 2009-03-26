@@ -6,7 +6,6 @@ package bibliotheksverwaltung.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 

@@ -14,12 +14,11 @@ package bibliotheksverwaltung.view;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
-
-import javax.swing.JFrame;
 
 /**
  *

@@ -10,14 +10,15 @@
  */
 package bibliotheksverwaltung.view;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JFrame;
+
 import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.util.UpdateInfo;
-import java.util.Observable;
-import java.util.Observer;
-import javax.swing.JFrame;
 
 /**
  *

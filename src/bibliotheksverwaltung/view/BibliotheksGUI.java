@@ -10,15 +10,6 @@
  */
 package bibliotheksverwaltung.view;
 
-import bibliotheksverwaltung.util.InfoBoxTimer;
-import bibliotheksverwaltung.util.LocalEnvironment;
-import bibliotheksverwaltung.util.Message;
-import bibliotheksverwaltung.util.UpdateInfo;
-import bibliotheksverwaltung.controller.AddActionListener;
-import bibliotheksverwaltung.controller.ReportActionListener;
-import bibliotheksverwaltung.controller.SearchActionListener;
-import bibliotheksverwaltung.model.logic.*;
-
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -28,6 +19,15 @@ import java.util.Timer;
 
 import javax.swing.JPanel;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import bibliotheksverwaltung.controller.AddActionListener;
+import bibliotheksverwaltung.controller.ReportActionListener;
+import bibliotheksverwaltung.controller.SearchActionListener;
+import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
+import bibliotheksverwaltung.util.InfoBoxTimer;
+import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.Message;
+import bibliotheksverwaltung.util.UpdateInfo;
 
 /**
  *

@@ -1,6 +1,5 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.Observer;
 
 public interface Verwaltbar {
 

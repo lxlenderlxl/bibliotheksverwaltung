@@ -1,7 +1,5 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.Observable;
-
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.util.LocalEnvironment;

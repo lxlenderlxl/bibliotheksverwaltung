@@ -4,8 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.domain.Ausleiher;

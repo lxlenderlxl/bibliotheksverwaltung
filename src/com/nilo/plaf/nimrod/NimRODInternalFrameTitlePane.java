@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -30,14 +30,24 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.Icon;
+import javax.swing.JInternalFrame;
+import javax.swing.UIManager;
+import javax.swing.event.MouseInputAdapter;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import javax.swing.plaf.metal.MetalInternalFrameTitlePane;
 
 public class NimRODInternalFrameTitlePane extends MetalInternalFrameTitlePane {
   private static final long serialVersionUID = 3569530640592496710L;

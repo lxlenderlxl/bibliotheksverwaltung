@@ -1,7 +1,5 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.Observable;
-
 import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -31,7 +29,7 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void add(Object objekt) {
-		// Konfigurationen können vorerst nicht vom Programm aus hinzugefügt werden.
+		// Konfigurationen kï¿½nnen vorerst nicht vom Programm aus hinzugefï¿½gt werden.
 	}
 
 	/* (non-Javadoc)
@@ -39,6 +37,6 @@ public class KonfigurationsVerwalter implements Verwaltbar {
 	 */
 	@Override
 	public void delete(Object objekt) {
-		// Konfigurationen können voerst nicht im Programm geändert werden.
+		// Konfigurationen kï¿½nnen voerst nicht im Programm geï¿½ndert werden.
 	}
 }

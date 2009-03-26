@@ -4,10 +4,10 @@ import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 
-import com.mysql.jdbc.Blob;
-
 import bibliotheksverwaltung.model.daos.dao.MySQLZustandDAO;
 import bibliotheksverwaltung.util.LocalEnvironment;
+
+import com.mysql.jdbc.Blob;
 
 public class Zustand
 {

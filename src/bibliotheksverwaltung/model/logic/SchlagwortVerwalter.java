@@ -1,7 +1,5 @@
 package bibliotheksverwaltung.model.logic;
 
-import java.util.Observable;
-
 import bibliotheksverwaltung.model.daos.dao.MySQLBeinhaltetDAO;
 import bibliotheksverwaltung.model.daos.dao.MySQLSchlagwortDAO;
 import bibliotheksverwaltung.model.domain.Medium;
@@ -34,7 +32,7 @@ public class SchlagwortVerwalter implements Verwaltbar {
 	}
 
 	/**
-	 * Fügt ein Schlagwort dem Bestand hinzu.
+	 * Fï¿½gt ein Schlagwort dem Bestand hinzu.
 	 * @param objekt Das Schlagwort
 	 */
 	public void add(Object objekt) {

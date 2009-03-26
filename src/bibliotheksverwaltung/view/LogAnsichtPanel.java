@@ -10,8 +10,13 @@
  */
 package bibliotheksverwaltung.view;
 
-import bibliotheksverwaltung.model.domain.*;
 import javax.swing.JFrame;
+
+import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.model.domain.Log;
+import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.model.domain.Vorgang;
 
 /**
  *

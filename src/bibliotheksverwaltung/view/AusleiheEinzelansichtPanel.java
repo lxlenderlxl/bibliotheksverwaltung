@@ -13,16 +13,14 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JFrame;
 
-import bibliotheksverwaltung.controller.WarenKorbHinzuActionListener;
 import bibliotheksverwaltung.controller.BuchLoeschenListener;
 import bibliotheksverwaltung.controller.BuchVerlaengernListener;
 import bibliotheksverwaltung.controller.BuchZurueckListener;
+import bibliotheksverwaltung.controller.WarenKorbHinzuActionListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.domain.Zustand;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
 
 /**
  *

@@ -3,29 +3,18 @@
  */
 package bibliotheksverwaltung.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
 import bibliotheksverwaltung.controller.PersonAnsichtMouseListener;
-import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.model.logic.MedienVerwalter;
-import bibliotheksverwaltung.model.logic.SuchVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
 
 public class OutputArea extends JPanel implements Observer
@@ -59,7 +48,7 @@ public class OutputArea extends JPanel implements Observer
 				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
 				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
-					this.add(new JLabel("Ihre Mediensuche lieferte leider keine Übereinstimmungen"));
+					this.add(new JLabel("Ihre Mediensuche lieferte leider keine ï¿½bereinstimmungen"));
 				}
 				else
 				{
@@ -93,7 +82,7 @@ public class OutputArea extends JPanel implements Observer
 				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
 				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
-					this.add(new JLabel("Ihre Ausleihersuche lieferte leider keine Übereinstimmungen"));
+					this.add(new JLabel("Ihre Ausleihersuche lieferte leider keine ï¿½bereinstimmungen"));
 				}
 				else
 				{
