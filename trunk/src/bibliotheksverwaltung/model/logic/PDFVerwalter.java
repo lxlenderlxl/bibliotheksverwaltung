@@ -3,12 +3,14 @@
  */
 package bibliotheksverwaltung.model.logic;
 
-import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import bibliotheksverwaltung.model.domain.Ausleiher;
+import bibliotheksverwaltung.model.domain.Exemplar;
+import bibliotheksverwaltung.model.domain.Mahnliste;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
@@ -17,13 +19,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
-
 import com.lowagie.text.pdf.PdfWriter;
-
-import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Mahnliste;
-import bibliotheksverwaltung.model.domain.Medium;
 
 public class PDFVerwalter {
 
