@@ -8,17 +8,20 @@
  *
  * Created on 26.03.2009, 18:14:52
  */
-
 package bibliotheksverwaltung.view;
 
+import bibliotheksverwaltung.controller.LoginActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import bibliotheksverwaltung.controller.LoginActionListener;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.model.logic.LoginVerwalter;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -27,15 +30,19 @@ import bibliotheksverwaltung.util.UpdateInfo;
 @SuppressWarnings("serial")
 public class LoginGUI extends javax.swing.JFrame implements Observer {
 
-	private LoginVerwalter verwalter = new LoginVerwalter();
+    private LoginVerwalter verwalter = new LoginVerwalter();
 
-	/** Creates new form LoginPanel */
-	public LoginGUI() {
-		initComponents();
-		errorLabel.setVisible(false);
-		this.loginButton.addActionListener(new LoginActionListener(verwalter, nameField, passwordField));
-		verwalter.addObserver(this);
-	}
+    /** Creates new form LoginPanel */
+    public LoginGUI() {
+        try {
+            javax.swing.UIManager.setLookAndFeel(new com.nilo.plaf.nimrod.NimRODLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            LocalEnvironment.log(e.getMessage(), this);
+        }
+        initComponents();
+        this.loginButton.addActionListener(new LoginActionListener(verwalter, nameField, passwordField));
+        verwalter.addObserver(this);
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -46,20 +53,26 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        errorLabel = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
+        infoLabel = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
+        loginButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bibliotheksverwaltung");
+        setResizable(false);
+        setUndecorated(true);
 
-        errorLabel.setBackground(new java.awt.Color(252, 98, 98));
-        errorLabel.setFont(new java.awt.Font("Arial", 1, 14));
-        errorLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/warning_48.png"))); // NOI18N
-        errorLabel.setText("<html>Zugriff verweigert.<br />Prüfen Sie die Eingaben.");
-        errorLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-        errorLabel.setOpaque(true);
+        loginPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 3, true));
+
+        infoLabel.setBackground(new java.awt.Color(173, 250, 102));
+        infoLabel.setFont(new java.awt.Font("Arial", 0, 14));
+        infoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/comment_48.png"))); // NOI18N
+        infoLabel.setText("Herzlich Willkommen.");
+        infoLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 0), 2, true));
+        infoLabel.setOpaque(true);
 
         nameField.setFont(new java.awt.Font("Arial", 1, 18));
         nameField.setForeground(new java.awt.Color(204, 204, 204));
@@ -85,33 +98,59 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
             }
         });
 
-        loginButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Arial", 1, 18));
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/lock_48.png"))); // NOI18N
         loginButton.setText("Einloggen");
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         loginButton.setIconTextGap(10);
+        loginButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        loginButton1.setFont(new java.awt.Font("Arial", 1, 18));
+        loginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_48.png"))); // NOI18N
+        loginButton1.setContentAreaFilled(false);
+        loginButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        loginButton1.setIconTextGap(10);
+        loginButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        loginButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(loginButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loginButton1))
+                    .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
                 .addContainerGap())
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(infoLabel)
+                .addGap(18, 18, 18)
                 .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(loginButton)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -119,21 +158,11 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(errorLabel)
-                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(errorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -167,41 +196,62 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
         }
 }//GEN-LAST:event_passwordFieldFocusLost
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        //this.setPreferredSize(new Dimension(249, 231));
+        infoLabel.setVisible(true);
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_loginButton1ActionPerformed
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
-                new LoginGUI().setVisible(true);
+                LoginGUI gui = new LoginGUI();
+                Dimension ss = Toolkit.getDefaultToolkit().getScreenSize();
+                gui.setLocation(ss.width / 2 - gui.getWidth() / 2, ss.height / 2 - gui.getHeight() / 2);
+                gui.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JButton loginButton;
+    private javax.swing.JButton loginButton1;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField passwordField;
     // End of variables declaration//GEN-END:variables
 
     /* (non-Javadoc)
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 */
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		UpdateInfo updateInfo = (UpdateInfo) arg1;
-		if (updateInfo.holeAenderung().equals("Login"))
-			if (updateInfo.holeAenderungOk()) {
-				if (this.verwalter.isLoggedIn()) {
-					this.dispose();
-					LocalEnvironment.setAnwender(new Anwender(nameField.getText()));
-					new BibliotheksGUI();
-				}
-				else
-					errorLabel.setVisible(true);
-			}
-	}
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    @Override
+    public void update(Observable arg0, Object arg1) {
+        UpdateInfo updateInfo = (UpdateInfo) arg1;
+        if (updateInfo.holeAenderung().equals("Login")) {
+            if (updateInfo.holeAenderungOk()) {
+                if (this.verwalter.isLoggedIn()) {
+                    this.dispose();
+                    LocalEnvironment.setAnwender(new Anwender(nameField.getText()));
+                    BibliotheksGUI gui = new BibliotheksGUI();
+                    Dimension ss = Toolkit.getDefaultToolkit().getScreenSize();
+                    gui.setLocation(ss.width / 2 - gui.getWidth() / 2, ss.height / 2 - gui.getHeight() / 2);
+                    gui.setVisible(true);
+                } else {
+                    infoLabel.setText("<html>Zugriff verweigert.<br />Pruefen Sie Ihre Eingabe.");
+                    infoLabel.setBackground(new java.awt.Color(252, 98, 98));
+                    infoLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+                    infoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/warning_48.png")));
+                }
+            }
 
+        }
+    }
 }
