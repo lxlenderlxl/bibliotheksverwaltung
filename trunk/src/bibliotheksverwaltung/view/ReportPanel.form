@@ -28,7 +28,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="mahnBriefeButton" min="-2" max="-2" attributes="1"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="mahnListeButton" pref="263" max="32767" attributes="1"/>
+                      <Component id="mahnButton1" pref="263" max="32767" attributes="1"/>
                   </Group>
               </Group>
               <EmptySpace pref="37" max="-2" attributes="0"/>
@@ -39,11 +39,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-              <Component id="statistikPanel" min="-2" pref="281" max="-2" attributes="0"/>
+              <Component id="statistikPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mahnBriefeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="mahnListeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mahnButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="167" max="32767" attributes="0"/>
           </Group>
@@ -85,52 +85,44 @@
                       <Component id="ausleihenGesamtField" alignment="1" max="32767" attributes="1"/>
                       <Component id="buecherField" alignment="0" pref="85" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
-                  <Component id="buchzustaendePanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="227" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="buecherLabel" alignment="3" max="32767" attributes="1"/>
-                              <Component id="buecherField" alignment="3" max="32767" attributes="1"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="exemplareLabel" alignment="3" min="-2" max="-2" attributes="1"/>
-                              <Component id="exemplareField" alignment="3" max="32767" attributes="1"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="personenField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="personenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="leihenLabel" alignment="3" min="-2" pref="24" max="-2" attributes="1"/>
-                              <Component id="leihenField" alignment="3" min="-2" max="-2" attributes="1"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ausleiherLabel" alignment="3" min="-2" pref="25" max="-2" attributes="1"/>
-                              <Component id="ausleiherField" alignment="3" min="-2" max="-2" attributes="1"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ausleihenGesamtLabel" alignment="3" min="-2" pref="32" max="-2" attributes="1"/>
-                              <Component id="ausleihenGesamtField" alignment="3" min="-2" max="-2" attributes="1"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="buchzustaendePanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buecherLabel" alignment="3" max="32767" attributes="1"/>
+                      <Component id="buecherField" alignment="3" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="exemplareLabel" alignment="3" min="-2" max="-2" attributes="1"/>
+                      <Component id="exemplareField" alignment="3" max="32767" attributes="1"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="personenField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="personenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="leihenLabel" alignment="3" min="-2" pref="24" max="-2" attributes="1"/>
+                      <Component id="leihenField" alignment="3" min="-2" max="-2" attributes="1"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ausleiherLabel" alignment="3" min="-2" pref="25" max="-2" attributes="1"/>
+                      <Component id="ausleiherField" alignment="3" min="-2" max="-2" attributes="1"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ausleihenGesamtLabel" alignment="3" min="-2" pref="32" max="-2" attributes="1"/>
+                      <Component id="ausleihenGesamtField" alignment="3" min="-2" max="-2" attributes="1"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -238,41 +230,6 @@
             <Property name="horizontalAlignment" type="int" value="11"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="buchzustaendePanel">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Buchzustaende">
-                  <Font PropertyName="font" name="Arial" size="12" style="0"/>
-                  <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
-                </TitledBorder>
-              </Border>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[186, 186]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[186, 186]"/>
-            </Property>
-            <Property name="opaque" type="boolean" value="false"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[186, 186]"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="170" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="155" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="mahnBriefeButton">
@@ -290,7 +247,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mahnBriefeButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="mahnListeButton">
+    <Component class="javax.swing.JButton" name="mahnButton1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
@@ -302,7 +259,7 @@
         <Property name="horizontalAlignment" type="int" value="10"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mahnListeButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mahnButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
