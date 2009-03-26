@@ -53,7 +53,7 @@ public class MySQLStatistikDAO implements StatistikDAO {
 	/**
 	 * @return the eingetrageneBuecher
 	 */
-	private int getEingetrageneBuecher() {
+	public int getEingetrageneBuecher() {
 		return executeSQL("select count(*) from medium");
 	}
 
@@ -61,7 +61,7 @@ public class MySQLStatistikDAO implements StatistikDAO {
 	/**
 	 * @return the eingetragendeExemplare
 	 */
-	private int getEingetragendeExemplare() {
+	public int getEingetragendeExemplare() {
 		return executeSQL("select count(*) from exemplar");
 	}
 
@@ -69,7 +69,7 @@ public class MySQLStatistikDAO implements StatistikDAO {
 	/**
 	 * @return the eingetragenePersonen
 	 */
-	private int getEingetragenePersonen() {
+	public int getEingetragenePersonen() {
 		return executeSQL("select count(*) from ausleiher");
 	}
 
@@ -77,7 +77,7 @@ public class MySQLStatistikDAO implements StatistikDAO {
 	/**
 	 * @return the verliehenBuecher
 	 */
-	private int getVerliehenBuecher() {
+	public int getVerliehenBuecher() {
 		return executeSQL("select count(*) from exemplar where AUSLEIHERID is not null");
 	}
 
@@ -85,7 +85,7 @@ public class MySQLStatistikDAO implements StatistikDAO {
 	/**
 	 * @return the leihendePersonen
 	 */
-	private int getLeihendePersonen() {
+	public int getLeihendePersonen() {
 		return executeSQL("select count(distinct AUSLEIHERID) from exemplar where AUSLEIHERID is not null");
 	}
 
@@ -93,7 +93,7 @@ public class MySQLStatistikDAO implements StatistikDAO {
 	/**
 	 * @return the bisherigeAusleihen
 	 */
-	private int getBisherigeAusleihen() {
+	public int getBisherigeAusleihen() {
 		return executeSQL("SELECT count(*) from log where VORGANGSID = 1");
 	}
 }

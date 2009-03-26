@@ -69,7 +69,7 @@ public class Mahnliste {
 		return sb.toString();
 	}
 	public static void main (String args[]) {
-		Mahnliste m = new Mahnliste(2);
+		Mahnliste m = new Mahnliste(1);
 		System.out.println(m.toString());
 	}
 }
