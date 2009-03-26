@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
-
+/**
+ * @author Max Beier, Sven Blaurock, Sven Terzyk
+ */
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -11,15 +13,31 @@ import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.util.UpdateInfo;
-
+/**
+ * Diese Klasse Realisiert ein AusleihVerwalter. Jeder Ausleihverwalter besteht aus einem ausleiher, einem updateInfo
+ * und einem Liste von Exemplaren.
+ */
 public class AusleiherVerwalter extends Observable
 {
+	/**
+	 * Greif auf die AusleihDao.
+	 */
 	private MySQLAusleiherDAO ausleiherDAO = new MySQLAusleiherDAO();
+	/**
+	 * Ausleiher
+	 */
 	private Ausleiher ausleiher = null;
+	/**
+	 * Update
+	 */
 	private UpdateInfo updateInfo = new UpdateInfo();
+	/**
+	 * Liste von Exemplaren
+	 */
 	private ArrayList<Exemplar> ausgelieheneExemplare = new ArrayList<Exemplar>();
 
 	/**
+	 * Gibt die Ausleiher zurueck.
 	 * @return the ausleiher
 	 */
 	public Ausleiher getAusleiher()
@@ -34,17 +52,23 @@ public class AusleiherVerwalter extends Observable
 	{
 		this.ausleiher = ausleiher;
 	}
-
+	//Konstruktor
 	public AusleiherVerwalter()
 	{
 
 	}
 
+	/**
+	 * Setzt Ausleiher.
+	 * @param derAusleiher
+	 */
 	public AusleiherVerwalter(Ausleiher derAusleiher)
 	{
 		this.ausleiher = derAusleiher;
 	}
-
+	/**
+	 * fügt ein Ausleiher hinzu. Mit ausleiher. Mit einem VorName, NachName,Strasse, Hausnummer, Plz, Stadt, Aktiv.
+	 */
 	public void add()
 	{
 		try
@@ -63,7 +87,9 @@ public class AusleiherVerwalter extends Observable
 
 		}
 	}
-
+	/**
+	 * Löscht einen Anwender.
+	 */
 	public void delete()
 	{
 		try
@@ -81,7 +107,11 @@ public class AusleiherVerwalter extends Observable
 			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
-
+	
+	/**
+	 * Wiederherstellen von einem Ausleiher.
+	 * @param objekt
+	 */
 	public void unDelete(Object objekt)
 	{
 		try
@@ -94,7 +124,9 @@ public class AusleiherVerwalter extends Observable
 
 		}
 	}
-
+	/**
+	 * Update
+	 */
 	public void update()
 	{
 		try
@@ -114,6 +146,9 @@ public class AusleiherVerwalter extends Observable
 
 	}
 	
+	/**
+	 * Erzeugt Ausgeliehene Exemplare
+	 */
 	public void erzeugeAusgelieheneExemplare()
 	{
 		updateInfo.setzeAenderung("PersonenExemplareErzeugt");
@@ -122,11 +157,18 @@ public class AusleiherVerwalter extends Observable
 		notifyObservers(updateInfo);
 	}
 	
+	/**
+	 * Setzt eine Liste von Exemplaren.
+	 * @return
+	 */
 	public ArrayList<Exemplar> getAusgelieheneExemplare()
 	{
 		return this.ausgelieheneExemplare;
 	}
-	
+	/**
+	 * Gibt die Anzahl der Ausgeliehenen Exemplare zurück.
+	 * @return ausgelieheneExemplare
+	 */
 	public int getAnzahlAusgeliehenerExemplare()
 	{
 		return ausgelieheneExemplare.size();
