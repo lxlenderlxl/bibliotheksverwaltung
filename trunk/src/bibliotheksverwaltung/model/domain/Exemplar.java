@@ -10,7 +10,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
  * eine rueckgabeDatum und wie oft das Exemplar schon Verlängert wurde.
  *  
  */
-public class Exemplar
+public class Exemplar implements Schreibbar
 {
 	/**
 	 * ID
@@ -205,5 +205,16 @@ public class Exemplar
 		return ausleihbar;
 	}
 
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.domain.Schreibbar#getBeschreibung()
+	 */
+	@Override
+	public String getBeschreibung()
+	{
+		String rueck = "";
+		rueck += "<tr>" + new Medium(this.mediumId).getTitel() + "</tr>";
+		rueck += "<tr><td>" + this.id + "</td><td>" + new Ausleiher(this.ausleiherID).getJoinedName() + "</td><td>" + new Zustand(this.zustandsId).getBeschreibung() + "</td></tr>";
+		return rueck;
+	}
 
 }

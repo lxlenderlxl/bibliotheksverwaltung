@@ -4,9 +4,12 @@
 package bibliotheksverwaltung.controller;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+
+import com.lowagie.text.DocumentException;
 
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
@@ -22,13 +25,6 @@ public class DatenDruckenActionListener implements ActionListener
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent event) {
-//		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
-//		{
-//			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-//			verwalter.getHistorienVerwalter().erzeugeLogs(this.verwalter.getMedienVerwalter().getMedium());
-//			verwalter.holeUpdateInfo().setzeAenderungOk(true);
-//			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
-//		}
-		
+		this.verwalter.getDruckVerwalter().druckTest();		
 	}
 }
