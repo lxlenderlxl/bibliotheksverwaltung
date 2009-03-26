@@ -20,6 +20,9 @@ import java.util.Observer;
 
 import javax.swing.BorderFactory;
 
+import bibliotheksverwaltung.controller.BuchDatenBearbeitenActionListener;
+import bibliotheksverwaltung.controller.PersonDatenBearbeitenActionListener;
+import bibliotheksverwaltung.controller.TestListener;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.UpdateInfo;
@@ -38,9 +41,10 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		this.verwalter = derVerwalter;
 		this.personenansichtPanel.add(new PersonenAnsicht(this.verwalter));		
 		erzeugeAusleihAnsichten();
+		this.editButton.addActionListener(new PersonDatenBearbeitenActionListener(verwalter));
 		this.verwalter.addObserver(this);
-    this.verwalter.getMedienVerwalter().addObserver(this);
-    this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);
+    this.verwalter.getAusleiherVerwalter().addObserver(this);
+    this.printButton.addMouseListener(new TestListener(this.verwalter.getAusleiherVerwalter().getAusleiher()));
 	}
 
 	private void erzeugeAusleihAnsichten() {
@@ -190,47 +194,26 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 
 	public void update(Observable o, Object arg) {
 		UpdateInfo updateInfo = (UpdateInfo) arg;
-		if (updateInfo.holeAenderung().equals("ExemplarHinzu"))
+		if (updateInfo.holeAenderung().equals("PersonDatenBearbeiten"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
 				this.ausleihPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+				this.ausleihPanel.setPreferredSize(new Dimension(573,258));
+				PersonHinzufuegenPanel hinzuPanel = new PersonHinzufuegenPanel(this.verwalter,true);
+				hinzuPanel.setSize(this.ausleihPanel.getSize());
+				this.ausleihPanel.add(hinzuPanel);
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("ExemplarZurueck"))
+		else if (updateInfo.holeAenderung().equals("PersonDatenBearbeitet"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
 				this.ausleihPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
+				this.verwalter.getAusleiherVerwalter().erzeugeAusgelieheneExemplare();
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("ExemplarVerlaengern"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.ausleihPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("Abbrechen"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.ausleihPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("PersonBearbeiten"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.ausleihPanel.removeAll();
-				this.verwalter.getMedienVerwalter().erzeugeExemplare();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("ExemplareErzeugt"))
+		else if (updateInfo.holeAenderung().equals("PersonenExemplareErzeugt"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
@@ -238,26 +221,20 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 				this.erzeugeAusleihAnsichten();
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("DatenBearbeiten"))
+		else if (updateInfo.holeAenderung().equals("ExemplarZurueck"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
 				this.ausleihPanel.removeAll();
-				this.ausleihPanel.setPreferredSize(new Dimension(573,258));
-				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
-				hinzuPanel.setSize(this.ausleihPanel.getSize());
-				this.ausleihPanel.add(hinzuPanel);
+				this.verwalter.getAusleiherVerwalter().erzeugeAusgelieheneExemplare();
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("HistorieAnzeigen"))
+		else if (updateInfo.holeAenderung().equals("ExemplarVerlaengern"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{
 				this.ausleihPanel.removeAll();
-				this.ausleihPanel.setPreferredSize(new Dimension(573,258));
-				//  				BuchHinzufuegenPanel hinzuPanel = new BuchHinzufuegenPanel(this.verwalter,true);
-				//  				hinzuPanel.setSize(this.exemplarePanel.getSize());
-				//  				this.exemplarePanel.add(hinzuPanel);
+				this.verwalter.getAusleiherVerwalter().erzeugeAusgelieheneExemplare();
 			}
 		}
 		this.repaint();

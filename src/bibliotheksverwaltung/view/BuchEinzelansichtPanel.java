@@ -23,7 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
-import bibliotheksverwaltung.controller.DatenBearbeitenActionListener;
+import bibliotheksverwaltung.controller.BuchDatenBearbeitenActionListener;
 import bibliotheksverwaltung.controller.ExemplarHinzuListener;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
@@ -50,7 +50,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
         this.buchansichtPanel.add(new BuchAnsicht(this.verwalter));
         this.erzeugeExemplarAnsichten();
         this.addButton.addActionListener(new ExemplarHinzuListener(verwalter));
-        this.editButton.addActionListener(new DatenBearbeitenActionListener(verwalter));
+        this.editButton.addActionListener(new BuchDatenBearbeitenActionListener(verwalter));
         this.verwalter.addObserver(this);
         this.verwalter.getMedienVerwalter().addObserver(this);
         this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);

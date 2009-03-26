@@ -99,6 +99,7 @@ public class AusleiherVerwalter extends Observable
 
 	public void update()
 	{
+		System.out.println(this.ausleiher.getJoinedName());
 		try
 		{
 			ausleiherDAO.update(
@@ -118,7 +119,10 @@ public class AusleiherVerwalter extends Observable
 	
 	public void erzeugeAusgelieheneExemplare()
 	{
+		updateInfo.setzeAenderung("PersonenExemplareErzeugt");
 		this.ausgelieheneExemplare = new MySQLExemplarDAO().getExemplareByAusleiher(this.ausleiher.getId());
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 	
 	public ArrayList<Exemplar> getAusgelieheneExemplare()

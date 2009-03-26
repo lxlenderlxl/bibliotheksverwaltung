@@ -194,6 +194,13 @@ public class BibliotheksVerwalter extends Observable {
 		setChanged();
 		notifyObservers(updateInfo);
 	}
+	
+	public void personBearbeiten () {
+		updateInfo.setzeAenderung("PersonDatenBearbeitet");
+		this.ausleiherVerwalter.update();
+		setChanged();
+		notifyObservers(updateInfo);
+	}
 
 	public void buchHinzufuegen() {
 		updateInfo.setzeAenderung("ExemplarHinzu");

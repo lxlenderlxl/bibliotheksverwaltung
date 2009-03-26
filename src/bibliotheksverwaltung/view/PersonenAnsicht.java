@@ -60,8 +60,7 @@ public class PersonenAnsicht extends ImagePanel implements Observer {
     	break;
 		case Message.ROT:
     	statusLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/circle_red_small.png")));
-    	break;
-    
+    	break;    
 		}
 	}
 
@@ -142,12 +141,31 @@ public class PersonenAnsicht extends ImagePanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		UpdateInfo updateInfo = (UpdateInfo) arg;
-		this.removeAll();
-		if (updateInfo.holeAenderung().equals("DatenBearbeiten")) {
-			if (updateInfo.holeAenderungOk()) {
-				//TODO was auch immer @Sven
+		if (updateInfo.holeAenderung().equals("PersonDatenBearbeitet"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.ausleiher = this.verwalter.getAusleiherVerwalter().getAusleiher();
+				this.setzeInformation();
+				this.setzeStatus();
 			}
 		}
+		else if (updateInfo.holeAenderung().equals("ExemplarAusleihen"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.setzeStatus();
+			}
+		}
+		else if (updateInfo.holeAenderung().equals("ExemplarZurueck"))
+		{
+			if (updateInfo.holeAenderungOk())
+			{
+				this.setzeStatus();
+			}
+		}
+		this.repaint();
+		this.revalidate();
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
