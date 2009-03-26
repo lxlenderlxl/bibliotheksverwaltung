@@ -29,7 +29,7 @@ public class WarenKorbVerwalter extends Observable
 
 	public void fuegeExemplarHinzu(Exemplar dasExemplar)
 	{
-		updateInfo.setzeAenderung("BuchKisteHinzu");
+		updateInfo.setzeAenderung("AktualisiereWarenkorb");
 		if (!this.warenKorb.contains(dasExemplar))
 			this.warenKorb.add(dasExemplar);
 		else
@@ -40,7 +40,10 @@ public class WarenKorbVerwalter extends Observable
 
 	public void entferneExemplar(Exemplar dasExemplar)
 	{
+		updateInfo.setzeAenderung("AktualisiereWarenkorb");
 		this.warenKorb.remove(dasExemplar);
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 	
 	/**
