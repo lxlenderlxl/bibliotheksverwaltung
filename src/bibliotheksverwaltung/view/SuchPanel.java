@@ -201,6 +201,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         searchField.setForeground(new java.awt.Color(204, 204, 204));
         searchField.setText("Suchworte eingeben...");
         resultArea.removeAll();
+        verwalter.autoNotify("WarenKorbReset");
         outputPanel.getVerticalScrollBar().hide();
         outputPanel.repaint();
 	}//GEN-LAST:event_clearButtonActionPerformed

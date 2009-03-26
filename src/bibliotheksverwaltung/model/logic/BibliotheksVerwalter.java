@@ -133,7 +133,6 @@ public class BibliotheksVerwalter extends Observable {
 	public void buecherAusleihen()
 	{
 		ArrayList<Exemplar> auszuleihendeEx = this.warenKorbVerwalter.getWarenKorb();
-		System.out.println(auszuleihendeEx.size());
 		for (int i = 0; i < auszuleihendeEx.size(); i++)
 		{
 			this.buchAusleihen(auszuleihendeEx.get(i));

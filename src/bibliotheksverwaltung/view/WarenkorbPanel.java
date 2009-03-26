@@ -41,9 +41,9 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 	public WarenkorbPanel(BibliotheksVerwalter derVerwalter) {
 		initComponents();
 		this.verwalter = derVerwalter;
+		this.verwalter.getAusleiherVerwalter().addObserver(this);
 		this.verwalter.addObserver(this);
 		this.verwalter.getMedienVerwalter().addObserver(this);
-		this.verwalter.getAusleiherVerwalter().addObserver(this);
 		this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);
 		this.verwalter.getWarenKorbVerwalter().addObserver(this);
 		this.ausleiherButton.addActionListener(new AusleiherWahlenActionListener(this.verwalter));
@@ -135,7 +135,7 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 				}
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("PersonenEinzelAnsicht"))
+		else if (updateInfo.holeAenderung().equals("BuchKistePerson") || updateInfo.holeAenderung().equals("PersonDatenBearbeitet"))
 		{
 			if (updateInfo.holeAenderungOk())
 			{

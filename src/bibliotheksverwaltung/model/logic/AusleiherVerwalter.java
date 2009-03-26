@@ -99,7 +99,6 @@ public class AusleiherVerwalter extends Observable
 
 	public void update()
 	{
-		System.out.println(this.ausleiher.getJoinedName());
 		try
 		{
 			ausleiherDAO.update(
