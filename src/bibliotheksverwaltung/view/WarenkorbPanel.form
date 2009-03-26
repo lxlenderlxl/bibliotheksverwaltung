@@ -34,7 +34,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="ausleiherButton" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-          <Component id="eintragePanel" alignment="0" pref="165" max="32767" attributes="0"/>
+          <Component id="eintraegePanel" alignment="0" pref="165" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -42,7 +42,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="ausleiherButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="eintragePanel" min="-2" pref="149" max="-2" attributes="0"/>
+              <Component id="eintraegePanel" min="-2" pref="149" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,7 +63,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="eintragePanel">
+    <Container class="javax.swing.JPanel" name="eintraegePanel">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>

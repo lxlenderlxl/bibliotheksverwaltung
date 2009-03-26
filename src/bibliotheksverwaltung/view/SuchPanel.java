@@ -92,24 +92,28 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 
         clearButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_32.png"))); // NOI18N
+        clearButton.setToolTipText("Suchfeld leeren");
         clearButton.setMaximumSize(new java.awt.Dimension(41, 41));
         clearButton.setMinimumSize(new java.awt.Dimension(41, 41));
         clearButton.setPreferredSize(new java.awt.Dimension(41, 41));
         clearButton.addActionListener(this);
 
-        searchBook.setFont(new java.awt.Font("Arial", 1, 14));
+        searchBook.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         searchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/Book 4.png"))); // NOI18N
+        searchBook.setToolTipText("Nach Büchern suchen (Enter)");
         searchBook.setMargin(new java.awt.Insets(2, 5, 2, 5));
         searchBook.setMaximumSize(new java.awt.Dimension(41, 41));
         searchBook.setMinimumSize(new java.awt.Dimension(41, 41));
         searchBook.setPreferredSize(new java.awt.Dimension(41, 41));
 
-        searchPerson.setFont(new java.awt.Font("Arial", 1, 14));
+        searchPerson.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         searchPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_32.png"))); // NOI18N
+        searchPerson.setToolTipText("Nach Personen suchen (Strg + Enter)");
         searchPerson.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
-        printButton.setFont(new java.awt.Font("Arial", 1, 14));
+        printButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/printer_32.png"))); // NOI18N
+        printButton.setToolTipText("Aktuelle Ausgabe drucken");
         printButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         searchField.setFont(new java.awt.Font("Arial", 1, 18));
