@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package bibliotheksverwaltung.model.logic;
 
@@ -42,7 +42,7 @@ public class PDFVerwalter {
 	private MahnlisteVerwalter mahnlistenVerwalter;
 
 	/**
-	 * 
+	 *
 	 */
 	public PDFVerwalter() {
 		mahnlistenVerwalter = new MahnlisteVerwalter();
@@ -52,14 +52,14 @@ public class PDFVerwalter {
 	 * Erstellt und Sichert den Serienbrief.
 	 * @throws DocumentException
 	 * @throws FileNotFoundException
-	 * 
+	 *
 	 */
 	public void saveMahnlisten() {
 		List<Mahnliste> l = new ArrayList<Mahnliste>();
 		l.addAll(mahnlistenVerwalter.getMahnlisten());
 
 		Document document = new Document();
-		
+
 		PdfWriter pdf = null;
 		try {
 			//
@@ -76,9 +76,9 @@ public class PDFVerwalter {
 		} catch (DocumentException e) {
 		} finally {
 			document.close();
-			
+
 			pdf.close();
-			LocalEnvironment.openDocument("C:\\Dokumente und Einstellungen\\Sven Terzyk\\workspace\\Bibliotheksverwaltung\\Serienbrief.pdf");
+			LocalEnvironment.openDocument(resultName);
 		}
 
 	}
@@ -87,7 +87,7 @@ public class PDFVerwalter {
 		l.addAll(mahnlistenVerwalter.getMahnlisten());
 
 		Document document = new Document();
-		
+
 		PdfWriter pdf = null;
 		try {
 			//
@@ -104,14 +104,14 @@ public class PDFVerwalter {
 		} catch (DocumentException e) {
 		} finally {
 			document.close();
-			
+
 			pdf.close();
-			LocalEnvironment.openDocument("C:\\Dokumente und Einstellungen\\Sven Terzyk\\workspace\\Bibliotheksverwaltung\\Mahnliste.pdf");
+			LocalEnvironment.openDocument(resultName2);
 		}
 
 	}
 	/**
-	 * 
+	 *
 	 * @param d
 	 * @param m
 	 * @throws DocumentException
@@ -143,7 +143,7 @@ public class PDFVerwalter {
 		d.add(Chunk.NEXTPAGE);
 	}
 	/**
-	 * 
+	 *
 	 * @param d
 	 * @param m
 	 * @throws DocumentException
@@ -156,17 +156,17 @@ public class PDFVerwalter {
 		Ausleiher a = m.getAusleiher();
 		// Text für den Ausleiher.
 		//
-		
+
 		Font headerueberschrift_font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
 		Chunk headerueberschrift = new Chunk("Bibliothek \n\n ", headerueberschrift_font);
 		d.add(headerueberschrift);
 		d.add(new Paragraph("\n"));
-		
+
 		PdfPTable table = new PdfPTable(4);
 		PdfPCell cell = new PdfPCell(new Paragraph("Mahnliste"));
 		cell.setColspan(4);
 		table.addCell(cell);
-		
+
 		//
 		//
 		for (Exemplar e : m.getExemplare()) {
@@ -180,15 +180,15 @@ public class PDFVerwalter {
 			d.add(table);
 		}
 		d.add(Chunk.NEXTPAGE);
-		
+
 	}
 
-	
+
 	public static void main(String args[]) {
 		PDFVerwalter a = new PDFVerwalter();
 		a.saveMahnlisten();
 		a.saveMahnlist2();
 	}
-	
+
 
 }
