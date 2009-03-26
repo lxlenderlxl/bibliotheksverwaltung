@@ -1,9 +1,13 @@
 package bibliotheksverwaltung.model.logic;
-
+/**
+ * @author Max Beier, Sven Terzyk, Sven Blaurock
+ */
 import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.util.LocalEnvironment;
-
+/**
+ * 
+ */
 public class KonfigurationsVerwalter implements Verwaltbar {
 
 	private MySQLKonfigurationDAO konfigurationsDAO = new MySQLKonfigurationDAO();

@@ -30,29 +30,49 @@ import com.lowagie.text.pdf.PdfWriter;
  */
 public class DruckVerwalter
 {
+	/**
+	 * Liste von Objekten
+	 */
 	private ArrayList<Object> liste = new ArrayList<Object>();
+	/**
+	 * Erstellt ein neues File
+	 */
 	private File temp = null;
-
+	//Konstruktor
 	public DruckVerwalter()
 	{
 
 	}
-
+	
+	/**
+	 * fuegt ein Objekt hinzu.
+	 * @param objekt
+	 */
 	public void fuegeObjektHinzu(Object objekt)
 	{
 		this.liste.add(objekt);
 	}
-
+	
+	/**
+	 * fuegt ein Objekt hinzu.
+	 * @param objekte
+	 */
 	public void fuegeObjekteHinzu(ArrayList objekte)
 	{
 		this.liste = objekte;
 	}
-
+	
+	/**
+	 * Löscht die Liste von Objekten
+	 */
 	public void clearAll()
 	{
 		this.liste.clear();
 	}
 
+	/**
+	 * Druckt die Liste
+	 */
 	public void drucke()
 	{
 		Document document = new Document();
@@ -91,6 +111,9 @@ public class DruckVerwalter
 		}
 	}
 
+	/**
+	 * Oeffnet das Dokument
+	 */
 	private void openDocument()
 	{
 		try
@@ -103,6 +126,10 @@ public class DruckVerwalter
 		}
 	}
 
+	/**
+	 * Erzeugt einen Text in html.
+	 * @return rueck.
+	 */
 	private String erzeugeText()
 	{
 		String rueck = "<html><body><table>";
@@ -120,6 +147,9 @@ public class DruckVerwalter
 		return rueck;
 	}
 
+	/**
+	 * Druck Test
+	 */
 	public void druckTest()
 	{
 		Document document = new Document();

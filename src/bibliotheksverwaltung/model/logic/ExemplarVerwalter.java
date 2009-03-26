@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
-
+/**
+ * @author Max Beier, Sven Terzyk, Sven Blaurock
+ */
 import java.util.Observable;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
@@ -7,14 +9,28 @@ import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.UpdateInfo;
 
-
+/**
+ * Diese Klasse Realsiert einen ExemplarVerwalter. Sie ist abgeleite von der Klasse Observable. Jeder Exemplarverwalter enthält 
+ * eine Updateinformation, und ein Exemplar.
+ */
 public class ExemplarVerwalter extends Observable {
-
+	
+	/**
+	 * Ruft die ExemplarDAO auf
+	 */
 	private MySQLExemplarDAO exemplarDAO = new MySQLExemplarDAO();
+	/**
+	 * Exemplar
+	 */
 	private Exemplar exemplar = null;
+	/**
+	 * updateInfo
+	 */
 	private UpdateInfo updateInfo = new UpdateInfo();
 
-
+	/**
+	 * Fügt ein Exemplar hinzu.
+	 */
 	public void add()
 	{
 		try
@@ -34,6 +50,7 @@ public class ExemplarVerwalter extends Observable {
 	}
 
 	/**
+	 * Gibt Exemplar zurueck.
 	 * @return the exemplar
 	 */
 	public Exemplar getExemplar()
@@ -42,13 +59,17 @@ public class ExemplarVerwalter extends Observable {
 	}
 
 	/**
+	 * Setzt das Passwort.
 	 * @param exemplar the exemplar to set
 	 */
 	public void setExemplar(Exemplar exemplar)
 	{
 		this.exemplar = exemplar;
 	}
-
+	
+	/**
+	 * Löscht ein Exemplar
+	 */
 	public void delete()
 	{
 		try
@@ -67,6 +88,9 @@ public class ExemplarVerwalter extends Observable {
 		}
 	}
 
+	/**
+	 * Update
+	 */
 	public void update()
 	{
 		try
@@ -84,7 +108,10 @@ public class ExemplarVerwalter extends Observable {
 			LocalEnvironment.log(e.getMessage(), this);
 		}
 	}
-	
+	/**
+	 * Updateinfo
+	 * @return updateinfo
+	 */
 	public UpdateInfo holeUpdateInfo()
 	{
 		return updateInfo;

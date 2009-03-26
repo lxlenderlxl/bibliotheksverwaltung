@@ -2,7 +2,9 @@
  * 
  */
 package bibliotheksverwaltung.model.logic;
-
+/**
+ * @author Sven Terzyk, Sven Blaurock, Max Beier
+ */
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -11,7 +13,9 @@ import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Log;
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.UpdateInfo;
-
+/**
+ * Realsiert ein Historienverwalter. Jeder Historienverwalter hat eine Liste mit Logs und eine Updateinfo.
+ */
 public class HistorienVerwalter extends Observable
 {
 	private ArrayList<Log> logs = null;
