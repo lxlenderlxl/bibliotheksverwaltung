@@ -94,13 +94,15 @@ public class PDFVerwalter {
 		d.add(headerueberschrift);
 		d.add(new Paragraph("\nTel: (030) 5019-2240\nFax: (030) 5019-2397                                                               mail: Ausleihe-KH@fhtw-berlin.de FHTW, Treskowallee 8, 10313 Berlin ______________________________________________________________________________"));
 		d.add(new Paragraph("\nAn                                                                                  " + "         Benutzernummer: " + a.getId() + "\n" + a.getName() + " " + a.getNachName() + "\n" + a.getStrasse() + " " + a.getHausnummer() + "\n" + a.getPlz() + " " + a.getStadt() + "\n\n\n"));
-		d.add(new Paragraph(" "));
+		d.add(new Paragraph(mahnungstext + "\n\n\n"));
 		//
 		//
 		for (Exemplar e : m.getExemplare()) {
 			// Text für jedes Exemplar (e) und seinem Medium (med) schreiben.
 			//
 			Medium med = new Medium(e.getMedium());
+			d.add(new Paragraph(med.getId() + "\n Autor: " + med.getAutorVorname() + " " + med.getAutorNachname()+ "\n Titel: " +
+					med.getTitel()+"\n ISBN: " +  med.getIsbn()));
 		}
 		d.add(Chunk.NEXTPAGE);
 	}
