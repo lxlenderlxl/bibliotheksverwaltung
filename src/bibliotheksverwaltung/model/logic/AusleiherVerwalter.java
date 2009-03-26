@@ -173,7 +173,10 @@ public class AusleiherVerwalter extends Observable
 	{
 		return ausgelieheneExemplare.size();
 	}
-	
+	/**
+	 * Gibt den AusleihStatus zurück.
+	 * @return rueck back.
+	 */
 	public int getAusleihStatus()
 	{
 		int rueck = 0;
@@ -190,14 +193,20 @@ public class AusleiherVerwalter extends Observable
 		}
 		return rueck;
 	}
-	
+	/**
+	 * Startet ein Update 
+	 * @param message
+	 */
 	public void autoNotify(String message)
 	{
 		updateInfo.setzeAenderung(message);
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-	
+	/**
+	 * Gibt die Updateinfo zuruck.
+	 * @return updateInfo back.
+	 */
 	public UpdateInfo holeUpdateInfo()
 	{
 		return updateInfo;

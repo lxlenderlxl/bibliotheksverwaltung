@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.logic;
-
+/**
+ * @author Sven Blaurock, Max Beier, Sven Terzyk
+ */
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;

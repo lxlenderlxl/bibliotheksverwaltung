@@ -28,7 +28,8 @@ public class PDFVerwalter {
 	 * Zum Speichern der PDF
 	 */
 	private String resultPath = "";
-	private String resultName = "tmp.pdf";
+	private String resultName = "Serienbrief.pdf";
+	private String resultName2= "Mahnliste.pdf";
 
 	/*
 	 * Irgendwo müssen die Infos ja herkommen.
@@ -43,12 +44,12 @@ public class PDFVerwalter {
 	}
 
 	/**
+	 * Erstellt und Sichert den Serienbrief.
 	 * @throws DocumentException
 	 * @throws FileNotFoundException
 	 * 
 	 */
 	public void saveMahnlisten() {
-
 		List<Mahnliste> l = new ArrayList<Mahnliste>();
 		l.addAll(mahnlistenVerwalter.getMahnlisten());
 
@@ -60,7 +61,7 @@ public class PDFVerwalter {
 			// PDF anlegen.
 			pdf = PdfWriter.getInstance(document, new BufferedOutputStream(new FileOutputStream(resultName)));
 			//
-			// Für jede Mahnliste ein Seite reinschreiben.
+			// Fuer jede Mahnliste ein Seite reinschreiben.
 			document.open();
 			for (Mahnliste m : l){
 				mahnbrief(pdf, document, m);
@@ -76,7 +77,7 @@ public class PDFVerwalter {
 		}
 
 	}
-
+	
 	/**
 	 * 
 	 * @param d
@@ -115,5 +116,6 @@ public class PDFVerwalter {
 		PDFVerwalter a = new PDFVerwalter();
 		a.saveMahnlisten();
 	}
+	
 
 }
