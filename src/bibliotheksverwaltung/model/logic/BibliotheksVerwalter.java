@@ -15,9 +15,14 @@ import bibliotheksverwaltung.model.domain.Vorgang;
 import bibliotheksverwaltung.util.LocalEnvironment;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.util.UpdateInfo;
-
+/**
+ * Diese Klasse Realisiert den Bibliotheksverwalter.
+ */
 public class BibliotheksVerwalter extends Observable {
-
+	
+	/**
+	 * Erstell ein neuen Medien Verwalter.
+	 */
 	private MedienVerwalter medienVerwalter = new MedienVerwalter();
 	/**
 	 * @return the medienVerwalter
@@ -86,9 +91,13 @@ public class BibliotheksVerwalter extends Observable {
 	{
 		this.historienVerwalter = historienVerwalter;
 	}
-
+	/**
+	 * Erstellt ein neuen Waren Korb Verwalter
+	 */
 	private WarenKorbVerwalter warenKorbVerwalter = new WarenKorbVerwalter();
-	
+	/**
+	 * Erstellt ein Druck Verwalter
+	 */
 	private DruckVerwalter druckVerwalter = new DruckVerwalter();
 	
 	/**
@@ -125,13 +134,14 @@ public class BibliotheksVerwalter extends Observable {
 
 	private UpdateInfo updateInfo = new UpdateInfo();
 	
-	/**
-	 *
-	 */
+	//Konstruktor
 	public BibliotheksVerwalter() {
 		super();
 	}
-
+	/**
+	 * Buch Ausleihen.
+	 * @param dasExemplar
+	 */
 	private void buchAusleihen(Exemplar dasExemplar) {
 		
 		if (dasExemplar.getAusleiher() != 0)
@@ -149,6 +159,9 @@ public class BibliotheksVerwalter extends Observable {
 		}
 	}
 	
+	/**
+	 * Buecher Ausleihen
+	 */
 	public void buecherAusleihen()
 	{
 		ArrayList<Exemplar> auszuleihendeEx = this.warenKorbVerwalter.getWarenKorb();
@@ -164,7 +177,10 @@ public class BibliotheksVerwalter extends Observable {
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-
+	
+	/**
+	 * Buecher Verlängern
+	 */
 	public void buchVerlaengern() {
 		
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
@@ -190,6 +206,9 @@ public class BibliotheksVerwalter extends Observable {
 					"Maximale Anzahl an Verlï¿½ngerungen erreicht.", Message.ROT);
 	}
 
+	/**
+	 * Buch zurückgeben.
+	 */
 	public void buchZurueckgeben() {
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
 		if (dasExemplar.getAusleiher() == 0)
@@ -206,6 +225,9 @@ public class BibliotheksVerwalter extends Observable {
 		}
 	}
 
+	/**
+	 * Medium Bearbeiten
+	 */
 	public void mediumBearbeiten () {
 		updateInfo.setzeAenderung("MediumBearbeiten");
 		this.medienVerwalter.update();
@@ -213,13 +235,19 @@ public class BibliotheksVerwalter extends Observable {
 		notifyObservers(updateInfo);
 	}
 	
+	/**
+	 * Peron Bearbeiten
+	 */
 	public void personBearbeiten () {
 		updateInfo.setzeAenderung("PersonDatenBearbeitet");
 		this.ausleiherVerwalter.update();
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-
+	
+	/**
+	 * Buch Hinzufügen
+	 */
 	public void buchHinzufuegen() {
 		updateInfo.setzeAenderung("ExemplarHinzu");
 		this.medienVerwalter.getExemplarVerwalter().add();
@@ -227,7 +255,10 @@ public class BibliotheksVerwalter extends Observable {
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-
+	
+	/**
+	 * Buch Löschen
+	 */
 	public void buchEntfernen() {
 		
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
@@ -246,14 +277,20 @@ public class BibliotheksVerwalter extends Observable {
 		else
 			Message.raise("Das Buch kann nicht entfernt werden, da es zurzeit ausgeliehen ist.", Message.ROT);
 	}
-
+	
+	/**
+	 * Medum Hinzufügen
+	 */
 	public void mediumHinzufuegen() {
 		updateInfo.setzeAenderung("mediumHinzu");
 		new MedienVerwalter().add();
 		setChanged();
 		notifyObservers(updateInfo);
 	}
-
+	
+	/**
+	 * Medium Löschen
+	 */
 	public void mediumEntfernen() {
 		
 		if (!new MedienVerwalter().hasExemplare(this.medienVerwalter.getMedium().getId())) {
@@ -267,6 +304,10 @@ public class BibliotheksVerwalter extends Observable {
 					"da noch Exemplare vorhanden sind.", this);
 	}
 	
+	/**
+	 * Update
+	 * @param message
+	 */
 	public void autoNotify(String message)
 	{
 		updateInfo.setzeAenderung(message);
@@ -274,6 +315,10 @@ public class BibliotheksVerwalter extends Observable {
 		notifyObservers(updateInfo);
 	}
 	
+	/**
+	 * Gibt die Updateinformation zurueck.
+	 * @return updateInfo.
+	 */
 	public UpdateInfo holeUpdateInfo()
 	{
 		return updateInfo;
