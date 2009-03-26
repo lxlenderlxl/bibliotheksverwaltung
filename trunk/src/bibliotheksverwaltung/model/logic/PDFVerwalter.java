@@ -13,6 +13,7 @@ import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Mahnliste;
 import bibliotheksverwaltung.model.domain.Medium;
+import bibliotheksverwaltung.util.LocalEnvironment;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
@@ -24,6 +25,7 @@ import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import com.sun.xml.internal.ws.wsdl.writer.document.OpenAtts;
 
 public class PDFVerwalter {
 
@@ -74,9 +76,9 @@ public class PDFVerwalter {
 		} catch (DocumentException e) {
 		} finally {
 			document.close();
-
+			
 			pdf.close();
-
+			LocalEnvironment.openDocument("C:\\Dokumente und Einstellungen\\Sven Terzyk\\workspace\\Bibliotheksverwaltung\\Serienbrief.pdf");
 		}
 
 	}
@@ -102,9 +104,9 @@ public class PDFVerwalter {
 		} catch (DocumentException e) {
 		} finally {
 			document.close();
-
+			
 			pdf.close();
-
+			LocalEnvironment.openDocument("C:\\Dokumente und Einstellungen\\Sven Terzyk\\workspace\\Bibliotheksverwaltung\\Mahnliste.pdf");
 		}
 
 	}
@@ -160,17 +162,17 @@ public class PDFVerwalter {
 		d.add(headerueberschrift);
 		d.add(new Paragraph("\n"));
 		
+		PdfPTable table = new PdfPTable(4);
+		PdfPCell cell = new PdfPCell(new Paragraph("Mahnliste"));
+		cell.setColspan(4);
+		table.addCell(cell);
+		
 		//
 		//
 		for (Exemplar e : m.getExemplare()) {
 			// Text für jedes Exemplar (e) und seinem Medium (med) schreiben.
 			//
 			Medium med = new Medium(e.getMedium());
-			PdfPTable table = new PdfPTable(4);
-			PdfPCell cell = new PdfPCell(new Paragraph("Mahnliste"));
-			cell.setColspan(4);
-			table.addCell(cell);
-			
 			table.addCell(a.getName());
 			table.addCell("" + med.getId() + " Autor:  " + med.getAutorVorname() + " " + med.getAutorNachname());
 			table.addCell("Titel: " + med.getTitel());
@@ -178,6 +180,7 @@ public class PDFVerwalter {
 			d.add(table);
 		}
 		d.add(Chunk.NEXTPAGE);
+		
 	}
 
 	

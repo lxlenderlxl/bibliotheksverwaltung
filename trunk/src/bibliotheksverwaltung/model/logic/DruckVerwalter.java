@@ -1,5 +1,5 @@
 /**
- * 
+ * @author Sven Terzyk, Max Beier, Sven Blaurock
  */
 package bibliotheksverwaltung.model.logic;
 
@@ -25,6 +25,9 @@ import com.lowagie.text.html.simpleparser.HTMLWorker;
 import com.lowagie.text.html.simpleparser.StyleSheet;
 import com.lowagie.text.pdf.PdfWriter;
 
+/**
+ * Diese Klasse Realisiert DruckVerwalter. 
+ */
 public class DruckVerwalter
 {
 	private ArrayList<Object> liste = new ArrayList<Object>();
