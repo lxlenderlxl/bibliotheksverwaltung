@@ -7,7 +7,6 @@ public class DaoTestMain
 	 */
 	public static void main(String[] args)
 	{
-		//TODO Main nur zum Testzweck so voll
 		//		new MedienVerwalter().add(new Medium(200, "testTitel", "testVorname", "testNachname", "testVerlag",
 		//				2009, "testISBN", true));
 		//		new MedienVerwalter().update(new Medium(197, "testTitel2", "testVorname2", "testNachname2", "testVerlag",
@@ -71,23 +70,23 @@ public class DaoTestMain
 
 		ExemplarDAO nnn = new MySQLExemplarDAO();
 		Exemplar test = nnn.get(9);
-		
+
 		System.out.println("Ausleiherid  : " + test.getAusleiher());
 		System.out.println("Exemplarid   : " + test.getId());
 		System.out.println("Mediumid     : " + test.getMedium());
 		System.out.println("Verl�ngerung : " + test.getVerlaengerung());
 		System.out.println("Zustandsid   : " + test.getZustand());
 		System.out.println("---------------------------------------------");
-		
+
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchHinzufuegen(test);
-		System.out.println("Buch erfolgreich hinzugef�gt!");		
-		
+		System.out.println("Buch erfolgreich hinzugef�gt!");
+
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
 		//verwalter.buchZurueckgeben(new Exemplar(7));
 		//verwalter.buchVerlaengern(new Exemplar(7));
-		
+
 		long zstVorher = 0;
 		long zstZwischen = 0;
 		long zstNachher = 0;
@@ -108,7 +107,7 @@ public class DaoTestMain
 			System.out.println("E-Jahr    : " + dasMedium.getErscheinungsJahr());
 			System.out.println("---------------------------------------------");
 		}
-		
+
 		zstNachher = System.currentTimeMillis();
 		System.out.println("Insgesamt ben�tigte Zeit: " + ((zstNachher - zstVorher)) + " ms, davon " + ((zstZwischen - zstVorher)) + " ms f�r Datenbank");
 	*/

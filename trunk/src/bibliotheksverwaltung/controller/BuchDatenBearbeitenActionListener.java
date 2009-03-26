@@ -22,7 +22,6 @@ public class BuchDatenBearbeitenActionListener implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		//TODO AUSLEIHVORGANG (ausleiher fehlt)	AUSLEIHER ersetzen
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);

@@ -26,7 +26,7 @@ import com.lowagie.text.html.simpleparser.StyleSheet;
 import com.lowagie.text.pdf.PdfWriter;
 
 /**
- * Diese Klasse Realisiert DruckVerwalter. 
+ * Diese Klasse Realisiert DruckVerwalter.
  */
 public class DruckVerwalter
 {
@@ -43,7 +43,7 @@ public class DruckVerwalter
 	{
 
 	}
-	
+
 	/**
 	 * fuegt ein Objekt hinzu.
 	 * @param objekt
@@ -52,7 +52,7 @@ public class DruckVerwalter
 	{
 		this.liste.add(objekt);
 	}
-	
+
 	/**
 	 * fuegt ein Objekt hinzu.
 	 * @param objekte
@@ -61,7 +61,7 @@ public class DruckVerwalter
 	{
 		this.liste = objekte;
 	}
-	
+
 	/**
 	 * Löscht die Liste von Objekten
 	 */
@@ -85,12 +85,10 @@ public class DruckVerwalter
 			document.add(new Paragraph(dokumentText));
 		} catch (FileNotFoundException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LocalEnvironment.log("Fehler beim drucken.", this);
 		} catch (DocumentException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LocalEnvironment.log("Fehler beim drucken.", this);
 		} finally {
 			document.close();
 		}
@@ -177,16 +175,13 @@ public class DruckVerwalter
 			out.close();
 		} catch (FileNotFoundException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LocalEnvironment.log("Fehler beim drucken.", this);
 		} catch (DocumentException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LocalEnvironment.log("Fehler beim drucken.", this);
 		} catch (IOException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LocalEnvironment.log("Fehler beim drucken.", this);
 		}
 		this.openDocument();
 	}
