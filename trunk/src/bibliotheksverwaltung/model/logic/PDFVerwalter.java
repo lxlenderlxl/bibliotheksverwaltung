@@ -53,6 +53,7 @@ public class PDFVerwalter {
 		l.addAll(mahnlistenVerwalter.getMahnlisten());
 
 		Document document = new Document();
+		
 		PdfWriter pdf = null;
 		try {
 			//
@@ -61,15 +62,17 @@ public class PDFVerwalter {
 			//
 			// FÃ¼r jede Mahnliste ein Seite reinschreiben.
 			document.open();
-			for (Mahnliste m : l)
-				writeMahnliste(pdf, document, m);
-			//
+			for (Mahnliste m : l){
+				mahnbrief(pdf, document, m);
+			}
 			//
 		} catch (FileNotFoundException e) {
 		} catch (DocumentException e) {
 		} finally {
 			document.close();
+
 			pdf.close();
+
 		}
 
 	}
@@ -80,7 +83,7 @@ public class PDFVerwalter {
 	 * @param m
 	 * @throws DocumentException
 	 */
-	private void writeMahnliste(PdfWriter pw, Document d, Mahnliste m)
+	private void mahnbrief(PdfWriter pw, Document d, Mahnliste m)
 			throws DocumentException {
 		d.newPage();
 		// ab hier inhalt rein
@@ -102,11 +105,12 @@ public class PDFVerwalter {
 			//
 			Medium med = new Medium(e.getMedium());
 			d.add(new Paragraph(med.getId() + "\n Autor: " + med.getAutorVorname() + " " + med.getAutorNachname()+ "\n Titel: " +
-					med.getTitel()+"\n ISBN: " +  med.getIsbn()));
+					med.getTitel()+"\n ISBN: " +  med.getIsbn() + "\n" + "Rückgabefrist: " + e.getRueckgabeDatum()));
 		}
 		d.add(Chunk.NEXTPAGE);
 	}
 
+	
 	public static void main(String args[]) {
 		PDFVerwalter a = new PDFVerwalter();
 		a.saveMahnlisten();

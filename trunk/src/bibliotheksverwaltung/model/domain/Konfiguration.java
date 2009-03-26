@@ -1,7 +1,11 @@
 package bibliotheksverwaltung.model.domain;
-
+/**
+ * @author Sven Terzyk, Max Beier, Sven Blaurock
+ */
 import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
-
+/**
+ * Diese Klasse realisiert eine Konfiguration. 
+ */
 public class Konfiguration {
 
 	private String name;

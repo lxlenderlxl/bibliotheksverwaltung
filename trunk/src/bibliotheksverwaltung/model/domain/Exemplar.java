@@ -1,19 +1,46 @@
 package bibliotheksverwaltung.model.domain;
-
+/**
+ * @author Sven Terzyk, Max Beier, Sven Blaurock
+ */
 import java.sql.Date;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
-
+/**
+ * Diese Klasse Realisiert ein Exmplar in unserer Bibliothek. Das Exemplar besitzt eine ID, eine Zustands-ID, eine Medium-ID, 
+ * eine rueckgabeDatum und wie oft das Exemplar schon Verlängert wurde.
+ *  
+ */
 public class Exemplar
 {
+	/**
+	 * ID
+	 */
 	private int id = 0;
+	/**
+	 * zustandsID
+	 */
 	private int zustandsId = 0;
+	/**
+	 * AusleiherID
+	 */
 	private int ausleiherID = 0;
+	/**
+	 * MediumID
+	 */
 	private int mediumId = 0;
+	/**
+	 * Rueckgabe Datum
+	 */
 	private Date rueckgabeDatum = null;
+	/**
+	 * Verlängerung
+	 */
 	private int verlaengerung = 0;
+	/**
+	 * Aktiv
+	 */
 	private boolean aktiv = true;
-
+	//Konstruktor
 	public Exemplar(int dieId, int derZustand, int derAusleiher, int dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
 	{
 		this.id = dieId;
@@ -24,7 +51,7 @@ public class Exemplar
 		this.verlaengerung = dieVerlaengerung;
 		this.aktiv = aktiv;
 	}
-
+	//Konstruktor
 	public Exemplar(int derZustand, int derAusleiher, int dasMedium, Date dasDatum, int dieVerlaengerung, boolean aktiv)
 	{
 		this.zustandsId = derZustand;
@@ -34,10 +61,8 @@ public class Exemplar
 		this.verlaengerung = dieVerlaengerung;
 		this.aktiv = aktiv;
 	}
-
-	/**
-	 *
-	 */
+	//Konstruktor
+	
 	public Exemplar(int dieId) {
 		Exemplar exemplar = new MySQLExemplarDAO().get(dieId);
 		this.id = exemplar.id;
@@ -48,18 +73,16 @@ public class Exemplar
 		this.verlaengerung = exemplar.verlaengerung;
 		this.aktiv = exemplar.aktiv;
 	}
-
+	//Konstruktor
+	/**
+	 *
+	 * @param derZustand
+	 * @param dasMedium
+	 */
 	public Exemplar(int derZustand, int dasMedium)
 	{
 		this.zustandsId = derZustand;
 		this.mediumId = dasMedium;
-		this.aktiv = true;
-	}
-
-	public Exemplar(Zustand derZustand, Medium dasMedium)
-	{
-		this.zustandsId = derZustand.getId();
-		this.mediumId = dasMedium.getId();
 		this.aktiv = true;
 	}
 
@@ -169,7 +192,10 @@ public class Exemplar
 	{
 		this.aktiv = aktiv;
 	}
-	
+	/**
+	 * Gibt zurück ob das Exemplar ausleihbar ist
+	 * @return ausleihbar
+	 */
 	public boolean isAusleihBar()
 	{
 		boolean ausleihbar = false;
