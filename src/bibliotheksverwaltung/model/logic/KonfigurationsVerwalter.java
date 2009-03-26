@@ -6,7 +6,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
 import bibliotheksverwaltung.model.domain.Konfiguration;
 import bibliotheksverwaltung.util.LocalEnvironment;
 /**
- * 
+ * Diese Klasse Realisiert einen KonfigurationsVerwalter.
  */
 public class KonfigurationsVerwalter implements Verwaltbar {
 
