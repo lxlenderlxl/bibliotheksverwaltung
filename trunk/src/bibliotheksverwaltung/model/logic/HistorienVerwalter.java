@@ -41,7 +41,7 @@ public class HistorienVerwalter extends Observable
 		{
 			updateInfo.setzeAenderung("HistorieErzeugt");
 			Ausleiher ausleiher = (Ausleiher)objekt;
-			logs = logDAO.getByMedium(ausleiher.getId());
+			logs = logDAO.getByAusleiher(ausleiher.getId());
 			setChanged();
 			notifyObservers(updateInfo);
 		}

@@ -195,15 +195,15 @@ public class BibliotheksVerwalter extends Observable {
 
 			if (dasExemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()))
 				Message.raise("Ausleihung wurde verl�ngert.\n" +
-						"Achtung: Letzte M�gliche Verl�ngerung.", Message.GELB);
+						"Achtung: Letzte Moegliche Verlaengerung.", Message.GELB);
 			else
-				Message.raise("Ausleihung wurde verl�ngert.", Message.GRUEN);
+				Message.raise("Ausleihung wurde verlaengert.", Message.GRUEN);
 			setChanged();
 			notifyObservers(updateInfo);
 		}
 		else
-			Message.raise("Verl�ngerung nicht durchgef�hrt.\n" +
-					"Maximale Anzahl an Verl�ngerungen erreicht.", Message.ROT);
+			Message.raise("Verl�ngerung nicht durchgefuehrt.\n" +
+					"Maximale Anzahl an Verlaengerungen erreicht.", Message.ROT);
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class BibliotheksVerwalter extends Observable {
 	public void buchZurueckgeben() {
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
 		if (dasExemplar.getAusleiher() == 0)
-			Message.raise("Dieses Exemplar ist bereits zur�ck gegeben.", Message.ROT);
+			Message.raise("Dieses Exemplar ist bereits zurueck gegeben.", Message.ROT);
 		else {
 			updateInfo.setzeAenderung("ExemplarZurueck");
 			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
