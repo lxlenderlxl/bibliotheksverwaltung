@@ -24,19 +24,22 @@ import com.lowagie.text.pdf.PdfWriter;
 
 public class PDFVerwalter {
 
+	/*
+	 * Zum Speichern der PDF
+	 */
 	private String resultPath = "";
 	private String resultName = "tmp.pdf";
 
+	/*
+	 * Irgendwo müssen die Infos ja herkommen.
+	 */
 	private MahnlisteVerwalter mahnlistenVerwalter;
 
-	private String Mahnungstext = "Die Leihfrist fuer das/die von Ihnen entliehene/n Medium/Medien ist ueberschritten. Wir bitten um sofortige Rueckgabe oder Fristverlaengerung. Die Mahngebuehren (0,50 EUR pro Medieneinheit und 0,20 EUR pro Oeffnungstag)  zzgl. 0,55 EUR Portokosten sind umgehend in der Ausleihe zu begleichen. Die Portokosten fuer e-mails entfallen.";
-
+	/**
+	 * 
+	 */
 	public PDFVerwalter() {
 		mahnlistenVerwalter = new MahnlisteVerwalter();
-	}
-
-	public PDFVerwalter(MahnlisteVerwalter mv) {
-
 	}
 
 	/**
@@ -85,6 +88,7 @@ public class PDFVerwalter {
 		Ausleiher a = m.getAusleiher();
 		// Text für den Ausleiher.
 		//
+		final String mahnungstext = "Die Leihfrist fuer das/die von Ihnen entliehene/n Medium/Medien ist ueberschritten. Wir bitten um sofortige Rueckgabe oder Fristverlaengerung. Die Mahngebuehren (0,50 EUR pro Medieneinheit und 0,20 EUR pro Oeffnungstag)  zzgl. 0,55 EUR Portokosten sind umgehend in der Ausleihe zu begleichen. Die Portokosten fuer e-mails entfallen.";
 		Font headerueberschrift_font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
 		Chunk headerueberschrift = new Chunk("Bibliothek", headerueberschrift_font);
 		d.add(headerueberschrift);
