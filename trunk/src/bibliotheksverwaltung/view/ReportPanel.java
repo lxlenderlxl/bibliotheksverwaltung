@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * ReportPanel.java
  *
  * Created on 25.03.2009, 16:14:50
@@ -11,15 +6,32 @@
 
 package bibliotheksverwaltung.view;
 
+import bibliotheksverwaltung.model.daos.dao.MySQLStatistikDAO;
+import bibliotheksverwaltung.model.domain.Statistik;
+
 /**
  *
  * @author Max
  */
+@SuppressWarnings("serial")
 public class ReportPanel extends javax.swing.JPanel {
 
     /** Creates new form ReportPanel */
     public ReportPanel() {
         initComponents();
+        fuelleFelder();
+    }
+
+    private void fuelleFelder() {
+    	//TODO ist das zul�ssig? (mysqldao direkt aufzurufen)
+    	Statistik statistik = new MySQLStatistikDAO().getStatistik();
+
+    	buecherField.setText("" + statistik.getEingetrageneBuecher());
+    	exemplareField.setText("" + statistik.getEingetragendeExemplare());
+    	personenField.setText("" + statistik.getEingetragenePersonen());
+    	leihenField.setText("" + statistik.getVerliehenBuecher());
+    	ausleiherField.setText("" + statistik.getLeihendePersonen());
+    	ausleihenGesamtField.setText("" + statistik.getBisherigeAusleihen());
     }
 
     /** This method is called from within the constructor to
@@ -34,6 +46,8 @@ public class ReportPanel extends javax.swing.JPanel {
         statistikPanel = new javax.swing.JPanel();
         buecherLabel = new javax.swing.JLabel();
         buecherField = new javax.swing.JTextField();
+        exemplareLabel = new javax.swing.JLabel();
+        exemplareField = new javax.swing.JTextField();
         personenLabel = new javax.swing.JLabel();
         personenField = new javax.swing.JTextField();
         leihenLabel = new javax.swing.JLabel();
@@ -53,31 +67,43 @@ public class ReportPanel extends javax.swing.JPanel {
         buecherLabel.setFont(new java.awt.Font("Arial", 1, 14));
         buecherLabel.setText("eingetragene Bücher");
 
-        buecherField.setFont(new java.awt.Font("Arial", 1, 18));
+        buecherField.setEditable(false);
+        buecherField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buecherField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        personenLabel.setFont(new java.awt.Font("Arial", 1, 14));
+        exemplareLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        exemplareLabel.setText("eingetragene Exemplare");
+
+        exemplareField.setEditable(false);
+        exemplareField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        exemplareField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+
+        personenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         personenLabel.setText("eingetragene Personen");
 
-        personenField.setFont(new java.awt.Font("Arial", 1, 18));
+        personenField.setEditable(false);
+        personenField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         personenField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        leihenLabel.setFont(new java.awt.Font("Arial", 1, 14));
+        leihenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         leihenLabel.setText("verliehene Bücher");
 
-        leihenField.setFont(new java.awt.Font("Arial", 1, 18));
+        leihenField.setEditable(false);
+        leihenField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         leihenField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         ausleiherLabel.setFont(new java.awt.Font("Arial", 1, 14));
         ausleiherLabel.setText("leihende Personen");
 
-        ausleiherField.setFont(new java.awt.Font("Arial", 1, 18));
+        ausleiherField.setEditable(false);
+        ausleiherField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         ausleiherField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
-        ausleihenGesamtLabel.setFont(new java.awt.Font("Arial", 1, 14));
+        ausleihenGesamtLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ausleihenGesamtLabel.setText("bisherige Ausleihen");
 
-        ausleihenGesamtField.setFont(new java.awt.Font("Arial", 1, 18));
+        ausleihenGesamtField.setEditable(false);
+        ausleihenGesamtField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         ausleihenGesamtField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         buchzustaendePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchzustände", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -105,18 +131,20 @@ public class ReportPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buecherLabel)
-                    .addComponent(personenLabel)
-                    .addComponent(ausleihenGesamtLabel)
+                    .addComponent(exemplareLabel)
                     .addComponent(ausleiherLabel)
-                    .addComponent(leihenLabel))
-                .addGap(43, 43, 43)
+                    .addComponent(leihenLabel)
+                    .addComponent(ausleihenGesamtLabel)
+                    .addComponent(personenLabel))
+                .addGap(35, 35, 35)
                 .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ausleihenGesamtField)
-                    .addComponent(ausleiherField)
-                    .addComponent(buecherField)
                     .addComponent(personenField)
-                    .addComponent(leihenField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addComponent(exemplareField)
+                    .addComponent(ausleiherField)
+                    .addComponent(leihenField)
+                    .addComponent(ausleihenGesamtField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buecherField, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(buchzustaendePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -127,29 +155,34 @@ public class ReportPanel extends javax.swing.JPanel {
                     .addGroup(statistikPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buecherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(buecherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buecherField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(personenField)
-                            .addComponent(personenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                        .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(exemplareLabel)
+                            .addComponent(exemplareField))
+                        .addGap(7, 7, 7)
+                        .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(personenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(personenLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(leihenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(leihenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(leihenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(leihenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ausleiherLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ausleiherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
-                        .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ausleihenGesamtLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                            .addComponent(ausleihenGesamtField)))
+                        .addGroup(statistikPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ausleihenGesamtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ausleihenGesamtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(96, 96, 96))
                     .addComponent(buchzustaendePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        mahnButton.setFont(new java.awt.Font("Arial", 1, 18));
+        mahnButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         mahnButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/mail_write_48.png"))); // NOI18N
         mahnButton.setText("Mahnbriefe erstellen");
         mahnButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -171,18 +204,18 @@ public class ReportPanel extends javax.swing.JPanel {
                         .addComponent(mahnButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(statPrintButton)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(statistikPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addComponent(statistikPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mahnButton)
                     .addComponent(statPrintButton))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +228,8 @@ public class ReportPanel extends javax.swing.JPanel {
     private javax.swing.JPanel buchzustaendePanel;
     private javax.swing.JTextField buecherField;
     private javax.swing.JLabel buecherLabel;
+    private javax.swing.JTextField exemplareField;
+    private javax.swing.JLabel exemplareLabel;
     private javax.swing.JTextField leihenField;
     private javax.swing.JLabel leihenLabel;
     private javax.swing.JButton mahnButton;
