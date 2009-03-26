@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -29,9 +29,15 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.metal.*;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.Icon;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.plaf.metal.MetalScrollButton;
 
 public class NimRODScrollButton extends MetalScrollButton {
   private static final long serialVersionUID = 1L;

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Observable;
 
-import com.mysql.jdbc.UpdatableResultSet;
-
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Log;
@@ -149,7 +147,7 @@ public class BibliotheksVerwalter extends Observable {
 	public void buchVerlaengern() {
 		
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
-		// Ist die Anzahl maximalen Verlängerungen laut der Konfiguration überschritten?
+		// Ist die Anzahl maximalen Verlï¿½ngerungen laut der Konfiguration ï¿½berschritten?
 		if (dasExemplar.getVerlaengerung() < Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert())) {
 			updateInfo.setzeAenderung("ExemplarVerlaengern");
 			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
@@ -159,22 +157,22 @@ public class BibliotheksVerwalter extends Observable {
 			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, dasExemplar.getAusleiher(), dasExemplar.getId()));
 
 			if (dasExemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()))
-				Message.raise("Ausleihung wurde verlängert.\n" +
-						"Achtung: Letzte Mögliche Verlängerung.", Message.GELB);
+				Message.raise("Ausleihung wurde verlï¿½ngert.\n" +
+						"Achtung: Letzte Mï¿½gliche Verlï¿½ngerung.", Message.GELB);
 			else
-				Message.raise("Ausleihung wurde verlängert.", Message.GRUEN);
+				Message.raise("Ausleihung wurde verlï¿½ngert.", Message.GRUEN);
 			setChanged();
 			notifyObservers(updateInfo);
 		}
 		else
-			Message.raise("Verlängerung nicht durchgeführt.\n" +
-					"Maximale Anzahl an Verlängerungen erreicht.", Message.ROT);
+			Message.raise("Verlï¿½ngerung nicht durchgefï¿½hrt.\n" +
+					"Maximale Anzahl an Verlï¿½ngerungen erreicht.", Message.ROT);
 	}
 
 	public void buchZurueckgeben() {
 		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
 		if (dasExemplar.getAusleiher() == 0)
-			Message.raise("Dieses Exemplar ist bereits zurück gegeben.", Message.ROT);
+			Message.raise("Dieses Exemplar ist bereits zurï¿½ck gegeben.", Message.ROT);
 		else {
 			updateInfo.setzeAenderung("ExemplarZurueck");
 			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_ZUREUCKGEGEBEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
@@ -218,7 +216,7 @@ public class BibliotheksVerwalter extends Observable {
 			Log log = new Log(Vorgang.EXEMPLAR_ENTFERNT, 0, dasExemplar.getId());
 			if (!this.medienVerwalter.hasExemplare(dasExemplar.getMedium())) {
 				mediumEntfernen();
-				log.setKommentar("Letztes Exemplar gelöscht - Medium wird deaktiviert.");
+				log.setKommentar("Letztes Exemplar gelï¿½scht - Medium wird deaktiviert.");
 			}
 			LogVerwalter.add(log);
 			setChanged();
@@ -244,7 +242,7 @@ public class BibliotheksVerwalter extends Observable {
 			notifyObservers(updateInfo);
 		}
 		else
-			LocalEnvironment.log("Medium " + this.medienVerwalter.getMedium().getId() + " konnte nicht gelöscht werden, " +
+			LocalEnvironment.log("Medium " + this.medienVerwalter.getMedium().getId() + " konnte nicht gelï¿½scht werden, " +
 					"da noch Exemplare vorhanden sind.", this);
 	}
 	

@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -41,12 +41,21 @@
  
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.plaf.UIResource;
-
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.io.Serializable;
+
+import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
+import javax.swing.UIManager;
+import javax.swing.plaf.UIResource;
 
 public class NimRODIconFactory implements Serializable {
   private static final long serialVersionUID = 7191199335114123414L;

@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -23,17 +23,24 @@
  
 /**
  * Esta clase implementa los divisores de paneles.
- * ¡¡¡UN PUTO INFIERNO!!!
+ * ï¿½ï¿½ï¿½UN PUTO INFIERNO!!!
  * @author Nilo J. Gonzalez
  */ 
  
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.basic.*;
+import java.awt.Cursor;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JButton;
+import javax.swing.JSplitPane;
+import javax.swing.UIManager;
+import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicSplitPaneDivider;
+import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 public class NimRODSplitPaneDivider extends BasicSplitPaneDivider {
   private static final long serialVersionUID = 1L;

@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -35,9 +35,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
+import javax.swing.AbstractButton;
+import javax.swing.CellRendererPane;
+import javax.swing.JComponent;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalCheckBoxUI;
+import javax.swing.plaf.metal.MetalIconFactory;
 
 public class NimRODCheckBoxUI extends MetalCheckBoxUI {
 //  protected MiML miml;

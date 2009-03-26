@@ -3,6 +3,7 @@
  */
 package bibliotheksverwaltung.model.logic;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,6 @@ import java.util.TreeMap;
 import bibliotheksverwaltung.model.daos.dao.MySQLExemplarDAO;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Mahnliste;
-
 
 /**
  * 
@@ -30,7 +30,7 @@ public class MahnlisteVerwalter {
 	 */
 	public MahnlisteVerwalter() {
 		mahnlisten = new TreeMap<Integer, Mahnliste>();
-		
+
 		Set<Integer> ausleiher = new HashSet<Integer>();
 		List<Exemplar> l = new MySQLExemplarDAO().fehlt();
 		// Alle Ausleiher sammeln.
@@ -39,9 +39,27 @@ public class MahnlisteVerwalter {
 		for (int i : ausleiher)
 			mahnlisten.put(i, new Mahnliste(i));
 	}
+
+	/**
+	 * 
+	 * @param ausleiherID
+	 * @return
+	 */
+	public Mahnliste getMahnliste(int ausleiherID) {
+		return mahnlisten.get(Integer.valueOf(ausleiherID));
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Collection<Mahnliste> getMahnlisten() {
+		return mahnlisten.values();
+	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
@@ -53,7 +71,7 @@ public class MahnlisteVerwalter {
 		}
 		return sb.toString();
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(new MahnlisteVerwalter());
 	}

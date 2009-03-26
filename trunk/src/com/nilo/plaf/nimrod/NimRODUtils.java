@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -23,12 +23,33 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-import java.io.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
+import java.awt.Toolkit;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
+import java.awt.image.ConvolveOp;
+import java.awt.image.Kernel;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-import javax.swing.*;
+import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 class NimRODUtils {

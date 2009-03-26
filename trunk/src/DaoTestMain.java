@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-
-import bibliotheksverwaltung.model.domain.Medium;
-import bibliotheksverwaltung.model.logic.SuchVerwalter;
 
 public class DaoTestMain
 {
@@ -53,7 +49,7 @@ public class DaoTestMain
 		{
 			Medium dasMedium = new Medium(liste.get(i).getId());
 			System.out.println("MEDIENID  : " + liste.get(i).getId());
-			System.out.println("Häufgikeit: " + liste.get(i).getBewertung());
+			System.out.println("Hï¿½ufgikeit: " + liste.get(i).getBewertung());
 			System.out.println("Titel     : " + dasMedium.getTitel());
 			System.out.println("Autor     : " + dasMedium.getAutorNachname() + ", " + dasMedium.getAutorVorname());
 			System.out.println("---------------------------------------------");
@@ -63,7 +59,7 @@ public class DaoTestMain
 		{
 			Ausleiher derAusleiher = new Ausleiher(liste.get(i).getId());
 			System.out.println("AusleiherID  : " + liste.get(i).getId());
-			System.out.println("Häufgikeit   : " + liste.get(i).getFrequenz());
+			System.out.println("Hï¿½ufgikeit   : " + liste.get(i).getFrequenz());
 			System.out.println("Vorname      : " + derAusleiher.getVorName());
 			System.out.println("Nachname     : " + derAusleiher.getNachName());
 			System.out.println("---------------------------------------------");
@@ -71,7 +67,7 @@ public class DaoTestMain
 
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchHinzufuegen(new Exemplar(0, 0, 0, null, 0, true));
-		System.out.println("Buch erfolgreich hinzugefügt!");
+		System.out.println("Buch erfolgreich hinzugefï¿½gt!");
 
 		ExemplarDAO nnn = new MySQLExemplarDAO();
 		Exemplar test = nnn.get(9);
@@ -79,13 +75,13 @@ public class DaoTestMain
 		System.out.println("Ausleiherid  : " + test.getAusleiher());
 		System.out.println("Exemplarid   : " + test.getId());
 		System.out.println("Mediumid     : " + test.getMedium());
-		System.out.println("Verlängerung : " + test.getVerlaengerung());
+		System.out.println("Verlï¿½ngerung : " + test.getVerlaengerung());
 		System.out.println("Zustandsid   : " + test.getZustand());
 		System.out.println("---------------------------------------------");
 		
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchHinzufuegen(test);
-		System.out.println("Buch erfolgreich hinzugefügt!");		
+		System.out.println("Buch erfolgreich hinzugefï¿½gt!");		
 		
 		BibliotheksVerwalter verwalter = new BibliotheksVerwalter();
 		verwalter.buchAusleihen(new Exemplar(7), new Ausleiher(1));
@@ -114,7 +110,7 @@ public class DaoTestMain
 		}
 		
 		zstNachher = System.currentTimeMillis();
-		System.out.println("Insgesamt benötigte Zeit: " + ((zstNachher - zstVorher)) + " ms, davon " + ((zstZwischen - zstVorher)) + " ms für Datenbank");
+		System.out.println("Insgesamt benï¿½tigte Zeit: " + ((zstNachher - zstVorher)) + " ms, davon " + ((zstZwischen - zstVorher)) + " ms fï¿½r Datenbank");
 	*/
 		}
 

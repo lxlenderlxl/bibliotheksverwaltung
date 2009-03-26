@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -23,13 +23,18 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicScrollPaneUI;
+import javax.swing.plaf.metal.MetalScrollBarUI;
 
 /**
  *
@@ -77,9 +82,9 @@ public class NimRODScrollPaneUI extends BasicScrollPaneUI {
     JScrollPane sp = (JScrollPane)c;
 
     // Esto es para solucionar un bug encontrado por Fabian Voith que consiste en que cuando se cambia el
-    // tamaño del JScrollPane se reevalua el tamaño necesario, lo que puede provocar un relayaut si ha cambiado
-    // el tamño de lo que contiene, por ejemplo, si se despliegan unos nodos en un arbol...
-    // Para solucionarlo se guarda el tamaño del scrollpane al empezar a pintar y se pone al terminar.
+    // tamaï¿½o del JScrollPane se reevalua el tamaï¿½o necesario, lo que puede provocar un relayaut si ha cambiado
+    // el tamï¿½o de lo que contiene, por ejemplo, si se despliegan unos nodos en un arbol...
+    // Para solucionarlo se guarda el tamaï¿½o del scrollpane al empezar a pintar y se pone al terminar.
     // Gracias a Fabian Voith.
     Dimension dim = sp.getSize();
 
@@ -118,7 +123,7 @@ public class NimRODScrollPaneUI extends BasicScrollPaneUI {
 
             g2d.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_DEFAULT);
 
-            // Aqui se vuelve a poner el tamaño que tenia al principio, por el bug ese descubierto por Fabian Voith.
+            // Aqui se vuelve a poner el tamaï¿½o que tenia al principio, por el bug ese descubierto por Fabian Voith.
             sp.setPreferredSize( dim);
             // !!! Added for Bibliotheksverwaltung
             sp.setViewportBorder(null);

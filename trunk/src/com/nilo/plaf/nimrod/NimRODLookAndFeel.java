@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -58,7 +58,7 @@
  * <ul>
  * <li>nimrodlf.selection: this is the selection color</li>
  * <li>nimrodlf.background: this is the background color</li>
- * <li>nimrodlf.p1: this is the primary1 color (¿Don't you understand? Patience?</li>
+ * <li>nimrodlf.p1: this is the primary1 color (ï¿½Don't you understand? Patience?</li>
  * <li>nimrodlf.p2: this is the primary2 color</li>
  * <li>nimrodlf.p3: this is the primary3 color</li>
  * <li>nimrodlf.s1: this is the secondary1 color</li>
@@ -69,7 +69,7 @@
  * <li>nimrodlf.menuOpacity: this is the menu opacity</li>
  * <li>nimrodlf.frameOpacity: this is the frame opacity</li>
  * </ul>
- * ¿Primary color? ¿Secondary? ¿What the...? Cool. <a href='http://java.sun.com/products/jlf/ed1/dg/higg.htm#62001'>Here</a> you can learn what
+ * ï¿½Primary color? ï¿½Secondary? ï¿½What the...? Cool. <a href='http://java.sun.com/products/jlf/ed1/dg/higg.htm#62001'>Here</a> you can learn what
  * i'm talking about. Swing applications have only 8 colors, named PrimaryX, SecondaryX, White and Black, and <a href='http://java.sun.com/products/jlf/ed1/dg/higg.htm#62001'>here</a>
  * you hava a table with the who-is-who.<br>
  * You don't need to write all the values, you only must write those values you want to change. There are two shorthand properties, selection and background.
@@ -83,15 +83,22 @@
 
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.Kernel;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.Properties;
 
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
-
-import java.io.*;
-import java.util.*;
+import javax.swing.BorderFactory;
+import javax.swing.LookAndFeel;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.InsetsUIResource;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.metal.MetalTheme;
 
 public class NimRODLookAndFeel extends MetalLookAndFeel {
   private static final long serialVersionUID = 7191199335214123414L;
@@ -466,7 +473,7 @@ public class NimRODLookAndFeel extends MetalLookAndFeel {
     table.put( "Table.focusCellHighlightBorder", NimRODBorders.getCellFocusBorder());
 
     // Esto realmente no es necesario porque no se sobrecarga la clase ScrollPaneUI, pero si no se sobrecarga
-    // el borde de ScrollPane, NetBeans 5.5 se queda tieso cuando cierras todas las pestañas del panel principal...
+    // el borde de ScrollPane, NetBeans 5.5 se queda tieso cuando cierras todas las pestaï¿½as del panel principal...
     table.put( "ScrollPane.border", NimRODBorders.getScrollPaneBorder());
 
     // Para los ToolTips

@@ -15,7 +15,7 @@
  * Temple Place, Suite 330, Boston, Ma 02111-1307 USA.
  *
  * http://www.gnu.org/licenses/lgpl.html (English)
- * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Español)
+ * http://gugs.sindominio.net/gnu-gpl/lgpl-es.html (Espaï¿½ol)
  *
  *
  * Original author: Nilo J. Gonzalez
@@ -28,18 +28,27 @@
  
 package com.nilo.plaf.nimrod;
 
-import java.awt.*;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
-import java.awt.geom.*;
+import java.awt.geom.RoundRectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
+import javax.swing.JComponent;
+import javax.swing.JToolBar;
+import javax.swing.UIManager;
 import javax.swing.event.MouseInputAdapter;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalBorders;
+import javax.swing.plaf.metal.MetalToggleButtonUI;
 
 public class NimRODToggleButtonUI extends MetalToggleButtonUI {
   protected MiListener miml;

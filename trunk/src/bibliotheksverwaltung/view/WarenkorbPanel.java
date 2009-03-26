@@ -13,21 +13,12 @@ package bibliotheksverwaltung.view;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JLabel;
-
 import bibliotheksverwaltung.controller.AusleiherWahlenActionListener;
-import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
-import bibliotheksverwaltung.controller.PersonAnsichtMouseListener;
 import bibliotheksverwaltung.controller.WarenKorbAusleihenActionListener;
-import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
-import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.util.UpdateInfo;
 
 /**

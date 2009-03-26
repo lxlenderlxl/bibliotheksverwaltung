@@ -37,6 +37,22 @@ public class Mahnliste {
 		ausleiher = a;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public Ausleiher getAusleiher() {
+		return ausleiher;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Exemplar> getExemplare() {
+		return fehlListe;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
