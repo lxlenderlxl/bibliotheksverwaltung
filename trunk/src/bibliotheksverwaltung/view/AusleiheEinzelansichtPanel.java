@@ -13,7 +13,7 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JFrame;
 
-import bibliotheksverwaltung.controller.BuchAusleihenListener;
+import bibliotheksverwaltung.controller.WarenKorbHinzuActionListener;
 import bibliotheksverwaltung.controller.BuchLoeschenListener;
 import bibliotheksverwaltung.controller.BuchVerlaengernListener;
 import bibliotheksverwaltung.controller.BuchZurueckListener;
@@ -53,7 +53,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 			jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_right_green_24.png")));
 			jButton1.setText("");
 			jButton1.setToolTipText("Exemplar zur Buchkiste hinzufuegen");
-			jButton1.addActionListener(new BuchAusleihenListener(this.verwalter, exemplar));			
+			jButton1.addActionListener(new WarenKorbHinzuActionListener(this.verwalter, exemplar));			
 			jLabel3.setText("");
 			jLabel4.setText("");
 			

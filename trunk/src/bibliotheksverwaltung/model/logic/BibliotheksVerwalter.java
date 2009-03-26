@@ -1,6 +1,7 @@
 package bibliotheksverwaltung.model.logic;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Observable;
 
@@ -112,21 +113,38 @@ public class BibliotheksVerwalter extends Observable {
 		super();
 	}
 
-	public void buchAusleihen() {
-		Exemplar dasExemplar = this.medienVerwalter.getExemplarVerwalter().getExemplar();
+	private void buchAusleihen(Exemplar dasExemplar) {
 		
 		if (dasExemplar.getAusleiher() != 0)
 			Message.raise("Das Buch \"" + new Medium(dasExemplar.getMedium()).getTitel() + "\" ist bereits an \"" + new Ausleiher(dasExemplar.getAusleiher()).getName() + "\" ausgeliehen.", Message.ROT);
 		else {
 			updateInfo.setzeAenderung("ExemplarAusleihen");
-			dasExemplar.setAusleiher(this.ausleiherVerwalter.getAusleiher().getId());
+			dasExemplar.setAusleiher(this.warenKorbVerwalter.getAusleiher().getId());
 			dasExemplar.setRueckgabeDatum(new Date(new GregorianCalendar().getTimeInMillis()+ Long.valueOf(LocalEnvironment.getAusleihdauer().getWert()) * 86400000));
+			this.medienVerwalter.getExemplarVerwalter().setExemplar(dasExemplar);
 			this.medienVerwalter.getExemplarVerwalter().update();
 			LogVerwalter.add(new Log(Vorgang.EXEMPLAR_AUSGELIEHEN, dasExemplar.getAusleiher(), dasExemplar.getId()));
 			Message.raise("Das Buch wurde erfolgreich ausgeliehen", Message.GRUEN);
 			setChanged();
 			notifyObservers(updateInfo);
 		}
+	}
+	
+	public void buecherAusleihen()
+	{
+		ArrayList<Exemplar> auszuleihendeEx = this.warenKorbVerwalter.getWarenKorb();
+		System.out.println(auszuleihendeEx.size());
+		for (int i = 0; i < auszuleihendeEx.size(); i++)
+		{
+			this.buchAusleihen(auszuleihendeEx.get(i));
+			updateInfo.setzeAenderung("AktualisiereWarenKorb");
+			this.warenKorbVerwalter.entferneExemplar(auszuleihendeEx.get(i));
+			setChanged();
+			notifyObservers(updateInfo);
+		}
+		updateInfo.setzeAenderung("WarenKorbReset");
+		setChanged();
+		notifyObservers(updateInfo);
 	}
 
 	public void buchVerlaengern() {
