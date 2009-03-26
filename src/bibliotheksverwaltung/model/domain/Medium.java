@@ -9,7 +9,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
  * Diese Klasse Realisiert ein Medium, diese besitzt eine ID, ein Titel, eine Autor Vor- Nachnamen, einen Verlag,
  * ein Erscheinungsjahr, eine ISBN und die Aktivität.
  */
-public class Medium
+public class Medium implements Schreibbar
 {
 	/**
 	 * ID
@@ -201,6 +201,15 @@ public class Medium
 	public String getMediumText()
 	{
 		return "Autor: " + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn + "\nErsch.Jahr: " + this.erscheinungsJahr;
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.domain.Schreibbar#getBeschreibung()
+	 */
+	@Override
+	public String getBeschreibung()
+	{
+		return "<td>" + this.id + "</td><td>" + this.titel + "</td><td>" + this.autorVorname + "</td><td>" + this.autorNachname + "</td><td>" + this.erscheinungsJahr + "</td><td>" + this.verlag + "</td>";
 	}
 
 }

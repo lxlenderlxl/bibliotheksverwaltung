@@ -15,6 +15,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import bibliotheksverwaltung.model.domain.Anwender;
@@ -219,5 +220,17 @@ public class LocalEnvironment
 
 	public static Anwender getAnwender() {
 		return anwender;
+	}
+	
+	public static String getFormattedDateTime()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss-");
+		return dateFormat.format(System.currentTimeMillis()); 
+	}
+	
+	public static String getCurrentSQLDate()
+	{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return dateFormat.format(System.currentTimeMillis()); 
 	}
 }

@@ -15,6 +15,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 
+import bibliotheksverwaltung.controller.DatenDruckenActionListener;
 import bibliotheksverwaltung.controller.SearchBookListener;
 import bibliotheksverwaltung.controller.SearchKeyListener;
 import bibliotheksverwaltung.controller.SearchPersonListener;
@@ -70,6 +71,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
         this.searchBook.addActionListener(new SearchBookListener(verwalter, searchField));
         this.searchPerson.addActionListener(new SearchPersonListener(verwalter, searchField));
         this.searchField.addKeyListener(new SearchKeyListener(verwalter, searchField));
+        this.printButton.addActionListener(new DatenDruckenActionListener(this.verwalter));
     }
 
     /** This method is called from within the constructor to

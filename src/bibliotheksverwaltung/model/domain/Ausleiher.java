@@ -7,7 +7,7 @@ import bibliotheksverwaltung.model.daos.dao.MySQLAusleiherDAO;
  * Diese Klasse Realisiert einen Ausleiher dieser hat eine ID, einen Vor- und Nachnamen und eine Adresse. Die Adresse besteht aus
  * der Strass, der Hausnummer, der Postleitzahl und der Stadt.
  */
-public class Ausleiher
+public class Ausleiher implements Schreibbar
 {
 	/**
 	 * Identität des Anwenders
@@ -212,6 +212,15 @@ public class Ausleiher
 	public String getJoinedAdress()
 	{
 		return this.strasse + " " + this.hausnummer + "\n" + this.plz + " " + this.stadt;
+	}
+
+	/* (non-Javadoc)
+	 * @see bibliotheksverwaltung.model.domain.Schreibbar#getBeschreibung()
+	 */
+	@Override
+	public String getBeschreibung()
+	{
+		return "<td>" + this.id + "</td><td>" + this.vorName + "</td><td>" + this.nachName + "</td><td>" + this.strasse + "</td><td>" + this.hausnummer + "</td><td>" + this.plz + "</td><td>" + this.stadt + "</td>";
 	}
 
 }
