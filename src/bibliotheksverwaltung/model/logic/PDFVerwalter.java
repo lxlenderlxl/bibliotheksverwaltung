@@ -20,6 +20,9 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.Table;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class PDFVerwalter {
@@ -77,7 +80,34 @@ public class PDFVerwalter {
 		}
 
 	}
-	
+	public void saveMahnlist2() {
+		List<Mahnliste> l = new ArrayList<Mahnliste>();
+		l.addAll(mahnlistenVerwalter.getMahnlisten());
+
+		Document document = new Document();
+		
+		PdfWriter pdf = null;
+		try {
+			//
+			// PDF anlegen.
+			pdf = PdfWriter.getInstance(document, new BufferedOutputStream(new FileOutputStream(resultName2)));
+			//
+			// Fuer jede Mahnliste ein Seite reinschreiben.
+			document.open();
+			for (Mahnliste m : l){
+				mahnliste(pdf, document, m);
+			}
+			//
+		} catch (FileNotFoundException e) {
+		} catch (DocumentException e) {
+		} finally {
+			document.close();
+
+			pdf.close();
+
+		}
+
+	}
 	/**
 	 * 
 	 * @param d
@@ -97,7 +127,7 @@ public class PDFVerwalter {
 		Chunk headerueberschrift = new Chunk("Bibliothek", headerueberschrift_font);
 		d.add(headerueberschrift);
 		d.add(new Paragraph("\nTel: (030) 5019-2240\nFax: (030) 5019-2397                                                               mail: Ausleihe-KH@fhtw-berlin.de FHTW, Treskowallee 8, 10313 Berlin ______________________________________________________________________________"));
-		d.add(new Paragraph("\nAn                                                                                  " + "         Benutzernummer: " + a.getId() + "\n" + a.getName() + " " + a.getNachName() + "\n" + a.getStrasse() + " " + a.getHausnummer() + "\n" + a.getPlz() + " " + a.getStadt() + "\n\n\n"));
+		d.add(new Paragraph("\nAn                                                                                  " + "         Benutzernummer: " + a.getId() + "\n" + a.getName() + " " + "\n" + a.getStrasse() + " " + a.getHausnummer() + "\n" + a.getPlz() + " " + a.getStadt() + "\n\n\n"));
 		d.add(new Paragraph(mahnungstext + "\n\n\n"));
 		//
 		//
@@ -110,11 +140,51 @@ public class PDFVerwalter {
 		}
 		d.add(Chunk.NEXTPAGE);
 	}
+	/**
+	 * 
+	 * @param d
+	 * @param m
+	 * @throws DocumentException
+	 */
+	private void mahnliste(PdfWriter pw, Document d, Mahnliste m)
+			throws DocumentException {
+		d.newPage();
+		// ab hier inhalt rein
+		//
+		Ausleiher a = m.getAusleiher();
+		// Text für den Ausleiher.
+		//
+		
+		Font headerueberschrift_font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
+		Chunk headerueberschrift = new Chunk("Bibliothek \n\n ", headerueberschrift_font);
+		d.add(headerueberschrift);
+		d.add(new Paragraph("\n"));
+		
+		//
+		//
+		for (Exemplar e : m.getExemplare()) {
+			// Text für jedes Exemplar (e) und seinem Medium (med) schreiben.
+			//
+			Medium med = new Medium(e.getMedium());
+			PdfPTable table = new PdfPTable(4);
+			PdfPCell cell = new PdfPCell(new Paragraph("Mahnliste"));
+			cell.setColspan(4);
+			table.addCell(cell);
+			
+			table.addCell(a.getName());
+			table.addCell("" + med.getId() + " Autor:  " + med.getAutorVorname() + " " + med.getAutorNachname());
+			table.addCell("Titel: " + med.getTitel());
+			table.addCell("ISBN: " +  med.getIsbn());
+			d.add(table);
+		}
+		d.add(Chunk.NEXTPAGE);
+	}
 
 	
 	public static void main(String args[]) {
 		PDFVerwalter a = new PDFVerwalter();
 		a.saveMahnlisten();
+		a.saveMahnlist2();
 	}
 	
 
