@@ -3,9 +3,11 @@
  */
 package bibliotheksverwaltung.model.logic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
-import bibliotheksverwaltung.model.domain.Medium;
 
 public class PDFVerwalter {
 
@@ -19,10 +21,12 @@ public class PDFVerwalter {
 
 	public String createMahnliste() {
 
-		Medium m = new Medium(1);
 		Ausleiher a = new Ausleiher(1);
-		Exemplar e = new Exemplar(1);
-
+		List<Exemplar> le = new ArrayList<Exemplar>();
+		
+		// Medium m = new Medium(le.get(idx).getMedium());
+		// für jedes exemplar das medium holen nacheinander von mir aus.
+		
 		String speicherpfadDerErstelltenPDF = "tmp.pdf";
 		return speicherpfadDerErstelltenPDF;
 
