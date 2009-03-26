@@ -1,17 +1,43 @@
 package bibliotheksverwaltung.model.domain;
-
+/**
+ * @author Sven Terzyk, Max Beier, Sven Blaurock
+ */
 import java.sql.Date;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLLogDAO;
-
+/**
+ * Diese Klasse Realisiert die Logdaten. Sie besitzt eine ID, eine Vorgangs-ID, eine Ausleiher-ID, einen Anwender, eine 
+ * Exemplar-ID, ein logDatum und ein Kommentar
+ * 
+ */
 public class Log {
-
+	/**
+	 * ID
+	 */
 	private int id;
+	/**
+	 * vorgangsID
+	 */
 	private int vorgangsID;
+	/**
+	 * ausleiherID
+	 */
 	private int ausleiherID;
+	/**
+	 * anwender
+	 */
 	private String anwender;
+	/**
+	 * 	exemplarID
+	 */
 	private int exemplarID;
+	/**
+	 * logDatum
+	 */
 	private Date logDatum;
+	/**
+	 * kommentar
+	 */
 	private String kommentar;
 
 	/**

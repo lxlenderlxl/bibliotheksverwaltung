@@ -1,21 +1,54 @@
 package bibliotheksverwaltung.model.domain;
-
+/**
+ * @author Max Beier, Sven Blaurock und Sven Terzyk
+ */
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLMediumDAO;
-
+/**
+ * Diese Klasse Realisiert ein Medium, diese besitzt eine ID, ein Titel, eine Autor Vor- Nachnamen, einen Verlag,
+ * ein Erscheinungsjahr, eine ISBN und die Aktivität.
+ */
 public class Medium
 {
+	/**
+	 * ID
+	 */
 	private int id = 0;
+	/**
+	 * titel
+	 */
 	private String titel = "";
+	/**
+	 * autorVorname
+	 */
 	private String autorVorname = "";
+	/**
+	 * autorNachname
+	 */
 	private String autorNachname = "";
+	/**
+	 * Verlag
+	 */
 	private String verlag = "";
+	/**
+	 * erscheinungsJahr
+	 */
 	private int erscheinungsJahr = 0;
+	/**
+	 * isbn
+	 */
 	private String isbn = "";
+	/**
+	 * Aktiv
+	 */
 	private boolean aktiv = true;
+	/**
+	 * Exemplar
+	 */
 	private ArrayList<Exemplar> exemplare = new ArrayList<Exemplar>();
-
+	
+	//Konstruktor
 	public Medium(int dieId)
 	{
 		Medium medium = new MySQLMediumDAO().get(dieId);
@@ -28,7 +61,17 @@ public class Medium
 		isbn = medium.isbn;
 		aktiv = medium.aktiv;
 	}
-
+	/**
+	 * Konstruktor, setzt Id, Titel, Vorname, Nachname, Verlag, Jahr, ISBN, erscheinungsJahr, ISBN auf die Daten.
+	 * @param dieId
+	 * @param derTitel
+	 * @param derVorname
+	 * @param derNachname
+	 * @param derVerlag
+	 * @param dasJahr
+	 * @param dieISBN
+	 * @param aktiv
+	 */
 	public Medium(int dieId, String derTitel, String derVorname, String derNachname, String derVerlag, int dasJahr, String dieISBN, boolean aktiv)
 	{
 		id = dieId;
@@ -40,7 +83,7 @@ public class Medium
 		isbn = dieISBN;
 		this.aktiv = aktiv;
 	}
-
+	
 	public Medium(String derTitel, String derVorname, String derNachname, String derVerlag, int dasJahr, String dieISBN)
 	{
 		titel = derTitel;
@@ -131,7 +174,9 @@ public class Medium
 	{
 		this.aktiv = aktiv;
 	}
-
+	/**
+	 * Erzeugt ein neues Exemplar
+	 */
 	public void erzeugeExemplare()
 	{
 		int[] exemplarIds = new MySQLMediumDAO().getExemplare(this.id);
@@ -141,12 +186,18 @@ public class Medium
 			exemplare.add(new Exemplar(exemplarIds[i]));
 		}
 	}
-	
+	/**
+	 * Liste von Exemplaren
+	 * @return
+	 */
 	public ArrayList<Exemplar> getExemplare()
 	{
 		return exemplare;
 	}
-
+	/**
+	 * Gibt eine Medium Text wieder.
+	 * @return
+	 */
 	public String getMediumText()
 	{
 		return "Autor: " + this.autorNachname + ", " + this.autorVorname + "\n\nVerlag: " + this.verlag + "\nISBN: " + this.isbn + "\nErsch.Jahr: " + this.erscheinungsJahr;

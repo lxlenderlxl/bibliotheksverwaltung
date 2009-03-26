@@ -1,26 +1,38 @@
 /**
- *
+ *@author Sven Blaurock, Sven Terzyk, Max Beier
  */
 package bibliotheksverwaltung.model.domain;
-
+/**
+ * Diese Klasse Realisiert die Statistik, diese besitzt die eingetragenen Buecher, die eingetragenen Exemplare,
+ * die eingetragenen Personen, die verliehen Buecher, die leihende Personen, die bisherigen Ausleihungen.
+ */
 public class Statistik {
-
+	/**
+	 * eingetrageneBuecher
+	 */
 	private int eingetrageneBuecher = 0;
-
+	/**
+	 * eingetragendeExemplare
+	 */
 	private int eingetragendeExemplare = 0;
-
+	/**
+	 * eingetragenePersonen
+	 */
 	private int eingetragenePersonen = 0;
-
+	/**
+	 * verliehenBuecher
+	 */
 	private int verliehenBuecher = 0;
-
+	/**
+	 * leihendePersonen
+	 */
 	private int leihendePersonen = 0;
-
+	/**
+	 * bisherigeAusleihen
+	 */
 	private int bisherigeAusleihen = 0;
 
-
-	/**
-	 *
-	 */
+	//Konstruktor
 	public Statistik(int eingetrageneBuecher, int eingetragendeExemplare,
 			int eingetragenePersonen, int verliehenBuecher,
 			int leihendePersonen, int bisherigeAusleihen) {

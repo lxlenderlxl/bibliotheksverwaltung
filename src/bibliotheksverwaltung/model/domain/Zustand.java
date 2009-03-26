@@ -1,5 +1,7 @@
 package bibliotheksverwaltung.model.domain;
-
+/**
+ * @author Sven Blaurock, Max Beier, Sven Terzyk
+ */
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -8,13 +10,24 @@ import bibliotheksverwaltung.model.daos.dao.MySQLZustandDAO;
 import bibliotheksverwaltung.util.LocalEnvironment;
 
 import com.mysql.jdbc.Blob;
-
+/**
+ * Diese Klasse Realisiert den Zusand. Jeder Zustand hat eine ID, eine Beschreibung und ein Bild.
+ */
 public class Zustand
 {
+	/**
+	 * ID
+	 */
 	private int id = 0;
+	/**
+	 * Beschreibung
+	 */
 	private String beschreibung = null;
+	/**
+	 * Bild
+	 */
 	private java.sql.Blob bild = null;
-
+	//Konstruktor
 	public Zustand(int dieId, String dieBeschreibung, java.sql.Blob blob)
 	{
 		id = dieId;
@@ -23,6 +36,7 @@ public class Zustand
 	}
 
 	/**
+	 * holt das Bild aus der DB.
 	 * @return the bild
 	 */
 	public ImageIcon getBild()
@@ -37,7 +51,10 @@ public class Zustand
 		}
 		return icon;
 	}
-	
+	/**
+	 * Gibt das Bild zurueck.
+	 * @return
+	 */
 	public java.sql.Blob getBlob()
 	{
 		return this.bild;
@@ -50,7 +67,7 @@ public class Zustand
 	{
 		this.bild = bild;
 	}
-
+	//Konstruktor
 	public Zustand(int dieId)
 	{
 		id = dieId;
