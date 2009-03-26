@@ -69,6 +69,10 @@ public class PersonAnsichtMouseListener implements MouseListener
 			verwalter.getAusleiherVerwalter().autoNotify("PersonenEinzelAnsicht");
 			verwalter.getAusleiherVerwalter().holeUpdateInfo().setzeAenderungOk(true);   
 			verwalter.getAusleiherVerwalter().holeUpdateInfo().setzeUpdateSperre(false);
-		}	
+			verwalter.getAusleiherVerwalter().holeUpdateInfo().setzeUpdateSperre(true);
+			verwalter.getAusleiherVerwalter().autoNotify("BuchKistePerson");
+			verwalter.getAusleiherVerwalter().holeUpdateInfo().setzeAenderungOk(true);   
+			verwalter.getAusleiherVerwalter().holeUpdateInfo().setzeUpdateSperre(false);
+		}
 	}
 }
