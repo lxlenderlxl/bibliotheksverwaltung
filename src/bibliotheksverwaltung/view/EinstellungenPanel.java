@@ -49,8 +49,8 @@ public class EinstellungenPanel extends javax.swing.JPanel {
         ausleihdauerLabel.setFont(new java.awt.Font("Arial", 1, 14));
         ausleihdauerLabel.setText("maximale Ausleihdauer");
 
-        verlaengerungenLabel.setFont(new java.awt.Font("Arial", 1, 14));
-        verlaengerungenLabel.setText("Anzahl der Verlängerungen");
+        verlaengerungenLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        verlaengerungenLabel.setText("Anzahl der Verlaengerungen");
 
         ausleihdauerField.setFont(new java.awt.Font("Arial", 1, 18));
         ausleihdauerField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -109,7 +109,7 @@ public class EinstellungenPanel extends javax.swing.JPanel {
 
         addButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_add_24.png"))); // NOI18N
-        addButton.setText("Benutzer hinzufügen");
+        addButton.setText("Benutzer hinzufuegen");
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
         addButton.setPreferredSize(new java.awt.Dimension(183, 28));
@@ -123,12 +123,12 @@ public class EinstellungenPanel extends javax.swing.JPanel {
                 .addGroup(benutzerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(benutzerSeparator, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, benutzerPanelLayout.createSequentialGroup()
-                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         benutzerPanelLayout.setVerticalGroup(
             benutzerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +144,7 @@ public class EinstellungenPanel extends javax.swing.JPanel {
 
         benutzerPane.setViewportView(benutzerPanel);
 
-        cancelButton.setFont(new java.awt.Font("Arial", 0, 14));
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_48.png"))); // NOI18N
         cancelButton.setText("Abbrechen");
         cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -152,7 +152,7 @@ public class EinstellungenPanel extends javax.swing.JPanel {
 
         saveButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/accepted_48.png"))); // NOI18N
-        saveButton.setText("Änderungen speichern");
+        saveButton.setText("Aenderungen speichern");
         saveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         saveButton.setIconTextGap(10);
 
@@ -161,30 +161,31 @@ public class EinstellungenPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(benutzerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancelButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                        .addComponent(saveButton)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(verlaengerungenLabel)
                         .addGap(18, 18, 18)
                         .addComponent(verlaengerungenField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(verlaengerungenSlider, 0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(verlaengerungenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ausleihdauerLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(ausleihdauerField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ausleihdauerSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(126, 126, 126))
+                .addGap(114, 114, 114))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(benutzerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addComponent(saveButton)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +211,7 @@ public class EinstellungenPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(saveButton))
-                .addGap(15, 15, 15))
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 

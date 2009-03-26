@@ -46,12 +46,12 @@ public class BenutzerPanel extends javax.swing.JPanel {
 
         changePasswordButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         changePasswordButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/lock_24.png"))); // NOI18N
-        changePasswordButton.setText("Passwort ändern");
+        changePasswordButton.setText("Passwort aendern");
         changePasswordButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         changePasswordButton.setIconTextGap(10);
         changePasswordButton.setPreferredSize(new java.awt.Dimension(183, 28));
 
-        benutzerLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        benutzerLabel.setFont(new java.awt.Font("Arial", 1, 14));
         benutzerLabel.setText("Benutzername");
         benutzerLabel.setPreferredSize(new java.awt.Dimension(50, 24));
 
