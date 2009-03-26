@@ -65,7 +65,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(558, 122));
         setPreferredSize(new java.awt.Dimension(558, 122));
 
-        vornameField.setFont(new java.awt.Font("Arial", 1, 18));
+        vornameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         vornameField.setForeground(new java.awt.Color(204, 204, 204));
         vornameField.setText("Vorname");
         vornameField.setToolTipText("Der Vorname der Person");
@@ -130,7 +130,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
             }
         });
 
-        stadtField.setFont(new java.awt.Font("Arial", 1, 18));
+        stadtField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         stadtField.setForeground(new java.awt.Color(204, 204, 204));
         stadtField.setText("Stadt");
         stadtField.setToolTipText("Die Stadt, in der die Person wohnt");
@@ -149,7 +149,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.setIconTextGap(10);
 
-        cancelButton.setFont(new java.awt.Font("Arial", 0, 18));
+        cancelButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_24.png"))); // NOI18N
         cancelButton.setText("Abbrechen");
         cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -174,9 +174,9 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(hausnummerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addButton)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -194,10 +194,8 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(plzField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(cancelButton))
+                            .addComponent(stadtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelButton)))
                     .addComponent(addButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
