@@ -14,8 +14,8 @@ package bibliotheksverwaltung.view;
 import javax.swing.JTextField;
 
 import bibliotheksverwaltung.controller.BuchAenderungenSpeichernListener;
-import bibliotheksverwaltung.controller.DatenBearbeitenAbbrechenListener;
-import bibliotheksverwaltung.controller.DatenBearbeitenActionListener;
+import bibliotheksverwaltung.controller.BuchDatenBearbeitenAbbrechenListener;
+import bibliotheksverwaltung.controller.BuchDatenBearbeitenActionListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
 /**
@@ -30,7 +30,7 @@ public class BuchHinzufuegenPanel extends javax.swing.JPanel {
 	public BuchHinzufuegenPanel(BibliotheksVerwalter derVerwalter, boolean mediumAuflisten) {
 		initComponents();
 		this.verwalter = derVerwalter;
-		this.cancelButton.addActionListener(new DatenBearbeitenAbbrechenListener(this.verwalter));
+		this.cancelButton.addActionListener(new BuchDatenBearbeitenAbbrechenListener(this.verwalter));
 		if (mediumAuflisten)
 		{
 			this.titelField.setText(this.verwalter.getMedienVerwalter().getMedium().getTitel());

@@ -8,24 +8,25 @@ import java.awt.event.ActionListener;
 
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
-public class DatenBearbeitenAbbrechenListener implements ActionListener
+public class PersonDatenBearbeitenActionListener implements ActionListener
 {
 	private BibliotheksVerwalter verwalter = null;
 
-	public DatenBearbeitenAbbrechenListener(BibliotheksVerwalter derVerwalter) {
+	public PersonDatenBearbeitenActionListener(BibliotheksVerwalter derVerwalter)
+	{
 		this.verwalter = derVerwalter;
 	}
-
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		//TODO AUSLEIHVORGANG (ausleiher fehlt)	AUSLEIHER ersetzen
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
-			verwalter.autoNotify("Abbrechen");
+			verwalter.autoNotify("PersonDatenBearbeiten");
 			verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			verwalter.holeUpdateInfo().setzeUpdateSperre(false);
 		}
