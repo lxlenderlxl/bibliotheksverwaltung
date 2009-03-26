@@ -39,7 +39,7 @@ public class PDFVerwalter {
 	 * 
 	 */
 	public PDFVerwalter() {
-		mahnlistenVerwalter = new MahnlisteVerwalter();
+		//mahnlistenVerwalter = new MahnlisteVerwalter();
 	}
 
 	/**
@@ -50,17 +50,18 @@ public class PDFVerwalter {
 	public void saveMahnlisten() {
 
 		List<Mahnliste> l = new ArrayList<Mahnliste>();
-		l.addAll(mahnlistenVerwalter.getMahnlisten());
+		//l.addAll(mahnlistenVerwalter.getMahnlisten());
 
 		Document document = new Document();
 		PdfWriter pdf = null;
 		try {
 			//
 			// PDF anlegen.
-			pdf = PdfWriter.getInstance(document, new BufferedOutputStream(new FileOutputStream(resultPath + '/' + resultName)));
+			pdf = PdfWriter.getInstance(document, new BufferedOutputStream(new FileOutputStream(resultName)));
 			//
 			// Für jede Mahnliste ein Seite reinschreiben.
 			document.open();
+			pdf.setPageEmpty(false);
 			for (Mahnliste m : l)
 				writeMahnliste(pdf, document, m);
 			//
