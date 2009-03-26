@@ -56,7 +56,7 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
         loginPanel = new javax.swing.JPanel();
         infoLabel = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         loginButton1 = new javax.swing.JButton();
 
@@ -74,7 +74,7 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
         infoLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 0), 2, true));
         infoLabel.setOpaque(true);
 
-        nameField.setFont(new java.awt.Font("Arial", 1, 18));
+        nameField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nameField.setForeground(new java.awt.Color(204, 204, 204));
         nameField.setText("Name");
         nameField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -86,7 +86,7 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
             }
         });
 
-        passwordField.setFont(new java.awt.Font("Arial", 1, 18));
+        passwordField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         passwordField.setForeground(new java.awt.Color(204, 204, 204));
         passwordField.setText("Passwort");
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -98,19 +98,14 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
             }
         });
 
-        loginButton.setFont(new java.awt.Font("Arial", 1, 18));
+        loginButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/lock_48.png"))); // NOI18N
         loginButton.setText("Einloggen");
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         loginButton.setIconTextGap(10);
         loginButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
 
-        loginButton1.setFont(new java.awt.Font("Arial", 1, 18));
+        loginButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         loginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/cancel_48.png"))); // NOI18N
         loginButton1.setContentAreaFilled(false);
         loginButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -131,16 +126,16 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                     .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                     .addGroup(loginPanelLayout.createSequentialGroup()
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(loginButton1))
-                    .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                        .addComponent(loginButton1)))
                 .addContainerGap())
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(infoLabel)
                 .addGap(18, 18, 18)
@@ -150,7 +145,7 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
                 .addGap(18, 18, 18)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(loginButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loginButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -182,28 +177,23 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
         }
 }//GEN-LAST:event_nameFieldFocusLost
 
+    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_loginButton1ActionPerformed
+
     private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
         if (passwordField.getText().equals("Passwort")) {
             passwordField.setText("");
             passwordField.setForeground(new java.awt.Color(0, 0, 0));
         }
-}//GEN-LAST:event_passwordFieldFocusGained
+    }//GEN-LAST:event_passwordFieldFocusGained
 
     private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
-        if (passwordField.getText().isEmpty()) {
+        if (passwordField.getPassword().length == 0) {
             passwordField.setForeground(new java.awt.Color(204, 204, 204));
             passwordField.setText("Passwort");
         }
-}//GEN-LAST:event_passwordFieldFocusLost
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        //this.setPreferredSize(new Dimension(249, 231));
-        infoLabel.setVisible(true);
-    }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_loginButton1ActionPerformed
+    }//GEN-LAST:event_passwordFieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -226,7 +216,7 @@ public class LoginGUI extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton loginButton1;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JTextField nameField;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 
     /* (non-Javadoc)
