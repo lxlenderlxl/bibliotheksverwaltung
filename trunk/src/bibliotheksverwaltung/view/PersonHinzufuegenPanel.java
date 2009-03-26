@@ -201,6 +201,102 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+	/**
+	 * @return the hausnummerField
+	 */
+	public javax.swing.JTextField getHausnummerField()
+	{
+		return hausnummerField;
+	}
+
+	/**
+	 * @param hausnummerField the hausnummerField to set
+	 */
+	public void setHausnummerField(javax.swing.JTextField hausnummerField)
+	{
+		this.hausnummerField = hausnummerField;
+	}
+
+	/**
+	 * @return the nachnameField
+	 */
+	public javax.swing.JTextField getNachnameField()
+	{
+		return nachnameField;
+	}
+
+	/**
+	 * @param nachnameField the nachnameField to set
+	 */
+	public void setNachnameField(javax.swing.JTextField nachnameField)
+	{
+		this.nachnameField = nachnameField;
+	}
+
+	/**
+	 * @return the plzField
+	 */
+	public javax.swing.JTextField getPlzField()
+	{
+		return plzField;
+	}
+
+	/**
+	 * @param plzField the plzField to set
+	 */
+	public void setPlzField(javax.swing.JTextField plzField)
+	{
+		this.plzField = plzField;
+	}
+
+	/**
+	 * @return the stadtField
+	 */
+	public javax.swing.JTextField getStadtField()
+	{
+		return stadtField;
+	}
+
+	/**
+	 * @param stadtField the stadtField to set
+	 */
+	public void setStadtField(javax.swing.JTextField stadtField)
+	{
+		this.stadtField = stadtField;
+	}
+
+	/**
+	 * @return the strasseField
+	 */
+	public javax.swing.JTextField getStrasseField()
+	{
+		return strasseField;
+	}
+
+	/**
+	 * @param strasseField the strasseField to set
+	 */
+	public void setStrasseField(javax.swing.JTextField strasseField)
+	{
+		this.strasseField = strasseField;
+	}
+
+	/**
+	 * @return the vornameField
+	 */
+	public javax.swing.JTextField getVornameField()
+	{
+		return vornameField;
+	}
+
+	/**
+	 * @param vornameField the vornameField to set
+	 */
+	public void setVornameField(javax.swing.JTextField vornameField)
+	{
+		this.vornameField = vornameField;
+	}
+
 	private void vornameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vornameFieldFocusGained
 		focusGained(vornameField, "Vorname");
 	}//GEN-LAST:event_vornameFieldFocusGained

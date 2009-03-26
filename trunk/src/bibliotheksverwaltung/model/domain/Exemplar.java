@@ -212,8 +212,8 @@ public class Exemplar implements Schreibbar
 	public String getBeschreibung()
 	{
 		String rueck = "";
-		rueck += "<tr>" + new Medium(this.mediumId).getTitel() + "</tr>";
-		rueck += "<tr><td>" + this.id + "</td><td>" + new Ausleiher(this.ausleiherID).getJoinedName() + "</td><td>" + new Zustand(this.zustandsId).getBeschreibung() + "</td></tr>";
+
+		rueck += "<td>" + this.id + "</td><td>" + (this.isAusleihBar() ? "" : new Ausleiher(this.ausleiherID).getJoinedName()) + "</td><td>" + new Zustand(this.zustandsId).getBeschreibung() + "</td>";
 		return rueck;
 	}
 
