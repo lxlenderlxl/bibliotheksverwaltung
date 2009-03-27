@@ -88,6 +88,7 @@ public class BuchEinzelansichtPanel extends javax.swing.JPanel implements Observ
 		this.verwalter.getMedienVerwalter().getExemplarVerwalter().deleteObservers();
 		this.verwalter.getMedienVerwalter().getExemplarVerwalter().addObserver(this);
 		this.verwalter.getHistorienVerwalter().addObserver(this);
+		this.verwalter.fuegeObserverHinzu(this);
 	}
 	/*
 	 * Erzeugt die detaillierten Ansichten der Exemplare

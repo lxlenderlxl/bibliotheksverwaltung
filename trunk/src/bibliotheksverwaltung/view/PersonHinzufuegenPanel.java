@@ -13,8 +13,10 @@ package bibliotheksverwaltung.view;
 
 import javax.swing.JTextField;
 
+import bibliotheksverwaltung.controller.BuchHinzuActionListener;
 import bibliotheksverwaltung.controller.PersonAenderungenSpeichernListener;
 import bibliotheksverwaltung.controller.PersonDatenBearbeitenAbbrechenListener;
+import bibliotheksverwaltung.controller.PersonHinzuActionListener;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 
 /**
@@ -41,6 +43,8 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
 			this.addButton.setText("<html>�nderungen<br />speichern</html>");
 			this.addButton.addActionListener(new PersonAenderungenSpeichernListener(this.verwalter, this));
 		}
+		else
+			this.addButton.addActionListener(new PersonHinzuActionListener(this.verwalter, this));
 	}
 
 	/** 

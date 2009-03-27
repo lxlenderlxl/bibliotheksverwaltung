@@ -54,6 +54,10 @@ public class Ausleiher implements Schreibbar
 		stadt = dieStadt;
 		this.aktiv = aktiv;
 	}
+	public Ausleiher()
+	{
+		id = 0;
+	}
 	//2.Konstruktor
 	public Ausleiher(int dieId)
 	{

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.Message;
 
 public class MySQLAusleiherDAO implements AusleiherDAO
 {	
@@ -36,6 +37,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			LocalEnvironment.statementChecker(statement, 6, dieStadt);
 			statement.setBoolean(7, aktiv);
 			statement.executeUpdate();
+			Message.raise("Der Ausleiher wurde hinzugefuegt", 1);
 		} catch (SQLException e)
 		{
 			LocalEnvironment.log(e.getMessage(), this);
@@ -117,6 +119,7 @@ public class MySQLAusleiherDAO implements AusleiherDAO
 			statement.setBoolean(7, aktiv);
 			LocalEnvironment.statementChecker(statement, 8, dieId);
 			statement.executeUpdate();
+			Message.raise("Der Ausleiher wurde erfolgreich bearbeitet", 1);
 		} catch (SQLException e)
 		{
 			LocalEnvironment.log(e.getMessage(), this);
