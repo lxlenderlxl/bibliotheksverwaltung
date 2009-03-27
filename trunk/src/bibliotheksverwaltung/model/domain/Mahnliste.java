@@ -59,7 +59,7 @@ public class Mahnliste {
 	 */
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("Für Ausleiher mit der ID ");
+		sb.append("Fuer Ausleiher mit der ID ");
 		sb.append(ausleiher.getId());
 		sb.append(" fehlen folgende Exemplare: ");
 		for (Exemplar e : fehlListe) {

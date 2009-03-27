@@ -101,7 +101,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 
 		jButton1.setFont(new java.awt.Font("Arial", 1, 14));
 		jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/arrow_left_green_24.png"))); // NOI18N
-		jButton1.setToolTipText("Buch zurücknehmen");
+		jButton1.setToolTipText("Buch zuruecknehmen");
 		jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 		jButton1.setMaximumSize(new java.awt.Dimension(217, 24));
 
@@ -117,7 +117,7 @@ public class AusleiheEinzelansichtPanel extends javax.swing.JPanel {
 
 		jButton3.setFont(new java.awt.Font("Arial", 1, 14));
 		jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/refresh_24.png"))); // NOI18N
-		jButton3.setToolTipText("Ausleihe Verlängern");
+		jButton3.setToolTipText("Ausleihe Verlaengern");
 		jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
 		jButton3.setMaximumSize(new java.awt.Dimension(217, 24));
 

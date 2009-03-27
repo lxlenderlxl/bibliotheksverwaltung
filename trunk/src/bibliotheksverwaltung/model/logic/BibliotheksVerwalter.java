@@ -201,7 +201,7 @@ public class BibliotheksVerwalter extends Observable {
 			LogVerwalter.add(new Log(Vorgang.AUSLEIHE_VERLAENGERT, dasExemplar.getAusleiher(), dasExemplar.getId()));
 
 			if (dasExemplar.getVerlaengerung() == Integer.valueOf(LocalEnvironment.getMaximaleVerlaengerung().getWert()))
-				Message.raise("Ausleihung wurde verl�ngert.\n" +
+				Message.raise("Ausleihung wurde verlaengert.\n" +
 						"Achtung: Letzte Moegliche Verlaengerung.", Message.GELB);
 			else
 				Message.raise("Ausleihung wurde verlaengert.", Message.GRUEN);
@@ -275,7 +275,7 @@ public class BibliotheksVerwalter extends Observable {
 			Log log = new Log(Vorgang.EXEMPLAR_ENTFERNT, 0, dasExemplar.getId());
 			if (!this.medienVerwalter.hasExemplare(dasExemplar.getMedium())) {
 				mediumEntfernen();
-				log.setKommentar("Letztes Exemplar gel�scht - Medium wird deaktiviert.");
+				log.setKommentar("Letztes Exemplar geloescht - Medium wird deaktiviert.");
 			}
 			LogVerwalter.add(log);
 			setChanged();
@@ -307,7 +307,7 @@ public class BibliotheksVerwalter extends Observable {
 			notifyObservers(updateInfo);
 		}
 		else
-			LocalEnvironment.log("Medium " + this.medienVerwalter.getMedium().getId() + " konnte nicht gel�scht werden, " +
+			LocalEnvironment.log("Medium " + this.medienVerwalter.getMedium().getId() + " konnte nicht geloescht werden, " +
 					"da noch Exemplare vorhanden sind.", this);
 	}
 	
