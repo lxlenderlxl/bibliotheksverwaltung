@@ -155,9 +155,8 @@ public class DruckVerwalter
 			//Style
 			StyleSheet styles = new StyleSheet();
 			styles.loadTagStyle("body", "font", "Arial");
-			styles.loadTagStyle("body", "size", "12px");
+			styles.loadTagStyle("body", "size", "9px");
 			styles.loadTagStyle("table", "border", "1");
-			styles.loadTagStyle(".grey", "background-color", "#cccccc");
 
 			document.open();
 
