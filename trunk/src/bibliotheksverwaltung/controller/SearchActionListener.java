@@ -22,7 +22,8 @@ public class SearchActionListener implements ActionListener
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
-	{
+	{		
+		this.verwalter.getSuchVerwalter().deleteObservers();
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			verwalter.holeUpdateInfo().setzeUpdateSperre(true);
