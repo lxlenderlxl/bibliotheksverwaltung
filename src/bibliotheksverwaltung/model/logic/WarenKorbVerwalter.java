@@ -30,12 +30,20 @@ public class WarenKorbVerwalter extends Observable
 	public void fuegeExemplarHinzu(Exemplar dasExemplar)
 	{
 		updateInfo.setzeAenderung("AktualisiereWarenkorb");
-		if (!this.warenKorb.contains(dasExemplar))
+		boolean enthalten = false;
+		for (int i = 0; i < warenKorb.size(); i++)
+		{
+			if (warenKorb.get(i).getId() == dasExemplar.getId())
+				enthalten = true;
+		}
+		
+		if (!enthalten)
 			this.warenKorb.add(dasExemplar);
 		else
 			Message.raise("Exemplar bereits in der Buchkiste", Message.ROT);
 		setChanged();
 		notifyObservers(updateInfo);
+		System.out.println(this.warenKorb.size());
 	}
 
 	public void entferneExemplar(Exemplar dasExemplar)

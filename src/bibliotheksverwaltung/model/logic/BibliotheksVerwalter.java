@@ -349,5 +349,18 @@ public class BibliotheksVerwalter extends Observable {
 			this.getWarenKorbVerwalter().deleteObserver(element);
 		}
 	}
+	
+	public void entferneAusleiher()
+	{
+		if (this.ausleiherVerwalter.getAnzahlAusgeliehenerExemplare() == 0) {
+			updateInfo.setzeAenderung("AusleiherDelete");
+			this.ausleiherVerwalter.delete();
+			setChanged();
+			notifyObservers(updateInfo);
+		}
+		else
+			LocalEnvironment.log("Ausleiher " + this.ausleiherVerwalter.getAusleiher().getId() + " konnte nicht geloescht werden, " +
+					"da noch Exemplare ausgeliehen sind.", this);
+	}
 
 }

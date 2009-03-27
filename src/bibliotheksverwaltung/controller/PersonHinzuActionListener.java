@@ -1,21 +1,22 @@
 /**
- *
+ * 
  */
 package bibliotheksverwaltung.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.view.PersonHinzufuegenPanel;
 
-public class PersonAenderungenSpeichernListener implements ActionListener
+public class PersonHinzuActionListener implements ActionListener
 {
 	private BibliotheksVerwalter verwalter = null;
 	private PersonHinzufuegenPanel hinzuPanel = null;
 
-	public PersonAenderungenSpeichernListener(BibliotheksVerwalter derVerwalter, PersonHinzufuegenPanel dasHinzuPanel) {
+	public PersonHinzuActionListener(BibliotheksVerwalter derVerwalter, PersonHinzufuegenPanel dasHinzuPanel) {
 		this.verwalter = derVerwalter;
 		this.hinzuPanel = dasHinzuPanel;
 	}
@@ -29,6 +30,7 @@ public class PersonAenderungenSpeichernListener implements ActionListener
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			boolean eingabeOK = true;
+			this.verwalter.getAusleiherVerwalter().setAusleiher(new Ausleiher());
 			this.verwalter.holeUpdateInfo().setzeUpdateSperre(true);
 			try {
 				this.verwalter.getAusleiherVerwalter().getAusleiher().setVorName(this.hinzuPanel.getVornameField().getText());
@@ -74,7 +76,7 @@ public class PersonAenderungenSpeichernListener implements ActionListener
 			}
 
 			if (eingabeOK) {
-				this.verwalter.personBearbeiten();
+				this.verwalter.getAusleiherVerwalter().add();
 				this.verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			}
 			this.verwalter.holeUpdateInfo().setzeUpdateSperre(false);

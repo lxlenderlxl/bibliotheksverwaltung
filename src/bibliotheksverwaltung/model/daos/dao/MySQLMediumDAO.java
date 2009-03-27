@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.util.LocalEnvironment;
+import bibliotheksverwaltung.util.Message;
 
 
 public class MySQLMediumDAO implements MediumDAO
@@ -38,6 +39,7 @@ public class MySQLMediumDAO implements MediumDAO
 			LocalEnvironment.statementChecker(statement, 6, dieISBN);
 			statement.setBoolean(7, aktiv);
 			statement.executeUpdate();
+			Message.raise("Das Buch wurde erfolgreich hinzugefuegt", 1);
 		} catch (SQLException e)
 		{
 			LocalEnvironment.log(e.getMessage(), this);
@@ -122,6 +124,7 @@ public class MySQLMediumDAO implements MediumDAO
 			statement.setBoolean(7, aktiv);
 			LocalEnvironment.statementChecker(statement, 8, dieId);
 			statement.executeUpdate();
+			Message.raise("Das Buch wurde erfolgreich bearbeitet", 1);
 		} catch (SQLException e)
 		{
 			LocalEnvironment.log(e.getMessage(), this);

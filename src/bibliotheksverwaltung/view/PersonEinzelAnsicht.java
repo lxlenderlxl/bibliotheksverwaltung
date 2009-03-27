@@ -19,6 +19,7 @@ import java.util.Observer;
 
 import bibliotheksverwaltung.controller.DatenDruckenActionListener;
 import bibliotheksverwaltung.controller.PersonDatenBearbeitenActionListener;
+import bibliotheksverwaltung.controller.PersonEntfernenActionListener;
 import bibliotheksverwaltung.controller.PersonHistorieActionListener;
 import bibliotheksverwaltung.model.domain.Exemplar;
 import bibliotheksverwaltung.model.domain.Log;
@@ -63,6 +64,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		this.editButton.addActionListener(new PersonDatenBearbeitenActionListener(verwalter));
 		this.historyButton.addActionListener(new PersonHistorieActionListener(this.verwalter));
     this.printButton.addActionListener(new DatenDruckenActionListener(this.verwalter));
+    this.addButton.addActionListener(new PersonEntfernenActionListener(this.verwalter));
 		this.verwalter.addObserver(this);
 		this.verwalter.getAusleiherVerwalter().addObserver(this);
 		this.verwalter.getHistorienVerwalter().addObserver(this);
