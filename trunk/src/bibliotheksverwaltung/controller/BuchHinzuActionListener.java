@@ -6,6 +6,7 @@ package bibliotheksverwaltung.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.Message;
 import bibliotheksverwaltung.view.BuchHinzufuegenPanel;
@@ -29,6 +30,7 @@ public class BuchHinzuActionListener implements ActionListener
 		if (!verwalter.holeUpdateInfo().holeUpdateSperre())
 		{
 			boolean eingabeOK = true;
+			this.verwalter.getMedienVerwalter().setMedium(new Medium());
 			this.verwalter.holeUpdateInfo().setzeUpdateSperre(true);
 			try {
 				this.verwalter.getMedienVerwalter().getMedium().setAutorNachname(this.hinzuPanel.getNachnameField().getText());
@@ -74,7 +76,7 @@ public class BuchHinzuActionListener implements ActionListener
 			}
 
 			if (eingabeOK) {
-				this.verwalter.mediumBearbeiten();
+				this.verwalter.mediumHinzufuegen();
 				this.verwalter.holeUpdateInfo().setzeAenderungOk(true);
 			}
 			this.verwalter.holeUpdateInfo().setzeUpdateSperre(false);

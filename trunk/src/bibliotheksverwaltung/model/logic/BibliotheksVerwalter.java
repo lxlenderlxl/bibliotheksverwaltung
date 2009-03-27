@@ -290,7 +290,7 @@ public class BibliotheksVerwalter extends Observable {
 	 */
 	public void mediumHinzufuegen() {
 		updateInfo.setzeAenderung("mediumHinzu");
-		new MedienVerwalter().add();
+		this.medienVerwalter.add();
 		setChanged();
 		notifyObservers(updateInfo);
 	}
