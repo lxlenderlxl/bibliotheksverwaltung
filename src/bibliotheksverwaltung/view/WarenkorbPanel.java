@@ -92,6 +92,7 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 	public void resetWarenkorb()
 	{
 		this.eintraegePanel.removeAll();
+		this.verwalter.getWarenKorbVerwalter().leereWarenKorb();
 		this.ausleiherButton.setText("Ausleiher Waehlen");
 		this.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buchkiste", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(0, 0, 0)));
 		ausleiherButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/user_24.png"))); // NOI18N
@@ -106,7 +107,7 @@ public class WarenkorbPanel extends javax.swing.JPanel implements Observer {
 	public void update(Observable o, Object arg)
 	{
 		UpdateInfo updateInfo = (UpdateInfo) arg;
-		String ausgabe = "";
+		System.out.println(updateInfo.holeAenderung());
 		if (updateInfo.holeAenderung().equals("AktualisiereWarenkorb"))
 		{
 			if (updateInfo.holeAenderungOk())

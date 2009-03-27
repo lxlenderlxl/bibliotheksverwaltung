@@ -78,7 +78,7 @@ public class SuchPanel extends javax.swing.JPanel implements FocusListener, Acti
 		searchField.setText("Suchworte eingeben...");
 		resultArea.removeAll();
 		verwalter.autoNotify("WarenKorbReset");        
-		this.resultArea.setPreferredSize((new Dimension((int) outputPanel.getSize().getWidth() - 10, (int) outputPanel.getSize().getWidth())));
+		this.resultArea.setPreferredSize((new Dimension((int) outputPanel.getSize().getWidth() - 10, (int) outputPanel.getSize().getHeight())));
 		outputPanel.repaint();
 	}//GEN-LAST:event_clearButtonActionPerformed
 
