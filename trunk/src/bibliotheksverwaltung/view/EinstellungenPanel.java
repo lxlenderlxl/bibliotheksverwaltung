@@ -8,13 +8,13 @@
  *
  * Created on 20.03.2009, 14:03:27
  */
-
 package bibliotheksverwaltung.view;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
 
 import bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO;
+import bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO;
 import bibliotheksverwaltung.model.domain.Anwender;
 import bibliotheksverwaltung.util.MD5Generator;
 
@@ -25,30 +25,39 @@ import bibliotheksverwaltung.util.MD5Generator;
 @SuppressWarnings("serial")
 public class EinstellungenPanel extends javax.swing.JPanel {
 
-	/** Erzeugt ein neues EinstellungenPanel */
-	public EinstellungenPanel() {
-		initComponents();
-		addBenutzer();
-	}
+    /** Erzeugt ein neues EinstellungenPanel */
+    public EinstellungenPanel() {
+        initComponents();
+        initBenutzer();
+        initKonfigs();
+    }
 
-	/**
-	 *
-	 */
-	private void addBenutzer() {
-		anwenderPanel.removeAll();
-		ArrayList<Anwender> alleAnwender = new MySQLAnwenderDAO().get(true);
-		for (Anwender anwender : alleAnwender) {
-			anwenderPanel.add(new BenutzerPanel(anwender.getAnwenderName()));
-		}
+    /**
+     *
+     */
+    private void initBenutzer() {
+        anwenderPanel.removeAll();
+        ArrayList<Anwender> alleAnwender = new MySQLAnwenderDAO().get(true);
+        for (Anwender anwender : alleAnwender) {
+            anwenderPanel.add(new BenutzerPanel(anwender.getAnwenderName()));
+        }
         anwenderPanel.setPreferredSize(new Dimension(anwenderPanel.getHeight(), alleAnwender.size() * 36));
-		this.repaint();
-		this.revalidate();
-	}
+        this.repaint();
+        this.revalidate();
+    }
 
-	/**
-	 * Erzeugt die obigen Komponenten auf dem MainPanel
-	 */
-	@SuppressWarnings("unchecked")
+    private void initKonfigs() {
+        ausleihdauerField.setText(new MySQLKonfigurationDAO().get("ausleihdauer").getWert());
+        verlaengerungenField.setText(new MySQLKonfigurationDAO().get("verlaengerung").getWert());
+        ausleihdauerSlider.setValue(new Integer(ausleihdauerField.getText()));
+        verlaengerungenSlider.setValue(new Integer(verlaengerungenField.getText()));
+    }
+
+
+    /**
+     * Erzeugt die obigen Komponenten auf dem MainPanel
+     */
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -192,11 +201,16 @@ public class EinstellungenPanel extends javax.swing.JPanel {
         cancelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         cancelButton.setIconTextGap(10);
 
-        saveButton.setFont(new java.awt.Font("Arial", 1, 14));
+        saveButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotheksverwaltung/view/images/accepted_48.png"))); // NOI18N
         saveButton.setText("Aenderungen speichern");
         saveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         saveButton.setIconTextGap(10);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -262,31 +276,31 @@ public class EinstellungenPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 	private void nameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFieldFocusGained
-		if (nameField.getText().equals("Name")) {
-			nameField.setText("");
-			nameField.setForeground(new java.awt.Color(0, 0, 0));
-		}
+        if (nameField.getText().equals("Name")) {
+            nameField.setText("");
+            nameField.setForeground(new java.awt.Color(0, 0, 0));
+        }
 	}//GEN-LAST:event_nameFieldFocusGained
 
 	private void nameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFieldFocusLost
-		if (nameField.getText().isEmpty()) {
-			nameField.setForeground(new java.awt.Color(204, 204, 204));
-			nameField.setText("Name");
-		}
+        if (nameField.getText().isEmpty()) {
+            nameField.setForeground(new java.awt.Color(204, 204, 204));
+            nameField.setText("Name");
+        }
 	}//GEN-LAST:event_nameFieldFocusLost
 
 	private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
-		if (passwordField.getText().equals("Passwort")) {
-			passwordField.setText("");
-			passwordField.setForeground(new java.awt.Color(0, 0, 0));
-		}
+        if (passwordField.getText().equals("Passwort")) {
+            passwordField.setText("");
+            passwordField.setForeground(new java.awt.Color(0, 0, 0));
+        }
 	}//GEN-LAST:event_passwordFieldFocusGained
 
 	private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
-		if (passwordField.getText().isEmpty()) {
-			passwordField.setForeground(new java.awt.Color(204, 204, 204));
-			passwordField.setText("Passwort");
-		}
+        if (passwordField.getText().isEmpty()) {
+            passwordField.setForeground(new java.awt.Color(204, 204, 204));
+            passwordField.setText("Passwort");
+        }
 	}//GEN-LAST:event_passwordFieldFocusLost
 
     private void ausleihdauerSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ausleihdauerSliderStateChanged
@@ -300,10 +314,13 @@ public class EinstellungenPanel extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         new MySQLAnwenderDAO().add(nameField.getText(),
                 MD5Generator.getInstance().hashData(passwordField.getText()), 1, true);
-        addBenutzer();
+        initBenutzer();
     }//GEN-LAST:event_addButtonActionPerformed
 
-
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        new MySQLKonfigurationDAO().update("ausleihdauer", ausleihdauerField.getText());
+        new MySQLKonfigurationDAO().update("verlaengerung", verlaengerungenField.getText());
+    }//GEN-LAST:event_saveButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JScrollPane anwenderPane;
@@ -321,5 +338,4 @@ public class EinstellungenPanel extends javax.swing.JPanel {
     private javax.swing.JLabel verlaengerungenLabel;
     private javax.swing.JSlider verlaengerungenSlider;
     // End of variables declaration//GEN-END:variables
-
 }
