@@ -34,42 +34,42 @@ public class BuchAenderungenSpeichernListener implements ActionListener
 				this.verwalter.getMedienVerwalter().getMedium().setAutorNachname(this.hinzuPanel.getNachnameField().getText());
 			} catch (Exception ex)
 			{
-				Message.raise("Bitte prüfen Sie den Autor-Nachnamen", Message.ROT);
+				Message.raise("Bitte pruefen Sie den Autor-Nachnamen", Message.ROT);
 				eingabeOK = false;
 			}
 			try {
 				this.verwalter.getMedienVerwalter().getMedium().setAutorVorname(this.hinzuPanel.getVornameField().getText());
 			} catch (Exception ex)
 			{
-				Message.raise("Bitte prüfen Sie den Autor-Vornamen", Message.ROT);
+				Message.raise("Bitte pruefen Sie den Autor-Vornamen", Message.ROT);
 				eingabeOK = false;
 			}
 			try {
 				this.verwalter.getMedienVerwalter().getMedium().setErscheinungsJahr(Integer.valueOf(this.hinzuPanel.getJahrField().getText()));
 			} catch (Exception ex)
 			{
-				Message.raise("Bitte prüfen Sie das Erscheinungsjahr", Message.ROT);
+				Message.raise("Bitte pruefen Sie das Erscheinungsjahr", Message.ROT);
 				eingabeOK = false;
 			}
 			try {
 				this.verwalter.getMedienVerwalter().getMedium().setIsbn(this.hinzuPanel.getIsbnField().getText());
 			} catch (Exception ex)
 			{
-				Message.raise("Bitte prüfen Sie die ISBN", Message.ROT);
+				Message.raise("Bitte pruefen Sie die ISBN", Message.ROT);
 				eingabeOK = false;
 			}
 			try {
 				this.verwalter.getMedienVerwalter().getMedium().setTitel(this.hinzuPanel.getTitelField().getText());
 			} catch (Exception ex)
 			{
-				Message.raise("Bitte prüfen Sie den Titel", Message.ROT);
+				Message.raise("Bitte pruefen Sie den Titel", Message.ROT);
 				eingabeOK = false;
 			}
 			try {
 				this.verwalter.getMedienVerwalter().getMedium().setVerlag(this.hinzuPanel.getVerlagField().getText());
 			} catch (Exception ex)
 			{
-				Message.raise("Bitte prüfen Sie den Verlag", Message.ROT);
+				Message.raise("Bitte pruefen Sie den Verlag", Message.ROT);
 				eingabeOK = false;
 			}
 
