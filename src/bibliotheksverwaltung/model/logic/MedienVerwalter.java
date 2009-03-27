@@ -18,7 +18,7 @@ public class MedienVerwalter extends Observable {
 	
 	public MedienVerwalter()
 	{
-		super();	
+		super();
 	}
 	
 	public MedienVerwalter(Medium dasMedium)
@@ -156,5 +156,4 @@ public class MedienVerwalter extends Observable {
 	{
 		this.exemplarVerwalter = exemplarVerwalter;
 	}
-
 }

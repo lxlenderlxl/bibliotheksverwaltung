@@ -20,7 +20,7 @@ import bibliotheksverwaltung.util.UpdateInfo;
 public class OutputArea extends JPanel implements Observer
 {
 	private BibliotheksVerwalter verwalter = null;
-	
+
 	public OutputArea(BibliotheksVerwalter derVerwalter)
 	{
 		super();
@@ -46,6 +46,7 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
+				this.verwalter.loescheInaktiveObserver();
 				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
 				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
@@ -71,9 +72,11 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
+				this.verwalter.loescheInaktiveObserver();
 				this.setPreferredSize(new Dimension(563, 533));
 				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(verwalter);
 				this.add(buchEinzel);
+				this.verwalter.loescheInaktiveObserver();
 			}
 		}
 		else if (updateInfo.holeAenderung().equals("Ausleihersuche"))
@@ -82,6 +85,7 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
+				this.verwalter.loescheInaktiveObserver();
 				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
 				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
@@ -106,6 +110,7 @@ public class OutputArea extends JPanel implements Observer
 			if (updateInfo.holeAenderungOk())
 			{
 				this.removeAll();
+				this.verwalter.loescheInaktiveObserver();
 				this.setPreferredSize(new Dimension(563, 533));
 				PersonEinzelAnsicht personenEinzel = new PersonEinzelAnsicht(verwalter);
 				this.add(personenEinzel);
@@ -114,5 +119,4 @@ public class OutputArea extends JPanel implements Observer
 		this.repaint();
 		this.revalidate();
 	}
-
 }

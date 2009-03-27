@@ -2,10 +2,12 @@ package bibliotheksverwaltung.model.logic;
 /**
  * @author Sven Blaurock, Max Beier, Sven Terzyk
  */
+import java.awt.Component;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Observable;
+import java.util.Observer;
 
 import bibliotheksverwaltung.model.domain.Ausleiher;
 import bibliotheksverwaltung.model.domain.Exemplar;
@@ -21,7 +23,7 @@ import bibliotheksverwaltung.util.UpdateInfo;
 public class BibliotheksVerwalter extends Observable {
 	
 	/**
-	 * Erstell ein neuen Medien Verwalter.
+	 * Erstellt ein neuen Medien Verwalter.
 	 */
 	private MedienVerwalter medienVerwalter = new MedienVerwalter();
 	/**
@@ -63,6 +65,11 @@ public class BibliotheksVerwalter extends Observable {
 	{
 		return ausleiherVerwalter;
 	}
+	
+	/**
+	 * Bezeichnet eine Liste mit allen aktiven Views
+	 */
+	private ArrayList<Component> aktiveViews = new ArrayList<Component>();
 
 	/**
 	 * @param ausleiherVerwalter the ausleiherVerwalter to set
@@ -139,8 +146,8 @@ public class BibliotheksVerwalter extends Observable {
 		super();
 	}
 	/**
-	 * Buch Ausleihen.
-	 * @param dasExemplar
+	 * Leiht ein Buch aus	
+	 * @param dasExemplar das Exemplar das ausgelihen werden soll
 	 */
 	private void buchAusleihen(Exemplar dasExemplar) {
 		
@@ -322,6 +329,25 @@ public class BibliotheksVerwalter extends Observable {
 	public UpdateInfo holeUpdateInfo()
 	{
 		return updateInfo;
+	}
+	
+	public void fuegeObserverHinzu(Component dieView)
+	{
+		aktiveViews.add(dieView);
+	}
+	
+	public void loescheInaktiveObserver()
+	{
+		for (int i = 0; i < aktiveViews.size(); i++)
+		{
+			Observer element = (Observer)aktiveViews.get(i);
+			this.deleteObserver(element);
+			this.getMedienVerwalter().deleteObserver(element);
+			this.getAusleiherVerwalter().deleteObserver(element);
+			this.getMedienVerwalter().getExemplarVerwalter().deleteObserver(element);
+			this.getHistorienVerwalter().deleteObserver(element);
+			this.getWarenKorbVerwalter().deleteObserver(element);
+		}
 	}
 
 }
