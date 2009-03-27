@@ -61,7 +61,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 		reportButton.addActionListener(new ReportActionListener(this.verwalter));
 	}
 
-	/** 
+	/**  
 	 * Erzeugt die obigen Komponenten auf dem MainPanel
 	 */
 	@SuppressWarnings("unchecked")
