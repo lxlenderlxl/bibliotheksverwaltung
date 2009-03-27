@@ -61,6 +61,11 @@ public class Medium implements Schreibbar
 		isbn = medium.isbn;
 		aktiv = medium.aktiv;
 	}
+	
+	public Medium()
+	{
+		this.id = 0;
+	}
 	/**
 	 * Konstruktor, setzt Id, Titel, Vorname, Nachname, Verlag, Jahr, ISBN, erscheinungsJahr, ISBN auf die Daten.
 	 * @param dieId

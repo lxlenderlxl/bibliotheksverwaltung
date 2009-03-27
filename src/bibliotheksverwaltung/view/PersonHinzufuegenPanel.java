@@ -40,7 +40,7 @@ public class PersonHinzufuegenPanel extends javax.swing.JPanel {
 			this.hausnummerField.setText(this.verwalter.getAusleiherVerwalter().getAusleiher().getHausnummer());
 			this.plzField.setText(String.valueOf(this.verwalter.getAusleiherVerwalter().getAusleiher().getPlz()));
 			this.stadtField.setText(this.verwalter.getAusleiherVerwalter().getAusleiher().getStadt());
-			this.addButton.setText("<html>�nderungen<br />speichern</html>");
+			this.addButton.setText("<html>Aenderungen<br />speichern</html>");
 			this.addButton.addActionListener(new PersonAenderungenSpeichernListener(this.verwalter, this));
 		}
 		else

@@ -76,7 +76,7 @@ public class OutputArea extends JPanel implements Observer
 				this.setPreferredSize(new Dimension(563, 533));
 				BuchEinzelansichtPanel buchEinzel = new BuchEinzelansichtPanel(verwalter);
 				this.add(buchEinzel);
-				this.verwalter.loescheInaktiveObserver();
+				//this.verwalter.loescheInaktiveObserver();
 			}
 		}
 		else if (updateInfo.holeAenderung().equals("Ausleihersuche"))
