@@ -49,7 +49,7 @@ public class OutputArea extends JPanel implements Observer
 				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
 				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
-					this.add(new JLabel("Ihre Mediensuche lieferte leider keine �bereinstimmungen"));
+					this.add(new JLabel("Ihre Mediensuche lieferte leider keine Uebereinstimmungen"));
 				}
 				else
 				{
@@ -85,7 +85,7 @@ public class OutputArea extends JPanel implements Observer
 				this.setPreferredSize(new Dimension(563, 245 * ((this.verwalter.getSuchVerwalter().getErgebnisse().size() + 2) / 3)));
 				if (this.verwalter.getSuchVerwalter().getErgebnisse().size() == 0)
 				{
-					this.add(new JLabel("Ihre Ausleihersuche lieferte leider keine �bereinstimmungen"));
+					this.add(new JLabel("Ihre Ausleihersuche lieferte leider keine Uebereinstimmungen"));
 				}
 				else
 				{
