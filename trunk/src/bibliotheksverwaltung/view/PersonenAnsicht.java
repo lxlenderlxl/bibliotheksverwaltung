@@ -37,6 +37,7 @@ public class PersonenAnsicht extends ImagePanel implements Observer {
 		initComponents();
 		this.setzeInformation();
 		verwalter.addObserver(this);
+		this.verwalter.fuegeObserverHinzu(this);
 		this.setzeStatus();
 	}
 

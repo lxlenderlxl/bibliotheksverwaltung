@@ -66,6 +66,7 @@ public class PersonEinzelAnsicht extends javax.swing.JPanel implements Observer 
 		this.verwalter.addObserver(this);
 		this.verwalter.getAusleiherVerwalter().addObserver(this);
 		this.verwalter.getHistorienVerwalter().addObserver(this);
+		this.verwalter.fuegeObserverHinzu(this);
 	}
 	/**
 	 * Erzeugt die Ansicht der aktuellen Ausleihen eines Ausleihers

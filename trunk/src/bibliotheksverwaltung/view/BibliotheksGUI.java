@@ -358,34 +358,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 				mainPanel.add(reportPanel);
 			}
 		}
-		else if (updateInfo.holeAenderung().equals("Mediumsuche"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.erzeugeWarenKorb();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("BuchEinzelAnsicht"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.erzeugeWarenKorb();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("Ausleihersuche"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.erzeugeWarenKorb();
-			}
-		}
-		else if (updateInfo.holeAenderung().equals("PersonenEinzelAnsicht"))
-		{
-			if (updateInfo.holeAenderungOk())
-			{
-				this.erzeugeWarenKorb();
-			}
-		}
+		
 		this.mainPanel.repaint();
 		this.mainPanel.revalidate();
 	}
