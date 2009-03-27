@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[550, 30]"/>
+      <Dimension value="[500, 30]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -22,18 +22,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
+              <Component id="benutzerLabel" pref="134" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="benutzerLabel" pref="202" max="32767" attributes="0"/>
+              <Component id="changePasswordButton" min="-2" pref="175" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="changePasswordButton" min="-2" pref="166" max="-2" attributes="1"/>
+              <Component id="deleteButton" min="-2" pref="171" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="deleteButton" min="-2" pref="162" max="-2" attributes="1"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="103" groupAlignment="3" attributes="0">
+          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
               <Component id="benutzerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="changePasswordButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -50,7 +50,8 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/bibliotheksverwaltung/view/images/user_delete_24.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Benutzer l&#xf6;schen"/>
+        <Property name="text" type="java.lang.String" value="Benutzer loeschen"/>
+        <Property name="actionCommand" type="java.lang.String" value="Benutzer loeschen"/>
         <Property name="horizontalAlignment" type="int" value="10"/>
         <Property name="iconTextGap" type="int" value="10"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

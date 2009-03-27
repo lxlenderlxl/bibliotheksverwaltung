@@ -1,0 +1,1 @@
+Fri Mar 27 15:30:06 CET 2009	Duplicate entry 'Name' for key 'PRIMARY'	 in class bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO
