@@ -17,17 +17,13 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import bibliotheksverwaltung.controller.AddActionListener;
-import bibliotheksverwaltung.controller.BuchAnsichtMouseListener;
-import bibliotheksverwaltung.controller.PersonAnsichtMouseListener;
+import bibliotheksverwaltung.controller.KonfigActionListener;
 import bibliotheksverwaltung.controller.ReportActionListener;
 import bibliotheksverwaltung.controller.SearchActionListener;
-import bibliotheksverwaltung.model.domain.Ausleiher;
-import bibliotheksverwaltung.model.domain.Medium;
 import bibliotheksverwaltung.model.logic.BibliotheksVerwalter;
 import bibliotheksverwaltung.util.InfoBoxTimer;
 import bibliotheksverwaltung.util.LocalEnvironment;
@@ -59,9 +55,10 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 		searchButton.addActionListener(new SearchActionListener(this.verwalter));
 		addButton.addActionListener(new AddActionListener(this.verwalter));
 		reportButton.addActionListener(new ReportActionListener(this.verwalter));
+		configButton.addActionListener(new KonfigActionListener(this.verwalter));
 	}
 
-	/**  
+	/**
 	 * Erzeugt die obigen Komponenten auf dem MainPanel
 	 */
 	@SuppressWarnings("unchecked")
@@ -349,7 +346,7 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 				suchPanel.getResultArea().add(hinzuPanel);
 				mainPanel.add(suchPanel);
 			}
-		} 
+		}
 		else if (updateInfo.holeAenderung().equals("Report")) {
 			if (updateInfo.holeAenderungOk()) {
 				mainPanel.removeAll();
@@ -358,7 +355,15 @@ public class BibliotheksGUI extends javax.swing.JFrame implements Observer, Acti
 				mainPanel.add(reportPanel);
 			}
 		}
-		
+		else if (updateInfo.holeAenderung().equals("Konfiguration")) {
+			if (updateInfo.holeAenderungOk()) {
+				mainPanel.removeAll();
+				EinstellungenPanel einstellungenPanel = new EinstellungenPanel();
+				einstellungenPanel.setSize(572, 540);
+				mainPanel.add(einstellungenPanel);
+			}
+		}
+
 		this.mainPanel.repaint();
 		this.mainPanel.revalidate();
 	}
