@@ -1,1 +1,7 @@
 Fri Mar 27 15:30:06 CET 2009	Duplicate entry 'Name' for key 'PRIMARY'	 in class bibliotheksverwaltung.model.daos.dao.MySQLAnwenderDAO
+Sat Mar 28 09:18:11 CET 2009	Communications link failure
+
+Last packet sent to the server was 90 ms ago.	 in class bibliotheksverwaltung.model.daos.dao.MySQLKonfigurationDAO
+Mon May 18 23:47:19 CEST 2009	Communications link failure
+
+Last packet sent to the server was 0 ms ago.
