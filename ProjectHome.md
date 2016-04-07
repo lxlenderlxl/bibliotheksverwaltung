@@ -1,0 +1,1 @@
+Ein Programm zur Verwaltung von Medienbeständen in einer Bibliothek.
